@@ -11,6 +11,8 @@ material = SubResource("StandardMaterial3D_h52f3")
 height = 1.0
 
 [node name="pawn" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
 
 [node name="shape" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_8xc7v")

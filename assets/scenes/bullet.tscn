@@ -4,14 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://dbwkwh331vj8v" path="res://assets/models/bullet_projectile.glb" id="1_ngiih"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e2fyp"]
-radius = 1.05289
+radius = 1.0
 
 [node name="bullet" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_2rsd3")
 impulse = 50.0
 
 [node name="shape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("SphereShape3D_e2fyp")
 
 [node name="bullet_projectile" parent="." instance=ExtResource("1_ngiih")]

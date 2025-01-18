@@ -55,8 +55,8 @@ func _input(event: InputEvent) -> void:
 
 
 func shoot() -> void:
-	var projectile : Area3D = bullet_scene.instantiate()
+	var projectile : Bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(projectile)
 	projectile.global_rotation = self.global_rotation
 	projectile.global_position = source.global_position + projectile.basis.z * 1.5
-	projectile.fire()
+	projectile.populate(source)

@@ -22,12 +22,9 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var direction := (pawn.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	# if direction:
-	# 	pawn.velocity.x = direction.x * move_speed
-	# 	pawn.velocity.z = direction.z * move_speed
+	var move_direction := (pawn.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-	pawn.velocity += direction * move_speed * delta
+	pawn.velocity += move_direction * move_speed * delta
 	pawn.velocity -= pawn.velocity * move_damping * delta
 
 	pawn.move_and_slide()

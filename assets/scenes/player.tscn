@@ -17,8 +17,8 @@ move_speed = 50.0
 move_damping = 20.0
 
 [node name="camera_3d" type="Camera3D" parent="pawn"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
-fov = 25.0
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 20)
+fov = 30.0
 
 [node name="crosshair" parent="pawn" node_paths=PackedStringArray("source", "camera") instance=ExtResource("2_bufda")]
 source = NodePath("..")

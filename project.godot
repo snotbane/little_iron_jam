@@ -15,6 +15,10 @@ run/main_scene="res://assets/scenes/world.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+autoload="*res://assets/scripts/autoload.gd"
+
 [debug]
 
 gdscript/warnings/unused_parameter=0
@@ -24,7 +28,7 @@ gdscript/warnings/unused_parameter=0
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
-window/stretch/scale=3.0
+window/stretch/scale=2.0
 
 [editor]
 

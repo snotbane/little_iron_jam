@@ -13,10 +13,11 @@ axis_lock_angular_z = true
 
 [node name="player_input" type="Node" parent="pawn"]
 script = ExtResource("2_52ijy")
-move_speed = 50.0
-move_damping = 18.0
-dodge_impulse = 20.0
-dodge_delay = 0.285
+walk_speed = 50.0
+walk_damping = 10.0
+dodge_impulse = 30.0
+dodge_damping = 10.0
+dodge_delay = 0.2
 
 [node name="camera_3d" type="Camera3D" parent="pawn"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 20)

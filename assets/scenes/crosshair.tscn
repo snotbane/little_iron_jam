@@ -15,6 +15,7 @@ height = 1.0
 script = ExtResource("1_0p5wt")
 mouse_plane = Plane(0, 1, 0, 0)
 mesh = NodePath("mesh")
+aim_distance = 4.0
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("TorusMesh_aknmd")

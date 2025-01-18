@@ -15,6 +15,7 @@ script = ExtResource("2_52ijy")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
 fov = 25.0
 
-[node name="crosshair" parent="." node_paths=PackedStringArray("source", "camera") instance=ExtResource("2_bufda")]
-source = NodePath("../pawn")
-camera = NodePath("../pawn/camera_3d")
+[node name="crosshair" parent="pawn" node_paths=PackedStringArray("source", "camera") instance=ExtResource("2_bufda")]
+source = NodePath("..")
+camera = NodePath("../camera_3d")
+aim_visual_alpha = 30.0

@@ -7,10 +7,14 @@
 [node name="player" type="Node3D"]
 
 [node name="pawn" parent="." instance=ExtResource("1_w8p5k")]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 
 [node name="player_input" type="Node" parent="pawn"]
 script = ExtResource("2_52ijy")
-move_speed = 2.5
+move_speed = 50.0
+move_damping = 20.0
 
 [node name="camera_3d" type="Camera3D" parent="pawn"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)

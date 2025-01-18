@@ -11,4 +11,4 @@ aim_distance = 4.0
 bullet_scene = ExtResource("2_0wcvf")
 
 [node name="pistol_crosshair" parent="." instance=ExtResource("2_12fn7")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1, 0)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.5, 0)

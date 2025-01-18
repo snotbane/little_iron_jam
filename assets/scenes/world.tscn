@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cmm5rafal8ul4"]
 
-[ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_i0t8e"]
+[ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player.tscn" id="1_fd1we"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5do2"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -35,5 +35,5 @@ shape = SubResource("WorldBoundaryShape3D_gswfm")
 [node name="mesh_instance_3d" type="MeshInstance3D" parent="static_body_3d"]
 mesh = SubResource("PlaneMesh_ecsgw")
 
-[node name="pawn" parent="." instance=ExtResource("1_i0t8e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20401e-05, 0.997556, 0.00194144)
+[node name="player" parent="." instance=ExtResource("1_fd1we")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://38l7tovwc1uw"]
+
+[ext_resource type="Script" path="res://assets/scripts/crosshair.gd" id="1_0p5wt"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_aknmd"]
+inner_radius = 0.4
+outer_radius = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8x3mj"]
+top_radius = 0.05
+bottom_radius = 0.1
+height = 1.0
+
+[node name="crosshair" type="Node3D" node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_0p5wt")
+mouse_plane = Plane(0, 1, 0, 0)
+mesh = NodePath("mesh")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_aknmd")
+
+[node name="temp" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.1)
+mesh = SubResource("CylinderMesh_8x3mj")

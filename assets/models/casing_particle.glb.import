@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://doxcn0b14a0py"
-path="res://.godot/imported/shell.glb-1623721cc50a1dbd17a50f3d0ae235e1.scn"
+uid="uid://cvkjhg4qyhyth"
+path="res://.godot/imported/casing_particle.glb-4159c66c52f56073d7925a399637b776.scn"
 
 [deps]
 
-source_file="res://assets/models/shell.glb"
-dest_files=["res://.godot/imported/shell.glb-1623721cc50a1dbd17a50f3d0ae235e1.scn"]
+source_file="res://assets/models/casing_particle.glb"
+dest_files=["res://.godot/imported/casing_particle.glb-4159c66c52f56073d7925a399637b776.scn"]
 
 [params]
 

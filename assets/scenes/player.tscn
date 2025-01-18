@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://becpsh0bwexhi"]
 
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
-[ext_resource type="Script" path="res://assets/scripts/player_input.gd" id="2_52ijy"]
+[ext_resource type="Script" path="res://assets/scripts/player_movement.gd" id="2_52ijy"]
 [ext_resource type="PackedScene" uid="uid://38l7tovwc1uw" path="res://assets/scenes/crosshair.tscn" id="2_bufda"]
 
 [node name="player" type="Node3D"]

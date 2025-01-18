@@ -7,6 +7,9 @@ extends Node3D
 @export var aim_distance : float = 2.0
 @export var aim_visual_alpha : float = 10.0
 
+
+@export var bullet_scene : PackedScene
+
 var aim_vector : Vector2
 var aim_position : Vector3
 
@@ -45,3 +48,14 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CONFINED_HIDDEN:
 		is_using_mouse = true
 		mouse_position = event.position
+
+	if event.is_action_pressed("shoot"):
+		shoot()
+
+
+
+func shoot() -> void:
+	var projectile : Area3D = bullet_scene.instantiate()
+	get_tree().root.add_child(projectile)
+	projectile.global_position = source.global_position
+	projectile.global_rotation = self.global_rotation

@@ -41,6 +41,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("dodge"):
 		dodge()
 
+
 func dodge() -> void:
 	if is_dodging: return
 	is_dodging = true

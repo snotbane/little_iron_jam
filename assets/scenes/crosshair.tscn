@@ -1,18 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://38l7tovwc1uw"]
+[gd_scene load_steps=4 format=3 uid="uid://38l7tovwc1uw"]
 
-[ext_resource type="Script" path="res://assets/scripts/crosshair.gd" id="1_0p5wt"]
-
-[sub_resource type="TorusMesh" id="TorusMesh_aknmd"]
-inner_radius = 0.3
-outer_radius = 0.45
-rings = 5
-ring_segments = 4
+[ext_resource type="Script" path="res://assets/scripts/player_aiming.gd" id="1_0p5wt"]
+[ext_resource type="PackedScene" uid="uid://crp3pw7i4x8ou" path="res://assets/scenes/bullet.tscn" id="2_0wcvf"]
+[ext_resource type="PackedScene" uid="uid://blphp82kb5iq7" path="res://assets/models/pistol_crosshair.glb" id="2_12fn7"]
 
 [node name="crosshair" type="Node3D"]
 script = ExtResource("1_0p5wt")
 mouse_plane = Plane(0, 1, 0, 0)
 aim_distance = 4.0
+bullet_scene = ExtResource("2_0wcvf")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 3.82137e-15, -8.74228e-08, 8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, 0, 0.5, 0)
-mesh = SubResource("TorusMesh_aknmd")
+[node name="pistol_crosshair" parent="." instance=ExtResource("2_12fn7")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1, 0)

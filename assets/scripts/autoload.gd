@@ -33,3 +33,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fullscreen"):
 		self.is_fullscreen = not self.is_fullscreen
+	if event.is_action_pressed("menu"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CONFINED_HIDDEN:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN

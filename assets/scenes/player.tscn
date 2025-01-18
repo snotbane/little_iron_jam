@@ -10,6 +10,7 @@
 
 [node name="player_input" type="Node" parent="pawn"]
 script = ExtResource("2_52ijy")
+move_speed = 2.5
 
 [node name="camera_3d" type="Camera3D" parent="pawn"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)

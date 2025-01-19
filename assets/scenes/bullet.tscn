@@ -6,8 +6,8 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_e2fyp"]
 radius = 1.0
 
-[node name="bullet" type="Area3D"]
-collision_layer = 2
+[node name="bullet" type="StaticBody3D"]
+collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_2rsd3")
 impulse = 50.0
@@ -16,4 +16,4 @@ impulse = 50.0
 shape = SubResource("SphereShape3D_e2fyp")
 
 [node name="bullet_projectile" parent="." instance=ExtResource("1_ngiih")]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 0, 0, 0)
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 0, 0, 0.237548)

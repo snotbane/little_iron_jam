@@ -1,5 +1,5 @@
 
-class_name Bullet extends Area3D
+class_name Bullet extends StaticBody3D
 
 @export var impulse := 1.0
 @export var falloff := 1.0
@@ -24,9 +24,12 @@ var _velocity : Vector3
 
 		self.look_at(global_position - _velocity)
 
+@onready var collider : CollisionShape3D = $shape
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	body_entered.connect(_body_entered)
+	# body_entered.connect(_body_entered)
+	pass
 
 
 func populate(_shooter: Node3D) -> void:
@@ -37,9 +40,12 @@ func populate(_shooter: Node3D) -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	self.global_position += velocity * delta
-	pass
+func _physics_process(delta: float) -> void:
+	# self.global_position += velocity * delta
+	var collision := self.move_and_collide(velocity * delta)
+
+	if collision and collision.get_collision_count() > 0:
+		bounce(collision.get_normal())
 
 
 func rest() -> void:
@@ -51,24 +57,11 @@ func _body_entered(body: Node3D) -> void:
 
 	if body.has_method("receive_damage"):
 		damage(body)
-	else:
-		bounce()
 
 
 
-func bounce() -> void:
-
-	var state := get_world_3d().direct_space_state
-	var query := PhysicsRayQueryParameters3D.create(global_position, global_position + global_basis.z)
-	query.hit_from_inside = true
-	query.hit_back_faces = true
-	query.collide_with_bodies = true
-	var result := state.intersect_ray(query)
-
-	print(query.to)
-	print(result)
-
-	velocity = -velocity
+func bounce(normal: Vector3) -> void:
+	velocity = velocity.bounce(normal)
 	# health -= 1
 
 

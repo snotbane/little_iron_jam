@@ -2,7 +2,7 @@ extends Node3D
 
 @export var source : Node3D
 @export var camera : Camera3D
-@export var mouse_plane : Plane
+@export var vacuum : Vacuum
 
 @export var aim_distance : float = 2.0
 @export var aim_visual_alpha : float = 10.0
@@ -30,7 +30,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_using_mouse:
-		self.global_position = mouse_plane.intersects_ray(camera.project_ray_origin(mouse_position), camera.project_ray_normal(mouse_position))
+		self.global_position = Plane.PLANE_XZ.intersects_ray(camera.project_ray_origin(mouse_position), camera.project_ray_normal(mouse_position))
 		aim_position = self.position * (Vector3.ONE - Vector3.UP)
 		aim_vector = Vector2(aim_position.x, aim_position.z)
 	else:
@@ -51,6 +51,11 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("shoot"):
 		shoot()
+
+	if event.is_action_pressed("vacuum"):
+		vacuum.is_sucking = true
+	elif event.is_action_released("vacuum"):
+		vacuum.is_sucking = false
 
 
 

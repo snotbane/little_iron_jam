@@ -9,7 +9,6 @@ no_depth_test = true
 
 [node name="crosshair" type="Node3D"]
 script = ExtResource("1_0p5wt")
-mouse_plane = Plane(0, 1, 0, 0)
 aim_distance = 4.0
 bullet_scene = ExtResource("2_0wcvf")
 

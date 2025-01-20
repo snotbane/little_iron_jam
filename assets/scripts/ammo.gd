@@ -41,9 +41,9 @@ func create_shell() -> void:
 	var result : RigidBody3D = shell_scene.instantiate()
 	get_tree().root.add_child(result)
 	result.global_position = actor.global_position
-	var lateral_impulse := Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * shell_loss_linear_impulse.x
+	var lateral_impulse := Vector2(randf_range(-1, 1), randf_range(-1, 1)) * shell_loss_linear_impulse.x
 	var impulse := Vector3(lateral_impulse.x, shell_loss_linear_impulse.y, lateral_impulse.y)
-	var torque := Vector3.ONE * shell_loss_angular_impulse
-	result.apply_torque_impulse(torque)
-	result.apply_impulse(impulse)
+	var torque := Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)) * shell_loss_angular_impulse
+	result.apply_torque_impulse(torque * result.mass)
+	result.apply_impulse(impulse * result.mass)
 	# return result

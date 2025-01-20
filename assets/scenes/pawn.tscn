@@ -31,8 +31,9 @@ skeleton = NodePath("../..")
 [node name="ammo" type="Node" parent="."]
 script = ExtResource("1_a2tth")
 shell_scene = ExtResource("2_s4lk7")
-shell_loss_linear_impulse = Vector2(5, 3)
-shell_loss_angular_impulse = 200000.0
+shell_loss_linear_impulse = Vector2(5, 6)
+shell_loss_angular_impulse = 2.0
+count = 1000
 
 [node name="canvas_layer" type="CanvasLayer" parent="."]
 

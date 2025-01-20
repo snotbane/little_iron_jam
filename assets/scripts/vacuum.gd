@@ -5,8 +5,14 @@ class_name Vacuum extends Area3D
 @export var suck_angle : float = 45.0 :
 	get: return region.fov
 	set(value):
-		if region.fov == value: return
+		value = clamp(value, 0, 179)
 		region.fov = value
+@export var suck_distance : float = 3.0 :
+	get: return region.far
+	set(value):
+		value = max(value, 0.001)
+		region.far = value
+		($shape.shape as CylinderShape3D).radius = value
 
 @export var suck_power := 1.0
 @export var collect_radius_squared := 1.0

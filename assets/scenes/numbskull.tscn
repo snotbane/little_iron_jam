@@ -7,6 +7,11 @@
 
 [node name="brain" parent="pawn" index="3"]
 script = ExtResource("2_xem13")
+lunge_trigger_distance = 15.0
+lunge_pre_delay = 0.4
+lunge_duration = 0.33
+lunge_post_delay = 0.75
+lunge_speed = 1000.0
 walk_speed = 150.0
 
 [editable path="pawn"]

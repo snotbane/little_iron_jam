@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 
 			if body.find_child("safe"): continue
 
-			var difference := self.global_position - body.global_position
+			var difference := (self.global_position - body.global_position) * Vector3(1, 0, 1)
 			if difference.length_squared() < collect_radius_squared:
 				collect(body); continue
 			elif region.is_position_in_frustum(body.global_position * Vector3(1, 0, 1)):

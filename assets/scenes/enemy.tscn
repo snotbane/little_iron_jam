@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgmfug0eq3en1"]
+
+[ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_p5ahr"]
+[ext_resource type="Script" path="res://assets/scripts/brain.gd" id="2_hxeyc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dampy"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_cniys"]
+material = SubResource("StandardMaterial3D_dampy")
+
+[node name="enemy" type="Node3D"]
+
+[node name="pawn" parent="." instance=ExtResource("1_p5ahr")]
+
+[node name="mesh_instance_3d" type="MeshInstance3D" parent="pawn"]
+mesh = SubResource("SphereMesh_cniys")
+
+[node name="brain" type="Node" parent="pawn"]
+script = ExtResource("2_hxeyc")
+
+[editable path="pawn"]

@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://becpsh0bwexhi"]
+[gd_scene load_steps=9 format=3 uid="uid://becpsh0bwexhi"]
 
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
 [ext_resource type="Script" path="res://assets/scripts/player_movement.gd" id="2_52ijy"]
 [ext_resource type="PackedScene" uid="uid://38l7tovwc1uw" path="res://assets/scenes/crosshair.tscn" id="2_bufda"]
 [ext_resource type="PackedScene" uid="uid://c48e78yo3bqt7" path="res://assets/scenes/vacuum.tscn" id="4_yu1wx"]
+[ext_resource type="Script" path="res://assets/scripts/ammo_label.gd" id="5_wf323"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h52f3"]
+albedo_color = Color(0, 0.433333, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l16lb"]
+material = SubResource("StandardMaterial3D_h52f3")
+height = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ukhfm"]
+font_size = 80
 
 [node name="player" type="Node3D"]
 
@@ -11,6 +22,17 @@
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
+
+[node name="mesh" type="MeshInstance3D" parent="pawn"]
+mesh = SubResource("CylinderMesh_l16lb")
+
+[node name="camera_remote" type="RemoteTransform3D" parent="pawn"]
+remote_path = NodePath("../../camera_hook")
+update_rotation = false
+update_scale = false
+
+[node name="vacuum" parent="pawn" instance=ExtResource("4_yu1wx")]
+collision_layer = 8
 
 [node name="player_input" type="Node" parent="pawn"]
 script = ExtResource("2_52ijy")
@@ -20,14 +42,6 @@ turn_speed = 20.0
 dodge_impulse = 30.0
 dodge_damping = 4.0
 dodge_delay = 0.25
-
-[node name="camera_remote" type="RemoteTransform3D" parent="pawn"]
-remote_path = NodePath("../../camera_hook")
-update_rotation = false
-update_scale = false
-
-[node name="vacuum" parent="pawn" instance=ExtResource("4_yu1wx")]
-collision_layer = 8
 
 [node name="camera_hook" type="Node3D" parent="."]
 
@@ -41,3 +55,32 @@ aim_visual_alpha = 30.0
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 20)
 current = true
 fov = 30.0
+
+[node name="canvas_layer" type="CanvasLayer" parent="."]
+
+[node name="ui" type="Control" parent="canvas_layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ammo_label" type="Label" parent="canvas_layer/ui" node_paths=PackedStringArray("ammo")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "10"
+label_settings = SubResource("LabelSettings_ukhfm")
+script = ExtResource("5_wf323")
+ammo = NodePath("../../../pawn/ammo")
+
+[editable path="pawn"]

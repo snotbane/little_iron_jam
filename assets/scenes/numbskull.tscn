@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://clq3nof8vclwo"]
+
+[ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemy.tscn" id="1_jdxd2"]
+[ext_resource type="Script" path="res://assets/scripts/brain_numbskull.gd" id="2_xem13"]
+
+[node name="numbskull" instance=ExtResource("1_jdxd2")]
+
+[node name="brain" parent="pawn" index="3"]
+script = ExtResource("2_xem13")
+walk_speed = 150.0
+
+[editable path="pawn"]

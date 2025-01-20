@@ -1,5 +1,7 @@
 
-extends Node
+class_name PlayerMovement extends Node
+
+static var inst : Node
 
 const JUMP_VELOCITY = 4.5
 
@@ -23,10 +25,22 @@ var move_vector : Vector3 :
 	get: return Vector3(input_vector.x, 0, input_vector.y)
 var orientation_vector : Vector2
 
-var is_dodging : bool
+var _is_dodging : bool
+var is_dodging : bool :
+	get: return _is_dodging
+	set(value):
+		if _is_dodging == value: return
+		_is_dodging = value
+		pawn.set_collision_layer_value(2, not _is_dodging)
+		pawn.set_collision_mask_value(2, not _is_dodging)
 
 var damping : float :
 	get: return dodge_damping if is_dodging else walk_damping
+
+
+func _ready() -> void:
+	inst = self
+
 
 func _process(delta: float) -> void:
 	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
@@ -57,6 +71,8 @@ func _input(event: InputEvent) -> void:
 func dodge() -> void:
 	if is_dodging: return
 	is_dodging = true
-	pawn.velocity += (move_vector if move_vector else -pawn.global_basis.z) * dodge_impulse
+	if move_vector:
+		pawn.look_at(pawn.global_position + move_vector)
+	pawn.velocity += -pawn.global_basis.z * dodge_impulse
 	await get_tree().create_timer(dodge_delay).timeout
 	is_dodging = false

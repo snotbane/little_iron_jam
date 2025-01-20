@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dbwkwh331vj8v" path="res://assets/models/bullet_projectile.glb" id="1_ngiih"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e2fyp"]
-radius = 1.0
+radius = 0.8
 
 [node name="bullet" type="StaticBody3D"]
 collision_layer = 0

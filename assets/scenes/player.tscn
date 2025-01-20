@@ -16,26 +16,28 @@ axis_lock_angular_z = true
 script = ExtResource("2_52ijy")
 walk_speed = 50.0
 walk_damping = 10.0
+turn_speed = 20.0
 dodge_impulse = 30.0
 dodge_damping = 4.0
 dodge_delay = 0.25
 
 [node name="camera_remote" type="RemoteTransform3D" parent="pawn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 20)
-remote_path = NodePath("../../camera_3d")
+remote_path = NodePath("../../camera_hook")
 update_rotation = false
 update_scale = false
-
-[node name="crosshair" parent="pawn" node_paths=PackedStringArray("source", "camera", "vacuum") instance=ExtResource("2_bufda")]
-source = NodePath("..")
-camera = NodePath("../../camera_3d")
-vacuum = NodePath("../vacuum")
-aim_visual_alpha = 30.0
 
 [node name="vacuum" parent="pawn" instance=ExtResource("4_yu1wx")]
 collision_layer = 8
 
-[node name="camera_3d" type="Camera3D" parent="."]
+[node name="camera_hook" type="Node3D" parent="."]
+
+[node name="crosshair" parent="camera_hook" node_paths=PackedStringArray("source", "camera", "vacuum") instance=ExtResource("2_bufda")]
+source = NodePath("../../pawn")
+camera = NodePath("../camera_3d")
+vacuum = NodePath("../../pawn/vacuum")
+aim_visual_alpha = 30.0
+
+[node name="camera_3d" type="Camera3D" parent="camera_hook"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 20)
 current = true
 fov = 30.0

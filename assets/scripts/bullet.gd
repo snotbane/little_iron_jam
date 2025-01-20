@@ -26,11 +26,6 @@ var _velocity : Vector3
 
 @onready var collider : CollisionShape3D = $shape
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	# body_entered.connect(_body_entered)
-	pass
-
 
 func populate(_shooter: Node3D) -> void:
 	shooter = _shooter
@@ -41,23 +36,16 @@ func populate(_shooter: Node3D) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	# self.global_position += velocity * delta
 	var collision := self.move_and_collide(velocity * delta)
 
 	if collision and collision.get_collision_count() > 0:
-		bounce(collision.get_normal())
+		var ammo : Ammo = collision.get_collider().find_child("ammo")
+		if ammo: 	damage(ammo)
+		else:		bounce(collision.get_normal())
 
 
 func rest() -> void:
 	queue_free()
-
-
-func _body_entered(body: Node3D) -> void:
-	if body == shooter: return
-
-	if body.has_method("receive_damage"):
-		damage(body)
-
 
 
 func bounce(normal: Vector3) -> void:
@@ -65,7 +53,6 @@ func bounce(normal: Vector3) -> void:
 	# health -= 1
 
 
-
-func damage(body: Node3D) -> void:
-	print("Damaged ", body)
+func damage(other: Ammo) -> void:
+	other.count -= 1
 	health -= 1

@@ -1,4 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7fjixq684skw"]
+[gd_scene load_steps=8 format=3 uid="uid://b7fjixq684skw"]
+
+[ext_resource type="Script" path="res://assets/scripts/ammo.gd" id="1_a2tth"]
+[ext_resource type="Script" path="res://assets/scripts/ammo_label.gd" id="2_08sno"]
+[ext_resource type="PackedScene" uid="uid://fkba2vvj2bfy" path="res://assets/scripts/shell.tscn" id="2_s4lk7"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8xc7v"]
 height = 1.0
@@ -10,6 +14,9 @@ albedo_color = Color(1, 0, 0, 1)
 material = SubResource("StandardMaterial3D_h52f3")
 height = 1.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_weqom"]
+font_size = 80
+
 [node name="pawn" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 3
@@ -20,3 +27,36 @@ shape = SubResource("CylinderShape3D_8xc7v")
 [node name="mesh" type="MeshInstance3D" parent="shape"]
 mesh = SubResource("CylinderMesh_y88f4")
 skeleton = NodePath("../..")
+
+[node name="ammo" type="Node" parent="."]
+script = ExtResource("1_a2tth")
+shell_scene = ExtResource("2_s4lk7")
+shell_loss_linear_impulse = Vector2(5, 3)
+shell_loss_angular_impulse = 200000.0
+
+[node name="canvas_layer" type="CanvasLayer" parent="."]
+
+[node name="ui" type="Control" parent="canvas_layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ammo_label" type="Label" parent="canvas_layer/ui" node_paths=PackedStringArray("ammo")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "10"
+label_settings = SubResource("LabelSettings_weqom")
+script = ExtResource("2_08sno")
+ammo = NodePath("../../../ammo")

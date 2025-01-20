@@ -119,6 +119,17 @@ fullscreen={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="pawn"
+3d_physics/layer_3="bullet"
+3d_physics/layer_4="vacuum"
+
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

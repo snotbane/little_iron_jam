@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://clq3nof8vclwo"]
 
-[ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemy.tscn" id="1_jdxd2"]
+[ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_jdxd2"]
 [ext_resource type="Script" path="res://assets/scripts/dodge_damage.gd" id="2_iw7mf"]
-[ext_resource type="Script" path="res://assets/scripts/brain_numbskull.gd" id="2_xem13"]
+[ext_resource type="Script" path="res://assets/scripts/brain_stinker.gd" id="2_xem13"]
 
-[node name="numbskull" instance=ExtResource("1_jdxd2")]
+[node name="stinker" instance=ExtResource("1_jdxd2")]
 
 [node name="pawn" parent="." index="0"]
 script = ExtResource("2_iw7mf")

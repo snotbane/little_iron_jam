@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://becpsh0bwexhi"]
+[gd_scene load_steps=19 format=3 uid="uid://becpsh0bwexhi"]
 
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
 [ext_resource type="Script" path="res://assets/scripts/player_movement.gd" id="2_52ijy"]
@@ -39,6 +39,14 @@ sync = true
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3tb4j"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5eunj"]
+advance_mode = 2
+advance_expression = "dodge_blip"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2qugt"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4amnw"]
 states/bash/node = SubResource("AnimationNodeAnimation_bjxyx")
 states/bash/position = Vector2(506.556, 170.667)
@@ -46,7 +54,7 @@ states/hit/node = SubResource("AnimationNodeAnimation_wrhdh")
 states/hit/position = Vector2(687.667, 80)
 states/walk/node = SubResource("AnimationNodeBlendSpace1D_28eku")
 states/walk/position = Vector2(506.037, 6.22222)
-transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_3tb4j")]
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_3tb4j"), "walk", "bash", SubResource("AnimationNodeStateMachineTransition_5eunj"), "bash", "walk", SubResource("AnimationNodeStateMachineTransition_2qugt")]
 graph_offset = Vector2(-151, -80)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ukhfm"]
@@ -157,6 +165,7 @@ label_settings = SubResource("LabelSettings_ukhfm")
 script = ExtResource("5_wf323")
 ammo = NodePath("../../../pawn/ammo")
 
+[connection signal="on_dodge" from="pawn/player_input" to="pawn/mesh_scene/animation_tree" method="dodge"]
 [connection signal="speed_changed" from="pawn/player_input" to="pawn/mesh_scene/animation_tree" method="set_walk_speed"]
 
 [editable path="pawn"]

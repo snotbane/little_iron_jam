@@ -4,6 +4,7 @@ class_name PlayerMovement extends Node
 static var inst : Node
 
 signal speed_changed(value: float)
+signal on_dodge
 
 @export_category("Walk")
 
@@ -75,6 +76,7 @@ func _input(event: InputEvent) -> void:
 func dodge() -> void:
 	if is_dodging: return
 	is_dodging = true
+	on_dodge.emit()
 	ammo.count -= dodge_ammo_cost
 	if move_vector:
 		pawn.look_at(pawn.global_position + move_vector)

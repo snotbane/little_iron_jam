@@ -1,10 +1,11 @@
 
-class_name Ammo extends Node
+class_name Ammo extends Area3D
 
 signal changed
 signal died
 
 @export var shell_scene : PackedScene
+@export var shell_loss_amount := 10
 @export var shell_loss_linear_impulse := Vector2.ONE
 @export var shell_loss_angular_impulse := 1.0
 
@@ -27,13 +28,30 @@ var _count : int = 10
 			actor.queue_free()
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	body_entered.connect(_body_entered)
+	tree_exiting.connect(drop_shells)
 
 
 func _on_lost_ammo(amount: int) -> void:
-	for i in amount:
+	pass
+	# for i in amount:
+	# 	create_shell()
+
+
+func _body_entered(body: Node3D) -> void:
+	if body == actor or (body is Bullet and body.shooter == actor): return
+	take_damage(body)
+
+
+func take_damage(body: Node3D) -> void:
+	count -= body.damage
+	if body is Bullet:
+		body.health -= 1
+
+
+func drop_shells() -> void:
+	for i in shell_loss_amount:
 		create_shell()
 
 

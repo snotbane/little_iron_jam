@@ -28,7 +28,8 @@ func _physics_process(delta: float) -> void:
 		State.ATTACK:
 			pawn.velocity = lunge_vector * lunge_speed * delta
 			pawn.move_and_slide()
-	pawn.look_at(pawn.global_position + pawn.velocity)
+	if pawn.velocity:
+		pawn.look_at(pawn.global_position + pawn.velocity)
 
 
 func attack(direction: Vector3) -> void:

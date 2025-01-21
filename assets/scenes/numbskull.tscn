@@ -5,6 +5,10 @@
 
 [node name="numbskull" instance=ExtResource("1_jdxd2")]
 
+[node name="ammo" parent="pawn" index="1"]
+shell_loss_amount = 5
+count = 3
+
 [node name="brain" parent="pawn" index="3"]
 script = ExtResource("2_xem13")
 lunge_trigger_distance = 15.0

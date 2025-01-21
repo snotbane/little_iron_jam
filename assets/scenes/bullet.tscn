@@ -6,11 +6,12 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_e2fyp"]
 radius = 0.8
 
-[node name="bullet" type="StaticBody3D"]
-collision_layer = 0
-collision_mask = 2
+[node name="bullet" type="AnimatableBody3D"]
+collision_layer = 4
+sync_to_physics = false
 script = ExtResource("1_2rsd3")
 impulse = 50.0
+shooter_safety_delay = 0.05
 
 [node name="shape" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_e2fyp")

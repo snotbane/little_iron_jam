@@ -32,6 +32,7 @@ var is_dodging : bool :
 		if _is_dodging == value: return
 		_is_dodging = value
 		pawn.set_collision_layer_value(2, not _is_dodging)
+		pawn.set_collision_layer_value(3, _is_dodging)
 		pawn.set_collision_mask_value(2, not _is_dodging)
 
 var damping : float :

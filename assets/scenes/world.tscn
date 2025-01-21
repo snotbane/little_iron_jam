@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player.tscn" id="1_fd1we"]
-[ext_resource type="PackedScene" uid="uid://clq3nof8vclwo" path="res://assets/scenes/numbskull.tscn" id="2_bex3j"]
+[ext_resource type="PackedScene" uid="uid://clq3nof8vclwo" path="res://assets/scenes/numbskull.tscn" id="2_ker5d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5do2"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -65,5 +65,5 @@ mesh = SubResource("BoxMesh_5rj5s")
 [node name="player" parent="." instance=ExtResource("1_fd1we")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="numbskull" parent="." instance=ExtResource("2_bex3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
+[node name="numbskull" parent="." instance=ExtResource("2_ker5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -8)

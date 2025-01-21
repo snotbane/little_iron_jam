@@ -3,6 +3,7 @@ extends Node3D
 @export var source : Node3D
 @export var camera : Camera3D
 @export var vacuum : Vacuum
+@export var ammo : Ammo
 
 @export var aim_distance : float = 2.0
 @export var aim_visual_alpha : float = 10.0
@@ -60,6 +61,7 @@ func _input(event: InputEvent) -> void:
 
 
 func shoot() -> void:
+	ammo.count -= 1
 	var projectile : Bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(projectile)
 	projectile.global_rotation = self.global_rotation

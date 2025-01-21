@@ -17,8 +17,10 @@ const JUMP_VELOCITY = 4.5
 @export var dodge_impulse : float = 50.0
 @export var dodge_damping : float = 3.0
 @export var dodge_delay : float = 1.0
+@export var dodge_ammo_cost : int = 3
 
 @onready var pawn : CharacterBody3D = self.get_parent()
+@onready var ammo : Ammo = pawn.find_child("ammo")
 
 var input_vector : Vector2
 var move_vector : Vector3 :
@@ -72,6 +74,7 @@ func _input(event: InputEvent) -> void:
 func dodge() -> void:
 	if is_dodging: return
 	is_dodging = true
+	ammo.count -= dodge_ammo_cost
 	if move_vector:
 		pawn.look_at(pawn.global_position + move_vector)
 	pawn.velocity += -pawn.global_basis.z * dodge_impulse

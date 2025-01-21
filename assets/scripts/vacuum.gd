@@ -1,6 +1,7 @@
 
 class_name Vacuum extends Area3D
 
+@export var ammo : Ammo
 @export var region : Camera3D
 @export var suck_angle : float = 45.0 :
 	get: return region.fov
@@ -58,6 +59,7 @@ func _body_exited(body: Node3D) -> void:
 
 func collect(body: RigidBody3D) -> void:
 	body.queue_free()
+	ammo.count += 1
 
 
 func fail_collect(body: RigidBody3D) -> void:

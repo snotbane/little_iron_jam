@@ -37,8 +37,9 @@ remote_path = NodePath("../../camera_hook")
 update_rotation = false
 update_scale = false
 
-[node name="vacuum" parent="pawn" instance=ExtResource("4_yu1wx")]
+[node name="vacuum" parent="pawn" node_paths=PackedStringArray("ammo") instance=ExtResource("4_yu1wx")]
 collision_layer = 8
+ammo = NodePath("../ammo")
 
 [node name="player_input" type="Node" parent="pawn"]
 script = ExtResource("2_52ijy")
@@ -48,13 +49,15 @@ turn_speed = 20.0
 dodge_impulse = 30.0
 dodge_damping = 4.0
 dodge_delay = 0.25
+dodge_ammo_cost = 1
 
 [node name="camera_hook" type="Node3D" parent="."]
 
-[node name="crosshair" parent="camera_hook" node_paths=PackedStringArray("source", "camera", "vacuum") instance=ExtResource("2_bufda")]
+[node name="crosshair" parent="camera_hook" node_paths=PackedStringArray("source", "camera", "vacuum", "ammo") instance=ExtResource("2_bufda")]
 source = NodePath("../../pawn")
 camera = NodePath("../camera_3d")
 vacuum = NodePath("../../pawn/vacuum")
+ammo = NodePath("../../pawn/ammo")
 aim_visual_alpha = 30.0
 
 [node name="camera_3d" type="Camera3D" parent="camera_hook"]

@@ -25,6 +25,7 @@ var state : State :
 var lunge_vector : Vector3
 
 func _physics_process(delta: float) -> void:
+	if not target: return
 	match state:
 		State.CHASING:
 			var difference := target.global_position - pawn.global_position

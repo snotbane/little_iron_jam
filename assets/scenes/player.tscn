@@ -53,8 +53,8 @@ dodge_ammo_cost = 1
 
 [node name="camera_hook" type="Node3D" parent="."]
 
-[node name="crosshair" parent="camera_hook" node_paths=PackedStringArray("source", "camera", "vacuum", "ammo") instance=ExtResource("2_bufda")]
-source = NodePath("../../pawn")
+[node name="crosshair" parent="camera_hook" node_paths=PackedStringArray("pawn", "camera", "vacuum", "ammo") instance=ExtResource("2_bufda")]
+pawn = NodePath("../../pawn")
 camera = NodePath("../camera_3d")
 vacuum = NodePath("../../pawn/vacuum")
 ammo = NodePath("../../pawn/ammo")

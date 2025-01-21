@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var source : Node3D
+@export var pawn : Node3D
 @export var camera : Camera3D
 @export var vacuum : Vacuum
 @export var ammo : Ammo
@@ -50,6 +50,8 @@ func _input(event: InputEvent) -> void:
 		is_using_mouse = true
 		mouse_position = event.position
 
+	if not pawn: return
+
 	if event.is_action_pressed("shoot"):
 		shoot()
 
@@ -65,5 +67,5 @@ func shoot() -> void:
 	var projectile : Bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(projectile)
 	projectile.global_rotation = self.global_rotation
-	projectile.global_position = source.global_position + projectile.basis.z * 1.5
-	projectile.populate(source)
+	projectile.global_position = pawn.global_position + projectile.basis.z * 1.5
+	projectile.populate(pawn)

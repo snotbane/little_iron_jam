@@ -13,7 +13,15 @@ enum State {
 @export var lunge_post_delay : float = 0.5
 @export var lunge_speed : float = 100.0
 
-var state : State
+var _state : State
+var state : State :
+	get: return _state
+	set(value):
+		if _state == value: return
+		_state = value
+
+		pawn.set_collision_layer_value(3, _state == State.ATTACK)
+
 var lunge_vector : Vector3
 
 func _physics_process(delta: float) -> void:

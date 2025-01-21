@@ -25,6 +25,5 @@ shadow_enabled = true
 environment = SubResource("Environment_sl5iy")
 
 [node name="player" parent="." instance=ExtResource("1_fd1we")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="arena" parent="." instance=ExtResource("2_asn8h")]

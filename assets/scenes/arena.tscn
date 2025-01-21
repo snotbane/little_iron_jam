@@ -28,6 +28,7 @@ script = ExtResource("2_ywm6p")
 enemies = {
 ExtResource("3_s3gsa"): 1
 }
+crates = 0
 
 [node name="arena" type="Node3D"]
 

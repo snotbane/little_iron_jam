@@ -1,18 +1,53 @@
-[gd_scene load_steps=10 format=3 uid="uid://becpsh0bwexhi"]
+[gd_scene load_steps=17 format=3 uid="uid://becpsh0bwexhi"]
 
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
 [ext_resource type="Script" path="res://assets/scripts/player_movement.gd" id="2_52ijy"]
 [ext_resource type="PackedScene" uid="uid://38l7tovwc1uw" path="res://assets/scenes/player/crosshair.tscn" id="2_bufda"]
 [ext_resource type="Script" path="res://assets/scripts/dodge_damage.gd" id="2_h71wt"]
+[ext_resource type="PackedScene" uid="uid://csrge5d3x14ri" path="res://assets/models/skeletal_meshes/jack.glb" id="3_txy8l"]
+[ext_resource type="Script" path="res://assets/scripts/jack_anim_tree.gd" id="4_ew1kc"]
 [ext_resource type="PackedScene" uid="uid://c48e78yo3bqt7" path="res://assets/scenes/player/vacuum.tscn" id="4_yu1wx"]
 [ext_resource type="Script" path="res://assets/scripts/ammo_label.gd" id="5_wf323"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h52f3"]
-albedo_color = Color(0, 0.433333, 1, 1)
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bjxyx"]
+animation = &"bash"
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_l16lb"]
-material = SubResource("StandardMaterial3D_h52f3")
-height = 1.0
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrhdh"]
+animation = &"hit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tr7ly"]
+animation = &"rollin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gj28r"]
+animation = &"rollin"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_28eku"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_tr7ly")
+blend_point_0/pos = 1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_gj28r")
+blend_point_1/pos = 0.0
+min_space = 0.0
+snap = 1.0
+value_label = "speed"
+sync = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3tb4j"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4amnw"]
+states/bash/node = SubResource("AnimationNodeAnimation_bjxyx")
+states/bash/position = Vector2(506.556, 170.667)
+states/hit/node = SubResource("AnimationNodeAnimation_wrhdh")
+states/hit/position = Vector2(687.667, 80)
+states/walk/node = SubResource("AnimationNodeBlendSpace1D_28eku")
+states/walk/position = Vector2(506.037, 6.22222)
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_3tb4j")]
+graph_offset = Vector2(-151, -80)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ukhfm"]
 font_size = 80
@@ -26,11 +61,41 @@ axis_lock_angular_z = true
 script = ExtResource("2_h71wt")
 damage = 3
 
+[node name="shape" parent="pawn" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
 [node name="ammo" parent="pawn" index="1"]
 count = 6
 
-[node name="mesh" type="MeshInstance3D" parent="pawn"]
-mesh = SubResource("CylinderMesh_l16lb")
+[node name="shape" parent="pawn/ammo" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499626, 0)
+
+[node name="mesh_scene" parent="pawn" instance=ExtResource("3_txy8l")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="pawn/mesh_scene/Armature" index="0"]
+bones/1/position = Vector3(6.12357e-16, 0.499784, -0.0146977)
+bones/1/rotation = Quaternion(3.04509e-08, 0.717424, 0.696636, 3.13596e-08)
+bones/2/rotation = Quaternion(-0.206189, -0.0900565, 0.369741, 0.901481)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.201848, -0.0836079, 0.373438, 0.90156)
+bones/4/rotation = Quaternion(-0.076726, -0.197743, 0.901447, 0.377365)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.20185, 0.0836079, -0.373439, 0.90156)
+bones/8/rotation = Quaternion(0.707107, -8.42937e-08, -1.46111e-07, 0.707107)
+bones/9/rotation = Quaternion(-0.206189, 0.0900566, -0.369741, 0.901481)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.201848, 0.0836077, -0.373438, 0.90156)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(0.076726, -0.197743, 0.901447, -0.377365)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(0.201849, -0.0836082, 0.373438, 0.90156)
+
+[node name="animation_tree" type="AnimationTree" parent="pawn/mesh_scene"]
+tree_root = SubResource("AnimationNodeStateMachine_4amnw")
+anim_player = NodePath("../AnimationPlayer")
+parameters/walk/blend_position = 0.0
+script = ExtResource("4_ew1kc")
 
 [node name="camera_remote" type="RemoteTransform3D" parent="pawn"]
 remote_path = NodePath("../../camera_hook")
@@ -92,4 +157,7 @@ label_settings = SubResource("LabelSettings_ukhfm")
 script = ExtResource("5_wf323")
 ammo = NodePath("../../../pawn/ammo")
 
+[connection signal="speed_changed" from="pawn/player_input" to="pawn/mesh_scene/animation_tree" method="set_walk_speed"]
+
 [editable path="pawn"]
+[editable path="pawn/mesh_scene"]

@@ -3,7 +3,7 @@ class_name PlayerMovement extends Node
 
 static var inst : Node
 
-const JUMP_VELOCITY = 4.5
+signal speed_changed(value: float)
 
 @export_category("Walk")
 
@@ -62,6 +62,7 @@ func _physics_process(delta: float) -> void:
 		pawn.velocity += move_direction * walk_speed * delta
 
 	pawn.velocity -= pawn.velocity * damping * delta
+	speed_changed.emit(pawn.velocity.length_squared())
 
 	pawn.move_and_slide()
 

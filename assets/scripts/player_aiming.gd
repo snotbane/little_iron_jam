@@ -2,6 +2,7 @@
 extends Node3D
 
 signal angle_changed(value: Vector3)
+signal shoot_start
 
 @export var weapon_config_socket : Node3D
 @export var weapon_config : WeaponConfig
@@ -65,6 +66,7 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("shoot"):
 		weapon_config.is_shooting = true
+		shoot_start.emit()
 	elif event.is_action_released("shoot"):
 		weapon_config.is_shooting = false
 

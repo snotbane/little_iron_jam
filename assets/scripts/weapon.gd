@@ -1,6 +1,8 @@
 
 class_name Weapon extends Node3D
 
+@export var anim_player : AnimationPlayer
+
 @export var health : int = 100
 @export var bullet_scene : PackedScene
 @export var bullet_spawn_location : Node3D
@@ -19,6 +21,7 @@ var _is_shooting : bool
 
 
 func fire(ammo: Ammo) -> void:
+	anim_player.play("fire")
 	health -= 1
 	ammo.consume_bullets(bullet_cost)
 	for i in projectile_count:

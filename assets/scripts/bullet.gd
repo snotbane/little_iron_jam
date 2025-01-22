@@ -37,10 +37,10 @@ func populate(_shooter: Node3D) -> void:
 
 func _ready() -> void:
 	var timers := [
-		func() -> void:
-			await get_tree().create_timer(shooter_safety_delay).timeout
-			shooter = null
-			,
+		# func() -> void:
+		# 	await get_tree().create_timer(shooter_safety_delay).timeout
+		# 	shooter = null
+		# 	,
 		func() -> void:
 			await get_tree().create_timer(falloff - shooter_safety_delay).timeout
 			rest()

@@ -1,21 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://38l7tovwc1uw"]
 
 [ext_resource type="Script" path="res://assets/scripts/player_aiming.gd" id="1_t2kql"]
-[ext_resource type="PackedScene" uid="uid://crp3pw7i4x8ou" path="res://assets/scenes/bullet.tscn" id="2_rq6eh"]
 [ext_resource type="PackedScene" uid="uid://blphp82kb5iq7" path="res://assets/models/pistol_crosshair.glb" id="3_brte8"]
+[ext_resource type="Shader" uid="uid://bdb517nqcnpue" path="res://assets/shaders/crosshair_shader.tres" id="3_vcle3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1dfo"]
-no_depth_test = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxlpr"]
+render_priority = 0
+shader = ExtResource("3_vcle3")
 
 [node name="crosshair" type="Node3D"]
 script = ExtResource("1_t2kql")
 aim_distance = 4.0
-bullet_scene = ExtResource("2_rq6eh")
 
 [node name="pistol_crosshair" parent="." instance=ExtResource("3_brte8")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.5, 0)
 
 [node name="Cube" parent="pistol_crosshair" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_q1dfo")
+surface_material_override/0 = SubResource("ShaderMaterial_uxlpr")
 
 [editable path="pistol_crosshair"]

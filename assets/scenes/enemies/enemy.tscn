@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgmfug0eq3en1"]
+[gd_scene load_steps=5 format=3 uid="uid://cgmfug0eq3en1"]
 
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_p5ahr"]
-[ext_resource type="Script" path="res://assets/scripts/brain.gd" id="2_hxeyc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dampy"]
 albedo_color = Color(1, 0, 0, 1)
@@ -25,7 +24,9 @@ mesh = SubResource("SphereMesh_cniys")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1)
 mesh = SubResource("CylinderMesh_15r7j")
 
-[node name="brain" type="Node" parent="pawn"]
-script = ExtResource("2_hxeyc")
+[node name="agent" type="NavigationAgent3D" parent="pawn"]
+debug_enabled = true
+
+[node name="nav_timer" type="Timer" parent="pawn/agent"]
 
 [editable path="pawn"]

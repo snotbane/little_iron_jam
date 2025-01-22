@@ -1,4 +1,7 @@
+
 extends Node3D
+
+signal angle_changed(value: float)
 
 @export var pawn : Node3D
 @export var camera : Camera3D
@@ -11,7 +14,14 @@ extends Node3D
 
 @export var bullet_scene : PackedScene
 
-var aim_vector : Vector2
+var _aim_vector : Vector2
+var aim_vector : Vector2 :
+	get: return _aim_vector
+	set(value):
+		if _aim_vector == value: return
+		_aim_vector = value
+		angle_changed.emit(atan2(_aim_vector.x, -_aim_vector.y))
+
 var aim_position : Vector3
 
 var mouse_position : Vector2

@@ -1,7 +1,13 @@
 
 extends AnimationTree
 
+@export var head_bone : Node3D
+
 var dodge_blip : bool
+
+
+func set_aim_vector(value: float) -> void:
+	head_bone.global_rotation.y = -value
 
 
 func set_walk_speed(value: float) -> void:

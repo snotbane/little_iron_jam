@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b65ambxvqs4de"]
+
+[ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_xt3o3"]
+[ext_resource type="Script" path="res://assets/scripts/brain_smoky.gd" id="2_dkyrx"]
+
+[node name="enemy" instance=ExtResource("1_xt3o3")]
+
+[node name="agent" parent="pawn" index="3"]
+script = ExtResource("2_dkyrx")
+
+[editable path="pawn"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://becpsh0bwexhi"]
+[gd_scene load_steps=26 format=3 uid="uid://becpsh0bwexhi"]
 
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
 [ext_resource type="Script" path="res://assets/scripts/player_movement.gd" id="2_52ijy"]
@@ -14,6 +14,30 @@ animation = &"bash"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrhdh"]
 animation = &"hit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hqr3g"]
+animation = &"recoil-90"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n7klr"]
+animation = &"recoil"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_erds5"]
+animation = &"recoil180"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ctpqk"]
+animation = &"recoil90"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_euucd"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_hqr3g")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_n7klr")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_erds5")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ctpqk")
+blend_point_3/pos = Vector2(1, 0)
+snap = Vector2(1, 1)
+sync = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tr7ly"]
 animation = &"rollin"
@@ -47,14 +71,24 @@ advance_expression = "dodge_blip"
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o5jry"]
+advance_mode = 2
+advance_expression = "recoil_blip"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_82tdi"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4amnw"]
 states/bash/node = SubResource("AnimationNodeAnimation_bjxyx")
 states/bash/position = Vector2(506.556, 170.667)
 states/hit/node = SubResource("AnimationNodeAnimation_wrhdh")
-states/hit/position = Vector2(687.667, 80)
+states/hit/position = Vector2(687.445, 169.334)
+states/recoil/node = SubResource("AnimationNodeBlendSpace2D_euucd")
+states/recoil/position = Vector2(687, 5.55556)
 states/walk/node = SubResource("AnimationNodeBlendSpace1D_28eku")
 states/walk/position = Vector2(506.037, 6.22222)
-transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_3tb4j"), "walk", "bash", SubResource("AnimationNodeStateMachineTransition_5eunj"), "bash", "walk", SubResource("AnimationNodeStateMachineTransition_2qugt")]
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_3tb4j"), "walk", "bash", SubResource("AnimationNodeStateMachineTransition_5eunj"), "bash", "walk", SubResource("AnimationNodeStateMachineTransition_2qugt"), "walk", "recoil", SubResource("AnimationNodeStateMachineTransition_o5jry"), "recoil", "walk", SubResource("AnimationNodeStateMachineTransition_82tdi")]
 graph_offset = Vector2(-151, -80)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ukhfm"]
@@ -82,28 +116,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499626, 0)
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="pawn/mesh_scene/Armature" index="0"]
-bones/1/position = Vector3(6.12357e-16, 0.499784, -0.0146977)
-bones/1/rotation = Quaternion(3.04509e-08, 0.717424, 0.696636, 3.13596e-08)
-bones/2/rotation = Quaternion(-0.206189, -0.0900565, 0.369741, 0.901481)
+bones/1/position = Vector3(-6.18803e-10, 0.492842, 0.00570265)
+bones/1/rotation = Quaternion(3.12851e-08, 0.703063, 0.711128, 3.05311e-08)
+bones/2/rotation = Quaternion(-0.195247, -0.0788372, 0.375432, 0.902615)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.201848, -0.0836079, 0.373438, 0.90156)
-bones/4/rotation = Quaternion(-0.076726, -0.197743, 0.901447, 0.377365)
+bones/3/rotation = Quaternion(0.420635, -0.873096, -0.057137, 0.239803)
+bones/4/rotation = Quaternion(-0.0841803, -0.198518, 0.902678, 0.372393)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.20185, 0.0836079, -0.373439, 0.90156)
-bones/8/rotation = Quaternion(0.707107, -8.42937e-08, -1.46111e-07, 0.707107)
-bones/9/rotation = Quaternion(-0.206189, 0.0900566, -0.369741, 0.901481)
+bones/5/rotation = Quaternion(-0.272195, -0.80657, -0.325744, 0.411394)
+bones/8/rotation = Quaternion(0.707107, 0.000474727, 0.000474727, 0.707107)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.195247, 0.0788373, -0.375433, 0.902615)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(0.201848, 0.0836077, -0.373438, 0.90156)
+bones/10/rotation = Quaternion(0.420637, 0.873089, 0.0571258, 0.239826)
 bones/10/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(0.076726, -0.197743, 0.901447, -0.377365)
+bones/11/rotation = Quaternion(0.0841803, -0.198518, 0.902678, -0.372393)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/rotation = Quaternion(0.201849, -0.0836082, 0.373438, 0.90156)
+bones/12/rotation = Quaternion(-0.275522, 0.810748, 0.322934, 0.403099)
 
-[node name="animation_tree" type="AnimationTree" parent="pawn/mesh_scene"]
+[node name="additive" type="BoneAttachment3D" parent="pawn/mesh_scene/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-1, 5.67756e-10, 8.7426e-08, 8.74138e-08, -0.0114056, 0.999935, 1.56486e-09, 0.999935, 0.0114056, -6.18803e-10, 0.492842, 0.00570265)
+bone_name = "chasis"
+bone_idx = 1
+
+[node name="head_controller" type="BoneAttachment3D" parent="pawn/mesh_scene/Armature/Skeleton3D/additive"]
+physics_interpolation_mode = 1
+transform = Transform3D(0.999999, 2.66454e-15, 0.00134273, 0.00134273, 0, -0.999999, 3.63798e-12, 1, 0, 0, 0, 0)
+bone_name = "head"
+bone_idx = 8
+override_pose = true
+use_external_skeleton = true
+external_skeleton = NodePath("../..")
+
+[node name="animation_tree" type="AnimationTree" parent="pawn/mesh_scene" node_paths=PackedStringArray("head_bone")]
 tree_root = SubResource("AnimationNodeStateMachine_4amnw")
 anim_player = NodePath("../AnimationPlayer")
+parameters/recoil/blend_position = Vector2(-1, 0.99095)
 parameters/walk/blend_position = 0.0
 script = ExtResource("4_ew1kc")
+head_bone = NodePath("../Armature/Skeleton3D/additive/head_controller")
 
 [node name="camera_remote" type="RemoteTransform3D" parent="pawn"]
 remote_path = NodePath("../../camera_hook")
@@ -167,6 +218,7 @@ ammo = NodePath("../../../pawn/ammo")
 
 [connection signal="on_dodge" from="pawn/player_input" to="pawn/mesh_scene/animation_tree" method="dodge"]
 [connection signal="speed_changed" from="pawn/player_input" to="pawn/mesh_scene/animation_tree" method="set_walk_speed"]
+[connection signal="angle_changed" from="camera_hook/crosshair" to="pawn/mesh_scene/animation_tree" method="set_aim_vector"]
 
 [editable path="pawn"]
 [editable path="pawn/mesh_scene"]

@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmtodg443y4k8"]
+
+[ext_resource type="PackedScene" uid="uid://cslqonj0xvyv7" path="res://assets/models/muzzle_flash.glb" id="1_5gg1h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywb10"]
+cull_mode = 2
+emission_enabled = true
+emission = Color(1, 0.783333, 0, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="Animation" id="Animation_bdq5p"]
+resource_name = "rotate"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("muzzle_flash/Cylinder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.39626, 0), Vector3(0, 0, -0.202458), Vector3(0, 4.18879, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_3qjhk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("muzzle_flash/Cylinder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_etk1i"]
+_data = {
+"RESET": SubResource("Animation_3qjhk"),
+"rotate": SubResource("Animation_bdq5p")
+}
+
+[node name="muzzle_flash" type="Node3D"]
+
+[node name="muzzle_flash" parent="." instance=ExtResource("1_5gg1h")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="Cylinder" parent="muzzle_flash" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ywb10")
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_etk1i")
+}
+
+[editable path="muzzle_flash"]

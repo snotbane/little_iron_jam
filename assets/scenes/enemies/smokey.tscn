@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://b65ambxvqs4de"]
+
+[ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_xt3o3"]
+[ext_resource type="PackedScene" uid="uid://dbfv22ve5fi4y" path="res://assets/models/skeletal_meshes/smokey.glb" id="2_5giu5"]
+[ext_resource type="Script" path="res://assets/scripts/brain_smoky.gd" id="2_dkyrx"]
+[ext_resource type="Material" uid="uid://v6d22ec1iors" path="res://assets/models/skeletal_meshes/smokey_material.tres" id="3_hwle1"]
+[ext_resource type="PackedScene" uid="uid://cysuu86r47xum" path="res://assets/scenes/weapon_config/weapon_config_smokey.tscn" id="4_303mx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h0tkf"]
+radius = 0.808106
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g2xw4"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qxyw7"]
+animation = &"rollin"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g1585"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kt3v4"]
+xfade_time = 0.25
+advance_mode = 2
+advance_expression = "speed > 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bsd48"]
+xfade_time = 0.25
+advance_mode = 2
+advance_expression = "speed == 0"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_11dx5"]
+states/idle/node = SubResource("AnimationNodeAnimation_g2xw4")
+states/idle/position = Vector2(392.333, 99)
+states/rollin/node = SubResource("AnimationNodeAnimation_qxyw7")
+states/rollin/position = Vector2(575.667, 100.037)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_g1585"), "idle", "rollin", SubResource("AnimationNodeStateMachineTransition_kt3v4"), "rollin", "idle", SubResource("AnimationNodeStateMachineTransition_bsd48")]
+graph_offset = Vector2(-75, -53)
+
+[node name="smokey" instance=ExtResource("1_xt3o3")]
+
+[node name="shape" parent="pawn" index="0"]
+shape = SubResource("CylinderShape3D_h0tkf")
+
+[node name="ammo" parent="pawn" index="1"]
+shell_loss_amount = 12
+health = 6
+
+[node name="smokey" parent="pawn" index="2" instance=ExtResource("2_5giu5")]
+
+[node name="Skeleton3D" parent="pawn/smokey/Armature" index="0"]
+bones/1/position = Vector3(-0.0152805, 0.74195, 0.0688956)
+bones/1/rotation = Quaternion(-0.0102102, 0.993846, 0.110293, -0.00133094)
+bones/2/rotation = Quaternion(-0.659341, -1.68209e-07, -2.13421e-07, 0.751844)
+
+[node name="mesh" parent="pawn/smokey/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_hwle1")
+
+[node name="bone_attachment_3d" type="BoneAttachment3D" parent="pawn/smokey/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.999788, 0.0200013, 0.00489737, -0.0205884, 0.975462, 0.219202, -0.000392875, -0.219256, 0.975667, 0.0152805, 0.74195, -0.0688956)
+bone_name = "body"
+bone_idx = 1
+
+[node name="weapon_config_pistol" parent="pawn/smokey/Armature/Skeleton3D/bone_attachment_3d" index="0" instance=ExtResource("4_303mx")]
+transform = Transform3D(1, 0, 0, 0, 0.943223, -0.332161, 0, 0.332161, 0.943223, 0, 0, -0.445)
+
+[node name="node_3d" parent="pawn/smokey/Armature/Skeleton3D/bone_attachment_3d/weapon_config_pistol" index="0"]
+transform = Transform3D(0.979575, 0.201078, 0, -0.201078, 0.979575, 0, 0, 0, 1, 0.594199, 0.534591, 0.241997)
+
+[node name="animation_tree" type="AnimationTree" parent="pawn/smokey" index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_11dx5")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="mesh" parent="pawn" index="3"]
+visible = false
+
+[node name="agent" parent="pawn" index="4"]
+target_desired_distance = 10.0
+script = ExtResource("2_dkyrx")
+walk_speed = 350.0
+
+[editable path="pawn"]
+[editable path="pawn/smokey"]
+[editable path="pawn/smokey/Armature/Skeleton3D/bone_attachment_3d/weapon_config_pistol"]

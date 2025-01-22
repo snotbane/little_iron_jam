@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cysuu86r47xum"]
+
+[ext_resource type="PackedScene" uid="uid://d07hpd5wlopok" path="res://assets/scenes/weapon_config/weapon_config.tscn" id="1_let8r"]
+[ext_resource type="Script" path="res://assets/scripts/weapon_config_pistol.gd" id="2_i8bkp"]
+[ext_resource type="PackedScene" uid="uid://d0vjbjmoyj1he" path="res://assets/scenes/weapons/weapon_pistol.tscn" id="3_2mlwd"]
+
+[node name="weapon_config_pistol" instance=ExtResource("1_let8r")]
+script = ExtResource("2_i8bkp")
+weapon_scene = ExtResource("3_2mlwd")
+
+[node name="node_3d" type="Node3D" parent="." index="0"]
+transform = Transform3D(0.979575, 0.201078, 0, -0.201078, 0.979575, 0, 0, 0, 1, 0.594199, 0.534591, 0.241997)
+
+[node name="pistol" parent="node_3d" index="0" instance=ExtResource("3_2mlwd")]
+
+[node name="node_3d2" type="Node3D" parent="." index="1"]
+transform = Transform3D(0.979575, -0.201078, 0, 0.201078, 0.979575, 0, 0, 0, 1, -0.594, 0.535, 0.242)
+
+[node name="pistol" parent="node_3d2" index="0" instance=ExtResource("3_2mlwd")]
+
+[node name="cooldown" type="Timer" parent="." index="2"]
+wait_time = 0.1
+one_shot = true

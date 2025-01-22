@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c713old11x4xp"]
+
+[ext_resource type="Texture2D" uid="uid://cfbyectbustap" path="res://assets/models/skeletal_meshes/jack texture.png" id="1_cj1yj"]
+
+[resource]
+albedo_texture = ExtResource("1_cj1yj")

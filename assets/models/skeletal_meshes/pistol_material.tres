@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cl5whrdvbjlel"]
+
+[ext_resource type="Texture2D" uid="uid://b56c6og6oafuc" path="res://assets/models/skeletal_meshes/pistol texture.png" id="1_236js"]
+
+[resource]
+albedo_texture = ExtResource("1_236js")

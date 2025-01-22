@@ -3,9 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_xt3o3"]
 [ext_resource type="Script" path="res://assets/scripts/brain_smoky.gd" id="2_dkyrx"]
 
-[node name="enemy" instance=ExtResource("1_xt3o3")]
+[node name="smoky" instance=ExtResource("1_xt3o3")]
+
+[node name="ammo" parent="pawn" index="1"]
+shell_loss_amount = 12
+health = 6
 
 [node name="agent" parent="pawn" index="3"]
+target_desired_distance = 10.0
 script = ExtResource("2_dkyrx")
+walk_speed = 350.0
 
 [editable path="pawn"]

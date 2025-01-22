@@ -11,7 +11,6 @@ script = ExtResource("2_iw7mf")
 
 [node name="ammo" parent="pawn" index="1"]
 shell_loss_amount = 5
-count = 3
 
 [node name="agent" parent="pawn" index="3"]
 target_desired_distance = 5.0
@@ -21,10 +20,5 @@ lunge_duration = 0.33
 lunge_post_delay = 0.75
 lunge_speed = 1000.0
 walk_speed = 200.0
-
-[node name="nav_timer" parent="pawn/agent" index="0"]
-process_callback = 0
-wait_time = 0.5
-autostart = true
 
 [editable path="pawn"]

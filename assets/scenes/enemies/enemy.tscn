@@ -28,5 +28,8 @@ mesh = SubResource("CylinderMesh_15r7j")
 debug_enabled = true
 
 [node name="nav_timer" type="Timer" parent="pawn/agent"]
+process_callback = 0
+wait_time = 0.25
+autostart = true
 
 [editable path="pawn"]

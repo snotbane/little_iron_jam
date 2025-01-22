@@ -9,21 +9,23 @@ signal died
 @export var shell_loss_linear_impulse := Vector2.ONE
 @export var shell_loss_angular_impulse := 1.0
 
+@export var lose_health_on_consume := false
+
 @onready var actor : Node3D = self.get_parent()
 
-var _count : int = 10
-@export var count : int = 10 :
-	get: return _count
+var _health : int = 10
+@export var health : int = 10 :
+	get: return _health
 	set(value):
 		value = max(value, 0)
-		if _count == value: return
-		if value < _count: _on_lost_ammo(_count - value)
+		if _health == value: return
+		if value < _health: _on_lost_ammo(_health - value)
 
-		_count = value
+		_health = value
 
 		changed.emit()
 
-		if _count == 0:
+		if _health == 0:
 			died.emit()
 			actor.queue_free()
 
@@ -45,9 +47,13 @@ func _body_entered(body: Node3D) -> void:
 
 
 func take_damage(body: Node3D) -> void:
-	count -= body.damage
+	health -= body.damage
 	if body is Bullet:
 		body.health -= 1
+
+
+func consume_bullets(amount: int) -> void:
+	if lose_health_on_consume: self.health -= amount
 
 
 func drop_shells() -> void:

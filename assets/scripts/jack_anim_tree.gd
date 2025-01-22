@@ -6,8 +6,8 @@ extends AnimationTree
 var dodge_blip : bool
 
 
-func set_aim_vector(value: float) -> void:
-	head_bone.global_rotation.y = -value
+func set_aim_vector(value: Vector3) -> void:
+	head_bone.look_at(head_bone.global_position + value)
 
 
 func set_walk_speed(value: float) -> void:

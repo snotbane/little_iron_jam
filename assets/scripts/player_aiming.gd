@@ -1,7 +1,10 @@
 
 extends Node3D
 
-signal angle_changed(value: float)
+signal angle_changed(value: Vector3)
+
+@export var weapon_config_socket : Node3D
+@export var weapon_config : WeaponConfig
 
 @export var pawn : Node3D
 @export var camera : Camera3D
@@ -11,16 +14,14 @@ signal angle_changed(value: float)
 @export var aim_distance : float = 2.0
 @export var aim_visual_alpha : float = 10.0
 
-
-@export var bullet_scene : PackedScene
-
 var _aim_vector : Vector2
 var aim_vector : Vector2 :
 	get: return _aim_vector
 	set(value):
+		angle_changed.emit(Vector3(value.x, 0, value.y))
 		if _aim_vector == value: return
 		_aim_vector = value
-		angle_changed.emit(atan2(_aim_vector.x, -_aim_vector.y))
+
 
 var aim_position : Vector3
 
@@ -63,19 +64,11 @@ func _input(event: InputEvent) -> void:
 	if not pawn: return
 
 	if event.is_action_pressed("shoot"):
-		shoot()
+		weapon_config.is_shooting = true
+	elif event.is_action_released("shoot"):
+		weapon_config.is_shooting = false
 
 	if event.is_action_pressed("vacuum"):
 		vacuum.is_sucking = true
 	elif event.is_action_released("vacuum"):
 		vacuum.is_sucking = false
-
-
-
-func shoot() -> void:
-	ammo.count -= 1
-	var projectile : Bullet = bullet_scene.instantiate()
-	get_tree().root.add_child(projectile)
-	projectile.global_rotation = self.global_rotation
-	projectile.global_position = pawn.global_position + projectile.basis.z * 1.5
-	projectile.populate(pawn)

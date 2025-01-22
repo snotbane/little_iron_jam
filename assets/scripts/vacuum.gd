@@ -59,7 +59,7 @@ func _body_exited(body: Node3D) -> void:
 
 func collect(body: RigidBody3D) -> void:
 	body.queue_free()
-	ammo.count += 1
+	ammo.health += 1
 
 
 func fail_collect(body: RigidBody3D) -> void:

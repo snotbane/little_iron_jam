@@ -77,7 +77,7 @@ func dodge() -> void:
 	if is_dodging: return
 	is_dodging = true
 	on_dodge.emit()
-	ammo.count -= dodge_ammo_cost
+	ammo.health -= dodge_ammo_cost
 	if move_vector:
 		pawn.look_at(pawn.global_position + move_vector)
 	pawn.velocity += -pawn.global_basis.z * dodge_impulse

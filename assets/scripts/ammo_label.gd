@@ -9,4 +9,4 @@ func _ready() -> void:
 
 
 func _on_ammo_changed() -> void:
-	self.text = str(ammo.count)
+	self.text = str(ammo.health)

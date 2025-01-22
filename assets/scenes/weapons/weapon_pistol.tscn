@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0vjbjmoyj1he"]
+
+[ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_k5kur"]
+[ext_resource type="PackedScene" uid="uid://d0yke01osoula" path="res://assets/models/skeletal_meshes/pistol.glb" id="2_ahwe5"]
+
+[node name="weapon_pistol" node_paths=PackedStringArray("bullet_spawn_location") instance=ExtResource("1_k5kur")]
+bullet_spawn_location = NodePath("pistol/Armature/Skeleton3D/bullet_spawn_offset/bullet_spawn")
+
+[node name="pistol" parent="." index="0" instance=ExtResource("2_ahwe5")]
+
+[node name="bullet_spawn_offset" type="BoneAttachment3D" parent="pistol/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-1, 0, 7.10543e-15, 7.10543e-15, 0, 1, 0, 1, 0, 0, 0, 0.880979)
+bone_name = "barrel"
+bone_idx = 2
+
+[node name="bullet_spawn" type="Node3D" parent="pistol/Armature/Skeleton3D/bullet_spawn_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.276091, 0)
+
+[editable path="pistol"]

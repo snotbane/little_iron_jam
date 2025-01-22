@@ -17,4 +17,4 @@ shooter_safety_delay = 0.05
 shape = SubResource("SphereShape3D_e2fyp")
 
 [node name="bullet_projectile" parent="." instance=ExtResource("1_ngiih")]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 0, 0, 0.237548)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.238)

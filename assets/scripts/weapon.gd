@@ -28,6 +28,6 @@ func fire(ammo: Ammo) -> void:
 func create_bullet(shooter: Node3D) -> void:
 	var projectile : Bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(projectile)
-	projectile.global_rotation = self.global_rotation
+	projectile.global_rotation = bullet_spawn_location.global_rotation
 	projectile.global_position = bullet_spawn_location.global_position + projectile.basis.z * 1.5
 	projectile.populate(shooter)

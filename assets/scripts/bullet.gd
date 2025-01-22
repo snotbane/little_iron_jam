@@ -25,14 +25,14 @@ var _velocity : Vector3
 		_velocity = value
 
 		if _velocity:
-			self.look_at(global_position - _velocity)
+			self.look_at(global_position + _velocity)
 
 @onready var collider : CollisionShape3D = $shape
 
 
 func populate(_shooter: Node3D) -> void:
 	shooter = _shooter
-	velocity = self.global_basis.z * impulse
+	velocity = -self.global_basis.z * impulse
 
 
 func _ready() -> void:

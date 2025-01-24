@@ -77,7 +77,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-446.667, 48)
 flags/depth_test_disabled = true
 flags/unshaded = true
 nodes/fragment/0/position = Vector2(760, 140)

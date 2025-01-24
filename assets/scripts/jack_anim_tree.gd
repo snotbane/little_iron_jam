@@ -10,7 +10,7 @@ var recoil_blip : bool
 func set_aim_vector(value: Vector3) -> void:
 	head_bone.look_at(head_bone.global_position + value)
 	value = self.get_parent().global_basis * value
-	self["parameters/recoil/blend_position"] = Vector2(-value.x, value.z)
+	self["parameters/recoil/blend_position"] = Vector2(-value.x, -value.z)
 
 
 func set_walk_speed(value: float) -> void:

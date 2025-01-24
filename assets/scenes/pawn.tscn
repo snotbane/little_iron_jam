@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7fjixq684skw"]
 
 [ext_resource type="Script" path="res://assets/scripts/ammo.gd" id="1_a2tth"]
-[ext_resource type="PackedScene" uid="uid://fkba2vvj2bfy" path="res://assets/scenes/shell.tscn" id="2_s4lk7"]
+[ext_resource type="PackedScene" uid="uid://fkba2vvj2bfy" path="res://assets/scenes/pickups/shell.tscn" id="2_s4lk7"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nmtem"]
 height = 1.0

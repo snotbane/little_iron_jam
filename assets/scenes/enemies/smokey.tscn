@@ -51,15 +51,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00355816, 0.958053, -0.015
 [node name="smokey" parent="pawn" index="2" instance=ExtResource("2_5giu5")]
 
 [node name="Skeleton3D" parent="pawn/smokey/Armature" index="0"]
-bones/1/position = Vector3(0.0167241, 0.74192, 0.0655779)
-bones/1/rotation = Quaternion(0.0111742, 0.993628, 0.112146, 0.00145596)
-bones/2/rotation = Quaternion(-0.657035, -1.68867e-07, -2.12603e-07, 0.75386)
+bones/1/position = Vector3(0.0613204, 0.739549, 0.00172441)
+bones/1/rotation = Quaternion(0.0391245, 0.988128, 0.147661, 0.0163985)
+bones/2/rotation = Quaternion(-0.2345, -2.55093e-07, -8.14675e-08, 0.972116)
 
 [node name="mesh" parent="pawn/smokey/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_hwle1")
 
 [node name="bone_attachment_3d" type="BoneAttachment3D" parent="pawn/smokey/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999746, -0.0218794, -0.00540004, 0.0225326, 0.974597, 0.22283, 0.000387474, -0.222895, 0.974842, -0.0167241, 0.74192, -0.0655779)
+transform = Transform3D(0.996401, -0.0724771, -0.0439622, 0.0821628, 0.953331, 0.290532, 0.0208536, -0.293099, 0.955855, -0.0613204, 0.739549, -0.00172443)
 bone_name = "body"
 bone_idx = 1
 

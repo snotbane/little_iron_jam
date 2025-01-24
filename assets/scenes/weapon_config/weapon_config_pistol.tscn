@@ -11,22 +11,14 @@ weapon_scene = ExtResource("1_pscvg")
 [node name="node_3d" type="Node3D" parent="." index="0"]
 transform = Transform3D(0.917675, -0.397331, -0.000330511, 0.397331, 0.917675, -0.000298182, 0.000421779, 0.000142312, 1, 0.254445, 0.325961, -0.0808043)
 
-[node name="pistol_0" parent="node_3d" index="0" instance=ExtResource("1_pscvg")]
-
 [node name="node_3d2" type="Node3D" parent="." index="1"]
 transform = Transform3D(0.917755, 0.397148, 5.09782e-10, -0.397148, 0.917755, 5.8681e-09, 1.86265e-09, -5.58794e-09, 1, -0.255262, 0.325734, -0.0810111)
-
-[node name="pistol_1" parent="node_3d2" index="0" instance=ExtResource("1_pscvg")]
 
 [node name="node_3d3" type="Node3D" parent="." index="2"]
 transform = Transform3D(0.52101, -0.853551, 3.88182e-09, 0.853551, 0.52101, 6.35945e-09, -7.45058e-09, 0, 1, 0.559108, 0.602885, 0.136837)
 
-[node name="pistol_2" parent="node_3d3" index="0" instance=ExtResource("1_pscvg")]
-
 [node name="node_3d4" type="Node3D" parent="." index="3"]
 transform = Transform3D(0.52101, 0.853551, -4.43882e-10, -0.853551, 0.52101, -4.63541e-09, -3.72529e-09, 2.79397e-09, 1, -0.560639, 0.603, 0.137086)
-
-[node name="pistol_3" parent="node_3d4" index="0" instance=ExtResource("1_pscvg")]
 
 [node name="cooldown" type="Timer" parent="." index="4"]
 wait_time = 0.1

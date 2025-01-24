@@ -11,6 +11,7 @@ var visible_weapons : Array[Weapon] :
 	get:
 		var result : Array[Weapon]
 		for socket in sockets:
+			if socket.get_child_count() == 0: continue
 			var weapon_ := socket.get_child(0)
 			if weapon_ is Weapon:
 				result.push_back(weapon_)

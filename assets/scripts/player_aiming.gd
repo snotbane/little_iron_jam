@@ -52,7 +52,8 @@ func _process(delta: float) -> void:
 			aim_position = Vector3(aim_vector.x * aim_distance, 0, aim_vector.y * aim_distance)
 		self.position = lerp(self.position, aim_position, aim_visual_alpha * delta)
 	self.global_position.y = 0
-	self.look_at(((self.global_position - self.position) * (Vector3.ONE - Vector3.UP)))
+	if self.position:
+		self.look_at(((self.global_position - self.position) * (Vector3.ONE - Vector3.UP)))
 
 
 func _input(event: InputEvent) -> void:

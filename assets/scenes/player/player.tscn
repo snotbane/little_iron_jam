@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
 [ext_resource type="Script" path="res://assets/scripts/player_movement.gd" id="2_52ijy"]
 [ext_resource type="PackedScene" uid="uid://38l7tovwc1uw" path="res://assets/scenes/player/crosshair.tscn" id="2_bufda"]
-[ext_resource type="Script" path="res://assets/scripts/dodge_damage.gd" id="2_h71wt"]
+[ext_resource type="Script" path="res://assets/scripts/pawn.gd" id="2_h71wt"]
 [ext_resource type="PackedScene" uid="uid://csrge5d3x14ri" path="res://assets/models/skeletal_meshes/jack.glb" id="3_txy8l"]
 [ext_resource type="Script" path="res://assets/scripts/jack_anim_tree.gd" id="4_ew1kc"]
 [ext_resource type="PackedScene" uid="uid://bi77uc1w3jvfh" path="res://assets/scenes/weapon_config/weapon_config_pistol.tscn" id="4_nq0hy"]
@@ -233,6 +233,7 @@ label_settings = SubResource("LabelSettings_ukhfm")
 script = ExtResource("5_wf323")
 ammo = NodePath("../../../pawn/ammo")
 
+[connection signal="received_weapon_config" from="pawn" to="camera_hook/crosshair" method="_on_received_weapon_config"]
 [connection signal="on_dodge" from="pawn/player_input" to="pawn/mesh_scene/animation_tree" method="dodge"]
 [connection signal="speed_changed" from="pawn/player_input" to="pawn/mesh_scene/animation_tree" method="set_walk_speed"]
 [connection signal="angle_changed" from="camera_hook/crosshair" to="pawn/mesh_scene/animation_tree" method="set_aim_vector"]

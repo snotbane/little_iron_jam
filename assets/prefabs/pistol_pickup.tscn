@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy7r1lox3r877"]
+
+[ext_resource type="PackedScene" uid="uid://c6p213ijc7v8k" path="res://assets/models/pistol_pickup.glb" id="1_y2w17"]
+[ext_resource type="Material" uid="uid://cl5whrdvbjlel" path="res://assets/models/skeletal_meshes/pistol_material.tres" id="2_28yn1"]
+
+[node name="pistol_pickup" instance=ExtResource("1_y2w17")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_28yn1")

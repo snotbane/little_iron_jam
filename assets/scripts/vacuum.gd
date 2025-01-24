@@ -58,8 +58,9 @@ func _body_exited(body: Node3D) -> void:
 
 
 func collect(body: RigidBody3D) -> void:
+	if body is Pickup:
+		body.collect(ammo)
 	body.queue_free()
-	ammo.health += 1
 
 
 func fail_collect(body: RigidBody3D) -> void:

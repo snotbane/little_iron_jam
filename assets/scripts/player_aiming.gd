@@ -75,3 +75,11 @@ func _input(event: InputEvent) -> void:
 		vacuum.is_sucking = true
 	elif event.is_action_released("vacuum"):
 		vacuum.is_sucking = false
+
+
+func _on_received_weapon_config(_weapon_config: WeaponConfig) -> void:
+	if weapon_config:
+		_weapon_config.queue_free()
+	else:
+		weapon_config = _weapon_config
+	weapon_config.try_add_weapon()

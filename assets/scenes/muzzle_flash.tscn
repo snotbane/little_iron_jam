@@ -1,12 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dmtodg443y4k8"]
 
 [ext_resource type="PackedScene" uid="uid://cslqonj0xvyv7" path="res://assets/models/muzzle_flash.glb" id="1_5gg1h"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywb10"]
-cull_mode = 2
-emission_enabled = true
-emission = Color(1, 0.783333, 0, 1)
-emission_energy_multiplier = 2.0
+[ext_resource type="Material" uid="uid://bce065isjtqth" path="res://assets/models/skeletal_meshes/muzzleflash_material.tres" id="2_8cnq5"]
 
 [sub_resource type="Animation" id="Animation_3qjhk"]
 length = 0.001
@@ -66,7 +61,7 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
 [node name="Cylinder" parent="muzzle_flash" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_ywb10")
+surface_material_override/0 = ExtResource("2_8cnq5")
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
 libraries = {

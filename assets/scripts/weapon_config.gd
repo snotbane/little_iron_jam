@@ -1,6 +1,8 @@
 
 class_name WeaponConfig extends Node3D
 
+signal weapon_added
+
 @export var weapon_scene : PackedScene
 @export var ammo : Ammo
 
@@ -20,7 +22,7 @@ var visible_weapons : Array[Weapon] :
 var available_socket : Node3D :
 	get:
 		for socket in sockets:
-			if socket.get_child(0):	continue
+			if socket.get_child_count() > 0:	continue
 			return socket
 		return null
 
@@ -47,5 +49,6 @@ func try_add_weapon() -> bool:
 	var socket := available_socket
 	if socket:
 		socket.add_child(weapon_scene.instantiate())
+		weapon_added.emit()
 		return true
 	return false

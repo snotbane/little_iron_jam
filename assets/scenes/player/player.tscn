@@ -1,14 +1,15 @@
-[gd_scene load_steps=29 format=3 uid="uid://becpsh0bwexhi"]
+[gd_scene load_steps=30 format=3 uid="uid://becpsh0bwexhi"]
 
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
 [ext_resource type="Script" path="res://assets/scripts/player_movement.gd" id="2_52ijy"]
 [ext_resource type="PackedScene" uid="uid://38l7tovwc1uw" path="res://assets/scenes/player/crosshair.tscn" id="2_bufda"]
 [ext_resource type="Script" path="res://assets/scripts/pawn.gd" id="2_h71wt"]
-[ext_resource type="PackedScene" uid="uid://csrge5d3x14ri" path="res://assets/models/skeletal_meshes/jack.glb" id="3_txy8l"]
+[ext_resource type="PackedScene" uid="uid://csrge5d3x14ri" path="res://assets/models/jack/jack.glb" id="3_txy8l"]
 [ext_resource type="Script" path="res://assets/scripts/jack_anim_tree.gd" id="4_ew1kc"]
 [ext_resource type="PackedScene" uid="uid://bi77uc1w3jvfh" path="res://assets/scenes/weapon_config/weapon_config_pistol.tscn" id="4_nq0hy"]
 [ext_resource type="PackedScene" uid="uid://c48e78yo3bqt7" path="res://assets/scenes/player/vacuum.tscn" id="4_yu1wx"]
-[ext_resource type="Material" uid="uid://c713old11x4xp" path="res://assets/models/skeletal_meshes/jack_material.tres" id="5_qnspn"]
+[ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="5_7f5fl"]
+[ext_resource type="Material" uid="uid://c713old11x4xp" path="res://assets/models/jack/jack_material.tres" id="5_qnspn"]
 [ext_resource type="Script" path="res://assets/scripts/ammo_label.gd" id="5_wf323"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nd0xb"]
@@ -142,12 +143,12 @@ bones/12/rotation = Quaternion(0.201849, -0.0836082, 0.373438, 0.90156)
 bones/13/rotation = Quaternion(-3.09086e-08, -0.707107, 0.707107, -5.33851e-08)
 bones/14/rotation = Quaternion(-3.09086e-08, -0.707107, 0.707107, -5.33851e-08)
 
-[node name="additive" type="BoneAttachment3D" parent="pawn/mesh_scene/Armature/Skeleton3D" index="0"]
+[node name="chassis" type="BoneAttachment3D" parent="pawn/mesh_scene/Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 3.3084e-07, 7.7769e-08, -8.74606e-08, 0.0293953, 0.999568, 3.28411e-07, -0.999568, 0.0293955, -4.82689e-09, 0.499784, 0.0146977)
 bone_name = "chasis"
 bone_idx = 1
 
-[node name="head_controller" type="BoneAttachment3D" parent="pawn/mesh_scene/Armature/Skeleton3D/additive"]
+[node name="head_controller" type="BoneAttachment3D" parent="pawn/mesh_scene/Armature/Skeleton3D/chassis"]
 physics_interpolation_mode = 1
 transform = Transform3D(0.999999, 2.66454e-15, 0.00134273, 0.00134273, 0, -0.999999, 3.63798e-12, 1, 0, 0, 0, 0)
 bone_name = "head"
@@ -156,8 +157,15 @@ override_pose = true
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="weapon_config_pistol" parent="pawn/mesh_scene/Armature/Skeleton3D/additive/head_controller" node_paths=PackedStringArray("ammo") instance=ExtResource("4_nq0hy")]
+[node name="weapon_config_pistol" parent="pawn/mesh_scene/Armature/Skeleton3D/chassis/head_controller" node_paths=PackedStringArray("ammo") instance=ExtResource("4_nq0hy")]
 ammo = NodePath("../../../../../../ammo")
+
+[node name="tail_bone" type="Node3D" parent="pawn/mesh_scene/Armature/Skeleton3D/chassis"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 2.30256e-07, -0.690124, -0.024887)
+
+[node name="muzzle_flash" parent="pawn/mesh_scene/Armature/Skeleton3D/chassis/tail_bone" instance=ExtResource("5_7f5fl")]
+transform = Transform3D(2.17, 0, 0, 0, -9.48537e-08, 2.17, 0, -2.17, -9.48537e-08, -3.85469e-15, -5.07394e-09, -0.113189)
+visible = false
 
 [node name="jack" parent="pawn/mesh_scene/Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0150278, -0.0213778, -0.00758266)
@@ -169,7 +177,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/recoil/blend_position = Vector2(-0.000523806, 0.972318)
 parameters/walk/blend_position = 0.0
 script = ExtResource("4_ew1kc")
-head_bone = NodePath("../Armature/Skeleton3D/additive/head_controller")
+head_bone = NodePath("../Armature/Skeleton3D/chassis/head_controller")
 
 [node name="camera_remote" type="RemoteTransform3D" parent="pawn"]
 remote_path = NodePath("../../camera_hook")
@@ -193,8 +201,8 @@ dodge_ammo_cost = 1
 [node name="camera_hook" type="Node3D" parent="."]
 
 [node name="crosshair" parent="camera_hook" node_paths=PackedStringArray("weapon_config_socket", "weapon_config", "pawn", "camera", "vacuum", "ammo") instance=ExtResource("2_bufda")]
-weapon_config_socket = NodePath("../../pawn/mesh_scene/Armature/Skeleton3D/additive/head_controller")
-weapon_config = NodePath("../../pawn/mesh_scene/Armature/Skeleton3D/additive/head_controller/weapon_config_pistol")
+weapon_config_socket = NodePath("../../pawn/mesh_scene/Armature/Skeleton3D/chassis/head_controller")
+weapon_config = NodePath("../../pawn/mesh_scene/Armature/Skeleton3D/chassis/head_controller/weapon_config_pistol")
 pawn = NodePath("../../pawn")
 camera = NodePath("../camera_3d")
 vacuum = NodePath("../../pawn/vacuum")

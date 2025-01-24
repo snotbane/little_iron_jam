@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfbyectbustap"
-path.s3tc="res://.godot/imported/jack texture.png-ae0e68be71af52f17a82812c5b8aeecf.s3tc.ctex"
+path.s3tc="res://.godot/imported/jack texture.png-2ae8391e8d2277e1da6510b3747a1ded.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/models/skeletal_meshes/jack texture.png"
-dest_files=["res://.godot/imported/jack texture.png-ae0e68be71af52f17a82812c5b8aeecf.s3tc.ctex"]
+source_file="res://assets/models/jack/jack texture.png"
+dest_files=["res://.godot/imported/jack texture.png-2ae8391e8d2277e1da6510b3747a1ded.s3tc.ctex"]
 
 [params]
 

@@ -54,7 +54,8 @@ func start_wave(wave: Wave) -> void:
 			spawn_scene(scene)
 
 	ui_anim_player.play(&"notify_clock")
-	wave_started.emit(wave_index)
+	get_tree().call_group(&"wave_timed", "set_current_hour", wave_index)
+	# wave_started.emit(wave_index)
 
 
 func end_wave() -> void:

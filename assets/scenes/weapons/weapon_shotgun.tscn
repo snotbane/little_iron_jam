@@ -13,7 +13,7 @@ bullet_scene = ExtResource("2_u7q83")
 bullet_spawn_location = NodePath("shotgun/bullet_spawn")
 projectile_count = 5
 bullet_cost = 3
-deviation_degrees = 30.0
+deviation_degrees = 20.0
 detritus_scene = ExtResource("2_r6l33")
 _pickup_scene = "res://assets/scenes/pickups/shotgun_pickup.tscn"
 

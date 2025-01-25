@@ -1,30 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmm5rafal8ul4"]
+[gd_scene load_steps=5 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
 [ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/shotgun_pickup.tscn" id="3_sdfe7"]
 [ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pistol_pickup.tscn" id="6_g1c76"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5do2"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_lvxpd"]
-sky_material = SubResource("ProceduralSkyMaterial_p5do2")
-
-[sub_resource type="Environment" id="Environment_sl5iy"]
-background_mode = 2
-sky = SubResource("Sky_lvxpd")
-tonemap_mode = 2
-
 [node name="world" type="Node3D"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
-[node name="environment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_sl5iy")
 
 [node name="player" parent="." instance=ExtResource("1_fd1we")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)

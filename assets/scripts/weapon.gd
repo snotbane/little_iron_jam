@@ -24,6 +24,7 @@ var _health : int = 10
 @export var fire_rate : float = 1.0
 
 @export var detritus_scene : PackedScene
+@export var audio_stream : AudioStream = preload("res://assets/audio/pistol_fire.tres")
 
 var _is_shooting : bool
 @export var is_shooting : bool :
@@ -55,7 +56,7 @@ func create_bullet(shooter: Node3D, direction := Vector3.ZERO) -> void:
 		projectile.look_at(projectile.global_position + direction)
 	else:
 		projectile.global_rotation = bullet_spawn_location.global_rotation
-	projectile.populate(shooter)
+	projectile.populate(shooter, audio_stream)
 
 
 func drop_detritus() -> void:

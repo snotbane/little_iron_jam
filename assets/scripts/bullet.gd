@@ -30,9 +30,17 @@ var _velocity : Vector3
 @onready var collider : CollisionShape3D = $shape
 
 
-func populate(_shooter: Node3D) -> void:
+func populate(_shooter: Node3D, audio : AudioStream = preload("res://assets/audio/pistol_fire.tres")) -> void:
 	shooter = _shooter
 	velocity = (-self.global_basis.z * Vector3(1, 0, 1)).normalized() * impulse
+
+	var audio_player := AudioStreamPlayer3D.new()
+	audio_player.finished.connect(audio_player.queue_free)
+	audio_player.stream = audio
+	audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED
+	get_tree().root.add_child(audio_player)
+	audio_player.global_position = self.global_position
+	audio_player.play()
 
 
 func _ready() -> void:

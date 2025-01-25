@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0vjbjmoyj1he"]
+[gd_scene load_steps=7 format=3 uid="uid://d0vjbjmoyj1he"]
 
 [ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_k5kur"]
 [ext_resource type="PackedScene" uid="uid://u2nx32uj888c" path="res://assets/models/skeletal_meshes/pistol.glb" id="2_ahwe5"]
 [ext_resource type="PackedScene" uid="uid://bh7yocmhago8" path="res://assets/scenes/detritus/detritus_pistol.tscn" id="2_sxwo5"]
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="3_esfny"]
-[ext_resource type="AudioStream" uid="uid://m7s6pci2n508" path="res://assets/audio/pistol_fire.tres" id="3_fceq3"]
 [ext_resource type="Material" uid="uid://cl5whrdvbjlel" path="res://assets/models/skeletal_meshes/pistol_material.tres" id="3_gr5ey"]
 [ext_resource type="Script" path="res://assets/scripts/casing_spawner.gd" id="7_jpaq2"]
 
@@ -28,12 +27,6 @@ bone_idx = 2
 [node name="muzzle_flash" parent="pistol/Armature/Skeleton3D/bullet_spawn_offset" index="0" instance=ExtResource("3_esfny")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.24782e-08, 0.418825, 5.54061e-09)
 visible = false
-
-[node name="audio_stream_player_3d" type="AudioStreamPlayer3D" parent="pistol/Armature/Skeleton3D/bullet_spawn_offset/muzzle_flash" index="1"]
-transform = Transform3D(1, -8.74227e-08, 8.74228e-08, 8.74228e-08, -4.37114e-08, -1, 8.74227e-08, 1, -4.37114e-08, -1.24782e-08, 0.418825, 5.54061e-09)
-stream = ExtResource("3_fceq3")
-attenuation_model = 3
-max_polyphony = 4
 
 [node name="Cube" parent="pistol/Armature/Skeleton3D" index="1"]
 surface_material_override/0 = ExtResource("3_gr5ey")

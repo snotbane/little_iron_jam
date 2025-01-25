@@ -15,6 +15,8 @@ signal died
 
 @onready var actor : Node3D = self.get_parent()
 
+var last_hit_by : Node3D
+
 var _health : int = 10
 @export var health : int = 10 :
 	get: return _health
@@ -47,6 +49,7 @@ func _body_entered(body: Node3D) -> void:
 
 
 func take_damage(body: Node3D) -> void:
+	last_hit_by = body
 	health -= body.damage
 	if body is Bullet:
 		create_hitspark(body)
@@ -65,8 +68,9 @@ func consume_bullets(amount: int) -> void:
 
 
 func die() -> void:
+	if last_hit_by is not Bullet:
+		drop_weapon()
 	drop_shells()
-	drop_weapon()
 	died.emit()
 	actor.queue_free.call_deferred()
 

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxn1ecuhl0csi"]
+
+[ext_resource type="PackedScene" uid="uid://vckavbv1iuau" path="res://assets/models/level_meshes/fmj_level_mesh.glb" id="1_4n15o"]
+[ext_resource type="Material" uid="uid://dcu5gcn5r0crp" path="res://assets/models/level_meshes/fmj_level_material.tres" id="2_iir7x"]
+
+[node name="fmj_level_mesh" instance=ExtResource("1_4n15o")]
+
+[node name="level" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_iir7x")

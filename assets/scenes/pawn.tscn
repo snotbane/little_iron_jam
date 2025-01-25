@@ -41,6 +41,6 @@ billboard = 1
 text = "99"
 font = ExtResource("4_pqbxh")
 font_size = 80
-outline_size = 16
+outline_size = 24
 script = ExtResource("5_bqah7")
 ammo = NodePath("..")

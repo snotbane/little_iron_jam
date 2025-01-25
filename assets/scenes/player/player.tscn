@@ -236,6 +236,7 @@ update_scale = false
 [node name="vacuum" parent="pawn" node_paths=PackedStringArray("ammo") instance=ExtResource("4_yu1wx")]
 collision_layer = 8
 ammo = NodePath("../ammo")
+suck_angle = 50.0
 
 [node name="player_input" type="Node" parent="pawn"]
 script = ExtResource("2_52ijy")

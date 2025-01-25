@@ -1,10 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmm5rafal8ul4"]
+[gd_scene load_steps=8 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
-[ext_resource type="Script" path="res://assets/scripts/wave.gd" id="3_peu4n"]
 [ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/shotgun_pickup.tscn" id="3_sdfe7"]
-[ext_resource type="PackedScene" uid="uid://clq3nof8vclwo" path="res://assets/scenes/enemies/stinker.tscn" id="4_nlw25"]
 [ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pistol_pickup.tscn" id="6_g1c76"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5do2"]
@@ -19,14 +17,6 @@ background_mode = 2
 sky = SubResource("Sky_lvxpd")
 tonemap_mode = 2
 
-[sub_resource type="Resource" id="Resource_sxqa0"]
-script = ExtResource("3_peu4n")
-scenes = {
-ExtResource("4_nlw25"): 1
-}
-crates = 0
-duration = 30.0
-
 [node name="world" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -40,8 +30,6 @@ environment = SubResource("Environment_sl5iy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 
 [node name="arena" parent="." instance=ExtResource("2_asn8h")]
-predefined_waves = Array[ExtResource("3_peu4n")]([SubResource("Resource_sxqa0")])
-spawn_radius = null
 
 [node name="weapon_pickup" parent="." instance=ExtResource("3_sdfe7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 5)

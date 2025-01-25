@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ecv66i3mxd88"]
+
+[ext_resource type="PackedScene" uid="uid://byy0oo7yl6oc7" path="res://assets/models/buckshot_projectile.glb" id="1_cim8p"]
+[ext_resource type="Material" uid="uid://cl5whrdvbjlel" path="res://assets/models/pistol/pistol_material.tres" id="2_p45ix"]
+
+[node name="buckshot_projectile" instance=ExtResource("1_cim8p")]
+
+[node name="shell" parent="." index="0"]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, 0.121966)
+surface_material_override/0 = ExtResource("2_p45ix")

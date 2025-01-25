@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmm5rafal8ul4"]
+[gd_scene load_steps=11 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
 [ext_resource type="Script" path="res://assets/scripts/wave.gd" id="3_peu4n"]
 [ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/shotgun_pickup.tscn" id="3_sdfe7"]
 [ext_resource type="PackedScene" uid="uid://clq3nof8vclwo" path="res://assets/scenes/enemies/stinker.tscn" id="4_nlw25"]
+[ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pistol_pickup.tscn" id="6_g1c76"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5do2"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -43,13 +44,25 @@ predefined_waves = Array[ExtResource("3_peu4n")]([SubResource("Resource_sxqa0")]
 spawn_radius = null
 
 [node name="weapon_pickup" parent="." instance=ExtResource("3_sdfe7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72059, -0.1, 3.63049)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 5)
 
 [node name="weapon_pickup2" parent="." instance=ExtResource("3_sdfe7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27941, -0.1, 1.63049)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 5)
 
 [node name="weapon_pickup3" parent="." instance=ExtResource("3_sdfe7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.27941, -0.1, 3.63049)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 5)
 
 [node name="weapon_pickup4" parent="." instance=ExtResource("3_sdfe7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.27941, -0.1, 3.63049)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 5)
+
+[node name="pistol_pickup" parent="." instance=ExtResource("6_g1c76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+
+[node name="pistol_pickup2" parent="." instance=ExtResource("6_g1c76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+
+[node name="pistol_pickup3" parent="." instance=ExtResource("6_g1c76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+
+[node name="pistol_pickup4" parent="." instance=ExtResource("6_g1c76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)

@@ -21,12 +21,13 @@ var _health : int = 10
 @export var bullet_spawn_location : Node3D
 @export var projectile_count : int = 1
 @export var bullet_cost : int = 1
+@export_range(0.0, 90.0) var deviation_degrees : float = 0.5
 
 @export var detritus_scene : PackedScene
 @export var audio_stream : AudioStream = preload("res://assets/audio/pistol_fire.tres")
 
 var _is_shooting : bool
-@export var is_shooting : bool :
+var is_shooting : bool :
 	get: return _is_shooting
 	set(value):
 		if _is_shooting == value: return
@@ -59,6 +60,7 @@ func create_bullet(shooter: Node3D, direction := Vector3.ZERO) -> void:
 		projectile.look_at(projectile.global_position + direction)
 	else:
 		projectile.global_rotation = bullet_spawn_location.global_rotation
+	projectile.global_rotation_degrees.y += randf_range(-1, 1) * deviation_degrees
 	projectile.populate(shooter, audio_stream)
 
 

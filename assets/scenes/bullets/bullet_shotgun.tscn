@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2klgr6x5g16g"]
+
+[ext_resource type="PackedScene" uid="uid://crp3pw7i4x8ou" path="res://assets/scenes/bullets/bullet.tscn" id="1_f3df6"]
+[ext_resource type="PackedScene" uid="uid://ecv66i3mxd88" path="res://assets/prefabs/bullet_shotgun.tscn" id="2_34u26"]
+
+[node name="bullet" instance=ExtResource("1_f3df6")]
+falloff = 0.3
+
+[node name="buckshot_projectile" parent="." index="2" instance=ExtResource("2_34u26")]

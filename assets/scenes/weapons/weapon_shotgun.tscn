@@ -1,16 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsk5wbdmyh1yn"]
+[gd_scene load_steps=6 format=3 uid="uid://dsk5wbdmyh1yn"]
 
 [ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_iibum"]
 [ext_resource type="PackedScene" uid="uid://4qnnt1bkuj4w" path="res://assets/prefabs/shotgun.tscn" id="2_64re0"]
 [ext_resource type="PackedScene" uid="uid://cvg0w07fbril0" path="res://assets/scenes/detritus/detritus_shotgun.tscn" id="2_r6l33"]
+[ext_resource type="PackedScene" uid="uid://b2klgr6x5g16g" path="res://assets/scenes/bullets/bullet_shotgun.tscn" id="2_u7q83"]
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="3_6spum"]
 
 [node name="weapon_shotgun" node_paths=PackedStringArray("anim_player", "bullet_spawn_location") instance=ExtResource("1_iibum")]
 anim_player = NodePath("shotgun/AnimationPlayer")
 health = 40
+bullet_scene = ExtResource("2_u7q83")
 bullet_spawn_location = NodePath("shotgun/bullet_spawn")
 projectile_count = 5
 bullet_cost = 3
+deviation_degrees = 30.0
 detritus_scene = ExtResource("2_r6l33")
 
 [node name="shotgun" parent="." index="0" instance=ExtResource("2_64re0")]

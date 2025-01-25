@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7uios12yce4b"]
+
+[ext_resource type="PackedScene" uid="uid://crp3pw7i4x8ou" path="res://assets/scenes/bullets/bullet.tscn" id="1_ohyof"]
+[ext_resource type="PackedScene" uid="uid://cqw4lxtfymwfw" path="res://assets/prefabs/bullet_pistol.tscn" id="2_3v8ni"]
+
+[node name="bullet" instance=ExtResource("1_ohyof")]
+
+[node name="bullet_pistol" parent="." index="2" instance=ExtResource("2_3v8ni")]

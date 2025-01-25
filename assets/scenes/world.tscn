@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmm5rafal8ul4"]
+[gd_scene load_steps=7 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
 [ext_resource type="PackedScene" uid="uid://b65ambxvqs4de" path="res://assets/scenes/enemies/smokey.tscn" id="3_hj04w"]
-[ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pistol_pickup.tscn" id="4_vqtyn"]
-[ext_resource type="PackedScene" uid="uid://fkba2vvj2bfy" path="res://assets/scenes/pickups/shell.tscn" id="5_h43ua"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5do2"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -35,24 +33,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.253281, 0, 0)
 
 [node name="smoky" parent="." instance=ExtResource("3_hj04w")]
 transform = Transform3D(0.999999, 0.00079829, -0.000792385, -0.000799292, 0.999999, -0.00124154, 0.000791374, 0.00124218, 0.999999, 6.341, 0, -5.431)
-
-[node name="weapon_pickup" parent="." instance=ExtResource("4_vqtyn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.92449, 0, -0.045221)
-
-[node name="weapon_pickup2" parent="." instance=ExtResource("4_vqtyn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9245, 0, -0.045221)
-
-[node name="weapon_pickup3" parent="." instance=ExtResource("4_vqtyn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9245, 0, 2.95478)
-
-[node name="weapon_pickup4" parent="." instance=ExtResource("4_vqtyn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.92449, 0, 2.95478)
-
-[node name="shell" parent="." instance=ExtResource("5_h43ua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8976, 0, 4.22241)
-
-[node name="shell2" parent="." instance=ExtResource("5_h43ua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.47508, 0, 1.68728)
-
-[node name="shell3" parent="." instance=ExtResource("5_h43ua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.940037, 0, 3.12052)

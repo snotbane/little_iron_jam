@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7fjixq684skw"]
+[gd_scene load_steps=8 format=3 uid="uid://b7fjixq684skw"]
 
+[ext_resource type="Script" path="res://assets/scripts/pawn.gd" id="1_5e35t"]
 [ext_resource type="Script" path="res://assets/scripts/ammo.gd" id="1_a2tth"]
 [ext_resource type="PackedScene" uid="uid://fkba2vvj2bfy" path="res://assets/scenes/pickups/shell.tscn" id="2_s4lk7"]
+[ext_resource type="FontFile" uid="uid://cgs4jbvrniee0" path="res://assets/fonts/Arbutus-Regular.ttf" id="4_pqbxh"]
+[ext_resource type="Script" path="res://assets/scripts/ammo_label.gd" id="5_bqah7"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nmtem"]
 height = 1.0
@@ -14,6 +17,7 @@ radius = 0.633798
 [node name="pawn" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 3
+script = ExtResource("1_5e35t")
 
 [node name="shape" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_nmtem")
@@ -29,3 +33,14 @@ shell_loss_angular_impulse = 2.0
 
 [node name="shape" type="CollisionShape3D" parent="ammo"]
 shape = SubResource("CylinderShape3D_pfii6")
+
+[node name="ammo_count_label" type="Label3D" parent="ammo" node_paths=PackedStringArray("ammo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+pixel_size = 0.01
+billboard = 1
+text = "99"
+font = ExtResource("4_pqbxh")
+font_size = 80
+outline_size = 16
+script = ExtResource("5_bqah7")
+ammo = NodePath("..")

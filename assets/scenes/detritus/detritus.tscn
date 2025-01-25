@@ -91,7 +91,7 @@ _data = {
 [node name="detritus" type="RigidBody3D"]
 collision_layer = 0
 script = ExtResource("1_man4y")
-impulse = Vector3(4, 5, 3)
+anim = &"flash_out"
 
 [node name="shape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_6qu2r")

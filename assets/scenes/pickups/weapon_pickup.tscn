@@ -1,29 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://0mggjtj30dbg"]
+[gd_scene load_steps=6 format=3 uid="uid://bthvfuwp8orlx"]
 
 [ext_resource type="PackedScene" uid="uid://d0goiuqrxv0rs" path="res://assets/scenes/pickups/pickup.tscn" id="1_gdhfu"]
 [ext_resource type="Script" path="res://assets/scripts/spinny.gd" id="2_i65ns"]
 [ext_resource type="Script" path="res://assets/scripts/pickup_weapon.gd" id="2_nsi1g"]
 [ext_resource type="PackedScene" uid="uid://bi77uc1w3jvfh" path="res://assets/scenes/weapon_config/weapon_config_pistol.tscn" id="3_lm18e"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_p005h"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6vrx"]
 size = Vector3(0.25, 0.25, 0.25)
 
-[node name="weapon_pickup" type="Node3D"]
-
-[node name="pickup" parent="." instance=ExtResource("1_gdhfu")]
+[node name="weapon_pickup" instance=ExtResource("1_gdhfu")]
 script = ExtResource("2_nsi1g")
 weapon_config_scene = ExtResource("3_lm18e")
 
-[node name="shape" parent="pickup" index="0"]
-shape = SubResource("BoxShape3D_p005h")
+[node name="shape" parent="." index="0"]
+shape = SubResource("BoxShape3D_n6vrx")
 
-[node name="remote_transform_3d" type="RemoteTransform3D" parent="pickup"]
+[node name="remote_transform_3d" type="RemoteTransform3D" parent="." index="1"]
 remote_path = NodePath("../visual")
 update_rotation = false
 update_scale = false
 
-[node name="visual" type="Node3D" parent="pickup"]
+[node name="visual" type="Node3D" parent="." index="2"]
 script = ExtResource("2_i65ns")
 spin_speed_degrees = Vector3(0, 150, 0)
-
-[editable path="pickup"]

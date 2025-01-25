@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b65ambxvqs4de"]
+[gd_scene load_steps=14 format=3 uid="uid://b65ambxvqs4de"]
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_xt3o3"]
 [ext_resource type="PackedScene" uid="uid://dbfv22ve5fi4y" path="res://assets/models/skeletal_meshes/smokey.glb" id="2_5giu5"]
 [ext_resource type="Script" path="res://assets/scripts/brain_smoky.gd" id="2_dkyrx"]
+[ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pistol_pickup.tscn" id="2_nhst2"]
 [ext_resource type="Material" uid="uid://v6d22ec1iors" path="res://assets/models/skeletal_meshes/smokey_material.tres" id="3_hwle1"]
 [ext_resource type="PackedScene" uid="uid://cysuu86r47xum" path="res://assets/scenes/weapon_config/weapon_config_smokey.tscn" id="4_303mx"]
 
@@ -43,23 +44,27 @@ shape = SubResource("CylinderShape3D_h0tkf")
 
 [node name="ammo" parent="pawn" index="1"]
 shell_loss_amount = 12
+weapon_drop_on_death = ExtResource("2_nhst2")
 health = 6
 
 [node name="shape" parent="pawn/ammo" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00355816, 0.958053, -0.0158782)
 
+[node name="ammo_count_label" parent="pawn/ammo" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -0.264452)
+
 [node name="smokey" parent="pawn" index="2" instance=ExtResource("2_5giu5")]
 
 [node name="Skeleton3D" parent="pawn/smokey/Armature" index="0"]
-bones/1/position = Vector3(0.0613204, 0.739549, 0.00172441)
-bones/1/rotation = Quaternion(0.0391245, 0.988128, 0.147661, 0.0163985)
-bones/2/rotation = Quaternion(-0.2345, -2.55093e-07, -8.14675e-08, 0.972116)
+bones/1/position = Vector3(-0.0229638, 0.741763, 0.0366252)
+bones/1/rotation = Quaternion(-0.0153441, 0.991612, 0.128322, -0.002)
+bones/2/rotation = Quaternion(-0.634502, -1.74966e-07, -2.07725e-07, 0.772922)
 
 [node name="mesh" parent="pawn/smokey/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_hwle1")
 
 [node name="bone_attachment_3d" type="BoneAttachment3D" parent="pawn/smokey/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.996401, -0.0724771, -0.0439622, 0.0821628, 0.953331, 0.290532, 0.0208536, -0.293099, 0.955855, -0.0613204, 0.739549, -0.00172443)
+transform = Transform3D(0.999521, 0.0299175, 0.00790402, -0.030944, 0.966596, 0.254429, -2.8106e-05, -0.254552, 0.967059, 0.0229639, 0.741763, -0.0366251)
 bone_name = "body"
 bone_idx = 1
 

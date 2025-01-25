@@ -1,5 +1,5 @@
 
-class_name Pickup extends RigidBody3D
+class_name Pickup extends Detritus
 
 
 func collect(ammo: Ammo) -> void: _collect(ammo)

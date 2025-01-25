@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmm5rafal8ul4"]
+[gd_scene load_steps=8 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
+[ext_resource type="Script" path="res://assets/scripts/wave.gd" id="3_peu4n"]
 [ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/shotgun_pickup.tscn" id="3_sdfe7"]
+[ext_resource type="PackedScene" uid="uid://clq3nof8vclwo" path="res://assets/scenes/enemies/stinker.tscn" id="4_nlw25"]
 [ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pistol_pickup.tscn" id="6_g1c76"]
+
+[sub_resource type="Resource" id="Resource_38p4q"]
+script = ExtResource("3_peu4n")
+scenes = {
+ExtResource("4_nlw25"): 1
+}
+crates = 0
+duration = 5.0
 
 [node name="world" type="Node3D"]
 
@@ -11,6 +21,7 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 
 [node name="arena" parent="." instance=ExtResource("2_asn8h")]
+predefined_waves = Array[ExtResource("3_peu4n")]([SubResource("Resource_38p4q")])
 
 [node name="weapon_pickup" parent="." instance=ExtResource("3_sdfe7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 5)

@@ -248,6 +248,11 @@ dodge_damping = 4.0
 dodge_delay = 0.25
 dodge_ammo_cost = 1
 
+[node name="omni_light_3d" type="OmniLight3D" parent="pawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19368, 0)
+light_energy = 0.2
+omni_range = 12.0
+
 [node name="camera_hook" type="Node3D" parent="."]
 
 [node name="crosshair" parent="camera_hook" node_paths=PackedStringArray("weapon_config_socket", "pawn", "camera", "vacuum", "ammo") instance=ExtResource("2_bufda")]

@@ -9,12 +9,6 @@ extends WaveTimedNode
 var target_background_energy_multiplier : float
 
 
-func _ready() -> void:
-	super._ready()
-
-	_set_current_hour(0)
-
-
 func _process(delta: float) -> void:
 	if not update: return
 	var alpha := alpha_time * delta

@@ -6,3 +6,6 @@
 [node name="weapon" type="Node3D"]
 script = ExtResource("1_wf6tp")
 bullet_scene = ExtResource("2_gx2st")
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true

@@ -21,7 +21,6 @@ var _health : int = 10
 @export var bullet_spawn_location : Node3D
 @export var projectile_count : int = 1
 @export var bullet_cost : int = 1
-@export var fire_rate : float = 1.0
 
 @export var detritus_scene : PackedScene
 @export var audio_stream : AudioStream = preload("res://assets/audio/pistol_fire.tres")
@@ -35,17 +34,20 @@ var _is_shooting : bool
 
 var drops_detritus : bool = true
 
+@onready var cooldown : Timer = $cooldown
+
 # func _physics_process(delta: float) -> void:
 
 
 func fire(ammo: Ammo, direction := Vector3.ZERO) -> void:
-	if ammo.health == 0: return
+	if not cooldown.is_stopped() or ammo.health == 0: return
 	if anim_player.is_playing(): anim_player.stop()
 	anim_player.play("fire")
 	health -= 1
 	ammo.consume_bullets(bullet_cost)
 	for i in projectile_count:
 		create_bullet(ammo.get_parent(), direction)
+	cooldown.start()
 	fired.emit()
 
 

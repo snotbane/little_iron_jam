@@ -8,13 +8,15 @@ extends Pickup
 
 func _ready() -> void:
 	super._ready()
+	tree_exiting.connect(visual.queue_free)
+	detach_visual.call_deferred()
 
+
+func detach_visual() -> void:
 	var gt := visual.global_transform
 	self.remove_child(visual)
 	get_tree().root.add_child(visual)
 	visual.global_transform = gt
-
-	tree_exiting.connect(visual.queue_free)
 
 
 func _collect(ammo: Ammo) -> void:

@@ -11,9 +11,9 @@ var _health : int = 10
 		_health = value
 
 		if _health == 0:
-			queue_free()
 			if drops_detritus:
 				drop_detritus()
+			close()
 
 @export var bullet_scene : PackedScene
 @export var bullet_spawn_location : Node3D
@@ -56,3 +56,13 @@ func drop_detritus() -> void:
 	var detritus : Detritus = detritus_scene.instantiate()
 	get_tree().root.add_child(detritus)
 	detritus.global_position = self.global_position
+
+func close() -> void:
+	self.visible = false
+	var gp := self.global_position
+	var tree := get_tree()
+	get_parent().remove_child(self)
+	tree.root.add_child(self)
+	self.global_position = gp
+	await get_tree().create_timer(5.0).timeout
+	queue_free()

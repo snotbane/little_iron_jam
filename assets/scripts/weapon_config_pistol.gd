@@ -10,9 +10,12 @@ func _ready() -> void:
 
 
 func _set_is_shooting(value: bool) -> void:
-	if not value or not cooldown.is_stopped(): return
-
-	fire_volley()
+	if value:
+		if not cooldown.is_stopped(): return
+		fire_volley()
+		cooldown.start()
+	else:
+		cooldown.stop()
 
 
 func fire_volley() -> void:

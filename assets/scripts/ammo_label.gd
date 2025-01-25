@@ -12,5 +12,5 @@ func _ready() -> void:
 
 
 func _on_ammo_changed() -> void:
-	self.text = str(ammo.health)
+	self.text = str(max(ammo.health, 0))
 	changed.emit()

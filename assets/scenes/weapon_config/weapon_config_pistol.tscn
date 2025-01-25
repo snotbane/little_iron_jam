@@ -21,5 +21,6 @@ transform = Transform3D(0.52101, -0.853551, 3.88182e-09, 0.853551, 0.52101, 6.35
 transform = Transform3D(0.52101, 0.853551, -4.43882e-10, -0.853551, 0.52101, -4.63541e-09, -3.72529e-09, 2.79397e-09, 1, -0.560639, 0.603, 0.137086)
 
 [node name="cooldown" type="Timer" parent="." index="4"]
-wait_time = 0.1
+wait_time = 0.15
 one_shot = true
+autostart = true

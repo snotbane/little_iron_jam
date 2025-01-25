@@ -29,7 +29,7 @@ var _health : int = 10
 
 		changed.emit()
 
-		if _health < 0 or (not belongs_to_player and health == 0):
+		if _health < 0 if belongs_to_player else health <= 0:
 			die()
 
 

@@ -5,7 +5,7 @@ class_name Brain extends NavigationAgent3D
 @onready var nav_timer : Timer = $nav_timer
 @onready var target : CharacterBody3D = PlayerMovement.inst.pawn
 
-@export var weapon : Weapon
+@export var weapon_config : WeaponConfig
 @export var walk_speed : float = 100.0
 
 func _ready() -> void:
@@ -30,9 +30,3 @@ func update_target_position() -> void:
 		return
 
 	self.target_position = target.global_position
-
-
-func shoot() -> void:
-	if not weapon: return
-
-	weapon.create_bullet(null)

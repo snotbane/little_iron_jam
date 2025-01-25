@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmm5rafal8ul4"]
+[gd_scene load_steps=8 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
 [ext_resource type="PackedScene" uid="uid://b65ambxvqs4de" path="res://assets/scenes/enemies/smokey.tscn" id="3_hj04w"]
+[ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pistol_pickup.tscn" id="4_vqtyn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5do2"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,10 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5)
 [node name="arena" parent="." instance=ExtResource("2_asn8h")]
 
 [node name="smoky" parent="." instance=ExtResource("3_hj04w")]
-transform = Transform3D(-0.999999, -0.00079829, 0.000792298, -0.000799292, 0.999999, -0.00124154, -0.000791287, -0.00124218, -0.999999, -8.99233, 0, 0.569)
+transform = Transform3D(-0.999999, -0.00079829, 0.000792298, -0.000799292, 0.999999, -0.00124154, -0.000791287, -0.00124218, -0.999999, -8.99233, 0, -14.431)
 
-[node name="smoky2" parent="." instance=ExtResource("3_hj04w")]
-transform = Transform3D(-0.999999, -0.00079829, 0.000792298, -0.000799292, 0.999999, -0.00124154, -0.000791287, -0.00124218, -0.999999, 6.00767, 0, 0.568999)
-
-[node name="smoky3" parent="." instance=ExtResource("3_hj04w")]
-transform = Transform3D(-0.999999, -0.00079829, 0.000792298, -0.000799292, 0.999999, -0.00124154, -0.000791287, -0.00124218, -0.999999, -0.992333, 0, 0.569)
+[node name="weapon_pickup" parent="." instance=ExtResource("4_vqtyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.351742, -0.100001, 4.53702)

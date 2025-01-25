@@ -56,20 +56,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -0.264452)
 [node name="smokey" parent="pawn" index="2" instance=ExtResource("2_5giu5")]
 
 [node name="Skeleton3D" parent="pawn/smokey/Armature" index="0"]
-bones/1/position = Vector3(-0.0149536, 0.741886, 0.0143749)
-bones/1/rotation = Quaternion(-0.00998903, 0.989996, 0.140739, -0.00130211)
-bones/2/rotation = Quaternion(-0.611596, -1.80406e-07, -2.0304e-07, 0.79117)
+bones/1/position = Vector3(-0.00114602, 0.7421, 0.00240208)
+bones/1/rotation = Quaternion(-0.000912949, 0.989087, 0.147331, -0.000119285)
+bones/2/rotation = Quaternion(-0.595854, -1.84788e-07, -1.99193e-07, 0.803093)
 
 [node name="mesh" parent="pawn/smokey/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_hwle1")
 
 [node name="bone_attachment_3d" type="BoneAttachment3D" parent="pawn/smokey/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999797, 0.0194118, 0.0053895, -0.0201447, 0.960185, 0.278636, 0.000233912, -0.278688, 0.960382, 0.0149536, 0.741886, -0.0143749)
+transform = Transform3D(0.999998, 0.00177094, 0.000504606, -0.00184112, 0.956585, 0.291447, 3.34351e-05, -0.291447, 0.956587, 0.00114602, 0.7421, -0.00240208)
 bone_name = "body"
 bone_idx = 1
 
-[node name="weapon_config_pistol" parent="pawn/smokey/Armature/Skeleton3D/bone_attachment_3d" index="0" instance=ExtResource("4_303mx")]
+[node name="weapon_config_pistol" parent="pawn/smokey/Armature/Skeleton3D/bone_attachment_3d" index="0" node_paths=PackedStringArray("ammo") instance=ExtResource("4_303mx")]
 transform = Transform3D(1, 0, 0, 0, 0.943223, -0.332161, 0, 0.332161, 0.943223, 0, 0, -0.445)
+ammo = NodePath("../../../../../ammo")
 
 [node name="animation_tree" type="AnimationTree" parent="pawn/smokey" index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_11dx5")
@@ -78,9 +79,10 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="mesh" parent="pawn" index="3"]
 visible = false
 
-[node name="agent" parent="pawn" index="4"]
+[node name="agent" parent="pawn" index="4" node_paths=PackedStringArray("weapon_config")]
 target_desired_distance = 10.0
 script = ExtResource("2_dkyrx")
+weapon_config = NodePath("../smokey/Armature/Skeleton3D/bone_attachment_3d/weapon_config_pistol")
 walk_speed = 350.0
 
 [editable path="pawn"]

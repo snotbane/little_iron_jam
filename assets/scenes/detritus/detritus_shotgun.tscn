@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvg0w07fbril0"]
+
+[ext_resource type="PackedScene" uid="uid://bj01gxryr1x3x" path="res://assets/scenes/detritus/detritus_weapon.tscn" id="1_67k83"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4jamx"]
+size = Vector3(0.388672, 0.500977, 2.14081)
+
+[node name="detritus" instance=ExtResource("1_67k83")]
+mass = 1.25
+
+[node name="shape" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0585938, 0.0562439)
+shape = SubResource("BoxShape3D_4jamx")

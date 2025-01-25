@@ -1,7 +1,7 @@
 
 class_name Wave extends Resource
 
-@export var scenes : Dictionary = { preload("res://assets/scenes/enemies/stinker.tscn"): 1 }
+@export var scenes : Dictionary
 @export var crates : int
 @export var duration : float
 

@@ -39,6 +39,7 @@ var drops_detritus : bool = true
 
 
 func fire(ammo: Ammo, direction := Vector3.ZERO) -> void:
+	if ammo.health == 0: return
 	if anim_player.is_playing(): anim_player.stop()
 	anim_player.play("fire")
 	health -= 1

@@ -27,12 +27,11 @@ shadow_enabled = true
 environment = SubResource("Environment_sl5iy")
 
 [node name="player" parent="." instance=ExtResource("1_fd1we")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5)
 
 [node name="arena" parent="." instance=ExtResource("2_asn8h")]
 
-[node name="smoky" parent="." instance=ExtResource("3_hj04w")]
-transform = Transform3D(-0.999999, -0.00079829, 0.000792298, -0.000799292, 0.999999, -0.00124154, -0.000791287, -0.00124218, -0.999999, -8.96365, 0.0252533, -14.4511)
-
 [node name="weapon_pickup" parent="." instance=ExtResource("4_vqtyn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.351742, -0.100001, 4.53702)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29483, -0.100002, 2.03109)
+
+[node name="smokey" parent="." instance=ExtResource("3_hj04w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.55835, -0.1, -5.76974)

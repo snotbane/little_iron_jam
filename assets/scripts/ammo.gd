@@ -9,7 +9,7 @@ signal died
 @export var shell_loss_linear_impulse := Vector2.ONE
 @export var shell_loss_angular_impulse := 1.0
 
-@export var lose_health_on_consume := false
+@export var belongs_to_player := false
 
 @export var weapon_drop_on_death : PackedScene
 
@@ -21,7 +21,7 @@ var _health : int = 10
 @export var health : int = 10 :
 	get: return _health
 	set(value):
-		value = max(value, 0)
+		value = max(value, -1)
 		if _health == value: return
 		if value < _health: _on_lost_ammo(_health - value)
 
@@ -29,7 +29,7 @@ var _health : int = 10
 
 		changed.emit()
 
-		if _health == 0:
+		if _health < 0 or (not belongs_to_player and health == 0):
 			die()
 
 
@@ -64,7 +64,7 @@ func create_hitspark(bullet: Bullet) -> void:
 
 
 func consume_bullets(amount: int) -> void:
-	if lose_health_on_consume: self.health -= amount
+	if belongs_to_player: self.health -= amount
 
 
 func die() -> void:

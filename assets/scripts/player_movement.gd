@@ -74,7 +74,7 @@ func _input(event: InputEvent) -> void:
 
 
 func dodge() -> void:
-	if is_dodging: return
+	if is_dodging or ammo.health == 0: return
 	is_dodging = true
 	on_dodge.emit()
 	ammo.health -= dodge_ammo_cost

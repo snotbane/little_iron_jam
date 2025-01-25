@@ -8,7 +8,7 @@ signal weapon_added
 
 var fire_direction : Vector3
 
-var sockets : Array[Node3D]
+@export var sockets : Array[Node3D]
 var max_sockets : int :
 	get: return sockets.size()
 var visible_weapons : Array[Weapon] :
@@ -29,6 +29,7 @@ var available_socket : Node3D :
 		return null
 
 
+
 var _is_shooting : bool
 var is_shooting : bool :
 	get: return _is_shooting
@@ -39,9 +40,7 @@ var is_shooting : bool :
 
 
 func _ready() -> void:
-	for child in self.get_children():
-		if child is Node3D:
-			sockets.push_back(child)
+	pass
 
 
 func _set_is_shooting(value: bool) -> void:	pass

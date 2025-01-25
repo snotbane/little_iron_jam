@@ -36,7 +36,7 @@ _subresources={
 "fire": {
 "save_to_file/enabled": true,
 "save_to_file/keep_custom_tracks": true,
-"save_to_file/path": "res://assets/models/skeletal_meshes/animations/fire.res",
+"save_to_file/path": "res://assets/models/pistol/anim/fire.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,

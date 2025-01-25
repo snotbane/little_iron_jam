@@ -21,7 +21,7 @@ var _health : int = 10
 @export var health : int = 10 :
 	get: return _health
 	set(value):
-		value = max(value, -1)
+		value = max(value, -1) if _health == 0 else max(value, 0)
 		if _health == value: return
 		if value < _health: _on_lost_ammo(_health - value)
 

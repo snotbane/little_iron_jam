@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://4qnnt1bkuj4w"]
+
+[ext_resource type="PackedScene" uid="uid://ctkeqktbiic1l" path="res://assets/models/shotgun/shotgun.glb" id="1_ng14e"]
+[ext_resource type="Material" uid="uid://cl5whrdvbjlel" path="res://assets/models/pistol/pistol_material.tres" id="2_476rf"]
+
+[node name="shotgun" instance=ExtResource("1_ng14e")]
+
+[node name="shotgun" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_476rf")

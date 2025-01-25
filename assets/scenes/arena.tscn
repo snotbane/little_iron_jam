@@ -45,7 +45,6 @@ size = Vector2(100, 100)
 [node name="arena" type="Node3D" node_paths=PackedStringArray("spawn_origin", "nav_region", "timer")]
 script = ExtResource("1_8vdcl")
 predefined_waves = Array[ExtResource("2_ywm6p")]([SubResource("Resource_n45ke")])
-spawn_radius = null
 spawn_origin = NodePath("wave_spawner")
 nav_region = NodePath("nav_region")
 timer = NodePath("wave_spawner/timer")
@@ -53,7 +52,6 @@ timer = NodePath("wave_spawner/timer")
 [node name="wave_spawner" type="Node3D" parent="."]
 
 [node name="timer" type="Timer" parent="wave_spawner"]
-process_callback = 0
 one_shot = true
 
 [node name="canvas_layer" type="CanvasLayer" parent="wave_spawner"]

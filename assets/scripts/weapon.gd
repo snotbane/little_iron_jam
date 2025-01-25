@@ -65,6 +65,7 @@ func drop_detritus() -> void:
 	get_tree().root.add_child(detritus)
 	detritus.global_position = self.global_position
 
+
 func close() -> void:
 	self.visible = false
 	var gp := self.global_position

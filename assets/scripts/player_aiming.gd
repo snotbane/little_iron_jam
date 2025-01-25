@@ -65,11 +65,12 @@ func _input(event: InputEvent) -> void:
 
 	if not pawn: return
 
-	if event.is_action_pressed("shoot"):
-		weapon_config.is_shooting = true
-		shoot_start.emit()
-	elif event.is_action_released("shoot"):
-		weapon_config.is_shooting = false
+	if weapon_config:
+		if event.is_action_pressed("shoot"):
+			weapon_config.is_shooting = true
+			shoot_start.emit()
+		elif event.is_action_released("shoot"):
+			weapon_config.is_shooting = false
 
 	if event.is_action_pressed("vacuum"):
 		vacuum.is_sucking = true

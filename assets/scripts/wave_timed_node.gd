@@ -18,7 +18,8 @@ var current_value : Variant :
 	get: return wave_values[current_hour]
 
 
-func _ready() -> void: pass
+func _ready() -> void:
+	_set_current_hour(0)
 
 
 func set_current_hour(value: int) -> void:

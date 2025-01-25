@@ -32,9 +32,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	var minutes := floori(timer.time_left / 60)
-	var seconds := floori(fmod(timer.time_left, 60))
-	var milliseconds := floori(fmod(timer.time_left, 1) * 10)
+	var time := timer.wait_time if timer.is_stopped() else timer.time_left
+	var minutes := floori(time / 60)
+	var seconds := floori(fmod(time, 60))
+	var milliseconds := floori(fmod(time, 1) * 10)
 	var time_string = "%02d:%02d.%01d" % [minutes, seconds, milliseconds]
 	time_label.text = time_string
 
@@ -46,9 +47,6 @@ func proceed_to_next_wave() -> void:
 func start_wave(wave: Wave) -> void:
 	current_wave = wave
 
-	timer.wait_time = wave.duration
-	timer.start()
-
 	for scene in wave.scenes:
 		for i in wave.scenes[scene]:
 			spawn_scene(scene)
@@ -56,6 +54,16 @@ func start_wave(wave: Wave) -> void:
 	ui_anim_player.play(&"notify_clock")
 	get_tree().call_group(&"wave_timed", "set_current_hour", wave_index)
 	# wave_started.emit(wave_index)
+
+	if timer.is_stopped():
+		timer.wait_time = wave.duration
+		await ui_anim_player.animation_finished
+		timer.start()
+	else:
+		timer.wait_time = timer.time_left + wave.duration
+		timer.paused = true
+		await ui_anim_player.animation_finished
+		timer.paused = false
 
 
 func end_wave() -> void:
@@ -70,6 +78,7 @@ func spawn_scene(scene: PackedScene) -> void:
 
 
 func check_enemy_group() -> void:
+	if not get_tree(): return
 	if get_tree().get_node_count_in_group(&"enemy") > 0: return
 
 	end_wave()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c1aiimxh63ws2"]
+[gd_scene load_steps=24 format=3 uid="uid://c1aiimxh63ws2"]
 
 [ext_resource type="Script" path="res://assets/scripts/wave_controller.gd" id="1_8vdcl"]
 [ext_resource type="PackedScene" uid="uid://dxn1ecuhl0csi" path="res://assets/prefabs/fmj_level_mesh.tscn" id="1_mdv7l"]
@@ -6,14 +6,17 @@
 [ext_resource type="Script" path="res://assets/scripts/wave.gd" id="2_ywm6p"]
 [ext_resource type="Script" path="res://assets/scripts/wave_timed_env.gd" id="3_3py3g"]
 [ext_resource type="Script" path="res://assets/scripts/wave_timed_sun.gd" id="3_j0by0"]
+[ext_resource type="PackedScene" uid="uid://clq3nof8vclwo" path="res://assets/scenes/enemies/stinker.tscn" id="3_tchhd"]
 [ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="4_2y70v"]
 [ext_resource type="Script" path="res://assets/scripts/wave_clock_label.gd" id="4_eftfn"]
 
 [sub_resource type="Resource" id="Resource_n45ke"]
 script = ExtResource("2_ywm6p")
-scenes = {}
+scenes = {
+ExtResource("3_tchhd"): 1
+}
 crates = 0
-duration = 5.0
+duration = 30.0
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_67aro"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -113,6 +116,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("wave_clock/wave_timer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_urx5m"]
 resource_name = "notify_clock"
@@ -185,6 +200,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.12549), Color(1, 1, 1, 0.12549), Color(1, 1, 1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("wave_clock/wave_timer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5, 0.766667, 0.9, 1.16667, 1.3, 1.56667, 1.7, 1.96667, 2.1, 2.36667, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u1ohm"]
 _data = {
@@ -244,7 +271,7 @@ wave_values = [{
 }]
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.402093, 0.216051, 1.34111e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
+transform = Transform3D(0.889744, 0.402093, 0.216051, 1.19209e-06, -0.47332, 0.88089, 0.456461, -0.783767, -0.421134, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.9855, 1, 0.97, 1)
 light_energy = 0.8
@@ -286,7 +313,7 @@ wave_values = [{
 }]
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.402093, 0.216051, 1.34111e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
+transform = Transform3D(0.889744, 0.402093, 0.216051, 1.2219e-06, -0.47332, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.2, 0.6, 1, 1)
 light_energy = 0.0

@@ -1,6 +1,8 @@
 
 class_name Weapon extends Node3D
 
+signal fired
+
 @export var anim_player : AnimationPlayer
 
 var _health : int = 10
@@ -13,7 +15,7 @@ var _health : int = 10
 		if _health == 0:
 			if drops_detritus:
 				drop_detritus()
-			close()
+			close.call_deferred()
 
 @export var bullet_scene : PackedScene
 @export var bullet_spawn_location : Node3D
@@ -42,6 +44,7 @@ func fire(ammo: Ammo) -> void:
 	ammo.consume_bullets(bullet_cost)
 	for i in projectile_count:
 		create_bullet(ammo.get_parent())
+	fired.emit()
 
 
 func create_bullet(shooter: Node3D) -> void:

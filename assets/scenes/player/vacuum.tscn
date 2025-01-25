@@ -27,5 +27,5 @@ near = 0.001
 far = 3.0
 
 [node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -1.5)
 mesh = SubResource("PlaneMesh_b0qe1")

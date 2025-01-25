@@ -11,6 +11,8 @@ signal died
 
 @export var lose_health_on_consume := false
 
+@export var weapon_drop_on_death : PackedScene
+
 @onready var actor : Node3D = self.get_parent()
 
 var _health : int = 10
@@ -26,13 +28,11 @@ var _health : int = 10
 		changed.emit()
 
 		if _health == 0:
-			died.emit()
-			actor.queue_free()
+			die()
 
 
 func _ready() -> void:
 	body_entered.connect(_body_entered)
-	tree_exiting.connect(drop_shells)
 
 
 func _on_lost_ammo(amount: int) -> void:
@@ -56,6 +56,19 @@ func consume_bullets(amount: int) -> void:
 	if lose_health_on_consume: self.health -= amount
 
 
+func die() -> void:
+	drop_shells()
+	drop_weapon()
+	died.emit()
+	actor.queue_free.call_deferred()
+
+
+func drop_weapon() -> void:
+	var result : RigidBody3D = weapon_drop_on_death.instantiate()
+	get_tree().root.add_child(result)
+	result.global_position = actor.global_position
+
+
 func drop_shells() -> void:
 	for i in shell_loss_amount:
 		create_shell()
@@ -65,9 +78,3 @@ func create_shell() -> void:
 	var result : RigidBody3D = shell_scene.instantiate()
 	get_tree().root.add_child(result)
 	result.global_position = actor.global_position
-	var lateral_impulse := Vector2(randf_range(-1, 1), randf_range(-1, 1)) * shell_loss_linear_impulse.x
-	var impulse := Vector3(lateral_impulse.x, shell_loss_linear_impulse.y, lateral_impulse.y)
-	var torque := Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)) * shell_loss_angular_impulse
-	result.apply_torque_impulse(torque * result.mass)
-	result.apply_impulse(impulse * result.mass)
-	# return result

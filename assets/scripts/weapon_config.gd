@@ -6,6 +6,8 @@ signal weapon_added
 @export var weapon_scene : PackedScene
 @export var ammo : Ammo
 
+var fire_direction : Vector3
+
 var sockets : Array[Node3D]
 var max_sockets : int :
 	get: return sockets.size()

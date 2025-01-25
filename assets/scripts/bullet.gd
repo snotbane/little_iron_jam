@@ -32,7 +32,7 @@ var _velocity : Vector3
 
 func populate(_shooter: Node3D) -> void:
 	shooter = _shooter
-	velocity = -self.global_basis.z * impulse
+	velocity = (-self.global_basis.z * Vector3(1, 0, 1)).normalized() * impulse
 
 
 func _ready() -> void:

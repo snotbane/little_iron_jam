@@ -37,21 +37,24 @@ var drops_detritus : bool = true
 # func _physics_process(delta: float) -> void:
 
 
-func fire(ammo: Ammo) -> void:
+func fire(ammo: Ammo, direction := Vector3.ZERO) -> void:
 	if anim_player.is_playing(): anim_player.stop()
 	anim_player.play("fire")
 	health -= 1
 	ammo.consume_bullets(bullet_cost)
 	for i in projectile_count:
-		create_bullet(ammo.get_parent())
+		create_bullet(ammo.get_parent(), direction)
 	fired.emit()
 
 
-func create_bullet(shooter: Node3D) -> void:
+func create_bullet(shooter: Node3D, direction := Vector3.ZERO) -> void:
 	var projectile : Bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(projectile)
-	projectile.global_rotation = bullet_spawn_location.global_rotation
 	projectile.global_position = bullet_spawn_location.global_position
+	if direction :
+		projectile.look_at(projectile.global_position + direction)
+	else:
+		projectile.global_rotation = bullet_spawn_location.global_rotation
 	projectile.populate(shooter)
 
 

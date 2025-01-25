@@ -56,21 +56,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -0.264452)
 [node name="smokey" parent="pawn" index="2" instance=ExtResource("2_5giu5")]
 
 [node name="Skeleton3D" parent="pawn/smokey/Armature" index="0"]
-bones/1/position = Vector3(-0.00114602, 0.7421, 0.00240208)
-bones/1/rotation = Quaternion(-0.000912949, 0.989087, 0.147331, -0.000119285)
-bones/2/rotation = Quaternion(-0.595854, -1.84788e-07, -1.99193e-07, 0.803093)
+bones/1/position = Vector3(0.00463919, 0.742046, 0.00476072)
+bones/1/rotation = Quaternion(0.00309914, 0.989264, 0.146105, 0.000403586)
+bones/2/rotation = Quaternion(-0.599233, -1.84024e-07, -1.99895e-07, 0.800575)
 
 [node name="mesh" parent="pawn/smokey/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_hwle1")
 
 [node name="bone_attachment_3d" type="BoneAttachment3D" parent="pawn/smokey/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999998, 0.00177094, 0.000504606, -0.00184112, 0.956585, 0.291447, 3.34351e-05, -0.291447, 0.956587, 0.00114602, 0.7421, -0.00240208)
+transform = Transform3D(0.999981, -0.00601369, -0.00170448, 0.00624967, 0.957287, 0.28907, -0.000106703, -0.289075, 0.957306, -0.00463919, 0.742046, -0.00476072)
 bone_name = "body"
 bone_idx = 1
 
 [node name="weapon_config_pistol" parent="pawn/smokey/Armature/Skeleton3D/bone_attachment_3d" index="0" node_paths=PackedStringArray("ammo") instance=ExtResource("4_303mx")]
 transform = Transform3D(1, 0, 0, 0, 0.943223, -0.332161, 0, 0.332161, 0.943223, 0, 0, -0.445)
 ammo = NodePath("../../../../../ammo")
+
+[node name="node_3d" parent="pawn/smokey/Armature/Skeleton3D/bone_attachment_3d/weapon_config_pistol" index="0"]
+transform = Transform3D(0.991531, 0.0776027, 0.104131, -0.0868241, 0.992404, 0.0871557, -0.0965762, -0.0954587, 0.990737, 0.594199, 0.534591, 0.241997)
+
+[node name="node_3d2" parent="pawn/smokey/Armature/Skeleton3D/bone_attachment_3d/weapon_config_pistol" index="1"]
+transform = Transform3D(0.991531, -0.0776027, -0.104131, 0.0868241, 0.992404, 0.0871557, 0.0965762, -0.0954587, 0.990737, -0.594, 0.535, 0.242)
 
 [node name="animation_tree" type="AnimationTree" parent="pawn/smokey" index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_11dx5")

@@ -8,6 +8,9 @@ class_name Brain extends NavigationAgent3D
 @export var weapon_config : WeaponConfig
 @export var walk_speed : float = 100.0
 
+var target_direction : Vector3 :
+	get: return (target.global_position - pawn.global_position).normalized()
+
 func _ready() -> void:
 	nav_timer.timeout.connect(update_target_position)
 

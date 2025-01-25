@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmm5rafal8ul4"]
+[gd_scene load_steps=7 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
-[ext_resource type="PackedScene" uid="uid://b65ambxvqs4de" path="res://assets/scenes/enemies/smokey.tscn" id="3_hj04w"]
 [ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pistol_pickup.tscn" id="4_vqtyn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5do2"]
@@ -27,11 +26,10 @@ shadow_enabled = true
 environment = SubResource("Environment_sl5iy")
 
 [node name="player" parent="." instance=ExtResource("1_fd1we")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 
 [node name="arena" parent="." instance=ExtResource("2_asn8h")]
+spawn_radius = null
 
 [node name="weapon_pickup" parent="." instance=ExtResource("4_vqtyn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29483, -0.100002, 2.03109)
-
-[node name="smokey" parent="." instance=ExtResource("3_hj04w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.55835, -0.1, -5.76974)

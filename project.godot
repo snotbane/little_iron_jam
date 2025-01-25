@@ -49,6 +49,10 @@ folder_colors={
 "res://assets/scripts/": "blue"
 }
 
+[global_group]
+
+enemy=""
+
 [input]
 
 move_left={

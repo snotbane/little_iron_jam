@@ -83,4 +83,6 @@ func _on_received_weapon_config(_weapon_config: WeaponConfig) -> void:
 		_weapon_config.queue_free()
 	else:
 		weapon_config = _weapon_config
+		weapon_config.ammo = self.ammo
+		weapon_config_socket.add_child(weapon_config)
 	weapon_config.try_add_weapon()

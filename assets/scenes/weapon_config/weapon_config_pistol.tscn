@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://d07hpd5wlopok" path="res://assets/scenes/weapon_config/weapon_config.tscn" id="1_soo8n"]
 [ext_resource type="Script" path="res://assets/scripts/weapon_config_pistol.gd" id="2_i66q1"]
 
-[node name="weapon_config_pistol" instance=ExtResource("1_soo8n")]
+[node name="weapon_config_pistol" node_paths=PackedStringArray("sockets") instance=ExtResource("1_soo8n")]
 script = ExtResource("2_i66q1")
 weapon_scene = ExtResource("1_pscvg")
+sockets = [NodePath("node_3d"), NodePath("node_3d2"), NodePath("node_3d3"), NodePath("node_3d4")]
 
 [node name="node_3d" type="Node3D" parent="." index="1"]
 transform = Transform3D(0.917675, -0.397331, -0.000330511, 0.397331, 0.917675, -0.000298182, 0.000421779, 0.000142312, 1, 0.254445, 0.325961, -0.0808043)

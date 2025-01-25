@@ -1,9 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://becpsh0bwexhi"]
+[gd_scene load_steps=33 format=3 uid="uid://becpsh0bwexhi"]
 
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
 [ext_resource type="Script" path="res://assets/scripts/player_movement.gd" id="2_52ijy"]
 [ext_resource type="PackedScene" uid="uid://38l7tovwc1uw" path="res://assets/scenes/player/crosshair.tscn" id="2_bufda"]
-[ext_resource type="PackedScene" uid="uid://bpfyvj6aqfoac" path="res://assets/scenes/weapon_config/weapon_config_shotgun.tscn" id="3_jadca"]
 [ext_resource type="PackedScene" uid="uid://csrge5d3x14ri" path="res://assets/models/jack/jack.glb" id="3_txy8l"]
 [ext_resource type="Script" path="res://assets/scripts/jack_anim_tree.gd" id="4_ew1kc"]
 [ext_resource type="PackedScene" uid="uid://c48e78yo3bqt7" path="res://assets/scenes/player/vacuum.tscn" id="4_yu1wx"]
@@ -204,9 +203,6 @@ override_pose = true
 use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
-[node name="weapon_config" parent="pawn/mesh_scene/Armature/Skeleton3D/chassis/head_controller" node_paths=PackedStringArray("ammo") instance=ExtResource("3_jadca")]
-ammo = NodePath("../../../../../../ammo")
-
 [node name="tail_bone" type="Node3D" parent="pawn/mesh_scene/Armature/Skeleton3D/chassis"]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 2.30256e-07, -0.690124, -0.024887)
 
@@ -253,9 +249,8 @@ dodge_ammo_cost = 1
 
 [node name="camera_hook" type="Node3D" parent="."]
 
-[node name="crosshair" parent="camera_hook" node_paths=PackedStringArray("weapon_config_socket", "weapon_config", "pawn", "camera", "vacuum", "ammo") instance=ExtResource("2_bufda")]
+[node name="crosshair" parent="camera_hook" node_paths=PackedStringArray("weapon_config_socket", "pawn", "camera", "vacuum", "ammo") instance=ExtResource("2_bufda")]
 weapon_config_socket = NodePath("../../pawn/mesh_scene/Armature/Skeleton3D/chassis/head_controller")
-weapon_config = NodePath("../../pawn/mesh_scene/Armature/Skeleton3D/chassis/head_controller/weapon_config")
 pawn = NodePath("../../pawn")
 camera = NodePath("../camera_3d")
 vacuum = NodePath("../../pawn/vacuum")

@@ -4,14 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dsk5wbdmyh1yn" path="res://assets/scenes/weapons/weapon_shotgun.tscn" id="2_3ap8i"]
 [ext_resource type="Script" path="res://assets/scripts/weapon_config_cyclic.gd" id="2_xkmkl"]
 
-[node name="weapon_config_shotgun" instance=ExtResource("1_y2qjh")]
+[node name="weapon_config_shotgun" node_paths=PackedStringArray("sockets") instance=ExtResource("1_y2qjh")]
 script = ExtResource("2_xkmkl")
+socket_fire_order = Array[int]([0, 2, 1, 3])
 weapon_scene = ExtResource("2_3ap8i")
-sockets = Array[Node3D]([Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.992174, 0.124866, 0, -0.124866, 0.992174, 0, 0, 0, 1, -0.415792, 0.222547, 1.53697e-07),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
-, Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.992115, -0.125333, 0, 0.125333, 0.992115, 0, 0, 0, 1, 0.416, 0.223, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
-, Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.756995, 0.653421, 0, -0.653421, 0.756995, 0, 0, 0, 1, -0.572, 0.728, 0.501),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
-, Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.757303, -0.653064, 0, 0.653064, 0.757303, 0, 0, 0, 1, 0.571938, 0.72803, 0.500774),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
-])
+sockets = [NodePath("node_3d"), NodePath("node_3d2"), NodePath("node_3d3"), NodePath("node_3d4")]
 
 [node name="node_3d" type="Node3D" parent="." index="1"]
 transform = Transform3D(0.992174, 0.124866, 0, -0.124866, 0.992174, 0, 0, 0, 1, -0.415792, 0.222547, 1.53697e-07)

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
-[ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pistol_pickup.tscn" id="4_vqtyn"]
+[ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/shotgun_pickup.tscn" id="3_sdfe7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5do2"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,5 +31,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 [node name="arena" parent="." instance=ExtResource("2_asn8h")]
 spawn_radius = null
 
-[node name="weapon_pickup" parent="." instance=ExtResource("4_vqtyn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29483, -0.100002, 2.03109)
+[node name="weapon_pickup" parent="." instance=ExtResource("3_sdfe7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72059, -0.1, 3.63049)
+
+[node name="weapon_pickup2" parent="." instance=ExtResource("3_sdfe7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27941, -0.1, 1.63049)
+
+[node name="weapon_pickup3" parent="." instance=ExtResource("3_sdfe7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.27941, -0.1, 3.63049)
+
+[node name="weapon_pickup4" parent="." instance=ExtResource("3_sdfe7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.27941, -0.1, 3.63049)

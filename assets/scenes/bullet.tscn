@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/bullet.gd" id="1_2rsd3"]
 [ext_resource type="PackedScene" uid="uid://dbwkwh331vj8v" path="res://assets/models/bullet_projectile.glb" id="1_ngiih"]
-[ext_resource type="Material" uid="uid://b0gpbk5qkyvsa" path="res://assets/models/skeletal_meshes/shell_material.tres" id="3_lekg5"]
+[ext_resource type="Material" uid="uid://b0gpbk5qkyvsa" path="res://assets/models/shell_material.tres" id="3_lekg5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e2fyp"]
 radius = 0.25

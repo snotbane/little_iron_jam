@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxtu4r7sps7if"]
 
 [ext_resource type="PackedScene" uid="uid://76drd0jxcmdy" path="res://assets/models/hitspark.glb" id="1_n4ptr"]
-[ext_resource type="Material" uid="uid://bqwefpfmwku50" path="res://assets/models/skeletal_meshes/hitspark_material.tres" id="2_cux5h"]
+[ext_resource type="Material" uid="uid://bqwefpfmwku50" path="res://assets/models/hitspark_material.tres" id="2_cux5h"]
 
 [node name="hitspark" instance=ExtResource("1_n4ptr")]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://blphp82kb5iq7"
-path="res://.godot/imported/pistol_crosshair.glb-9ae1b5fff60c0ddbba8e49f0e6311d56.scn"
+uid="uid://c6p213ijc7v8k"
+path="res://.godot/imported/pistol_pickup.glb-ec1967732261d773fc262392b4a82c37.scn"
 
 [deps]
 
-source_file="res://assets/models/pistol_crosshair.glb"
-dest_files=["res://.godot/imported/pistol_crosshair.glb-9ae1b5fff60c0ddbba8e49f0e6311d56.scn"]
+source_file="res://assets/models/pistol/pistol_pickup.glb"
+dest_files=["res://.godot/imported/pistol_pickup.glb-ec1967732261d773fc262392b4a82c37.scn"]
 
 [params]
 

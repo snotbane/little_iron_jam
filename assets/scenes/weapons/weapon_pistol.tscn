@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://d0vjbjmoyj1he"]
 
 [ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_k5kur"]
-[ext_resource type="PackedScene" uid="uid://u2nx32uj888c" path="res://assets/models/skeletal_meshes/pistol.glb" id="2_ahwe5"]
+[ext_resource type="PackedScene" uid="uid://u2nx32uj888c" path="res://assets/models/pistol/pistol.glb" id="2_ahwe5"]
 [ext_resource type="PackedScene" uid="uid://bh7yocmhago8" path="res://assets/scenes/detritus/detritus_pistol.tscn" id="2_sxwo5"]
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="3_esfny"]
-[ext_resource type="Material" uid="uid://cl5whrdvbjlel" path="res://assets/models/skeletal_meshes/pistol_material.tres" id="3_gr5ey"]
+[ext_resource type="Material" path="res://assets/models/pistol/pistol_material.tres" id="3_gr5ey"]
 [ext_resource type="Script" path="res://assets/scripts/casing_spawner.gd" id="7_jpaq2"]
 
 [node name="weapon_pistol" node_paths=PackedStringArray("anim_player", "bullet_spawn_location") instance=ExtResource("1_k5kur")]

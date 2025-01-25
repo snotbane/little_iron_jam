@@ -11,6 +11,12 @@ var target_light_energy : float
 var target_quaternion : Quaternion
 
 
+func _ready() -> void:
+	super._ready()
+
+	set_current_hour(0)
+
+
 func _process(delta: float) -> void:
 	if not update: return
 	var alpha := alpha_time * delta

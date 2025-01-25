@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1aiimxh63ws2"]
+[gd_scene load_steps=23 format=3 uid="uid://c1aiimxh63ws2"]
 
 [ext_resource type="Script" path="res://assets/scripts/wave_controller.gd" id="1_8vdcl"]
 [ext_resource type="PackedScene" uid="uid://dxn1ecuhl0csi" path="res://assets/prefabs/fmj_level_mesh.tscn" id="1_mdv7l"]
 [ext_resource type="Material" uid="uid://by4taq5k1mgye" path="res://assets/models/level_meshes/sand_floor_material.tres" id="1_nij4t"]
 [ext_resource type="Script" path="res://assets/scripts/wave.gd" id="2_ywm6p"]
+[ext_resource type="Script" path="res://assets/scripts/wave_timed_env.gd" id="3_3py3g"]
 [ext_resource type="Script" path="res://assets/scripts/wave_timed_sun.gd" id="3_j0by0"]
 [ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="4_2y70v"]
 [ext_resource type="Script" path="res://assets/scripts/wave_clock_label.gd" id="4_eftfn"]
@@ -220,25 +221,43 @@ timer = NodePath("wave_spawner/timer")
 ui_anim_player = NodePath("wave_spawner/canvas_layer/ui/animation_player")
 time_label = NodePath("wave_spawner/canvas_layer/ui/wave_clock/wave_timer/wave_timer_label")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="environment" type="WorldEnvironment" parent="." groups=["wave_timed"]]
 environment = SubResource("Environment_od2qt")
+script = ExtResource("3_3py3g")
+alpha_time = 5.0
+wave_values = [{
+"background_energy_multiplier": 1.0
+}, {
+"background_energy_multiplier": 0.1
+}, {
+"background_energy_multiplier": 0.6
+}, {
+"background_energy_multiplier": 0.05
+}, {
+"background_energy_multiplier": 0.2
+}, {
+"background_energy_multiplier": 0.9
+}, {
+"background_energy_multiplier": 0.4
+}, {
+"background_energy_multiplier": 1.25
+}]
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.0139396, 0.456249, -9.31323e-09, -0.999534, 0.0305384, 0.456462, -0.0271714, -0.889329, 0, 0, 0)
+transform = Transform3D(0.889744, 0.402093, 0.216051, 1.34111e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
 rotation_edit_mode = 1
-light_color = Color(1, 0.312, 0.14, 1)
-light_energy = 0.0
+light_color = Color(0.9855, 1, 0.97, 1)
+light_energy = 0.8
 shadow_enabled = true
 script = ExtResource("3_j0by0")
-update = null
 alpha_time = 5.0
 wave_values = [{
 "color": Color(0.9855, 1, 0.97, 1),
 "energy": 0.8,
 "quat": Quaternion(0.834296, 0.120489, 0.201521, -0.498821)
 }, {
-"color": Color(1, 0.312, 0.14, 1),
-"energy": 0.6,
+"color": Color(1, 0.408, 0.26, 1),
+"energy": 1.5,
 "quat": Quaternion(0.934972, 0.0642255, 0.225839, -0.265893)
 }, {
 "color": Color(1, 0.312, 0.14, 1),
@@ -265,13 +284,12 @@ wave_values = [{
 "energy": 1.5,
 "quat": Quaternion(-0.579898, -0.188436, -0.140072, 0.780122)
 }]
-current_hour = 2
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.566972, -0.526194, -0.633769, 0.0302846, -0.755547, 0.654394, -0.823181, -0.390216, -0.412438, 0, 0, 0)
+transform = Transform3D(0.889744, 0.402093, 0.216051, 1.34111e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
 rotation_edit_mode = 1
-light_color = Color(0.0900002, 0.999999, 0.454, 1)
-light_energy = 0.2
+light_color = Color(0.2, 0.6, 1, 1)
+light_energy = 0.0
 shadow_enabled = true
 script = ExtResource("3_j0by0")
 alpha_time = 5.0
@@ -308,7 +326,6 @@ wave_values = [{
 "energy": 0.0,
 "quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
 }]
-current_hour = 4
 
 [node name="wave_spawner" type="Node3D" parent="."]
 
@@ -382,6 +399,7 @@ label_settings = SubResource("LabelSettings_kv482")
 horizontal_alignment = 1
 script = ExtResource("4_eftfn")
 wave_values = ["Quittin'   Time", "Sunset", "Moonrise", "Dead   of   Night", "Wee   Hours", "Crack   of   Dawn", "Mornin'   Glory", "High   Noon"]
+current_hour = 1
 
 [node name="wave_timer" type="Control" parent="wave_spawner/canvas_layer/ui/wave_clock"]
 layout_mode = 1

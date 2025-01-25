@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cysuu86r47xum" path="res://assets/scenes/weapon_config/weapon_config_smokey.tscn" id="4_303mx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_h0tkf"]
-radius = 0.808106
+radius = 0.606037
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g2xw4"]
 animation = &"idle"
@@ -56,15 +56,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -0.264452)
 [node name="smokey" parent="pawn" index="2" instance=ExtResource("2_5giu5")]
 
 [node name="Skeleton3D" parent="pawn/smokey/Armature" index="0"]
-bones/1/position = Vector3(0.00463919, 0.742046, 0.00476072)
-bones/1/rotation = Quaternion(0.00309914, 0.989264, 0.146105, 0.000403586)
-bones/2/rotation = Quaternion(-0.599233, -1.84024e-07, -1.99895e-07, 0.800575)
+bones/1/position = Vector3(-0.0150286, 0.741956, 0.0694707)
+bones/1/rotation = Quaternion(-0.0100419, 0.993883, 0.109972, -0.00130901)
+bones/2/rotation = Quaternion(-0.65974, -1.68134e-07, -2.13493e-07, 0.751494)
 
 [node name="mesh" parent="pawn/smokey/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_hwle1")
 
 [node name="bone_attachment_3d" type="BoneAttachment3D" parent="pawn/smokey/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999981, -0.00601369, -0.00170448, 0.00624967, 0.957287, 0.28907, -0.000106703, -0.289075, 0.957306, -0.00463919, 0.742046, -0.00476072)
+transform = Transform3D(0.999795, 0.0196732, 0.00481027, -0.0202489, 0.97561, 0.218572, -0.000392958, -0.218624, 0.975809, 0.0150286, 0.741956, -0.0694707)
 bone_name = "body"
 bone_idx = 1
 

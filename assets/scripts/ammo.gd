@@ -49,7 +49,15 @@ func _body_entered(body: Node3D) -> void:
 func take_damage(body: Node3D) -> void:
 	health -= body.damage
 	if body is Bullet:
+		create_hitspark(body)
 		body.health -= 1
+
+
+func create_hitspark(bullet: Bullet) -> void:
+	var hitspark := preload("res://assets/scenes/hitspark.tscn").instantiate()
+	get_tree().root.add_child(hitspark)
+	hitspark.global_position = bullet.global_position + bullet.global_basis.z * 1.5
+	hitspark.look_at(hitspark.global_position + bullet.global_basis.z)
 
 
 func consume_bullets(amount: int) -> void:

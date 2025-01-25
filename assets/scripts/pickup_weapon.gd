@@ -2,6 +2,7 @@
 extends Pickup
 
 @export var weapon_config_scene : PackedScene
+@export var health := -1
 
 @onready var visual : Node3D = $visual
 

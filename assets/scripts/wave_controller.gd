@@ -1,6 +1,8 @@
 
 class_name WaveController extends Node3D
 
+signal wave_started(index: int)
+
 static var inst : WaveController
 
 @export var predefined_waves : Array[Wave]
@@ -8,6 +10,9 @@ static var inst : WaveController
 @export var spawn_origin : Node3D = self
 @export var nav_region : NavigationRegion3D
 @export var timer : Timer
+
+@export var ui_anim_player : AnimationPlayer
+@export var time_label : Label
 
 var current_wave : Wave
 
@@ -26,6 +31,14 @@ func _ready() -> void:
 	proceed_to_next_wave()
 
 
+func _process(delta: float) -> void:
+	var minutes := floori(timer.time_left / 60)
+	var seconds := floori(fmod(timer.time_left, 60))
+	var milliseconds := floori(fmod(timer.time_left, 1) * 10)
+	var time_string = "%02d:%02d.%01d" % [minutes, seconds, milliseconds]
+	time_label.text = time_string
+
+
 func proceed_to_next_wave() -> void:
 	start_wave(next_wave)
 
@@ -39,6 +52,9 @@ func start_wave(wave: Wave) -> void:
 	for scene in wave.scenes:
 		for i in wave.scenes[scene]:
 			spawn_scene(scene)
+
+	ui_anim_player.play(&"notify_clock")
+	wave_started.emit(wave_index)
 
 
 func end_wave() -> void:

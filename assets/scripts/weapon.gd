@@ -73,6 +73,7 @@ func drop_detritus() -> void:
 	get_tree().root.add_child(detritus)
 	detritus.global_position = self.global_position
 
+
 func drop_pickup() -> void :
 	var pickup : Pickup = pickup_scene.instantiate()
 	get_tree().root.add_child(pickup)

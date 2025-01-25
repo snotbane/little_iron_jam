@@ -79,9 +79,12 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_received_weapon_config(_weapon_config: WeaponConfig) -> void:
-	if weapon_config:
+	if weapon_config and weapon_config.weapon_scene == _weapon_config.weapon_scene:
 		_weapon_config.queue_free()
 	else:
+		if weapon_config:
+			weapon_config.drop_weapon_pickups()
+			weapon_config.queue_free()
 		weapon_config = _weapon_config
 		weapon_config.ammo = self.ammo
 		weapon_config_socket.add_child(weapon_config)

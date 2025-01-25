@@ -24,6 +24,10 @@ var _health : int = 10
 @export_range(0.0, 90.0) var deviation_degrees : float = 0.5
 
 @export var detritus_scene : PackedScene
+@export_file var _pickup_scene : String
+var pickup_scene : PackedScene :
+	get: return load(_pickup_scene)
+
 @export var audio_stream : AudioStream = preload("res://assets/audio/pistol_fire.tres")
 
 var _is_shooting : bool
@@ -68,6 +72,11 @@ func drop_detritus() -> void:
 	var detritus : Detritus = detritus_scene.instantiate()
 	get_tree().root.add_child(detritus)
 	detritus.global_position = self.global_position
+
+func drop_pickup() -> void :
+	var pickup : Pickup = pickup_scene.instantiate()
+	get_tree().root.add_child(pickup)
+	pickup.global_position = self.global_position
 
 
 func close() -> void:

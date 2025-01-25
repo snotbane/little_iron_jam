@@ -15,6 +15,7 @@ bullet_scene = ExtResource("2_tqc70")
 bullet_spawn_location = NodePath("pistol/bullet_spawn")
 deviation_degrees = 4.0
 detritus_scene = ExtResource("2_sxwo5")
+_pickup_scene = "res://assets/scenes/pickups/pistol_pickup.tscn"
 
 [node name="pistol" parent="." index="0" instance=ExtResource("2_ahwe5")]
 

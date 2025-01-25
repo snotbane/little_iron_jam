@@ -53,3 +53,7 @@ func try_add_weapon() -> bool:
 		weapon_added.emit()
 		return true
 	return false
+
+func drop_weapon_pickups() -> void:
+	for weapon in visible_weapons:
+		weapon.drop_pickup()

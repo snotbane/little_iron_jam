@@ -15,6 +15,7 @@ projectile_count = 5
 bullet_cost = 3
 deviation_degrees = 30.0
 detritus_scene = ExtResource("2_r6l33")
+_pickup_scene = "res://assets/scenes/pickups/shotgun_pickup.tscn"
 
 [node name="shotgun" parent="." index="0" instance=ExtResource("2_64re0")]
 

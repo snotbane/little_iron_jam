@@ -152,6 +152,9 @@ damage = 3
 [node name="shape" parent="pawn" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
+[node name="ammo" parent="pawn" index="1"]
+lose_health_on_consume = true
+
 [node name="shape" parent="pawn/ammo" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499626, 0)
 shape = SubResource("CylinderShape3D_nd0xb")

@@ -64,6 +64,7 @@ func die() -> void:
 
 
 func drop_weapon() -> void:
+	if not weapon_drop_on_death: return
 	var result : RigidBody3D = weapon_drop_on_death.instantiate()
 	get_tree().root.add_child(result)
 	result.global_position = actor.global_position

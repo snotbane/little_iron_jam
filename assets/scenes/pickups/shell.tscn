@@ -5,16 +5,16 @@
 [ext_resource type="Material" uid="uid://b0gpbk5qkyvsa" path="res://assets/models/skeletal_meshes/shell_material.tres" id="2_6s4h5"]
 [ext_resource type="Script" path="res://assets/scripts/pickup_shell.gd" id="2_gy0p7"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_tqcf0"]
-height = 0.348917
-radius = 0.0999521
+[sub_resource type="BoxShape3D" id="BoxShape3D_0vnso"]
+size = Vector3(0.2, 0.347852, 0.2)
 
 [node name="shell" instance=ExtResource("1_o3ki3")]
 script = ExtResource("2_gy0p7")
+impulse = Vector3(7, 5, 7)
 
 [node name="shape" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0752565, 0)
-shape = SubResource("CylinderShape3D_tqcf0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.073401, 0)
+shape = SubResource("BoxShape3D_0vnso")
 
 [node name="shell_pickup" parent="." index="1" instance=ExtResource("1_yis7u")]
 

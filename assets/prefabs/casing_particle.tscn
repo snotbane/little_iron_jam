@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://blkae0a56744f"]
 
 [ext_resource type="PackedScene" uid="uid://cvkjhg4qyhyth" path="res://assets/models/casing_particle.glb" id="1_hsdvg"]
-[ext_resource type="Material" uid="uid://b0gpbk5qkyvsa" path="res://assets/models/skeletal_meshes/shell_material.tres" id="2_uo6yg"]
+[ext_resource type="Material" uid="uid://b0gpbk5qkyvsa" path="res://assets/models/shell_material.tres" id="2_uo6yg"]
 
 [node name="casing_particle" instance=ExtResource("1_hsdvg")]
 

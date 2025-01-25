@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://38l7tovwc1uw"]
 
 [ext_resource type="Script" path="res://assets/scripts/player_aiming.gd" id="1_t2kql"]
-[ext_resource type="PackedScene" uid="uid://blphp82kb5iq7" path="res://assets/models/pistol_crosshair.glb" id="3_brte8"]
+[ext_resource type="PackedScene" uid="uid://blphp82kb5iq7" path="res://assets/models/pistol/pistol_crosshair.glb" id="3_brte8"]
 [ext_resource type="Shader" uid="uid://bdb517nqcnpue" path="res://assets/shaders/crosshair_shader.tres" id="3_vcle3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxlpr"]

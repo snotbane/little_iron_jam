@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dmtodg443y4k8"]
 
 [ext_resource type="PackedScene" uid="uid://cslqonj0xvyv7" path="res://assets/models/muzzle_flash.glb" id="1_5gg1h"]
-[ext_resource type="Material" uid="uid://bce065isjtqth" path="res://assets/models/skeletal_meshes/muzzleflash_material.tres" id="2_8cnq5"]
+[ext_resource type="Material" uid="uid://bce065isjtqth" path="res://assets/models/muzzleflash_material.tres" id="2_8cnq5"]
 
 [sub_resource type="Animation" id="Animation_3qjhk"]
 length = 0.001

@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://b65ambxvqs4de"]
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_xt3o3"]
-[ext_resource type="PackedScene" uid="uid://dbfv22ve5fi4y" path="res://assets/models/skeletal_meshes/smokey.glb" id="2_5giu5"]
+[ext_resource type="PackedScene" uid="uid://dbfv22ve5fi4y" path="res://assets/models/smokey/smokey.glb" id="2_5giu5"]
 [ext_resource type="Script" path="res://assets/scripts/brain_smoky.gd" id="2_dkyrx"]
 [ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pistol_pickup.tscn" id="2_nhst2"]
-[ext_resource type="Material" uid="uid://v6d22ec1iors" path="res://assets/models/skeletal_meshes/smokey_material.tres" id="3_hwle1"]
+[ext_resource type="Material" uid="uid://v6d22ec1iors" path="res://assets/models/smokey/smokey_material.tres" id="3_hwle1"]
 [ext_resource type="PackedScene" uid="uid://cysuu86r47xum" path="res://assets/scenes/weapon_config/weapon_config_smokey.tscn" id="4_303mx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_h0tkf"]

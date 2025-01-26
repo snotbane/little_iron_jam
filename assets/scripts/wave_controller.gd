@@ -43,7 +43,8 @@ func _process(delta: float) -> void:
 
 
 func proceed_to_next_wave() -> void:
-	start_wave(next_wave)
+	if not bell.try_ring_bell():
+		start_wave(next_wave)
 
 
 func start_wave(wave: Wave) -> void:

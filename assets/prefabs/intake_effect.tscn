@@ -1,0 +1,55 @@
+[gd_scene load_steps=12 format=3 uid="uid://bxvidt1ojxpj7"]
+
+[ext_resource type="PackedScene" uid="uid://coltl3luq8cfn" path="res://assets/models/jack/intake_effect.glb" id="1_ml12a"]
+[ext_resource type="Material" uid="uid://c87of88nsxmoj" path="res://assets/models/jack/intake_effect_material.tres" id="2_3jk8j"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8wwtb"]
+animation = &"startup"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_psgtd"]
+animation = &"stop_sucking"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gbbwk"]
+animation = &"suck"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w62m2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dlu5l"]
+advance_mode = 2
+advance_expression = "is_sucking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eexf0"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ddiaw"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "not is_sucking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yglny"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "not is_sucking"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_r04ir"]
+states/startup/node = SubResource("AnimationNodeAnimation_8wwtb")
+states/startup/position = Vector2(405.778, 61.5556)
+states/stop_sucking/node = SubResource("AnimationNodeAnimation_psgtd")
+states/stop_sucking/position = Vector2(404.667, 210)
+states/suck/node = SubResource("AnimationNodeAnimation_gbbwk")
+states/suck/position = Vector2(568.667, 128.667)
+transitions = ["Start", "stop_sucking", SubResource("AnimationNodeStateMachineTransition_w62m2"), "stop_sucking", "startup", SubResource("AnimationNodeStateMachineTransition_dlu5l"), "startup", "suck", SubResource("AnimationNodeStateMachineTransition_eexf0"), "suck", "stop_sucking", SubResource("AnimationNodeStateMachineTransition_ddiaw"), "startup", "stop_sucking", SubResource("AnimationNodeStateMachineTransition_yglny")]
+
+[node name="intake_effect" instance=ExtResource("1_ml12a")]
+
+[node name="Skeleton3D" parent="Armature_001" index="0"]
+bones/1/rotation = Quaternion(-0.766898, -0.0814334, 0.0938394, 0.629627)
+
+[node name="Cube" parent="Armature_001/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_3jk8j")
+
+[node name="animation_tree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_r04ir")
+anim_player = NodePath("../AnimationPlayer")

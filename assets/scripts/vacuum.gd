@@ -1,6 +1,9 @@
 
 class_name Vacuum extends Area3D
 
+signal on_sucked(value: bool)
+
+
 @export var ammo : Ammo
 @export var region : Camera3D
 @export var suck_angle : float = 45.0 :
@@ -26,6 +29,8 @@ var _is_sucking : bool = false
 	set(value):
 		if _is_sucking == value: return
 		_is_sucking = value
+
+		on_sucked.emit(_is_sucking)
 
 
 # Called when the node enters the scene tree for the first time.

@@ -26,3 +26,11 @@ func on_hit(body: Node3D) -> void:
 	if is_enabled:
 		is_enabled = false
 		bell_rang.emit()
+
+
+func try_ring_bell() -> bool:
+	if is_enabled:
+		is_enabled = false
+		bell_rang.emit()
+		return true
+	return false

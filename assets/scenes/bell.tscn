@@ -1,17 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c414vt4mwkrah"]
+[gd_scene load_steps=4 format=3 uid="uid://c414vt4mwkrah"]
 
 [ext_resource type="Script" path="res://assets/scripts/bell.gd" id="1_tr0yt"]
 [ext_resource type="PackedScene" uid="uid://dll8gybqf0tn8" path="res://assets/prefabs/time_bell.tscn" id="2_67bby"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v1yqn"]
-height = 1.0
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_qt3o0"]
-height = 1.0
-radius = 0.356716
+height = 3.0
+radius = 0.75
 
 [node name="bell" type="AnimatableBody3D" node_paths=PackedStringArray("anim_player")]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_tr0yt")
 anim_player = NodePath("time_bell/AnimationPlayer")
@@ -26,7 +23,7 @@ collision_mask = 4
 
 [node name="collision_shape_3d" type="CollisionShape3D" parent="hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("CylinderShape3D_qt3o0")
+shape = SubResource("CylinderShape3D_v1yqn")
 
 [node name="audio_stream_player_3d" type="AudioStreamPlayer3D" parent="."]
 attenuation_model = 3
@@ -35,6 +32,12 @@ max_polyphony = 2
 
 [node name="time_bell" parent="." instance=ExtResource("2_67bby")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0495465, 0)
+
+[node name="Skeleton3D" parent="time_bell/Armature" index="0"]
+bones/1/position = Vector3(0, 0, 0)
+bones/1/rotation = Quaternion(-2.98023e-08, 1.19209e-07, 1.05879e-22, 1)
+bones/2/rotation = Quaternion(0.707107, -5.0243e-15, -0.707107, 2.0963e-21)
+bones/3/rotation = Quaternion(-0.707107, 1.96704e-08, 0.707107, -3.09086e-08)
 
 [connection signal="bell_rang" from="." to="audio_stream_player_3d" method="play"]
 [connection signal="body_entered" from="hitbox" to="." method="on_hit"]

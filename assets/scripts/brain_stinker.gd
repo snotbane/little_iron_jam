@@ -15,10 +15,6 @@ var _state : State
 		_state = value
 
 
-var is_walking : bool :
-	get: return pawn.velocity.length_squared() > 0.1
-
-
 var is_attacking_blip : bool :
 	get: return state == State.ATTACKING
 

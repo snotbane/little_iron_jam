@@ -10,6 +10,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
 
 [node name="arena" parent="." instance=ExtResource("2_asn8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -31)
-wave_index = 2
 
 [connection signal="game_over" from="player" to="arena" method="stop_everything"]

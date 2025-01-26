@@ -21,3 +21,7 @@ var _is_volatile : bool
 		_is_volatile = value
 
 		pawn.set_collision_layer_value(3, _is_volatile)
+
+
+func _physics_process(delta: float) -> void:
+	physics_process_walk_to_target(delta)

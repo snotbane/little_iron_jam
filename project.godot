@@ -141,6 +141,7 @@ fullscreen={
 
 3d/physics_engine="JoltPhysics3D"
 3d/default_gravity=19.6
+common/enable_object_picking=false
 
 [rendering]
 

@@ -17,14 +17,17 @@ text = "30"
 [node name="buck" parent="pawn" index="2" instance=ExtResource("2_kvpmg")]
 
 [node name="Skeleton3D" parent="pawn/buck/Armature" index="0"]
-bones/1/position = Vector3(1.81142e-18, 0.413123, 1.77977)
-bones/1/rotation = Quaternion(-0.690376, -2.67528e-09, 2.59261e-09, 0.723451)
+bones/1/position = Vector3(1.31484e-10, 0.413123, 1.41104)
+bones/1/rotation = Quaternion(-0.585538, -2.32333e-09, 2.91203e-09, 0.810645)
 bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
-bones/3/rotation = Quaternion(-2.89046e-08, 0.896653, 0.442734, 6.1982e-08)
-bones/4/position = Vector3(-0.884316, 1.83901, 0.00165131)
-bones/4/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999714)
-bones/5/position = Vector3(0.884316, 1.83901, 0.0016513)
-bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999714)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-5.56085e-08, 0.647642, 0.761945, 5.00924e-08)
+bones/4/position = Vector3(-0.884316, 1.8, -0.180636)
+bones/4/rotation = Quaternion(-0.638875, 2.9777e-09, 2.24154e-09, 0.769311)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(0.888686, 1.88576, -0.102331)
+bones/5/rotation = Quaternion(-0.644708, -0.0466564, -0.0315208, 0.762353)
+bones/5/scale = Vector3(1, 1, 1)
 
 [node name="animation_tree" parent="pawn/buck" index="2"]
 root_motion_track = NodePath("Armature/Skeleton3D:root")

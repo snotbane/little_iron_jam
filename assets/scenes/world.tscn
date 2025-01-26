@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmm5rafal8ul4"]
+[gd_scene load_steps=3 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
-[ext_resource type="PackedScene" uid="uid://vk56c3de00ln" path="res://assets/scenes/enemies/buck.tscn" id="4_imrbj"]
-[ext_resource type="PackedScene" uid="uid://clq3nof8vclwo" path="res://assets/scenes/enemies/stinker.tscn" id="4_nlw25"]
-[ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pistol_pickup.tscn" id="6_g1c76"]
 
 [node name="world" type="Node3D"]
 
@@ -13,30 +10,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
 
 [node name="arena" parent="." instance=ExtResource("2_asn8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -31)
-is_game_over = true
-wave_index = 3
-
-[node name="pistol_pickup" parent="." instance=ExtResource("6_g1c76")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51345, -0.1, -24.6674)
-
-[node name="enemy" parent="." instance=ExtResource("4_imrbj")]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -3.45455, -0.1, -27.0028)
-
-[node name="Skeleton3D" parent="enemy/pawn/buck/Armature" index="0"]
-bones/1/position = Vector3(-1.58959e-11, 0.413123, 1.12946)
-bones/1/rotation = Quaternion(-0.240219, -0.0592435, 0.0133534, 0.968817)
-bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
-bones/3/rotation = Quaternion(-6.60493e-08, 0.215301, 0.976548, 1.92544e-08)
-bones/4/position = Vector3(-0.884316, 1.90499, -0.227072)
-bones/4/rotation = Quaternion(-0.997256, -2.59301e-10, 5.91102e-09, 0.0740301)
-bones/5/position = Vector3(0.903867, 2.2817, -0.0219354)
-bones/5/rotation = Quaternion(-0.967766, -0.0410417, -0.244768, 0.0428135)
-
-[node name="stinker" parent="." instance=ExtResource("4_nlw25")]
-transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 1.62331, -0.1, -24.7559)
 
 [connection signal="game_over" from="player" to="arena" method="stop_everything"]
-
-[editable path="enemy"]
-[editable path="enemy/pawn"]
-[editable path="enemy/pawn/buck"]

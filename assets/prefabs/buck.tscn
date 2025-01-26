@@ -45,17 +45,17 @@ states/rollin/position = Vector2(588.667, 100.889)
 states/slam/node = SubResource("AnimationNodeAnimation_hmrxa")
 states/slam/position = Vector2(485.667, 239.667)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_mwqgc"), "Idle", "rollin", SubResource("AnimationNodeStateMachineTransition_2o0kj"), "rollin", "Idle", SubResource("AnimationNodeStateMachineTransition_coyo4"), "rollin", "slam", SubResource("AnimationNodeStateMachineTransition_f13h5"), "slam", "Idle", SubResource("AnimationNodeStateMachineTransition_xtnds"), "Idle", "slam", SubResource("AnimationNodeStateMachineTransition_lthsm")]
-graph_offset = Vector2(-135, 13)
+graph_offset = Vector2(-126, 38)
 
 [node name="buck" instance=ExtResource("1_8hrt4")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/position = Vector3(3.26509e-17, 0.413123, 1.77977)
-bones/1/rotation = Quaternion(-0.689978, -2.69648e-09, 2.57037e-09, 0.72383)
+bones/1/position = Vector3(-0.0057641, 0.407464, 1.77977)
+bones/1/rotation = Quaternion(-0.691101, -0.00428336, 0.004828, 0.722729)
 bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
 bones/3/rotation = Quaternion(-2.06384e-08, 0.952897, 0.303295, 7.19417e-08)
-bones/4/position = Vector3(-0.884316, 1.85048, 1.50603e-08)
-bones/4/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
+bones/4/position = Vector3(-0.880198, 2.33509, 0.00735865)
+bones/4/rotation = Quaternion(0.048096, -5.35134e-06, 0.00402548, 0.998835)
 bones/5/position = Vector3(0.884316, 1.85048, 1.8528e-09)
 bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
 

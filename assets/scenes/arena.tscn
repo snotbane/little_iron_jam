@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c1aiimxh63ws2"]
+[gd_scene load_steps=27 format=3 uid="uid://c1aiimxh63ws2"]
 
 [ext_resource type="Script" path="res://assets/scripts/wave_controller.gd" id="1_8vdcl"]
 [ext_resource type="PackedScene" uid="uid://dxn1ecuhl0csi" path="res://assets/prefabs/fmj_level_mesh.tscn" id="1_mdv7l"]
@@ -6,24 +6,22 @@
 [ext_resource type="Script" path="res://assets/scripts/wave.gd" id="2_ywm6p"]
 [ext_resource type="Script" path="res://assets/scripts/wave_timed_env.gd" id="3_3py3g"]
 [ext_resource type="Script" path="res://assets/scripts/wave_timed_sun.gd" id="3_j0by0"]
-[ext_resource type="PackedScene" uid="uid://clq3nof8vclwo" path="res://assets/scenes/enemies/stinker.tscn" id="3_tchhd"]
 [ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="4_2y70v"]
 [ext_resource type="Script" path="res://assets/scripts/wave_clock_label.gd" id="4_eftfn"]
-[ext_resource type="PackedScene" uid="uid://b65ambxvqs4de" path="res://assets/scenes/enemies/smokey.tscn" id="4_v7yft"]
 [ext_resource type="PackedScene" uid="uid://c414vt4mwkrah" path="res://assets/scenes/bell.tscn" id="11_wuec8"]
 
 [sub_resource type="Resource" id="Resource_n45ke"]
 script = ExtResource("2_ywm6p")
 scenes = {
-ExtResource("3_tchhd"): 1
+"res://assets/scenes/enemies/stinker.tscn": 1
 }
 crates = 0
 duration = 15.0
 
-[sub_resource type="Resource" id="Resource_ag0u4"]
+[sub_resource type="Resource" id="Resource_bgc7j"]
 script = ExtResource("2_ywm6p")
 scenes = {
-ExtResource("3_tchhd"): 3
+"res://assets/scenes/enemies/stinker.tscn": 3
 }
 crates = 0
 duration = 15.0
@@ -31,11 +29,11 @@ duration = 15.0
 [sub_resource type="Resource" id="Resource_5b0ha"]
 script = ExtResource("2_ywm6p")
 scenes = {
-ExtResource("4_v7yft"): 1,
-ExtResource("3_tchhd"): 2
+"res://assets/scenes/enemies/smokey.tscn": 1,
+"res://assets/scenes/enemies/stinker.tscn": 2
 }
 crates = 0
-duration = 30.0
+duration = 15.0
 
 [sub_resource type="Resource" id="Resource_cnsst"]
 script = ExtResource("2_ywm6p")
@@ -266,7 +264,7 @@ size = Vector2(100, 100)
 
 [node name="arena" type="Node3D" node_paths=PackedStringArray("spawn_origin", "nav_region", "timer", "bell", "ui_anim_player", "time_label")]
 script = ExtResource("1_8vdcl")
-predefined_waves = Array[ExtResource("2_ywm6p")]([SubResource("Resource_n45ke"), SubResource("Resource_ag0u4"), SubResource("Resource_5b0ha"), SubResource("Resource_cnsst")])
+predefined_waves = Array[ExtResource("2_ywm6p")]([SubResource("Resource_n45ke"), SubResource("Resource_bgc7j"), SubResource("Resource_5b0ha"), SubResource("Resource_cnsst")])
 spawn_origin = NodePath("wave_spawner")
 nav_region = NodePath("nav_region")
 timer = NodePath("wave_spawner/timer")
@@ -297,7 +295,7 @@ wave_values = [{
 }]
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.402093, 0.216051, 1.47522e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
+transform = Transform3D(0.889744, 0.402093, 0.216051, 1.3262e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.9855, 1, 0.97, 1)
 light_energy = 0.8
@@ -339,7 +337,7 @@ wave_values = [{
 }]
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.402093, 0.216051, 1.47522e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
+transform = Transform3D(0.889744, 0.402093, 0.216051, 1.3262e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.2, 0.6, 1, 1)
 light_energy = 0.0

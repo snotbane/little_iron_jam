@@ -44,7 +44,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not target: return
+	if not target:
+		state = State.IDLING
 	match state:
 		State.CHASING:
 			physics_process_walk_to_target(delta)

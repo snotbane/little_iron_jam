@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://vk56c3de00ln"]
+[gd_scene load_steps=6 format=3 uid="uid://vk56c3de00ln"]
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_5cnvb"]
 [ext_resource type="PackedScene" uid="uid://b27ly3vvi5qc4" path="res://assets/prefabs/buck.tscn" id="2_kvpmg"]
+[ext_resource type="PackedScene" uid="uid://brb5pt2v7s810" path="res://assets/scenes/weapon_config/weapon_config_shotgun_buck.tscn" id="3_33abw"]
 [ext_resource type="Script" path="res://assets/scripts/buck_brain.gd" id="3_ipyb7"]
 [ext_resource type="Script" path="res://assets/scripts/root_motion.gd" id="4_e8eal"]
 
 [node name="enemy" instance=ExtResource("1_5cnvb")]
+
+[node name="pawn" parent="." index="0"]
+damage = 20
 
 [node name="ammo" parent="pawn" index="1"]
 health = 30
@@ -17,25 +21,31 @@ text = "30"
 [node name="buck" parent="pawn" index="2" instance=ExtResource("2_kvpmg")]
 
 [node name="Skeleton3D" parent="pawn/buck/Armature" index="0"]
-bones/1/position = Vector3(1.31484e-10, 0.413123, 1.41104)
-bones/1/rotation = Quaternion(-0.585538, -2.32333e-09, 2.91203e-09, 0.810645)
-bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
+bones/1/position = Vector3(0.0189668, 0.412867, 1.77977)
+bones/1/rotation = Quaternion(-0.682506, 0.0160491, -0.0164277, 0.730519)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(-5.56085e-08, 0.647642, 0.761945, 5.00924e-08)
-bones/4/position = Vector3(-0.884316, 1.8, -0.180636)
-bones/4/rotation = Quaternion(-0.638875, 2.9777e-09, 2.24154e-09, 0.769311)
+bones/4/position = Vector3(-0.893359, 2.1022, 0.148633)
+bones/4/rotation = Quaternion(-0.0833044, -0.00138204, -0.00340524, 0.996517)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/position = Vector3(0.888686, 1.88576, -0.102331)
-bones/5/rotation = Quaternion(-0.644708, -0.0466564, -0.0315208, 0.762353)
 bones/5/scale = Vector3(1, 1, 1)
 
-[node name="animation_tree" parent="pawn/buck" index="2"]
+[node name="body" type="BoneAttachment3D" parent="pawn/buck/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.998945, 0.0375318, 0.0264578, 0.0459086, 0.803408, 0.593656, 0.00102456, 0.594244, -0.804284, 0.0228421, 0.538388, -0.066444)
+bone_name = "body"
+bone_idx = 2
+
+[node name="weapon_config" parent="pawn/buck/Armature/Skeleton3D/body" index="0" instance=ExtResource("3_33abw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="node_3d" parent="pawn/buck/Armature/Skeleton3D/body/weapon_config" index="1"]
+transform = Transform3D(1, 0.000136316, 0.000613763, -0.000539042, 0.688354, 0.725374, -0.000323606, -0.725374, 0.688354, -0.395306, 0.484465, 0.13757)
+
+[node name="animation_tree" parent="pawn/buck" index="3"]
 root_motion_track = NodePath("Armature/Skeleton3D:root")
 advance_expression_base_node = NodePath("../../agent")
 
 [node name="agent" parent="pawn" index="3"]
 script = ExtResource("3_ipyb7")
-is_slam_blip = true
 
 [node name="root_motion_apply" type="RootMotionView" parent="pawn" index="4"]
 animation_path = NodePath("../buck/animation_tree")
@@ -43,3 +53,4 @@ script = ExtResource("4_e8eal")
 
 [editable path="pawn"]
 [editable path="pawn/buck"]
+[editable path="pawn/buck/Armature/Skeleton3D/body/weapon_config"]

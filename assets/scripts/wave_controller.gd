@@ -5,7 +5,7 @@ signal wave_started(index: int)
 
 static var inst : WaveController
 
-@export var predefined_waves : Array[Wave]
+@export var predefined_waves : Dictionary
 @export var spawn_radius : float = 22.0
 @export var spawn_origin : Node3D = self
 @export var nav_region : NavigationRegion3D
@@ -23,7 +23,7 @@ var is_enemies_cleared : bool
 var next_wave : Wave :
 	get:
 		wave_index += 1
-		if wave_index < predefined_waves.size():
+		if predefined_waves.has(wave_index):
 			return predefined_waves[wave_index]
 		else:
 			return Wave.new_from_wave_index(wave_index)

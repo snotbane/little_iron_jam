@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b65ambxvqs4de"]
+[gd_scene load_steps=16 format=3 uid="uid://b65ambxvqs4de"]
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_xt3o3"]
 [ext_resource type="PackedScene" uid="uid://dbfv22ve5fi4y" path="res://assets/models/smokey/smokey.glb" id="2_5giu5"]
@@ -10,14 +10,14 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_h0tkf"]
 radius = 0.606037
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3ibgs"]
+animation = &"dropin"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g2xw4"]
 animation = &"idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qxyw7"]
 animation = &"rollin"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g1585"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kt3v4"]
 xfade_time = 0.25
@@ -29,12 +29,23 @@ xfade_time = 0.25
 advance_mode = 2
 advance_expression = "speed == 0"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0ikon"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qhqm6"]
+xfade_time = 0.05
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_11dx5"]
+states/Start/position = Vector2(60, 103.646)
+states/dropin/node = SubResource("AnimationNodeAnimation_3ibgs")
+states/dropin/position = Vector2(227, 99.4691)
 states/idle/node = SubResource("AnimationNodeAnimation_g2xw4")
 states/idle/position = Vector2(392.333, 99)
 states/rollin/node = SubResource("AnimationNodeAnimation_qxyw7")
 states/rollin/position = Vector2(575.667, 100.037)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_g1585"), "idle", "rollin", SubResource("AnimationNodeStateMachineTransition_kt3v4"), "rollin", "idle", SubResource("AnimationNodeStateMachineTransition_bsd48")]
+transitions = ["idle", "rollin", SubResource("AnimationNodeStateMachineTransition_kt3v4"), "rollin", "idle", SubResource("AnimationNodeStateMachineTransition_bsd48"), "Start", "dropin", SubResource("AnimationNodeStateMachineTransition_0ikon"), "dropin", "idle", SubResource("AnimationNodeStateMachineTransition_qhqm6")]
 graph_offset = Vector2(-75, -53)
 
 [node name="smokey" instance=ExtResource("1_xt3o3")]
@@ -56,15 +67,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -0.264452)
 [node name="smokey" parent="pawn" index="2" instance=ExtResource("2_5giu5")]
 
 [node name="Skeleton3D" parent="pawn/smokey/Armature" index="0"]
-bones/1/position = Vector3(-0.0177765, 0.741897, 0.0627585)
-bones/1/rotation = Quaternion(-0.0118782, 0.99344, 0.113724, -0.00154832)
-bones/2/rotation = Quaternion(-0.655034, -1.68518e-07, -2.12974e-07, 0.7556)
+bones/1/position = Vector3(-0.012259, 0.741928, 0.011364)
+bones/1/rotation = Quaternion(-0.00819127, 0.989772, 0.142422, -0.00106782)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(2.79184e-14, 3.50211e-07, -2.57698e-08)
+bones/2/rotation = Quaternion(-0.607918, -1.82439e-07, -2.01412e-07, 0.794)
 
 [node name="mesh" parent="pawn/smokey/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_hwle1")
 
 [node name="bone_attachment_3d" type="BoneAttachment3D" parent="pawn/smokey/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999713, 0.0232486, 0.00577765, -0.0239528, 0.973851, 0.22592, -0.000374255, -0.225993, 0.974128, 0.0177765, 0.741897, -0.0627585)
+transform = Transform3D(0.999864, 0.0159109, 0.00444666, -0.0165191, 0.959298, 0.281912, 0.000219819, -0.281947, 0.95943, 0.012259, 0.741928, -0.011364)
 bone_name = "body"
 bone_idx = 1
 

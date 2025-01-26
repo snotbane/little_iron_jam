@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c1aiimxh63ws2"]
+[gd_scene load_steps=26 format=3 uid="uid://c1aiimxh63ws2"]
 
 [ext_resource type="Script" path="res://assets/scripts/wave_controller.gd" id="1_8vdcl"]
 [ext_resource type="PackedScene" uid="uid://dxn1ecuhl0csi" path="res://assets/prefabs/fmj_level_mesh.tscn" id="1_mdv7l"]
@@ -18,14 +18,6 @@ scenes = {
 crates = 0
 duration = 15.0
 
-[sub_resource type="Resource" id="Resource_bgc7j"]
-script = ExtResource("2_ywm6p")
-scenes = {
-"res://assets/scenes/enemies/stinker.tscn": 3
-}
-crates = 0
-duration = 15.0
-
 [sub_resource type="Resource" id="Resource_5b0ha"]
 script = ExtResource("2_ywm6p")
 scenes = {
@@ -37,9 +29,11 @@ duration = 15.0
 
 [sub_resource type="Resource" id="Resource_cnsst"]
 script = ExtResource("2_ywm6p")
-scenes = {}
+scenes = {
+"res://assets/scenes/enemies/wesley_spawner.tscn": 1
+}
 crates = 0
-duration = 15.0
+duration = 30.0
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_67aro"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -264,7 +258,12 @@ size = Vector2(100, 100)
 
 [node name="arena" type="Node3D" node_paths=PackedStringArray("spawn_origin", "nav_region", "timer", "bell", "ui_anim_player", "time_label")]
 script = ExtResource("1_8vdcl")
-predefined_waves = Array[ExtResource("2_ywm6p")]([SubResource("Resource_n45ke"), SubResource("Resource_bgc7j"), SubResource("Resource_5b0ha"), SubResource("Resource_cnsst")])
+predefined_waves = {
+0: SubResource("Resource_n45ke"),
+1: SubResource("Resource_n45ke"),
+2: SubResource("Resource_5b0ha"),
+3: SubResource("Resource_cnsst")
+}
 spawn_origin = NodePath("wave_spawner")
 nav_region = NodePath("nav_region")
 timer = NodePath("wave_spawner/timer")
@@ -295,7 +294,7 @@ wave_values = [{
 }]
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.402093, 0.216051, 1.3262e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
+transform = Transform3D(0.889744, 0.402093, 0.216051, 1.2517e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.9855, 1, 0.97, 1)
 light_energy = 0.8
@@ -337,7 +336,7 @@ wave_values = [{
 }]
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.402093, 0.216051, 1.3262e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
+transform = Transform3D(0.889744, 0.402093, 0.216051, 1.2517e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.2, 0.6, 1, 1)
 light_energy = 0.0

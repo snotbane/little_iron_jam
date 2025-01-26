@@ -1,0 +1,93 @@
+[gd_scene load_steps=15 format=3 uid="uid://bk2dewnkyfejk"]
+
+[ext_resource type="PackedScene" uid="uid://blaeixdse6y6u" path="res://assets/models/stinker/stinkhopper.glb" id="1_pv5a1"]
+[ext_resource type="Material" uid="uid://b0gpbk5qkyvsa" path="res://assets/models/shell_material.tres" id="2_88n0r"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lyrid"]
+animation = &"dropin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hcep0"]
+animation = &"fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xb1nu"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_32lha"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_48ncx"]
+xfade_time = 0.25
+advance_mode = 2
+advance_expression = "is_walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0cno2"]
+advance_mode = 2
+advance_expression = "is_attacking_blip"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5u86t"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tfit8"]
+xfade_time = 0.25
+advance_mode = 2
+advance_expression = "not is_walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dl00h"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_avcsw"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7u331"]
+advance_mode = 2
+advance_expression = "is_attacking_blip"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_do0ju"]
+states/Start/position = Vector2(52, 94.6667)
+states/dropin/node = SubResource("AnimationNodeAnimation_lyrid")
+states/dropin/position = Vector2(222.889, 99.5556)
+states/fire/node = SubResource("AnimationNodeAnimation_hcep0")
+states/fire/position = Vector2(484.667, 191.333)
+states/idle/node = SubResource("AnimationNodeAnimation_xb1nu")
+states/idle/position = Vector2(392.667, 100.222)
+states/run/node = SubResource("AnimationNodeAnimation_32lha")
+states/run/position = Vector2(577.333, 100)
+transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_48ncx"), "run", "fire", SubResource("AnimationNodeStateMachineTransition_0cno2"), "fire", "idle", SubResource("AnimationNodeStateMachineTransition_5u86t"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_tfit8"), "Start", "dropin", SubResource("AnimationNodeStateMachineTransition_dl00h"), "dropin", "idle", SubResource("AnimationNodeStateMachineTransition_avcsw"), "idle", "fire", SubResource("AnimationNodeStateMachineTransition_7u331")]
+
+[node name="stinkhopper" instance=ExtResource("1_pv5a1")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/position = Vector3(0.0295276, 0.443894, -0.0713562)
+bones/1/rotation = Quaternion(-0.732124, 4.72403e-18, -4.7539e-18, 0.681172)
+bones/2/rotation = Quaternion(2.92054e-06, -0.842465, 0.538752, -1.76677e-06)
+bones/3/rotation = Quaternion(7.34548e-07, -0.792279, 0.610159, -5.37096e-07)
+bones/4/position = Vector3(0.0395902, 0.125544, 0.211514)
+bones/4/rotation = Quaternion(0.659887, 0.0531846, 0.0500793, 0.747805)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-3.06371e-06, -0.886307, 0.463099, 1.50489e-06)
+bones/6/rotation = Quaternion(-7.85389e-07, -0.850255, 0.526371, 4.59561e-07)
+bones/7/position = Vector3(-0.0395902, 0.125544, 0.211514)
+bones/7/rotation = Quaternion(0.659887, -0.0531846, -0.0500793, 0.747805)
+bones/7/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.0595613, -0.0107425, -0.708788, 0.702821)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-4.89838e-08, -0.460491, 0.887664, 8.76471e-08)
+bones/10/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(0.0951903, -0.0447858, 0.71074, 0.695545)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(4.9486e-08, -0.47161, 0.881807, -8.70735e-08)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(0.357128, -0.0020169, -0.000700057)
+bones/14/rotation = Quaternion(-3.09086e-08, 0.707107, 0.707107, -3.09086e-08)
+bones/16/position = Vector3(-0.357128, -0.00201691, -0.000700057)
+bones/16/rotation = Quaternion(-3.09086e-08, 0.707107, 0.707107, -3.09086e-08)
+
+[node name="stinkhopper" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_88n0r")
+
+[node name="animation_tree" type="AnimationTree" parent="." index="2"]
+root_motion_track = NodePath("Armature/Skeleton3D:root")
+tree_root = SubResource("AnimationNodeStateMachine_do0ju")
+anim_player = NodePath("../AnimationPlayer")

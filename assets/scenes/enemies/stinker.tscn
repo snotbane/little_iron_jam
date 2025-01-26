@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://clq3nof8vclwo"]
+[gd_scene load_steps=5 format=3 uid="uid://clq3nof8vclwo"]
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_jdxd2"]
+[ext_resource type="PackedScene" uid="uid://bk2dewnkyfejk" path="res://assets/prefabs/stinkhopper.tscn" id="2_4tm7l"]
 [ext_resource type="Script" path="res://assets/scripts/brain_stinker.gd" id="2_xem13"]
+[ext_resource type="Script" path="res://assets/scripts/root_motion.gd" id="4_40lkl"]
 
 [node name="stinker" instance=ExtResource("1_jdxd2")]
 
@@ -13,16 +15,37 @@ health = 3
 text = "3
 "
 
-[node name="mesh" parent="pawn" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="stinkhopper" parent="pawn" index="2" instance=ExtResource("2_4tm7l")]
+
+[node name="Skeleton3D" parent="pawn/stinkhopper/Armature" index="0"]
+bones/1/position = Vector3(0.00296425, 0.591544, -0.0562899)
+bones/1/rotation = Quaternion(-0.699866, 0, 0, 0.714274)
+bones/2/rotation = Quaternion(2.55809e-06, -0.732714, 0.680536, -2.25991e-06)
+bones/3/rotation = Quaternion(6.78886e-07, -0.729245, 0.684253, -6.05927e-07)
+bones/4/position = Vector3(0.0396453, 0.125208, 0.210783)
+bones/4/rotation = Quaternion(0.577617, 0.047024, 0.0661268, 0.812265)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-2.57218e-06, -0.736959, 0.675937, 2.24386e-06)
+bones/6/rotation = Quaternion(-6.81371e-07, -0.732051, 0.681249, 6.0313e-07)
+bones/7/position = Vector3(-0.0396453, 0.125208, 0.210783)
+bones/7/rotation = Quaternion(0.577617, -0.047024, -0.0661268, 0.812265)
+bones/7/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.071429, 0.138863, -0.692627, 0.70419)
+bones/10/rotation = Quaternion(-4.04321e-08, -0.659458, 0.751742, 1.30003e-07)
+bones/12/rotation = Quaternion(-0.068563, -0.142913, 0.691732, 0.704544)
+bones/13/rotation = Quaternion(3.99154e-08, -0.660247, 0.751048, -1.31908e-07)
+
+[node name="animation_tree" parent="pawn/stinkhopper" index="2"]
+advance_expression_base_node = NodePath("../../agent")
 
 [node name="agent" parent="pawn" index="3"]
 target_desired_distance = 5.0
 script = ExtResource("2_xem13")
-lunge_pre_delay = 0.4
-lunge_duration = 0.33
-lunge_post_delay = 0.75
-lunge_speed = 1000.0
 walk_speed = 200.0
 
+[node name="root_motion_view" type="RootMotionView" parent="pawn" index="4"]
+animation_path = NodePath("../stinkhopper/animation_tree")
+script = ExtResource("4_40lkl")
+
 [editable path="pawn"]
+[editable path="pawn/stinkhopper"]

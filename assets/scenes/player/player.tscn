@@ -105,7 +105,7 @@ script = ExtResource("1_b2uww")
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-damage = 3
+damage = 2
 
 [node name="shape" parent="pawn" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -202,9 +202,9 @@ script = ExtResource("2_52ijy")
 walk_speed = 50.0
 walk_damping = 10.0
 turn_speed = 20.0
-dodge_impulse = 30.0
+dodge_impulse = 20.0
 dodge_damping = 4.0
-dodge_delay = 0.25
+dodge_delay = 0.6
 dodge_ammo_cost = 1
 
 [node name="omni_light_3d" type="OmniLight3D" parent="pawn"]

@@ -7,17 +7,24 @@
 
 [node name="enemy" instance=ExtResource("1_5cnvb")]
 
+[node name="ammo" parent="pawn" index="1"]
+health = 30
+
+[node name="ammo_count_label" parent="pawn/ammo" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.81014, 0)
+text = "30"
+
 [node name="buck" parent="pawn" index="2" instance=ExtResource("2_kvpmg")]
 
 [node name="Skeleton3D" parent="pawn/buck/Armature" index="0"]
-bones/1/position = Vector3(-2.77432e-17, 0.413123, 1.77977)
-bones/1/rotation = Quaternion(-0.691324, -2.66734e-09, 2.60093e-09, 0.722545)
-bones/2/rotation = Quaternion(-5.69258e-08, 0.474968, 0.880003, -4.63479e-08)
-bones/3/rotation = Quaternion(-4.70545e-08, 0.71017, 0.70403, 4.96298e-08)
-bones/4/position = Vector3(-0.884316, 1.8166, 0.00991442)
-bones/4/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
-bones/5/position = Vector3(0.884316, 1.8166, 0.00991441)
-bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
+bones/1/position = Vector3(1.81142e-18, 0.413123, 1.77977)
+bones/1/rotation = Quaternion(-0.690376, -2.67528e-09, 2.59261e-09, 0.723451)
+bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
+bones/3/rotation = Quaternion(-2.89046e-08, 0.896653, 0.442734, 6.1982e-08)
+bones/4/position = Vector3(-0.884316, 1.83901, 0.00165131)
+bones/4/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999714)
+bones/5/position = Vector3(0.884316, 1.83901, 0.0016513)
+bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999714)
 
 [node name="animation_tree" parent="pawn/buck" index="2"]
 root_motion_track = NodePath("Armature/Skeleton3D:root")

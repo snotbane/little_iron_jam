@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://assets/scripts/ammo_label.gd" id="2_wp3qm"]
 [ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="3_fc223"]
 [ext_resource type="AudioStream" uid="uid://breoqkbo0agvm" path="res://assets/audio/game_over_church_bell.ogg" id="4_341nf"]
-[ext_resource type="Script" path="res://assets/scenes/player/randomized_text.gd" id="4_ube7t"]
+[ext_resource type="Script" path="res://assets/scripts/randomized_text.gd" id="4_ube7t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ukhfm"]
 font = ExtResource("1_pbwtn")
@@ -56,22 +56,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_p6v7o"]
-resource_name = "notify"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ammo_label:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.25, 1.25), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_jr2kp"]
@@ -129,6 +113,22 @@ tracks/3/keys = {
 "args": [],
 "method": &"randomize_text"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_p6v7o"]
+resource_name = "notify"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ammo_label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.25, 1.25), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0qa7h"]

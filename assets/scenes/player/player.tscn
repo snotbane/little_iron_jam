@@ -112,7 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="ammo" parent="pawn" index="1"]
 belongs_to_player = true
-health = 1
+health = 300
 
 [node name="shape" parent="pawn/ammo" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499626, 0)

@@ -1,7 +1,7 @@
 
 class_name Ammo extends Area3D
 
-const WILHELM_CHANCE := 0.005
+const WILHELM_CHANCE := 0.01
 const WILHELM_AUDIO := preload("res://assets/audio/wilhelm_robot.ogg")
 
 signal changed

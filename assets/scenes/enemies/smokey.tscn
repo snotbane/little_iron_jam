@@ -56,15 +56,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -0.264452)
 [node name="smokey" parent="pawn" index="2" instance=ExtResource("2_5giu5")]
 
 [node name="Skeleton3D" parent="pawn/smokey/Armature" index="0"]
-bones/1/position = Vector3(0.017663, 0.741844, 0.0181332)
-bones/1/rotation = Quaternion(0.0115409, 0.990311, 0.138382, 0.00150375)
-bones/2/rotation = Quaternion(-0.615953, -1.79827e-07, -2.03666e-07, 0.787783)
+bones/1/position = Vector3(-0.0177765, 0.741897, 0.0627585)
+bones/1/rotation = Quaternion(-0.0118782, 0.99344, 0.113724, -0.00154832)
+bones/2/rotation = Quaternion(-0.655034, -1.68518e-07, -2.12974e-07, 0.7556)
 
 [node name="mesh" parent="pawn/smokey/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_hwle1")
 
 [node name="bone_attachment_3d" type="BoneAttachment3D" parent="pawn/smokey/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999729, -0.0224418, -0.00617283, 0.0232743, 0.961434, 0.274047, -0.000215355, -0.274117, 0.961696, -0.017663, 0.741844, -0.0181332)
+transform = Transform3D(0.999713, 0.0232486, 0.00577765, -0.0239528, 0.973851, 0.22592, -0.000374255, -0.225993, 0.974128, 0.0177765, 0.741897, -0.0627585)
 bone_name = "body"
 bone_idx = 1
 
@@ -82,10 +82,7 @@ transform = Transform3D(0.991531, -0.0776027, -0.104131, 0.0868241, 0.992404, 0.
 tree_root = SubResource("AnimationNodeStateMachine_11dx5")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="mesh" parent="pawn" index="3"]
-visible = false
-
-[node name="agent" parent="pawn" index="4" node_paths=PackedStringArray("weapon_config")]
+[node name="agent" parent="pawn" index="3" node_paths=PackedStringArray("weapon_config")]
 target_desired_distance = 10.0
 script = ExtResource("2_dkyrx")
 weapon_config = NodePath("../smokey/Armature/Skeleton3D/bone_attachment_3d/weapon_config_pistol")

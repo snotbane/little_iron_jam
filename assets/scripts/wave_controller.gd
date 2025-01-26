@@ -17,9 +17,9 @@ static var inst : WaveController
 
 var current_wave : Wave
 var is_enemies_cleared : bool
-var is_game_over : bool
+@export var is_game_over : bool
 
-var wave_index : int = -1
+@export var wave_index : int = -1
 var next_wave : Wave :
 	get:
 		wave_index += 1
@@ -30,6 +30,7 @@ var next_wave : Wave :
 
 func _ready() -> void:
 	inst = self
+	if is_game_over: return
 	timer.timeout.connect(proceed_to_next_wave)
 	proceed_to_next_wave()
 
@@ -72,8 +73,9 @@ func start_wave(wave: Wave) -> void:
 
 func actually_start_wave() -> void:
 	timer.start()
-	for scene in current_wave.scenes:
-		for i in current_wave.scenes[scene]:
+	for scene_path in current_wave.scenes:
+		var scene : PackedScene = load(scene_path)
+		for i in current_wave.scenes[scene_path]:
 			spawn_scene(scene)
 	check_enemy_group.call_deferred()
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmm5rafal8ul4"]
+[gd_scene load_steps=5 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
+[ext_resource type="PackedScene" uid="uid://vk56c3de00ln" path="res://assets/scenes/enemies/buck.tscn" id="4_imrbj"]
 [ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pistol_pickup.tscn" id="6_g1c76"]
 
 [node name="world" type="Node3D"]
@@ -17,4 +18,18 @@ wave_index = 3
 [node name="pistol_pickup" parent="." instance=ExtResource("6_g1c76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51345, -0.1, -24.6674)
 
+[node name="enemy" parent="." instance=ExtResource("4_imrbj")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -3.24098, -0.1, -27.576)
+
+[node name="Skeleton3D" parent="enemy/pawn/buck/Armature" index="0"]
+bones/0/position = Vector3(0, 0, -4.92424)
+bones/1/position = Vector3(0.0120712, 0.410321, 1.77977)
+bones/1/rotation = Quaternion(-0.684856, 0.0104459, -0.0105214, 0.728528)
+bones/4/position = Vector3(-0.889356, 2.20348, 0.0767083)
+bones/4/rotation = Quaternion(0.176642, 0.000223385, 0.0112654, 0.984211)
+
 [connection signal="game_over" from="player" to="arena" method="stop_everything"]
+
+[editable path="enemy"]
+[editable path="enemy/pawn"]
+[editable path="enemy/pawn/buck"]

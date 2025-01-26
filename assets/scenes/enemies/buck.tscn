@@ -1,7 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://vk56c3de00ln"]
+[gd_scene load_steps=5 format=3 uid="uid://vk56c3de00ln"]
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_5cnvb"]
+[ext_resource type="PackedScene" uid="uid://b27ly3vvi5qc4" path="res://assets/prefabs/buck.tscn" id="2_kvpmg"]
+[ext_resource type="Script" path="res://assets/scripts/buck_brain.gd" id="3_ipyb7"]
+[ext_resource type="Script" path="res://assets/scripts/root_motion.gd" id="4_e8eal"]
 
 [node name="enemy" instance=ExtResource("1_5cnvb")]
 
+[node name="buck" parent="pawn" index="2" instance=ExtResource("2_kvpmg")]
+
+[node name="Skeleton3D" parent="pawn/buck/Armature" index="0"]
+bones/1/position = Vector3(-2.77432e-17, 0.413123, 1.77977)
+bones/1/rotation = Quaternion(-0.691324, -2.66734e-09, 2.60093e-09, 0.722545)
+bones/2/rotation = Quaternion(-5.69258e-08, 0.474968, 0.880003, -4.63479e-08)
+bones/3/rotation = Quaternion(-4.70545e-08, 0.71017, 0.70403, 4.96298e-08)
+bones/4/position = Vector3(-0.884316, 1.8166, 0.00991442)
+bones/4/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
+bones/5/position = Vector3(0.884316, 1.8166, 0.00991441)
+bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
+
+[node name="animation_tree" parent="pawn/buck" index="2"]
+root_motion_track = NodePath("Armature/Skeleton3D:root")
+advance_expression_base_node = NodePath("../../agent")
+
+[node name="agent" parent="pawn" index="3"]
+script = ExtResource("3_ipyb7")
+is_slam_blip = true
+
+[node name="root_motion_apply" type="RootMotionView" parent="pawn" index="4"]
+animation_path = NodePath("../buck/animation_tree")
+script = ExtResource("4_e8eal")
+
 [editable path="pawn"]
+[editable path="pawn/buck"]

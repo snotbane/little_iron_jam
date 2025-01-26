@@ -1,0 +1,67 @@
+[gd_scene load_steps=13 format=3 uid="uid://b27ly3vvi5qc4"]
+
+[ext_resource type="PackedScene" uid="uid://drsjnlg26lg3w" path="res://assets/models/buck/buck.glb" id="1_8hrt4"]
+[ext_resource type="Material" uid="uid://j8wy22fkotys" path="res://assets/models/buck/buck_material.tres" id="2_usmyc"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5pboo"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6c6fl"]
+animation = &"rollin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hmrxa"]
+animation = &"slam"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mwqgc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2o0kj"]
+xfade_time = 0.25
+advance_mode = 2
+advance_expression = "is_walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_coyo4"]
+xfade_time = 0.25
+advance_mode = 2
+advance_expression = "not is_walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f13h5"]
+advance_mode = 2
+advance_expression = "is_slam_blip"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xtnds"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lthsm"]
+advance_mode = 2
+advance_expression = "is_slam_blip"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_y5qke"]
+states/Idle/node = SubResource("AnimationNodeAnimation_5pboo")
+states/Idle/position = Vector2(386.667, 100)
+states/rollin/node = SubResource("AnimationNodeAnimation_6c6fl")
+states/rollin/position = Vector2(588.667, 100.889)
+states/slam/node = SubResource("AnimationNodeAnimation_hmrxa")
+states/slam/position = Vector2(485.667, 239.667)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_mwqgc"), "Idle", "rollin", SubResource("AnimationNodeStateMachineTransition_2o0kj"), "rollin", "Idle", SubResource("AnimationNodeStateMachineTransition_coyo4"), "rollin", "slam", SubResource("AnimationNodeStateMachineTransition_f13h5"), "slam", "Idle", SubResource("AnimationNodeStateMachineTransition_xtnds"), "Idle", "slam", SubResource("AnimationNodeStateMachineTransition_lthsm")]
+graph_offset = Vector2(-135, 13)
+
+[node name="buck" instance=ExtResource("1_8hrt4")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/position = Vector3(3.26509e-17, 0.413123, 1.77977)
+bones/1/rotation = Quaternion(-0.689978, -2.69648e-09, 2.57037e-09, 0.72383)
+bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
+bones/3/rotation = Quaternion(-2.06384e-08, 0.952897, 0.303295, 7.19417e-08)
+bones/4/position = Vector3(-0.884316, 1.85048, 1.50603e-08)
+bones/4/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
+bones/5/position = Vector3(0.884316, 1.85048, 1.8528e-09)
+bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_usmyc")
+
+[node name="animation_tree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_y5qke")
+anim_player = NodePath("../AnimationPlayer")

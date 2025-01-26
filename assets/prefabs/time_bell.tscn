@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dll8gybqf0tn8"]
+
+[ext_resource type="PackedScene" uid="uid://jkbl7tay5an" path="res://assets/models/bell/time_bell.glb" id="1_5hubn"]
+[ext_resource type="Material" uid="uid://bncjcsxwxwsrl" path="res://assets/models/bell/bell_well.tres" id="2_wdv4s"]
+
+[node name="time_bell" instance=ExtResource("1_5hubn")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/position = Vector3(0, -2.32499, 0)
+bones/1/rotation = Quaternion(-2.98023e-08, 1.19209e-07, 1.05879e-22, 1)
+bones/2/rotation = Quaternion(0.707107, -5.0243e-15, -0.707107, 2.0963e-21)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.707107, 1.96704e-08, 0.707107, -3.09086e-08)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_wdv4s")

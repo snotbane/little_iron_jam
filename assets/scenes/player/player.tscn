@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://becpsh0bwexhi"]
+[gd_scene load_steps=35 format=3 uid="uid://becpsh0bwexhi"]
 
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
 [ext_resource type="Script" path="res://assets/scripts/player_movement.gd" id="2_52ijy"]
@@ -11,6 +11,8 @@
 [ext_resource type="Material" uid="uid://c713old11x4xp" path="res://assets/models/jack/jack_material.tres" id="5_qnspn"]
 [ext_resource type="Script" path="res://assets/scripts/ammo_label.gd" id="5_wf323"]
 [ext_resource type="FontFile" uid="uid://cgs4jbvrniee0" path="res://assets/fonts/Arbutus-Regular.ttf" id="10_e3q6j"]
+[ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="12_belq2"]
+[ext_resource type="AudioStream" uid="uid://breoqkbo0agvm" path="res://assets/audio/game_over_church_bell.ogg" id="13_vbgvh"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nd0xb"]
 height = 1.0
@@ -293,6 +295,34 @@ label_settings = SubResource("LabelSettings_ukhfm")
 vertical_alignment = 2
 script = ExtResource("5_wf323")
 ammo = NodePath("../../../pawn/ammo")
+
+[node name="game_over" type="Control" parent="canvas_layer/ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label" type="RichTextLabel" parent="canvas_layer/ui/game_over"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0.283333, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/normal_font = ExtResource("12_belq2")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]GAME  OVER"
+fit_content = true
+
+[node name="audio_stream_player" type="AudioStreamPlayer" parent="canvas_layer/ui/game_over"]
+stream = ExtResource("13_vbgvh")
 
 [node name="animation_player" type="AnimationPlayer" parent="canvas_layer/ui"]
 libraries = {

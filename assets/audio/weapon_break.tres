@@ -1,17 +1,15 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://c1an71pl0w4y1"]
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://c1an71pl0w4y1"]
 
 [ext_resource type="AudioStream" uid="uid://7dvwdft0qyrd" path="res://assets/audio/weapon_break_01.ogg" id="1_ltu8x"]
 [ext_resource type="AudioStream" uid="uid://ds7iof2bgp2kb" path="res://assets/audio/weapon_break_02.ogg" id="2_uk3xl"]
 [ext_resource type="AudioStream" uid="uid://c66gdlx0dx68f" path="res://assets/audio/weapon_break_03.ogg" id="3_hv7hk"]
 [ext_resource type="AudioStream" uid="uid://cjeubxinrstm2" path="res://assets/audio/weapon_break_04.ogg" id="4_tu85u"]
-[ext_resource type="AudioStream" uid="uid://dklvf7vivft7n" path="res://assets/audio/weapon_break_05.ogg" id="5_2sv03"]
-[ext_resource type="AudioStream" uid="uid://yulgvai4p3vp" path="res://assets/audio/weapon_break_06.ogg" id="6_6ydrd"]
+[ext_resource type="AudioStream" uid="uid://yulgvai4p3vp" path="res://assets/audio/weapon_break_05.ogg" id="5_2sv03"]
 
 [resource]
-streams_count = 6
+streams_count = 5
 stream_0/stream = ExtResource("1_ltu8x")
 stream_1/stream = ExtResource("2_uk3xl")
 stream_2/stream = ExtResource("3_hv7hk")
 stream_3/stream = ExtResource("4_tu85u")
 stream_4/stream = ExtResource("5_2sv03")
-stream_5/stream = ExtResource("6_6ydrd")

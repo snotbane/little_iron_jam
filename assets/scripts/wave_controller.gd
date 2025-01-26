@@ -10,11 +10,13 @@ static var inst : WaveController
 @export var spawn_origin : Node3D = self
 @export var nav_region : NavigationRegion3D
 @export var timer : Timer
+@export var bell : Bell
 
 @export var ui_anim_player : AnimationPlayer
 @export var time_label : Label
 
 var current_wave : Wave
+var is_enemies_cleared : bool
 
 var wave_index : int = -1
 var next_wave : Wave :
@@ -47,38 +49,45 @@ func proceed_to_next_wave() -> void:
 func start_wave(wave: Wave) -> void:
 	current_wave = wave
 
-	for scene in wave.scenes:
-		for i in wave.scenes[scene]:
-			spawn_scene(scene)
-
 	ui_anim_player.play(&"notify_clock")
 	get_tree().call_group(&"wave_timed", "set_current_hour", wave_index)
 	# wave_started.emit(wave_index)
 
 	if timer.is_stopped():
 		timer.wait_time = wave.duration
-		await ui_anim_player.animation_finished
-		timer.start()
 	else:
 		timer.wait_time = timer.time_left + wave.duration
-		timer.paused = true
-		await ui_anim_player.animation_finished
-		timer.paused = false
+		timer.stop()
+	await ui_anim_player.animation_finished
+	actually_start_wave()
+
+
+func actually_start_wave() -> void:
+	timer.start()
+	for scene in current_wave.scenes:
+		for i in current_wave.scenes[scene]:
+			spawn_scene(scene)
+	check_enemy_group.call_deferred()
 
 
 func end_wave() -> void:
-	## TODO: show/enable bell
-
-	pass
+	bell.is_enabled = true
 
 
 func spawn_scene(scene: PackedScene) -> void:
 	var node : Node3D = scene.instantiate()
-	get_tree().root.add_child.call_deferred(node)
+	setup_spawned_node.call_deferred(node)
+
+
+func setup_spawned_node(node: Node3D) -> void:
+	get_tree().root.add_child(node)
+	node.global_position = spawn_origin.global_position + Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)).limit_length() * spawn_radius
+
 
 
 func check_enemy_group() -> void:
 	if not get_tree(): return
-	if get_tree().get_node_count_in_group(&"enemy") > 0: return
 
-	end_wave()
+	is_enemies_cleared = get_tree().get_node_count_in_group(&"enemy") == 0
+	if is_enemies_cleared:
+		end_wave()

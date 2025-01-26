@@ -1,0 +1,199 @@
+[gd_scene load_steps=12 format=3 uid="uid://bikrt5av7f0d3"]
+
+[ext_resource type="FontFile" uid="uid://cgs4jbvrniee0" path="res://assets/fonts/Arbutus-Regular.ttf" id="1_pbwtn"]
+[ext_resource type="Script" path="res://assets/scripts/ammo_label.gd" id="2_wp3qm"]
+[ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="3_fc223"]
+[ext_resource type="AudioStream" uid="uid://breoqkbo0agvm" path="res://assets/audio/game_over_church_bell.ogg" id="4_341nf"]
+[ext_resource type="Script" path="res://assets/scenes/player/randomized_text.gd" id="4_ube7t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ukhfm"]
+font = ExtResource("1_pbwtn")
+font_size = 80
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qx8tg"]
+font = ExtResource("3_fc223")
+font_size = 80
+font_color = Color(1, 0.16, 0.258, 1)
+outline_size = 40
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_umlne"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ammo_label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("game_over:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("game_over:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p6v7o"]
+resource_name = "notify"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ammo_label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jr2kp"]
+resource_name = "game_over"
+length = 6.374
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("game_over:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("game_over/audio_stream_player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_341nf")
+}],
+"times": PackedFloat32Array(1.86667)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("game_over:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("game_over/label")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.96667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"randomize_text"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qa7h"]
+_data = {
+"RESET": SubResource("Animation_umlne"),
+"game_over": SubResource("Animation_jr2kp"),
+"notify": SubResource("Animation_p6v7o")
+}
+
+[node name="ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ammo_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -101.0
+offset_right = 130.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 101)
+text = "10"
+label_settings = SubResource("LabelSettings_ukhfm")
+vertical_alignment = 2
+script = ExtResource("2_wp3qm")
+
+[node name="game_over" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 0)
+
+[node name="label" type="Label" parent="game_over"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -52.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 40
+text = "GAME   OVER"
+label_settings = SubResource("LabelSettings_qx8tg")
+horizontal_alignment = 1
+script = ExtResource("4_ube7t")
+texts = PackedStringArray("Game   Over")
+
+[node name="audio_stream_player" type="AudioStreamPlayer" parent="game_over"]
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0qa7h")
+}
+
+[connection signal="changed" from="ammo_label" to="animation_player" method="play" binds= [&"notify"]]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=35 format=3 uid="uid://becpsh0bwexhi"]
+[gd_scene load_steps=29 format=3 uid="uid://becpsh0bwexhi"]
 
+[ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_b2uww"]
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
 [ext_resource type="Script" path="res://assets/scripts/player_movement.gd" id="2_52ijy"]
 [ext_resource type="PackedScene" uid="uid://38l7tovwc1uw" path="res://assets/scenes/player/crosshair.tscn" id="2_bufda"]
@@ -9,10 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="5_7f5fl"]
 [ext_resource type="AudioStream" uid="uid://cepjnnytjndrn" path="res://assets/audio/player_dodge.ogg" id="5_i1xyr"]
 [ext_resource type="Material" uid="uid://c713old11x4xp" path="res://assets/models/jack/jack_material.tres" id="5_qnspn"]
-[ext_resource type="Script" path="res://assets/scripts/ammo_label.gd" id="5_wf323"]
-[ext_resource type="FontFile" uid="uid://cgs4jbvrniee0" path="res://assets/fonts/Arbutus-Regular.ttf" id="10_e3q6j"]
-[ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="12_belq2"]
-[ext_resource type="AudioStream" uid="uid://breoqkbo0agvm" path="res://assets/audio/game_over_church_bell.ogg" id="13_vbgvh"]
+[ext_resource type="PackedScene" uid="uid://bikrt5av7f0d3" path="res://assets/scenes/player/player_ui.tscn" id="10_50bck"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nd0xb"]
 height = 1.0
@@ -100,50 +98,8 @@ states/walk/position = Vector2(506.037, 6.22222)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_3tb4j"), "walk", "bash", SubResource("AnimationNodeStateMachineTransition_5eunj"), "bash", "walk", SubResource("AnimationNodeStateMachineTransition_2qugt"), "walk", "recoil", SubResource("AnimationNodeStateMachineTransition_o5jry"), "recoil", "walk", SubResource("AnimationNodeStateMachineTransition_82tdi")]
 graph_offset = Vector2(-3, -65)
 
-[sub_resource type="LabelSettings" id="LabelSettings_ukhfm"]
-font = ExtResource("10_e3q6j")
-font_size = 80
-outline_size = 16
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_umlne"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ammo_label:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_p6v7o"]
-resource_name = "notify"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ammo_label:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.25, 1.25), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qa7h"]
-_data = {
-"RESET": SubResource("Animation_umlne"),
-"notify": SubResource("Animation_p6v7o")
-}
-
 [node name="player" type="Node3D"]
+script = ExtResource("1_b2uww")
 
 [node name="pawn" parent="." instance=ExtResource("1_w8p5k")]
 axis_lock_linear_y = true
@@ -156,7 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="ammo" parent="pawn" index="1"]
 belongs_to_player = true
-health = 300
+health = 1
 
 [node name="shape" parent="pawn/ammo" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499626, 0)
@@ -183,6 +139,7 @@ bones/7/rotation = Quaternion(-3.09086e-08, -0.707107, 0.707107, -5.33851e-08)
 bones/8/rotation = Quaternion(0.707107, 0.000474727, 0.000474727, 0.707107)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(-0.206189, 0.0900564, -0.369741, 0.901481)
+bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(0.201848, 0.0836077, -0.373438, 0.90156)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(0.0767259, -0.197743, 0.901447, -0.377365)
@@ -276,69 +233,19 @@ fov = 30.0
 
 [node name="canvas_layer" type="CanvasLayer" parent="."]
 
-[node name="ui" type="Control" parent="canvas_layer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ui" parent="canvas_layer" instance=ExtResource("10_50bck")]
 
-[node name="ammo_label" type="Label" parent="canvas_layer/ui" node_paths=PackedStringArray("ammo")]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -101.0
-offset_right = 130.0
-grow_vertical = 0
-pivot_offset = Vector2(0, 101)
-text = "10"
-label_settings = SubResource("LabelSettings_ukhfm")
-vertical_alignment = 2
-script = ExtResource("5_wf323")
+[node name="ammo_label" parent="canvas_layer/ui" index="0" node_paths=PackedStringArray("ammo")]
 ammo = NodePath("../../../pawn/ammo")
 
-[node name="game_over" type="Control" parent="canvas_layer/ui"]
-visible = false
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="label" type="RichTextLabel" parent="canvas_layer/ui/game_over"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(1, 0.283333, 0, 1)
-theme_override_constants/outline_size = 40
-theme_override_fonts/normal_font = ExtResource("12_belq2")
-theme_override_font_sizes/normal_font_size = 100
-bbcode_enabled = true
-text = "[center]GAME  OVER"
-fit_content = true
-
-[node name="audio_stream_player" type="AudioStreamPlayer" parent="canvas_layer/ui/game_over"]
-stream = ExtResource("13_vbgvh")
-
-[node name="animation_player" type="AnimationPlayer" parent="canvas_layer/ui"]
-libraries = {
-"": SubResource("AnimationLibrary_0qa7h")
-}
-
 [connection signal="received_weapon_config" from="pawn" to="camera_hook/crosshair" method="_on_received_weapon_config"]
+[connection signal="died" from="pawn/ammo" to="." method="emit_signal" binds= [&"game_over"]]
+[connection signal="died" from="pawn/ammo" to="canvas_layer/ui/animation_player" method="play" binds= [&"game_over"]]
 [connection signal="on_dodge" from="pawn/player_input" to="pawn/mesh_scene/animation_tree" method="dodge"]
 [connection signal="speed_changed" from="pawn/player_input" to="pawn/mesh_scene/animation_tree" method="set_walk_speed"]
 [connection signal="angle_changed" from="camera_hook/crosshair" to="pawn/mesh_scene/animation_tree" method="set_aim_vector"]
 [connection signal="shoot_start" from="camera_hook/crosshair" to="pawn/mesh_scene/animation_tree" method="recoil"]
-[connection signal="changed" from="canvas_layer/ui/ammo_label" to="canvas_layer/ui/animation_player" method="play" binds= [&"notify"]]
 
 [editable path="pawn"]
 [editable path="pawn/mesh_scene"]
+[editable path="canvas_layer/ui"]

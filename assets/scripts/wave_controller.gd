@@ -17,6 +17,7 @@ static var inst : WaveController
 
 var current_wave : Wave
 var is_enemies_cleared : bool
+var is_game_over : bool
 
 var wave_index : int = -1
 var next_wave : Wave :
@@ -34,6 +35,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if is_game_over: return
 	var time := timer.wait_time if timer.is_stopped() else timer.time_left
 	var minutes := floori(time / 60)
 	var seconds := floori(fmod(time, 60))
@@ -45,6 +47,11 @@ func _process(delta: float) -> void:
 func proceed_to_next_wave() -> void:
 	if not bell.try_ring_bell():
 		start_wave(next_wave)
+
+
+func stop_everything() -> void:
+	timer.stop()
+	is_game_over = true
 
 
 func start_wave(wave: Wave) -> void:

@@ -7,8 +7,8 @@ class_name WaveSettings extends Resource
 @export var hour_difficulty_curve : Curve
 
 func get_difficulty(index: int) -> float:
-	var hour := index % Wave.HOUR_COUNT
-	return overall_difficulty_curve.sample(float(index) / overall_difficulty_levels) * hour_difficulty_curve.sample(float(hour) / Wave.HOUR_COUNT)
+	var hour := index % Wave.HOURS_IN_DAY
+	return overall_difficulty_curve.sample(float(index) / overall_difficulty_levels) * hour_difficulty_curve.sample(float(hour) / Wave.HOURS_IN_DAY)
 
 
 @export var scene_chance_weights : Dictionary

@@ -36,17 +36,17 @@ text = "30"
 [node name="buck" parent="pawn" index="2" instance=ExtResource("2_kvpmg")]
 
 [node name="Skeleton3D" parent="pawn/buck/Armature" index="0"]
-bones/1/position = Vector3(-0.0176106, 0.406016, 1.77977)
-bones/1/rotation = Quaternion(-0.695114, -0.0140994, 0.0150286, 0.718604)
+bones/1/position = Vector3(-0.00807185, 0.407106, 1.77977)
+bones/1/rotation = Quaternion(-0.691883, -0.00618909, 0.00681396, 0.721951)
 bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
 bones/3/rotation = Quaternion(-2.06384e-08, 0.952897, 0.303295, 7.19417e-08)
-bones/4/position = Vector3(-0.876833, 2.36409, 0.0474005)
-bones/4/rotation = Quaternion(0.00424434, 8.4471e-07, 0.00156872, 0.99999)
+bones/4/position = Vector3(-0.878772, 2.34217, 0.00385864)
+bones/4/rotation = Quaternion(0.0331025, 3.07323e-05, 0.00319815, 0.999447)
 bones/5/position = Vector3(0.884316, 1.85048, 1.8528e-09)
 bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
 
 [node name="body" type="BoneAttachment3D" parent="pawn/buck/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.999151, -0.0336097, -0.0238386, -0.0412007, 0.823712, 0.56551, 0.000629516, 0.566012, -0.824397, -0.0213076, 0.467419, -0.0696875)
+transform = Transform3D(-0.999831, -0.0147914, -0.0109602, -0.018403, 0.81897, 0.573541, 0.000492598, 0.573646, -0.819103, -0.0104302, 0.485757, -0.0690364)
 bone_name = "body"
 bone_idx = 2
 
@@ -66,7 +66,8 @@ advance_expression_base_node = NodePath("../../agent")
 target_desired_distance = 3.5
 script = ExtResource("3_ipyb7")
 weapon_config = NodePath("../buck/Armature/Skeleton3D/body/weapon_config_buck")
-turn_speed = 1.0
+walk_speed = 140.0
+turn_speed = 0.8
 
 [node name="root_motion_apply" type="RootMotionView" parent="pawn" index="4"]
 animation_path = NodePath("../buck/animation_tree")

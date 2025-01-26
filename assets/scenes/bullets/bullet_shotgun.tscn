@@ -6,4 +6,7 @@
 [node name="bullet" instance=ExtResource("1_f3df6")]
 falloff = 0.3
 
+[node name="audio_stream_player_3d" parent="." index="1"]
+volume_db = -8.0
+
 [node name="buckshot_projectile" parent="." index="2" instance=ExtResource("2_34u26")]

@@ -58,6 +58,7 @@ sky_material = SubResource("ProceduralSkyMaterial_67aro")
 
 [sub_resource type="Environment" id="Environment_od2qt"]
 background_mode = 2
+background_energy_multiplier = 0.800001
 sky = SubResource("Sky_cdym1")
 tonemap_mode = 2
 
@@ -291,55 +292,71 @@ environment = SubResource("Environment_od2qt")
 script = ExtResource("3_3py3g")
 alpha_time = 5.0
 wave_values = [{
-"background_energy_multiplier": 1.0
+"background_energy_multiplier": 0.25
 }, {
-"background_energy_multiplier": 0.1
+"background_energy_multiplier": 0.7
 }, {
-"background_energy_multiplier": 0.6
+"background_energy_multiplier": 1.2
 }, {
-"background_energy_multiplier": 0.05
+"background_energy_multiplier": 0.0
 }, {
-"background_energy_multiplier": 0.2
-}, {
-"background_energy_multiplier": 0.9
+"background_energy_multiplier": 0.8
 }, {
 "background_energy_multiplier": 0.4
 }, {
-"background_energy_multiplier": 1.25
+"background_energy_multiplier": 0.1
+}, {
+"background_energy_multiplier": 0.4
+}, {
+"background_energy_multiplier": 1.0
+}, {
+"background_energy_multiplier": 2.0
+}, {
+"background_energy_multiplier": 1.5
+}, {
+"background_energy_multiplier": 0.8
 }]
+current_hour = 11
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.402093, 0.216051, 1.17719e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
+transform = Transform3D(0.889744, 0.220747, 0.399534, 4.61936e-07, -0.875287, 0.483604, 0.456461, -0.430284, -0.778781, 0, 0, 0)
 rotation_edit_mode = 1
-light_color = Color(0.9855, 1, 0.97, 1)
-light_energy = 0.8
+light_color = Color(0.948, 1, 0.87, 1)
 shadow_enabled = true
 script = ExtResource("3_j0by0")
 alpha_time = 5.0
 wave_values = [{
-"color": Color(0.9855, 1, 0.97, 1),
-"energy": 0.8,
-"quat": Quaternion(0.834296, 0.120489, 0.201521, -0.498821)
+"color": Color(1, 0.25, 0, 1),
+"energy": 3.25,
+"quat": Quaternion(0.963997, 0.030151, 0.23285, -0.124825)
 }, {
-"color": Color(1, 0.408, 0.26, 1),
-"energy": 1.5,
-"quat": Quaternion(0.934972, 0.0642255, 0.225839, -0.265893)
-}, {
-"color": Color(1, 0.312, 0.14, 1),
+"color": Color(0.0564293, 0.00300711, 0, 1),
 "energy": 0.0,
 "quat": Quaternion(0.971932, 0.00358554, 0.234767, -0.0148441)
 }, {
-"color": Color(1, 0.312, 0.14, 1),
+"color": Color(0.0691023, 0.00389425, 3.00817e-09, 1),
 "energy": 0.0,
 "quat": Quaternion(0.971932, 0.00358554, 0.234767, -0.0148441)
 }, {
-"color": Color(1, 0.312, 0.14, 1),
+"color": Color(0.062867, 0.00344105, 0, 1),
 "energy": 0.0,
 "quat": Quaternion(-0.00230738, -0.234794, -0.000557336, 0.972042)
+}, {
+"color": Color(0.062867, 0.00344105, 0, 1),
+"energy": 0.0,
+"quat": Quaternion(-0.00230738, -0.234794, -0.000557336, 0.972042)
+}, {
+"color": Color(0.746667, 0.2, 1, 1),
+"energy": 0.03,
+"quat": Quaternion(-0.00441084, -0.234793, -0.00106549, 0.972035)
 }, {
 "color": Color(1, 0.67, 0.9395, 1),
 "energy": 0.7,
 "quat": Quaternion(-0.112145, -0.233227, -0.0270884, 0.965554)
+}, {
+"color": Color(0.919833, 0.87, 1, 1),
+"energy": 0.85,
+"quat": Quaternion(-0.251762, -0.226782, -0.060812, 0.938876)
 }, {
 "color": Color(0.87, 0.887333, 1, 1),
 "energy": 1.0,
@@ -347,50 +364,76 @@ wave_values = [{
 }, {
 "color": Color(0.94, 0.992, 1, 1),
 "energy": 1.5,
-"quat": Quaternion(-0.579898, -0.188436, -0.140072, 0.780122)
+"quat": Quaternion(-0.688089, -0.165843, -0.166205, 0.68659)
+}, {
+"color": Color(0.94, 0.995, 1, 1),
+"energy": 1.3,
+"quat": Quaternion(0.89224, 0.0931692, 0.215517, -0.385719)
+}, {
+"color": Color(0.948, 1, 0.87, 1),
+"energy": 1.0,
+"quat": Quaternion(0.941251, 0.0586313, 0.227356, -0.242732)
 }]
+current_hour = 11
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.402093, 0.216051, 1.17719e-06, -0.473321, 0.88089, 0.456461, -0.783766, -0.421134, 0, 0, 0)
+transform = Transform3D(0.566971, -0.00312385, -0.823731, 0.0302847, -0.999238, 0.0246342, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
 rotation_edit_mode = 1
-light_color = Color(0.2, 0.6, 1, 1)
-light_energy = 0.0
+light_color = Color(5.2267e-08, 0.0158411, 0.0197509, 1)
+light_energy = 1.4013e-45
 shadow_enabled = true
 script = ExtResource("3_j0by0")
 alpha_time = 5.0
 wave_values = [{
-"color": Color(0.2, 0.6, 1, 1),
+"color": Color(0, 0.0327231, 0.0952599, 1),
 "energy": 0.0,
-"quat": Quaternion(0.834296, 0.120489, 0.201521, -0.498821)
-}, {
-"color": Color(0.2, 0.6, 1, 1),
-"energy": 0.0,
-"quat": Quaternion(-0.00158947, 0.464965, 0.0179421, 0.885146)
+"quat": Quaternion(-0.209672, 0.447709, 0.126768, 0.859956)
 }, {
 "color": Color(0.2, 0.6, 1, 1),
 "energy": 0.1,
 "quat": Quaternion(-0.320125, 0.427333, 0.184121, 0.825231)
 }, {
+"color": Color(0.2, 0.6, 1, 1),
+"energy": 0.1,
+"quat": Quaternion(-0.425101, 0.399644, 0.238324, 0.776386)
+}, {
 "color": Color(0.46, 0.937, 1, 1),
-"energy": 0.4,
-"quat": Quaternion(-0.647333, 0.304629, 0.351732, 0.603693)
+"energy": 0.25,
+"quat": Quaternion(-0.522803, 0.365118, 0.288449, 0.714257)
 }, {
-"color": Color(0.09, 1, 0.454, 1),
-"energy": 0.2,
-"quat": Quaternion(0.826886, -0.149932, -0.440494, -0.315825)
+"color": Color(0.09, 1, 0.636, 1),
+"energy": 0.1,
+"quat": Quaternion(-0.611559, 0.324344, 0.333639, 0.639908)
 }, {
-"color": Color(0.3, 1, 0.37, 1),
+"color": Color(0.5, 0.85, 1, 1),
+"energy": 0.025,
+"quat": Quaternion(-0.611559, 0.324344, 0.333639, 0.639908)
+}, {
+"color": Color(0.00866725, 3.61131e-06, 0.0874627, 1),
+"energy": 0.0,
+"quat": Quaternion(-0.689853, 0.27802, 0.37312, 0.554607)
+}, {
+"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
 "energy": 0.0,
 "quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
 }, {
-"color": Color(0.87, 0.887333, 1, 1),
+"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
 "energy": 0.0,
 "quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
 }, {
-"color": Color(0.94, 0.992, 1, 1),
+"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
+"energy": 0.0,
+"quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
+}, {
+"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
+"energy": 0.0,
+"quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
+}, {
+"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
 "energy": 0.0,
 "quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
 }]
+current_hour = 7
 
 [node name="wave_spawner" type="Node3D" parent="."]
 
@@ -458,12 +501,10 @@ offset_right = 160.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 20
-text = "Sunset"
 label_settings = SubResource("LabelSettings_kv482")
 horizontal_alignment = 1
 script = ExtResource("4_eftfn")
-wave_values = ["Quittin'   Time", "Sunset", "Moonrise", "Dead   of   Night", "Wee   Hours", "Crack   of   Dawn", "Mornin'   Glory", "High   Noon"]
-current_hour = 1
+wave_values = ["Sunset", "Moonrise", "", "Dead   of   Night", "Wee   Hours", "The   Darkest", "Crack   of   Dawn", "Daybreak", "Morning Glory", "High   Noon", "", "Quittin'   Time"]
 
 [node name="wave_timer" type="Control" parent="wave_spawner/canvas_layer/ui/wave_clock"]
 layout_mode = 1

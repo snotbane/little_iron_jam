@@ -26,6 +26,12 @@ func _ready() -> void:
 	self.target_reached.connect(attack)
 
 
+func _process(delta: float) -> void:
+	match state:
+		State.CHASING:
+			process_rotate_to_target_forwards(delta)
+
+
 func _physics_process(delta: float) -> void:
 	if not target:
 		state = State.IDLING

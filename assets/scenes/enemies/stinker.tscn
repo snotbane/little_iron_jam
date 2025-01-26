@@ -18,23 +18,31 @@ text = "3
 [node name="stinkhopper" parent="pawn" index="2" instance=ExtResource("2_4tm7l")]
 
 [node name="Skeleton3D" parent="pawn/stinkhopper/Armature" index="0"]
-bones/1/position = Vector3(-0.0225143, 0.480851, -0.0675851)
-bones/1/rotation = Quaternion(-0.696054, 7.91552e-18, -7.61326e-18, 0.71799)
-bones/2/rotation = Quaternion(3.0498e-06, -0.882028, 0.471197, -1.53289e-06)
-bones/3/rotation = Quaternion(7.83007e-07, -0.847528, 0.530751, -4.63608e-07)
-bones/4/position = Vector3(0.0396093, 0.125428, 0.211261)
-bones/4/rotation = Quaternion(0.664956, 0.0541343, 0.0604441, 0.742462)
-bones/5/rotation = Quaternion(-2.91422e-06, -0.84054, 0.54175, 1.77716e-06)
-bones/6/rotation = Quaternion(-7.35087e-07, -0.792892, 0.609362, 5.36357e-07)
-bones/7/position = Vector3(-0.0396093, 0.125428, 0.211261)
-bones/7/rotation = Quaternion(0.664956, -0.0541343, -0.0604441, 0.742462)
-bones/9/rotation = Quaternion(0.0782949, 0.0421381, -0.704029, 0.704584)
-bones/10/rotation = Quaternion(-4.29739e-08, -0.51924, 0.854629, 1.04025e-07)
-bones/12/rotation = Quaternion(0.0523969, -0.0032208, 0.706222, 0.706041)
-bones/13/rotation = Quaternion(4.24187e-08, -0.511565, 0.859245, -1.01122e-07)
+bones/1/position = Vector3(-0.0288092, 0.447803, -0.0709574)
+bones/1/rotation = Quaternion(-0.725369, 1.07647e-20, 1.21161e-19, 0.68836)
+bones/2/rotation = Quaternion(3.07523e-06, -0.889855, 0.456244, -1.4812e-06)
+bones/3/rotation = Quaternion(7.87988e-07, -0.853233, 0.521529, -4.5509e-07)
+bones/4/position = Vector3(0.0395938, 0.125522, 0.211467)
+bones/4/rotation = Quaternion(0.667137, 0.0539759, 0.0535736, 0.741043)
+bones/5/rotation = Quaternion(-2.93512e-06, -0.846913, 0.531731, 1.74244e-06)
+bones/6/rotation = Quaternion(-7.35064e-07, -0.792866, 0.609397, 5.36389e-07)
+bones/7/position = Vector3(-0.0395938, 0.125522, 0.211467)
+bones/7/rotation = Quaternion(0.667137, -0.0539759, -0.0535736, 0.741043)
+bones/9/rotation = Quaternion(0.0964121, 0.041532, -0.70953, 0.696812)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-5.03569e-08, -0.476678, 0.879078, 9.17877e-08)
+bones/10/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(0.061792, 0.0122006, 0.708291, 0.703105)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(4.81502e-08, -0.465946, 0.884813, -9.08838e-08)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(0.357128, -0.0020169, -0.000700057)
+bones/14/rotation = Quaternion(-3.09086e-08, 0.707107, 0.707107, -3.09086e-08)
+bones/16/position = Vector3(-0.357128, -0.00201691, -0.000700057)
+bones/16/rotation = Quaternion(-3.09086e-08, 0.707107, 0.707107, -3.09086e-08)
 
 [node name="body" parent="pawn/stinkhopper/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, -8.67712e-20, 2.1965e-17, -2.19517e-17, 0.0310186, 0.999519, -7.68051e-19, -0.999519, 0.0310186, -0.0225143, 0.480851, -0.0675851)
+transform = Transform3D(1, -1.82421e-19, -1.60952e-19, 1.51188e-19, -0.0523204, 0.99863, -1.90592e-19, -0.99863, -0.0523204, -0.0288092, 0.447803, -0.0709574)
 
 [node name="animation_tree" parent="pawn/stinkhopper" index="2"]
 advance_expression_base_node = NodePath("../../agent")
@@ -43,6 +51,7 @@ advance_expression_base_node = NodePath("../../agent")
 target_desired_distance = 5.0
 script = ExtResource("2_xem13")
 walk_speed = 200.0
+turn_speed = 10.0
 
 [node name="root_motion_view" type="RootMotionView" parent="pawn" index="4"]
 animation_path = NodePath("../stinkhopper/animation_tree")

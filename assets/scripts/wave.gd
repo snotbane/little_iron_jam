@@ -2,17 +2,21 @@
 class_name Wave extends Resource
 
 enum Hour {
-	AFTERNOON,
 	SUNSET,
+	EVENING,
 	NIGHT,
 	MIDNIGHT,
 	EARLY_AM,
+	DAWN,
 	SUNRISE,
 	MORNING,
-	NOON
+	BRUNCH,
+	HIGH_NOON,
+	SIESTA,
+	AFTERNOON,
 }
 
-const HOUR_COUNT := 8
+const HOURS_IN_DAY := 12
 const SETTINGS := preload("res://assets/data/wave_settings_default.tres")
 
 
@@ -26,9 +30,9 @@ static var RANDOM := RandomNumberGenerator.new()
 
 static func new_from_wave_index(index : int) -> Wave:
 	var result := Wave.new()
-	var time_of_day := index % 8
+	var hour := index % HOURS_IN_DAY
 
-	if time_of_day == Hour.MIDNIGHT:
+	if hour == Hour.MIDNIGHT:
 		result.duration = 30.0
 		return result
 

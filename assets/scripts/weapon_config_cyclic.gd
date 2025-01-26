@@ -18,7 +18,7 @@ var fire_index_ordered : int :
 
 func _ready() -> void:
 	super._ready()
-	$timer.timeout.connect(fire_single)
+	$cooldown.timeout.connect(fire_single)
 
 
 func _physics_process(delta: float) -> void:
@@ -31,9 +31,9 @@ func _set_is_shooting(value: bool) -> void:
 			if sockets[fire_index_ordered].get_child_count() != 0: break
 			fire_index += 1
 		fire_single()
-		$timer.start()
+		$cooldown.start()
 	else:
-		$timer.stop()
+		$cooldown.stop()
 
 
 func fire_single() -> void:

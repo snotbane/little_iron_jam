@@ -8,7 +8,7 @@ enum State {
 }
 
 var _state : State
-@export var state : State :
+var state : State :
 	get: return _state
 	set(value):
 		if _state == value: return
@@ -19,21 +19,8 @@ var is_attacking_blip : bool :
 	get: return state == State.ATTACKING
 
 
-var _is_volatile : bool
-@export var is_volatile : bool :
-	get: return _is_volatile
-	set(value):
-		if _is_volatile == value: return
-		_is_volatile = value
-
-		pawn.set_collision_layer_value(3, _is_volatile)
-func set_is_volatile(value: bool) -> void:
-	is_volatile = value
-
-
 func _ready() -> void:
-	super._ready()
-	await get_tree().create_timer(1.0).timeout
+	await super._ready()
 
 	state = State.CHASING
 	self.target_reached.connect(attack)

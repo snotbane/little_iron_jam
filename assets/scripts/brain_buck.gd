@@ -1,27 +1,55 @@
 
 extends Brain
 
-var _is_slam_blip : bool
+enum State {
+	IDLING,
+	CHASING,
+	WARNING,
+	ATTACKING
+}
+
+
+signal attack_warning
+
+
+var _state : State
+var state : State :
+	get: return _state
+	set(value):
+		if _state == value: return
+		_state = value
+
+		weapon_config.is_shooting = state == State.CHASING
+
+
 @export var is_slam_blip : bool :
-	get: return _is_slam_blip
-	set(value):
-		if _is_slam_blip == value: return
-		_is_slam_blip = value
-
-		if _is_slam_blip and get_tree():
-			await get_tree().create_timer(0.1).timeout
-			_is_slam_blip = false
+	get: return state == State.ATTACKING
 
 
-var _is_volatile : bool
-@export var is_volatile : bool :
-	get: return _is_volatile
-	set(value):
-		if _is_volatile == value: return
-		_is_volatile = value
+func _ready() -> void:
+	self.target_reached.connect(slam)
+	await super._ready()
+	state = State.CHASING
 
-		pawn.set_collision_layer_value(3, _is_volatile)
+
+func _process(delta: float) -> void:
+	match state:
+		State.CHASING:
+			process_rotate_to_target_forwards(delta)
 
 
 func _physics_process(delta: float) -> void:
-	physics_process_walk_to_target(delta)
+	match state:
+		State.CHASING:
+			physics_process_walk_forward(delta)
+
+
+func slam() -> void:
+	state = State.WARNING
+	attack_warning.emit()
+	await wait(0.7)
+	state = State.ATTACKING
+	await wait(0.5)
+	state = State.IDLING
+	await wait(1.5)
+	state = State.CHASING

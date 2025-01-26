@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://brb5pt2v7s810"]
+[gd_scene load_steps=4 format=3 uid="uid://brb5pt2v7s810"]
 
 [ext_resource type="PackedScene" uid="uid://d07hpd5wlopok" path="res://assets/scenes/weapon_config/weapon_config.tscn" id="1_rpuqm"]
 [ext_resource type="PackedScene" uid="uid://dsk5wbdmyh1yn" path="res://assets/scenes/weapons/weapon_shotgun.tscn" id="2_pqlf4"]
+[ext_resource type="Script" path="res://assets/scripts/weapon_config_cyclic.gd" id="2_py3na"]
 
-[node name="weapon_config" instance=ExtResource("1_rpuqm")]
+[node name="weapon_config" node_paths=PackedStringArray("sockets") instance=ExtResource("1_rpuqm")]
+script = ExtResource("2_py3na")
+socket_fire_order = Array[int]([0, 1, 2, 3])
+weapon_scene = ExtResource("2_pqlf4")
+sockets = [NodePath("node_3d"), NodePath("node_3d2"), NodePath("node_3d3"), NodePath("node_3d4")]
 
 [node name="node_3d" type="Node3D" parent="." index="1"]
 transform = Transform3D(1, 0.000136317, 0.000613763, -0.000539042, 0.688355, 0.725374, -0.000323606, -0.725374, 0.688354, -0.395306, 0.484465, 0.13757)
@@ -18,9 +23,10 @@ transform = Transform3D(0.999998, 0.00126602, -0.0012014, 0, 0.688354, 0.725374,
 [node name="node_3d3" type="Node3D" parent="." index="3"]
 transform = Transform3D(0.98557, 0.167912, 0.0213754, -0.120442, 0.606933, 0.785573, 0.118934, -0.776812, 0.618399, -0.631183, 1.74832, -1.03284)
 
-[node name="weapon_shotgun" parent="node_3d3" index="0" instance=ExtResource("2_pqlf4")]
-
 [node name="node_3d4" type="Node3D" parent="." index="4"]
 transform = Transform3D(0.967197, -0.233952, -0.0989736, 0.218154, 0.565359, 0.795474, -0.130147, -0.790971, 0.597851, 0.631, 1.748, -1.033)
 
-[node name="weapon_shotgun" parent="node_3d4" index="0" instance=ExtResource("2_pqlf4")]
+[node name="cooldown" parent="." index="5"]
+wait_time = 0.5
+one_shot = false
+autostart = false

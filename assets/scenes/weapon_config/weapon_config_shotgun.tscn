@@ -22,5 +22,7 @@ transform = Transform3D(0.756995, 0.653421, 0, -0.653421, 0.756995, 0, 0, 0, 1, 
 [node name="node_3d4" type="Node3D" parent="." index="4"]
 transform = Transform3D(0.757303, -0.653064, 0, 0.653064, 0.757303, 0, 0, 0, 1, 0.571938, 0.72803, 0.500774)
 
-[node name="timer" type="Timer" parent="." index="5"]
+[node name="cooldown" parent="." index="5"]
 wait_time = 0.2
+one_shot = false
+autostart = false

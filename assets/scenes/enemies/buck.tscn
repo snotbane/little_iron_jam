@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://vk56c3de00ln"]
+[gd_scene load_steps=9 format=3 uid="uid://vk56c3de00ln"]
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_5cnvb"]
 [ext_resource type="PackedScene" uid="uid://b27ly3vvi5qc4" path="res://assets/prefabs/buck.tscn" id="2_kvpmg"]
+[ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/shotgun_pickup.tscn" id="2_ywup7"]
 [ext_resource type="PackedScene" uid="uid://brb5pt2v7s810" path="res://assets/scenes/weapon_config/weapon_config_shotgun_buck.tscn" id="3_33abw"]
 [ext_resource type="Script" path="res://assets/scripts/brain_buck.gd" id="3_ipyb7"]
 [ext_resource type="Script" path="res://assets/scripts/root_motion.gd" id="4_e8eal"]
+[ext_resource type="AudioStream" uid="uid://dl1tqnsmhq3tg" path="res://assets/audio/elk_call.ogg" id="6_hubhc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qrv6e"]
 size = Vector3(1.73413, 3.021, 3.33826)
@@ -19,6 +21,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51245, 0.339539)
 shape = SubResource("BoxShape3D_qrv6e")
 
 [node name="ammo" parent="pawn" index="1"]
+shell_loss_amount = 30
+weapon_drop_on_death = ExtResource("2_ywup7")
 health = 30
 
 [node name="shape" parent="pawn/ammo" index="0"]
@@ -32,33 +36,47 @@ text = "30"
 [node name="buck" parent="pawn" index="2" instance=ExtResource("2_kvpmg")]
 
 [node name="Skeleton3D" parent="pawn/buck/Armature" index="0"]
-bones/1/position = Vector3(-0.000836743, 0.412785, 1.77977)
-bones/1/rotation = Quaternion(-0.690229, -0.000669933, 0.000714084, 0.72359)
-bones/4/position = Vector3(-0.883805, 1.89402, 0.0010659)
-bones/4/rotation = Quaternion(-0.0215408, -3.2167e-06, 0.00013339, 0.999768)
+bones/1/position = Vector3(-0.0176106, 0.406016, 1.77977)
+bones/1/rotation = Quaternion(-0.695114, -0.0140994, 0.0150286, 0.718604)
+bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
+bones/3/rotation = Quaternion(-2.06384e-08, 0.952897, 0.303295, 7.19417e-08)
+bones/4/position = Vector3(-0.876833, 2.36409, 0.0474005)
+bones/4/rotation = Quaternion(0.00424434, 8.4471e-07, 0.00156872, 0.99999)
+bones/5/position = Vector3(0.884316, 1.85048, 1.8528e-09)
+bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
 
 [node name="body" type="BoneAttachment3D" parent="pawn/buck/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.999998, -0.00158935, -0.00114418, -0.0019583, 0.816425, 0.577448, 1.63671e-05, 0.577449, -0.816427, -0.00103769, 0.500064, -0.0686507)
+transform = Transform3D(-0.999151, -0.0336097, -0.0238386, -0.0412007, 0.823712, 0.56551, 0.000629516, 0.566012, -0.824397, -0.0213076, 0.467419, -0.0696875)
 bone_name = "body"
 bone_idx = 2
 
-[node name="weapon_config" parent="pawn/buck/Armature/Skeleton3D/body" index="0" instance=ExtResource("3_33abw")]
+[node name="weapon_config_buck" parent="pawn/buck/Armature/Skeleton3D/body" index="0" node_paths=PackedStringArray("ammo") instance=ExtResource("3_33abw")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+socket_fire_order = Array[int]([0, 2, 1, 3])
+ammo = NodePath("../../../../../ammo")
 
-[node name="node_3d" parent="pawn/buck/Armature/Skeleton3D/body/weapon_config" index="1"]
+[node name="node_3d" parent="pawn/buck/Armature/Skeleton3D/body/weapon_config_buck" index="1"]
 transform = Transform3D(1, 0.000136316, 0.000613763, -0.000539042, 0.688354, 0.725374, -0.000323606, -0.725374, 0.688354, -0.395306, 0.484465, 0.13757)
 
 [node name="animation_tree" parent="pawn/buck" index="3"]
 root_motion_track = NodePath("Armature/Skeleton3D:root")
 advance_expression_base_node = NodePath("../../agent")
 
-[node name="agent" parent="pawn" index="3"]
+[node name="agent" parent="pawn" index="3" node_paths=PackedStringArray("weapon_config")]
+target_desired_distance = 3.5
 script = ExtResource("3_ipyb7")
+weapon_config = NodePath("../buck/Armature/Skeleton3D/body/weapon_config_buck")
+turn_speed = 1.0
 
 [node name="root_motion_apply" type="RootMotionView" parent="pawn" index="4"]
 animation_path = NodePath("../buck/animation_tree")
 script = ExtResource("4_e8eal")
 
+[node name="audio_stream_player_3d" type="AudioStreamPlayer3D" parent="." index="1"]
+stream = ExtResource("6_hubhc")
+
+[connection signal="attack_warning" from="pawn/agent" to="audio_stream_player_3d" method="play"]
+
 [editable path="pawn"]
 [editable path="pawn/buck"]
-[editable path="pawn/buck/Armature/Skeleton3D/body/weapon_config"]
+[editable path="pawn/buck/Armature/Skeleton3D/body/weapon_config_buck"]

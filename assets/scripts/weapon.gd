@@ -48,7 +48,7 @@ func fire(ammo: Ammo, direction := Vector3.ZERO) -> void:
 	if not cooldown.is_stopped() or ammo.health == 0: return
 	if anim_player.is_playing(): anim_player.stop()
 	anim_player.play("fire")
-	health -= 1
+	health -= 1 if ammo.belongs_to_player else 0
 	ammo.consume_bullets(bullet_cost)
 	for i in projectile_count:
 		create_bullet(ammo.get_parent(), direction)

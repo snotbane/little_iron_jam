@@ -13,10 +13,13 @@ static var inst : WaveController
 @export var bell : Bell
 
 @export var ui_anim_player : AnimationPlayer
+@export var time_hour_hand : Control
+@export var time_minute_hand : Control
 @export var time_label : Label
 
 var current_wave : Wave
 var is_enemies_cleared : bool
+var time_left_at_wave_start : float = 60.0
 @export var is_game_over : bool
 
 @export var wave_index : int = -1
@@ -28,6 +31,10 @@ var next_wave : Wave :
 		else:
 			return Wave.new_from_wave_index(wave_index)
 
+var wave_hour : int :
+	get: return wave_index % Wave.HOURS_IN_DAY
+
+
 func _ready() -> void:
 	inst = self
 	if is_game_over: return
@@ -37,12 +44,17 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if is_game_over: return
+
 	var time := timer.wait_time if timer.is_stopped() else timer.time_left
+
 	var minutes := floori(time / 60)
 	var seconds := floori(fmod(time, 60))
 	var milliseconds := floori(fmod(time, 1) * 10)
 	var time_string = "%02d:%02d.%01d" % [minutes, seconds, milliseconds]
 	time_label.text = time_string
+
+	if not timer.is_stopped():
+		time_minute_hand.rotation_degrees = -360.0 * time / time_left_at_wave_start
 
 
 func proceed_to_next_wave() -> void:
@@ -67,11 +79,16 @@ func start_wave(wave: Wave) -> void:
 	else:
 		timer.wait_time = timer.time_left + wave.duration
 		timer.stop()
+
+	time_hour_hand.rotation_degrees = (360.0 * wave_hour / Wave.HOURS_IN_DAY) + 90.0
+	time_minute_hand.rotation_degrees = 0.0
+
 	await ui_anim_player.animation_finished
 	actually_start_wave()
 
 
 func actually_start_wave() -> void:
+	time_left_at_wave_start = timer.wait_time
 	timer.start()
 	for scene_path in current_wave.scenes:
 		var scene : PackedScene = load(scene_path)

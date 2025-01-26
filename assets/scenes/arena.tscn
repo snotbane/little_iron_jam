@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c1aiimxh63ws2"]
+[gd_scene load_steps=30 format=3 uid="uid://c1aiimxh63ws2"]
 
 [ext_resource type="Script" path="res://assets/scripts/wave_controller.gd" id="1_8vdcl"]
 [ext_resource type="PackedScene" uid="uid://dxn1ecuhl0csi" path="res://assets/prefabs/fmj_level_mesh.tscn" id="1_mdv7l"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://assets/scripts/wave_timed_sun.gd" id="3_j0by0"]
 [ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="4_2y70v"]
 [ext_resource type="Script" path="res://assets/scripts/wave_clock_label.gd" id="4_eftfn"]
+[ext_resource type="Texture2D" uid="uid://bg0sub03yt580" path="res://assets/user_interface/clockface.png" id="5_450fk"]
+[ext_resource type="Texture2D" uid="uid://df8bw0if6ebti" path="res://assets/user_interface/hour_hand.png" id="6_8283e"]
+[ext_resource type="Texture2D" uid="uid://bfigonhxnwf82" path="res://assets/user_interface/minute_hand.png" id="7_4ylih"]
 [ext_resource type="PackedScene" uid="uid://c414vt4mwkrah" path="res://assets/scenes/bell.tscn" id="11_wuec8"]
 
 [sub_resource type="Resource" id="Resource_n45ke"]
@@ -58,11 +61,9 @@ sky_material = SubResource("ProceduralSkyMaterial_67aro")
 
 [sub_resource type="Environment" id="Environment_od2qt"]
 background_mode = 2
-background_energy_multiplier = 0.800001
+background_energy_multiplier = 0.8
 sky = SubResource("Sky_cdym1")
 tonemap_mode = 2
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t7sqf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kv482"]
 font = ExtResource("4_2y70v")
@@ -139,7 +140,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("wave_clock/name_label_stuff/texture_rect:modulate")
+tracks/5/path = NodePath("wave_clock/name_label_stuff/clock_face:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -223,7 +224,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("wave_clock/name_label_stuff/texture_rect:modulate")
+tracks/5/path = NodePath("wave_clock/name_label_stuff/clock_face:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -271,7 +272,7 @@ size = Vector3(47, 2, 54)
 material = ExtResource("1_nij4t")
 size = Vector2(100, 100)
 
-[node name="arena" type="Node3D" node_paths=PackedStringArray("spawn_origin", "nav_region", "timer", "bell", "ui_anim_player", "time_label")]
+[node name="arena" type="Node3D" node_paths=PackedStringArray("spawn_origin", "nav_region", "timer", "bell", "ui_anim_player", "time_hour_hand", "time_minute_hand", "time_label")]
 script = ExtResource("1_8vdcl")
 predefined_waves = {
 0: SubResource("Resource_n45ke"),
@@ -285,6 +286,8 @@ nav_region = NodePath("nav_region")
 timer = NodePath("wave_spawner/timer")
 bell = NodePath("bell")
 ui_anim_player = NodePath("wave_spawner/canvas_layer/ui/animation_player")
+time_hour_hand = NodePath("wave_spawner/canvas_layer/ui/wave_clock/name_label_stuff/clock_hour")
+time_minute_hand = NodePath("wave_spawner/canvas_layer/ui/wave_clock/name_label_stuff/clock_minute")
 time_label = NodePath("wave_spawner/canvas_layer/ui/wave_clock/wave_timer/wave_timer_label")
 
 [node name="environment" type="WorldEnvironment" parent="." groups=["wave_timed"]]
@@ -319,7 +322,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.220747, 0.399534, 4.61936e-07, -0.875287, 0.483604, 0.456461, -0.430284, -0.778781, 0, 0, 0)
+transform = Transform3D(0.889744, 0.220747, 0.399534, 6.48201e-07, -0.875287, 0.483604, 0.456461, -0.430283, -0.778781, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.948, 1, 0.87, 1)
 shadow_enabled = true
@@ -380,7 +383,7 @@ current_hour = 11
 transform = Transform3D(0.566971, -0.00312385, -0.823731, 0.0302847, -0.999238, 0.0246342, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(5.2267e-08, 0.0158411, 0.0197509, 1)
-light_energy = 1.4013e-45
+light_energy = 0.0
 shadow_enabled = true
 script = ExtResource("3_j0by0")
 alpha_time = 5.0
@@ -454,8 +457,10 @@ grow_vertical = 2
 [node name="wave_clock" type="Control" parent="wave_spawner/canvas_layer/ui"]
 layout_mode = 1
 anchors_preset = 0
-offset_right = 106.0
-offset_bottom = 106.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 138.0
+offset_bottom = 138.0
 pivot_offset = Vector2(53, 53)
 
 [node name="name_label_stuff" type="Control" parent="wave_spawner/canvas_layer/ui/wave_clock"]
@@ -473,7 +478,7 @@ grow_vertical = 0
 scale = Vector2(0.33, 0.33)
 pivot_offset = Vector2(160, 320)
 
-[node name="texture_rect" type="TextureRect" parent="wave_spawner/canvas_layer/ui/wave_clock/name_label_stuff"]
+[node name="clock_face" type="TextureRect" parent="wave_spawner/canvas_layer/ui/wave_clock/name_label_stuff"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -486,7 +491,43 @@ offset_right = 128.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_t7sqf")
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("5_450fk")
+
+[node name="clock_hour" type="TextureRect" parent="wave_spawner/canvas_layer/ui/wave_clock/name_label_stuff"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("6_8283e")
+
+[node name="clock_minute" type="TextureRect" parent="wave_spawner/canvas_layer/ui/wave_clock/name_label_stuff"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("7_4ylih")
 
 [node name="wave_name_label" type="Label" parent="wave_spawner/canvas_layer/ui/wave_clock/name_label_stuff" groups=["wave_timed"]]
 layout_mode = 1

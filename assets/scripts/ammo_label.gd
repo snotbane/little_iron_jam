@@ -1,9 +1,10 @@
 
-extends Node
+class_name AmmoLabel extends Node
 
 signal changed
 
 @export var ammo : Ammo
+var count : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,5 +13,6 @@ func _ready() -> void:
 
 
 func _on_ammo_changed() -> void:
-	self.text = str(max(ammo.health, 0))
+	count = maxi(ammo.health, 0)
+	self.text = str(count)
 	changed.emit()

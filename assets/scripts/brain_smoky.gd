@@ -17,13 +17,13 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not target: return
+	if not kill_target: return
 	match state:
 		State.CHASING:
 			physics_process_walk_to_target(delta)
 		State.AIMING:
 			weapon_config.fire_direction = target_direction
-			pawn.look_at(target.global_position)
+			pawn.look_at(kill_target.global_position)
 
 
 func attack() -> void:

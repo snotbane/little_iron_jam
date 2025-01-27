@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c1aiimxh63ws2"]
+[gd_scene load_steps=29 format=3 uid="uid://c1aiimxh63ws2"]
 
 [ext_resource type="Script" path="res://assets/scripts/wave_controller.gd" id="1_8vdcl"]
 [ext_resource type="PackedScene" uid="uid://dxn1ecuhl0csi" path="res://assets/prefabs/fmj_level_mesh.tscn" id="1_mdv7l"]
@@ -51,19 +51,6 @@ scenes = {
 }
 crates = 0
 duration = 30.0
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_67aro"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_cdym1"]
-sky_material = SubResource("ProceduralSkyMaterial_67aro")
-
-[sub_resource type="Environment" id="Environment_od2qt"]
-background_mode = 2
-background_energy_multiplier = 0.8
-sky = SubResource("Sky_cdym1")
-tonemap_mode = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_kv482"]
 font = ExtResource("4_2y70v")
@@ -252,13 +239,9 @@ _data = {
 "notify_clock": SubResource("Animation_urx5m")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_xyfmq"]
-height = 10.0
-radius = 19.0
-
 [sub_resource type="NavigationMesh" id="NavigationMesh_8rbwc"]
-vertices = PackedVector3Array(-22.7322, 0.15, -26.25, -22.7322, 0.15, -15.65, -4.3322, 0.15, -26.15, 20.7678, 0.15, -16.65, 22.7678, 0.15, -15.65, 22.7678, 0.15, -26.25, 4.3678, 0.15, -26.25, 0.167797, 0.15, -25.25, -0.532204, 0.15, -25.05, -1.5322, 0.15, -24.35, 3.9678, 0.15, -22.95, 3.1678, 0.15, -17.55, 3.6678, 0.15, -17.45, -0.932203, 0.15, -14.15, 2.4678, 0.15, -17.15, -3.3322, 0.15, -23.35, -2.6322, 0.15, -12.65, -4.0322, 0.15, -22.95, -3.8322, 0.15, -11.65, -5.5322, 0.15, -22.05, -4.9322, 0.15, -10.65, 4.0678, 0.15, -17.15, 7.4678, 0.15, -20.95, -12.9322, 0.15, -17.75, -12.6322, 0.15, -14.95, -12.2322, 0.15, -15.05, -10.7322, 0.15, -14.15, -10.5322, 0.15, -12.25, -10.7322, 0.15, -11.95, -6.7322, 0.15, -9.05, -10.5322, 0.15, -13.75, 6.8678, 0.15, -6.85, 10.2678, 0.15, -3.35, 11.4678, 0.15, -4.45, 4.8678, 0.15, -16.35, 5.1678, 0.15, -15.75, 4.8678, 0.15, -14.85, 12.1678, 0.15, -18.25, 5.8678, 0.15, -6.85, 6.1678, 0.15, -7.05, 13.6678, 0.15, -17.35, -14.9322, 0.15, -16.65, -13.9322, 0.15, -14.05, -13.6322, 0.15, -14.45, 13.9678, 0.15, 0.35, 21.8678, 0.15, 0.950001, 14.1678, 0.15, 0.950001, 21.8678, 0.15, -12.65, -14.1322, 0.15, -13.75, -14.1322, 0.15, -12.25, -21.9322, 0.15, -12.65, -21.9322, 0.15, -5.65, -17.8322, 0.15, -5.65, -17.4322, 0.15, -6.55, -15.9322, 0.15, -7.35, -15.2322, 0.15, -7.15, -13.9322, 0.15, -11.95, 4.2678, 0.15, -5.85, 4.5678, 0.15, -5.55, 3.6678, 0.15, -13.85, -0.132204, 0.15, -10.55, -12.5322, 9.4, -13.25, -12.5322, 9.4, -12.75, -12.1322, 9.4, -12.85, -12.2322, 9.4, -13.35, -12.4322, 0.4, -13.15, -12.4322, 0.4, -12.85, -12.2322, 0.4, -12.95, -12.2322, 0.4, -13.15, -15.0322, 0.15, -6.95, -13.4322, 0.15, -11.55, -7.5322, 0.15, -4.95, -6.4322, 0.15, -6.05, -7.7322, 0.15, -7.55, -12.5322, 0.15, -11.05, -7.5322, 0.15, -8.35, -12.1322, 0.15, -11.05, -13.7322, 0.15, -4.65, 4.3678, 0.15, -5.25, -6.1322, 0.15, -5.85, -5.2322, 0.15, -6.05, -9.4322, 0.15, 3.45, 4.5678, 0.15, -4.55, -12.6322, 0.15, -2.55, 11.7678, 0.15, 2.65, -21.9322, 0.15, 12.65, -15.7322, 0.15, 16.15, -11.6322, 0.15, 6.05, -16.0322, 2.4, -5.55, -16.0322, 2.4, -5.25, -15.8322, 2.4, -5.15, 7.4678, 2.4, -3.75, 9.0678, 2.4, -2.25, 9.0678, 2.4, -2.45, 7.4678, 2.4, -3.95, 12.8678, 0.15, 2.65, 12.3678, 0.15, 2.85, 12.4678, 0.15, 8.05, 14.0678, 0.15, 8.75, 13.9678, 0.15, 1.55, 14.3678, 0.15, 9.25, 14.3678, 0.15, 9.85, 21.8678, 0.15, 9.75, 6.7678, 0.15, 14.05, 10.9678, 0.15, 11.05, 10.7678, 0.15, 10.75, 6.4678, 0.15, 13.85, 10.7678, 0.15, 9.25, 11.0678, 0.15, 8.75, -8.7322, 0.15, 4.65, 5.0678, 0.15, 13.85, -8.9322, 0.15, 5.45, -7.5322, 0.15, 14.25, -10.6322, 0.15, 6.45, -8.1322, 0.15, 14.65, -9.7322, 0.15, 19.65, -8.1322, 0.15, 17.05, -8.3322, 0.15, 16.75, -8.3322, 0.15, 14.95, -11.0322, 0.15, 6.55, 12.3678, 9.4, 9.85, 12.3678, 9.4, 10.25, 12.7678, 9.4, 10.25, 12.6678, 9.4, 9.75, 14.3678, 0.15, 10.75, 14.1678, 0.15, 11.05, 17.1678, 0.15, 15.35, 21.8678, 0.15, 12.65, 12.4678, 0.4, 9.95, 12.4678, 0.4, 10.15, 12.6678, 0.4, 10.15, 12.6678, 0.4, 9.95, 7.1678, 0.15, 16.35, 6.9678, 0.15, 16.65, 8.8678, 0.15, 20.15, 7.1678, 0.15, 14.55, 11.2678, 0.15, 11.45, 13.1678, 0.15, 17.65, 12.3678, 0.15, 12.05, 12.8678, 0.15, 11.95, 13.8678, 0.15, 11.45, -22.7322, 0.15, 15.65, -22.7322, 0.15, 26.25, -4.3322, 0.15, 26.25, 4.3678, 0.15, 26.15, 22.7678, 0.15, 26.25, 22.7678, 0.15, 15.65, 6.7678, 0.15, 16.85, 7.1678, 0.15, 21.15, 6.4678, 0.15, 17.05, 5.3678, 0.15, 17.15, -0.132204, 0.15, 25.25, 0.167797, 0.15, 25.25, -7.7322, 0.15, 17.35, -8.0322, 0.15, 20.65)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(11, 10, 12), PackedInt32Array(10, 14, 9), PackedInt32Array(9, 14, 13), PackedInt32Array(10, 11, 14), PackedInt32Array(9, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(15, 16, 17), PackedInt32Array(17, 16, 18), PackedInt32Array(20, 19, 18), PackedInt32Array(18, 19, 17), PackedInt32Array(21, 12, 22), PackedInt32Array(22, 12, 10), PackedInt32Array(23, 25, 24), PackedInt32Array(26, 25, 23), PackedInt32Array(29, 28, 27), PackedInt32Array(27, 30, 29), PackedInt32Array(29, 30, 20), PackedInt32Array(26, 23, 20), PackedInt32Array(20, 23, 19), PackedInt32Array(20, 30, 26), PackedInt32Array(33, 32, 31), PackedInt32Array(34, 21, 22), PackedInt32Array(35, 34, 22), PackedInt32Array(35, 22, 36), PackedInt32Array(36, 22, 37), PackedInt32Array(39, 38, 36), PackedInt32Array(31, 36, 33), PackedInt32Array(33, 36, 37), PackedInt32Array(31, 39, 36), PackedInt32Array(37, 40, 33), PackedInt32Array(43, 42, 41), PackedInt32Array(43, 41, 24), PackedInt32Array(24, 41, 23), PackedInt32Array(32, 33, 44), PackedInt32Array(44, 33, 45), PackedInt32Array(45, 46, 44), PackedInt32Array(40, 47, 33), PackedInt32Array(33, 47, 45), PackedInt32Array(41, 42, 48), PackedInt32Array(48, 49, 41), PackedInt32Array(41, 49, 50), PackedInt32Array(51, 53, 52), PackedInt32Array(56, 55, 49), PackedInt32Array(49, 55, 54), PackedInt32Array(49, 54, 50), PackedInt32Array(50, 54, 51), PackedInt32Array(54, 53, 51), PackedInt32Array(38, 58, 57), PackedInt32Array(36, 38, 59), PackedInt32Array(59, 38, 57), PackedInt32Array(60, 59, 57), PackedInt32Array(64, 63, 61), PackedInt32Array(61, 63, 62), PackedInt32Array(68, 67, 65), PackedInt32Array(65, 67, 66), PackedInt32Array(69, 55, 70), PackedInt32Array(70, 55, 56), PackedInt32Array(73, 72, 71), PackedInt32Array(69, 70, 74), PackedInt32Array(28, 29, 75), PackedInt32Array(74, 76, 69), PackedInt32Array(69, 76, 77), PackedInt32Array(75, 73, 28), PackedInt32Array(28, 73, 76), PackedInt32Array(71, 77, 73), PackedInt32Array(73, 77, 76), PackedInt32Array(57, 58, 78), PackedInt32Array(71, 72, 79), PackedInt32Array(79, 80, 71), PackedInt32Array(71, 80, 81), PackedInt32Array(60, 57, 78), PackedInt32Array(78, 82, 60), PackedInt32Array(60, 82, 80), PackedInt32Array(81, 83, 71), PackedInt32Array(80, 82, 81), PackedInt32Array(81, 82, 84), PackedInt32Array(87, 86, 85), PackedInt32Array(52, 87, 51), PackedInt32Array(51, 87, 85), PackedInt32Array(90, 89, 88), PackedInt32Array(71, 83, 77), PackedInt32Array(94, 93, 91), PackedInt32Array(91, 93, 92), PackedInt32Array(96, 95, 97), PackedInt32Array(97, 95, 98), PackedInt32Array(99, 46, 45), PackedInt32Array(98, 95, 100), PackedInt32Array(100, 95, 99), PackedInt32Array(102, 101, 100), PackedInt32Array(100, 99, 102), PackedInt32Array(102, 99, 45), PackedInt32Array(103, 105, 104), PackedInt32Array(103, 106, 105), PackedInt32Array(105, 106, 107), PackedInt32Array(96, 97, 84), PackedInt32Array(84, 97, 108), PackedInt32Array(109, 81, 110), PackedInt32Array(110, 81, 84), PackedInt32Array(111, 109, 112), PackedInt32Array(112, 109, 110), PackedInt32Array(107, 84, 108), PackedInt32Array(106, 110, 107), PackedInt32Array(107, 110, 84), PackedInt32Array(114, 113, 112), PackedInt32Array(112, 113, 111), PackedInt32Array(115, 117, 116), PackedInt32Array(117, 115, 118), PackedInt32Array(118, 115, 86), PackedInt32Array(119, 114, 87), PackedInt32Array(87, 114, 86), PackedInt32Array(114, 118, 86), PackedInt32Array(119, 113, 114), PackedInt32Array(120, 123, 121), PackedInt32Array(121, 123, 122), PackedInt32Array(124, 126, 125), PackedInt32Array(126, 124, 101), PackedInt32Array(127, 126, 102), PackedInt32Array(102, 126, 101), PackedInt32Array(131, 130, 128), PackedInt32Array(128, 130, 129), PackedInt32Array(134, 133, 132), PackedInt32Array(136, 135, 104), PackedInt32Array(104, 135, 103), PackedInt32Array(134, 135, 137), PackedInt32Array(137, 135, 138), PackedInt32Array(138, 139, 137), PackedInt32Array(135, 136, 138), PackedInt32Array(134, 132, 135), PackedInt32Array(140, 125, 126), PackedInt32Array(140, 126, 139), PackedInt32Array(139, 126, 137), PackedInt32Array(143, 142, 141), PackedInt32Array(146, 145, 144), PackedInt32Array(133, 134, 147), PackedInt32Array(147, 134, 148), PackedInt32Array(149, 147, 148), PackedInt32Array(150, 149, 148), PackedInt32Array(152, 151, 148), PackedInt32Array(148, 151, 150), PackedInt32Array(154, 153, 151), PackedInt32Array(151, 153, 150), PackedInt32Array(116, 153, 115), PackedInt32Array(115, 153, 154)]
+vertices = PackedVector3Array(0.167797, 0.15, -25.25, -0.532204, 0.15, -25.05, -1.5322, 0.15, -24.35, 3.9678, 0.15, -22.95, 3.1678, 0.15, -17.55, 3.6678, 0.15, -17.45, -0.932203, 0.15, -14.15, 2.4678, 0.15, -17.15, -3.3322, 0.15, -23.35, -2.6322, 0.15, -12.65, -4.0322, 0.15, -22.95, -3.8322, 0.15, -11.65, -5.5322, 0.15, -22.05, -4.9322, 0.15, -10.65, 4.0678, 0.15, -17.15, 7.4678, 0.15, -20.95, -12.9322, 0.15, -17.75, -12.6322, 0.15, -14.95, -12.2322, 0.15, -15.05, -10.7322, 0.15, -14.15, -10.5322, 0.15, -12.25, -10.7322, 0.15, -11.95, -6.7322, 0.15, -9.05, -10.5322, 0.15, -13.75, 6.8678, 0.15, -6.85, 10.2678, 0.15, -3.35, 11.4678, 0.15, -4.45, 4.8678, 0.15, -16.35, 5.1678, 0.15, -15.75, 4.8678, 0.15, -14.85, 12.1678, 0.15, -18.25, 5.8678, 0.15, -6.85, 6.1678, 0.15, -7.05, 13.6678, 0.15, -17.35, -14.9322, 0.15, -16.65, -13.9322, 0.15, -14.05, -13.6322, 0.15, -14.45, 13.9678, 0.15, 0.35, 21.8678, 0.15, 0.950001, 14.1678, 0.15, 0.950001, 21.8678, 0.15, -12.65, -14.1322, 0.15, -13.75, -14.1322, 0.15, -12.25, -21.9322, 0.15, -12.65, -21.9322, 0.15, -5.65, -17.8322, 0.15, -5.65, -17.4322, 0.15, -6.55, -15.9322, 0.15, -7.35, -15.2322, 0.15, -7.15, -13.9322, 0.15, -11.95, 4.2678, 0.15, -5.85, 4.5678, 0.15, -5.55, 3.6678, 0.15, -13.85, -0.132204, 0.15, -10.55, -12.5322, 9.4, -13.25, -12.5322, 9.4, -12.75, -12.1322, 9.4, -12.85, -12.2322, 9.4, -13.35, -12.4322, 0.4, -13.15, -12.4322, 0.4, -12.85, -12.2322, 0.4, -12.95, -12.2322, 0.4, -13.15, -15.0322, 0.15, -6.95, -13.4322, 0.15, -11.55, -7.5322, 0.15, -4.95, -6.4322, 0.15, -6.05, -7.7322, 0.15, -7.55, -12.5322, 0.15, -11.05, -7.5322, 0.15, -8.35, -12.1322, 0.15, -11.05, -13.7322, 0.15, -4.65, 4.3678, 0.15, -5.25, -6.1322, 0.15, -5.85, -5.2322, 0.15, -6.05, -9.4322, 0.15, 3.45, 4.5678, 0.15, -4.55, -12.6322, 0.15, -2.55, 11.7678, 0.15, 2.65, -21.9322, 0.15, 12.65, -15.7322, 0.15, 16.15, -11.6322, 0.15, 6.05, -16.0322, 2.4, -5.55, -16.0322, 2.4, -5.25, -15.8322, 2.4, -5.15, 7.4678, 2.4, -3.75, 9.0678, 2.4, -2.25, 9.0678, 2.4, -2.45, 7.4678, 2.4, -3.95, 12.8678, 0.15, 2.65, 12.3678, 0.15, 2.85, 12.4678, 0.15, 8.05, 14.0678, 0.15, 8.75, 13.9678, 0.15, 1.55, 14.3678, 0.15, 9.25, 14.3678, 0.15, 9.85, 21.8678, 0.15, 9.75, 6.7678, 0.15, 14.05, 10.9678, 0.15, 11.05, 10.7678, 0.15, 10.75, 6.4678, 0.15, 13.85, 10.7678, 0.15, 9.25, 11.0678, 0.15, 8.75, -8.7322, 0.15, 4.65, 5.0678, 0.15, 13.85, -8.9322, 0.15, 5.45, -7.5322, 0.15, 14.25, -10.6322, 0.15, 6.45, -8.1322, 0.15, 14.65, -9.7322, 0.15, 19.65, -8.1322, 0.15, 17.05, -8.3322, 0.15, 16.75, -8.3322, 0.15, 14.95, -11.0322, 0.15, 6.55, 12.3678, 9.4, 9.85, 12.3678, 9.4, 10.25, 12.7678, 9.4, 10.25, 12.6678, 9.4, 9.75, 14.3678, 0.15, 10.75, 14.1678, 0.15, 11.05, 17.1678, 0.15, 15.35, 21.8678, 0.15, 12.65, 12.4678, 0.4, 9.95, 12.4678, 0.4, 10.15, 12.6678, 0.4, 10.15, 12.6678, 0.4, 9.95, 7.1678, 0.15, 16.35, 6.9678, 0.15, 16.65, 8.8678, 0.15, 20.15, 7.1678, 0.15, 14.55, 11.2678, 0.15, 11.45, 13.1678, 0.15, 17.65, 12.3678, 0.15, 12.05, 12.8678, 0.15, 11.95, 13.8678, 0.15, 11.45, 6.7678, 0.15, 16.85, 7.1678, 0.15, 21.15, 6.4678, 0.15, 17.05, 5.3678, 0.15, 17.15, -0.132204, 0.15, 25.25, 0.167797, 0.15, 25.25, -7.7322, 0.15, 17.35, -8.0322, 0.15, 20.65)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(4, 3, 5), PackedInt32Array(3, 7, 2), PackedInt32Array(2, 7, 6), PackedInt32Array(3, 4, 7), PackedInt32Array(2, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(8, 9, 10), PackedInt32Array(10, 9, 11), PackedInt32Array(13, 12, 11), PackedInt32Array(11, 12, 10), PackedInt32Array(14, 5, 15), PackedInt32Array(15, 5, 3), PackedInt32Array(16, 18, 17), PackedInt32Array(19, 18, 16), PackedInt32Array(22, 21, 20), PackedInt32Array(20, 23, 22), PackedInt32Array(22, 23, 13), PackedInt32Array(19, 16, 13), PackedInt32Array(13, 16, 12), PackedInt32Array(13, 23, 19), PackedInt32Array(26, 25, 24), PackedInt32Array(27, 14, 15), PackedInt32Array(28, 27, 15), PackedInt32Array(28, 15, 29), PackedInt32Array(29, 15, 30), PackedInt32Array(32, 31, 29), PackedInt32Array(24, 29, 26), PackedInt32Array(26, 29, 30), PackedInt32Array(24, 32, 29), PackedInt32Array(30, 33, 26), PackedInt32Array(36, 35, 34), PackedInt32Array(36, 34, 17), PackedInt32Array(17, 34, 16), PackedInt32Array(25, 26, 37), PackedInt32Array(37, 26, 38), PackedInt32Array(38, 39, 37), PackedInt32Array(33, 40, 26), PackedInt32Array(26, 40, 38), PackedInt32Array(34, 35, 41), PackedInt32Array(41, 42, 34), PackedInt32Array(34, 42, 43), PackedInt32Array(44, 46, 45), PackedInt32Array(49, 48, 42), PackedInt32Array(42, 48, 47), PackedInt32Array(42, 47, 43), PackedInt32Array(43, 47, 44), PackedInt32Array(47, 46, 44), PackedInt32Array(31, 51, 50), PackedInt32Array(29, 31, 52), PackedInt32Array(52, 31, 50), PackedInt32Array(53, 52, 50), PackedInt32Array(57, 56, 54), PackedInt32Array(54, 56, 55), PackedInt32Array(61, 60, 58), PackedInt32Array(58, 60, 59), PackedInt32Array(62, 48, 63), PackedInt32Array(63, 48, 49), PackedInt32Array(66, 65, 64), PackedInt32Array(62, 63, 67), PackedInt32Array(21, 22, 68), PackedInt32Array(67, 69, 62), PackedInt32Array(62, 69, 70), PackedInt32Array(68, 66, 21), PackedInt32Array(21, 66, 69), PackedInt32Array(64, 70, 66), PackedInt32Array(66, 70, 69), PackedInt32Array(50, 51, 71), PackedInt32Array(64, 65, 72), PackedInt32Array(72, 73, 64), PackedInt32Array(64, 73, 74), PackedInt32Array(53, 50, 71), PackedInt32Array(71, 75, 53), PackedInt32Array(53, 75, 73), PackedInt32Array(74, 76, 64), PackedInt32Array(73, 75, 74), PackedInt32Array(74, 75, 77), PackedInt32Array(80, 79, 78), PackedInt32Array(45, 80, 44), PackedInt32Array(44, 80, 78), PackedInt32Array(83, 82, 81), PackedInt32Array(64, 76, 70), PackedInt32Array(87, 86, 84), PackedInt32Array(84, 86, 85), PackedInt32Array(89, 88, 90), PackedInt32Array(90, 88, 91), PackedInt32Array(92, 39, 38), PackedInt32Array(91, 88, 93), PackedInt32Array(93, 88, 92), PackedInt32Array(95, 94, 93), PackedInt32Array(93, 92, 95), PackedInt32Array(95, 92, 38), PackedInt32Array(96, 98, 97), PackedInt32Array(96, 99, 98), PackedInt32Array(98, 99, 100), PackedInt32Array(89, 90, 77), PackedInt32Array(77, 90, 101), PackedInt32Array(102, 74, 103), PackedInt32Array(103, 74, 77), PackedInt32Array(104, 102, 105), PackedInt32Array(105, 102, 103), PackedInt32Array(100, 77, 101), PackedInt32Array(99, 103, 100), PackedInt32Array(100, 103, 77), PackedInt32Array(107, 106, 105), PackedInt32Array(105, 106, 104), PackedInt32Array(108, 110, 109), PackedInt32Array(110, 108, 111), PackedInt32Array(111, 108, 79), PackedInt32Array(112, 107, 80), PackedInt32Array(80, 107, 79), PackedInt32Array(107, 111, 79), PackedInt32Array(112, 106, 107), PackedInt32Array(113, 116, 114), PackedInt32Array(114, 116, 115), PackedInt32Array(117, 119, 118), PackedInt32Array(119, 117, 94), PackedInt32Array(120, 119, 95), PackedInt32Array(95, 119, 94), PackedInt32Array(124, 123, 121), PackedInt32Array(121, 123, 122), PackedInt32Array(127, 126, 125), PackedInt32Array(129, 128, 97), PackedInt32Array(97, 128, 96), PackedInt32Array(127, 128, 130), PackedInt32Array(130, 128, 131), PackedInt32Array(131, 132, 130), PackedInt32Array(128, 129, 131), PackedInt32Array(127, 125, 128), PackedInt32Array(133, 118, 119), PackedInt32Array(133, 119, 132), PackedInt32Array(132, 119, 130), PackedInt32Array(126, 127, 134), PackedInt32Array(134, 127, 135), PackedInt32Array(136, 134, 135), PackedInt32Array(137, 136, 135), PackedInt32Array(139, 138, 135), PackedInt32Array(135, 138, 137), PackedInt32Array(141, 140, 138), PackedInt32Array(138, 140, 137), PackedInt32Array(109, 140, 108), PackedInt32Array(108, 140, 141)]
 geometry_parsed_geometry_type = 1
 cell_size = 0.1
 agent_radius = 0.75
@@ -271,6 +254,19 @@ size = Vector3(47, 2, 54)
 [sub_resource type="PlaneMesh" id="PlaneMesh_yl8hx"]
 material = ExtResource("1_nij4t")
 size = Vector2(100, 100)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_67aro"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_cdym1"]
+sky_material = SubResource("ProceduralSkyMaterial_67aro")
+
+[sub_resource type="Environment" id="Environment_od2qt"]
+background_mode = 2
+background_energy_multiplier = 0.8
+sky = SubResource("Sky_cdym1")
+tonemap_mode = 2
 
 [node name="arena" type="Node3D" node_paths=PackedStringArray("spawn_origin", "nav_region", "timer", "bell", "ui_anim_player", "time_hour_hand", "time_minute_hand", "time_label")]
 script = ExtResource("1_8vdcl")
@@ -289,154 +285,6 @@ ui_anim_player = NodePath("wave_spawner/canvas_layer/ui/animation_player")
 time_hour_hand = NodePath("wave_spawner/canvas_layer/ui/wave_clock/name_label_stuff/clock_hour")
 time_minute_hand = NodePath("wave_spawner/canvas_layer/ui/wave_clock/name_label_stuff/clock_minute")
 time_label = NodePath("wave_spawner/canvas_layer/ui/wave_clock/wave_timer/wave_timer_label")
-
-[node name="environment" type="WorldEnvironment" parent="." groups=["wave_timed"]]
-environment = SubResource("Environment_od2qt")
-script = ExtResource("3_3py3g")
-alpha_time = 5.0
-wave_values = [{
-"background_energy_multiplier": 0.25
-}, {
-"background_energy_multiplier": 0.7
-}, {
-"background_energy_multiplier": 1.2
-}, {
-"background_energy_multiplier": 0.0
-}, {
-"background_energy_multiplier": 0.8
-}, {
-"background_energy_multiplier": 0.4
-}, {
-"background_energy_multiplier": 0.1
-}, {
-"background_energy_multiplier": 0.4
-}, {
-"background_energy_multiplier": 1.0
-}, {
-"background_energy_multiplier": 2.0
-}, {
-"background_energy_multiplier": 1.5
-}, {
-"background_energy_multiplier": 0.8
-}]
-current_hour = 11
-
-[node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.220747, 0.399534, 6.48201e-07, -0.875287, 0.483604, 0.456461, -0.430283, -0.778781, 0, 0, 0)
-rotation_edit_mode = 1
-light_color = Color(0.948, 1, 0.87, 1)
-shadow_enabled = true
-script = ExtResource("3_j0by0")
-alpha_time = 5.0
-wave_values = [{
-"color": Color(1, 0.25, 0, 1),
-"energy": 3.25,
-"quat": Quaternion(0.963997, 0.030151, 0.23285, -0.124825)
-}, {
-"color": Color(0.0564293, 0.00300711, 0, 1),
-"energy": 0.0,
-"quat": Quaternion(0.971932, 0.00358554, 0.234767, -0.0148441)
-}, {
-"color": Color(0.0691023, 0.00389425, 3.00817e-09, 1),
-"energy": 0.0,
-"quat": Quaternion(0.971932, 0.00358554, 0.234767, -0.0148441)
-}, {
-"color": Color(0.062867, 0.00344105, 0, 1),
-"energy": 0.0,
-"quat": Quaternion(-0.00230738, -0.234794, -0.000557336, 0.972042)
-}, {
-"color": Color(0.062867, 0.00344105, 0, 1),
-"energy": 0.0,
-"quat": Quaternion(-0.00230738, -0.234794, -0.000557336, 0.972042)
-}, {
-"color": Color(0.746667, 0.2, 1, 1),
-"energy": 0.03,
-"quat": Quaternion(-0.00441084, -0.234793, -0.00106549, 0.972035)
-}, {
-"color": Color(1, 0.67, 0.9395, 1),
-"energy": 0.7,
-"quat": Quaternion(-0.112145, -0.233227, -0.0270884, 0.965554)
-}, {
-"color": Color(0.919833, 0.87, 1, 1),
-"energy": 0.85,
-"quat": Quaternion(-0.251762, -0.226782, -0.060812, 0.938876)
-}, {
-"color": Color(0.87, 0.887333, 1, 1),
-"energy": 1.0,
-"quat": Quaternion(-0.473111, -0.205107, -0.114278, 0.84914)
-}, {
-"color": Color(0.94, 0.992, 1, 1),
-"energy": 1.5,
-"quat": Quaternion(-0.688089, -0.165843, -0.166205, 0.68659)
-}, {
-"color": Color(0.94, 0.995, 1, 1),
-"energy": 1.3,
-"quat": Quaternion(0.89224, 0.0931692, 0.215517, -0.385719)
-}, {
-"color": Color(0.948, 1, 0.87, 1),
-"energy": 1.0,
-"quat": Quaternion(0.941251, 0.0586313, 0.227356, -0.242732)
-}]
-current_hour = 11
-
-[node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.566971, -0.00312386, -0.823731, 0.0302848, -0.999238, 0.0246343, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
-rotation_edit_mode = 1
-light_color = Color(5.2267e-08, 0.0158411, 0.0197509, 1)
-light_energy = 0.0
-shadow_enabled = true
-script = ExtResource("3_j0by0")
-alpha_time = 5.0
-wave_values = [{
-"color": Color(0, 0.0327231, 0.0952599, 1),
-"energy": 0.0,
-"quat": Quaternion(-0.209672, 0.447709, 0.126768, 0.859956)
-}, {
-"color": Color(0.2, 0.6, 1, 1),
-"energy": 0.1,
-"quat": Quaternion(-0.320125, 0.427333, 0.184121, 0.825231)
-}, {
-"color": Color(0.2, 0.6, 1, 1),
-"energy": 0.1,
-"quat": Quaternion(-0.425101, 0.399644, 0.238324, 0.776386)
-}, {
-"color": Color(0.46, 0.937, 1, 1),
-"energy": 0.25,
-"quat": Quaternion(-0.522803, 0.365118, 0.288449, 0.714257)
-}, {
-"color": Color(0.09, 1, 0.636, 1),
-"energy": 0.1,
-"quat": Quaternion(-0.611559, 0.324344, 0.333639, 0.639908)
-}, {
-"color": Color(0.5, 0.85, 1, 1),
-"energy": 0.025,
-"quat": Quaternion(-0.611559, 0.324344, 0.333639, 0.639908)
-}, {
-"color": Color(0.00866725, 3.61131e-06, 0.0874627, 1),
-"energy": 0.0,
-"quat": Quaternion(-0.689853, 0.27802, 0.37312, 0.554607)
-}, {
-"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
-"energy": 0.0,
-"quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
-}, {
-"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
-"energy": 0.0,
-"quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
-}, {
-"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
-"energy": 0.0,
-"quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
-}, {
-"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
-"energy": 0.0,
-"quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
-}, {
-"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
-"energy": 0.0,
-"quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
-}]
-current_hour = 7
 
 [node name="wave_spawner" type="Node3D" parent="."]
 
@@ -540,6 +388,7 @@ offset_right = 160.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 20
+text = "Sunset"
 label_settings = SubResource("LabelSettings_kv482")
 horizontal_alignment = 1
 script = ExtResource("4_eftfn")
@@ -564,13 +413,6 @@ libraries = {
 "": SubResource("AnimationLibrary_u1ohm")
 }
 
-[node name="spawn_area" type="Area3D" parent="."]
-monitoring = false
-monitorable = false
-
-[node name="collision_shape_3d" type="CollisionShape3D" parent="spawn_area"]
-shape = SubResource("CylinderShape3D_xyfmq")
-
 [node name="nav_region" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_8rbwc")
 
@@ -585,6 +427,160 @@ transform = Transform3D(0.771891, 0, 0, 0, 1, 0, 0, 0, 0.771891, 0, 0, 0)
 mesh = SubResource("PlaneMesh_yl8hx")
 
 [node name="fmj_level_mesh" parent="nav_region" instance=ExtResource("1_mdv7l")]
+
+[node name="navigation_obstacle_3d" type="NavigationObstacle3D" parent="nav_region"]
+visible = false
+vertices = PackedVector3Array(0.264742, 0, 27.2033, 23.423, 0, 14.1139, 23.24, 0, -13.5296, 0.173205, 0, -26.7106, -23.0766, 0, -12.8889, -23.1682, 0, 13.5646, -2.02363, 0, 27.8441, -27.7449, 0, 29.9494, -27.3788, 0, -30.6466, 25.986, 0, -30.5551, 26.7183, 0, 29.1256)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
+[node name="environment" type="WorldEnvironment" parent="." groups=["wave_timed"]]
+environment = SubResource("Environment_od2qt")
+script = ExtResource("3_3py3g")
+alpha_time = 5.0
+wave_values = [{
+"background_energy_multiplier": 0.25
+}, {
+"background_energy_multiplier": 0.7
+}, {
+"background_energy_multiplier": 1.2
+}, {
+"background_energy_multiplier": 0.0
+}, {
+"background_energy_multiplier": 0.8
+}, {
+"background_energy_multiplier": 0.4
+}, {
+"background_energy_multiplier": 0.1
+}, {
+"background_energy_multiplier": 0.4
+}, {
+"background_energy_multiplier": 1.0
+}, {
+"background_energy_multiplier": 2.0
+}, {
+"background_energy_multiplier": 1.5
+}, {
+"background_energy_multiplier": 0.8
+}]
+current_hour = 11
+
+[node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
+transform = Transform3D(0.889744, 0.220747, 0.399534, 4.09782e-07, -0.875287, 0.483604, 0.456461, -0.430283, -0.778781, 0, 0, 0)
+rotation_edit_mode = 1
+light_color = Color(0.948, 1, 0.87, 1)
+shadow_enabled = true
+script = ExtResource("3_j0by0")
+alpha_time = 5.0
+wave_values = [{
+"color": Color(1, 0.25, 0, 1),
+"energy": 3.25,
+"quat": Quaternion(0.963997, 0.030151, 0.23285, -0.124825)
+}, {
+"color": Color(0.0564293, 0.00300711, 0, 1),
+"energy": 0.0,
+"quat": Quaternion(0.971932, 0.00358554, 0.234767, -0.0148441)
+}, {
+"color": Color(0.0691023, 0.00389425, 3.00817e-09, 1),
+"energy": 0.0,
+"quat": Quaternion(0.971932, 0.00358554, 0.234767, -0.0148441)
+}, {
+"color": Color(0.062867, 0.00344105, 0, 1),
+"energy": 0.0,
+"quat": Quaternion(-0.00230738, -0.234794, -0.000557336, 0.972042)
+}, {
+"color": Color(0.062867, 0.00344105, 0, 1),
+"energy": 0.0,
+"quat": Quaternion(-0.00230738, -0.234794, -0.000557336, 0.972042)
+}, {
+"color": Color(0.746667, 0.2, 1, 1),
+"energy": 0.03,
+"quat": Quaternion(-0.00441084, -0.234793, -0.00106549, 0.972035)
+}, {
+"color": Color(1, 0.67, 0.9395, 1),
+"energy": 0.7,
+"quat": Quaternion(-0.112145, -0.233227, -0.0270884, 0.965554)
+}, {
+"color": Color(0.919833, 0.87, 1, 1),
+"energy": 0.85,
+"quat": Quaternion(-0.251762, -0.226782, -0.060812, 0.938876)
+}, {
+"color": Color(0.87, 0.887333, 1, 1),
+"energy": 1.0,
+"quat": Quaternion(-0.473111, -0.205107, -0.114278, 0.84914)
+}, {
+"color": Color(0.94, 0.992, 1, 1),
+"energy": 1.5,
+"quat": Quaternion(-0.688089, -0.165843, -0.166205, 0.68659)
+}, {
+"color": Color(0.94, 0.995, 1, 1),
+"energy": 1.3,
+"quat": Quaternion(0.89224, 0.0931692, 0.215517, -0.385719)
+}, {
+"color": Color(0.948, 1, 0.87, 1),
+"energy": 1.0,
+"quat": Quaternion(0.941251, 0.0586313, 0.227356, -0.242732)
+}]
+current_hour = 11
+
+[node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
+transform = Transform3D(0.566971, -0.00312386, -0.823731, 0.0302847, -0.999238, 0.0246343, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
+rotation_edit_mode = 1
+light_color = Color(5.2267e-08, 0.0158411, 0.0197509, 1)
+light_energy = 0.0
+shadow_enabled = true
+script = ExtResource("3_j0by0")
+alpha_time = 5.0
+wave_values = [{
+"color": Color(0, 0.0327231, 0.0952599, 1),
+"energy": 0.0,
+"quat": Quaternion(-0.209672, 0.447709, 0.126768, 0.859956)
+}, {
+"color": Color(0.2, 0.6, 1, 1),
+"energy": 0.1,
+"quat": Quaternion(-0.320125, 0.427333, 0.184121, 0.825231)
+}, {
+"color": Color(0.2, 0.6, 1, 1),
+"energy": 0.1,
+"quat": Quaternion(-0.425101, 0.399644, 0.238324, 0.776386)
+}, {
+"color": Color(0.46, 0.937, 1, 1),
+"energy": 0.25,
+"quat": Quaternion(-0.522803, 0.365118, 0.288449, 0.714257)
+}, {
+"color": Color(0.09, 1, 0.636, 1),
+"energy": 0.1,
+"quat": Quaternion(-0.611559, 0.324344, 0.333639, 0.639908)
+}, {
+"color": Color(0.5, 0.85, 1, 1),
+"energy": 0.025,
+"quat": Quaternion(-0.611559, 0.324344, 0.333639, 0.639908)
+}, {
+"color": Color(0.00866725, 3.61131e-06, 0.0874627, 1),
+"energy": 0.0,
+"quat": Quaternion(-0.689853, 0.27802, 0.37312, 0.554607)
+}, {
+"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
+"energy": 0.0,
+"quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
+}, {
+"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
+"energy": 0.0,
+"quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
+}, {
+"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
+"energy": 0.0,
+"quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
+}, {
+"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
+"energy": 0.0,
+"quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
+}, {
+"color": Color(5.2267e-08, 0.0158411, 0.0197509, 1),
+"energy": 0.0,
+"quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
+}]
+current_hour = 7
 
 [node name="bell" parent="." instance=ExtResource("11_wuec8")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)

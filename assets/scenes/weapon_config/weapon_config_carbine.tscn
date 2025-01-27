@@ -7,11 +7,11 @@
 [sub_resource type="QuadMesh" id="QuadMesh_bx6c8"]
 size = Vector2(0.025, 50)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy572"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dev0o"]
 transparency = 1
 blend_mode = 1
 depth_draw_mode = 1
-albedo_color = Color(0.333333, 1, 0, 1)
+albedo_color = Color(0, 0.35, 1, 1)
 
 [node name="weapon_config_carbine" node_paths=PackedStringArray("sockets") instance=ExtResource("1_d4ytu")]
 script = ExtResource("2_akv0p")
@@ -40,4 +40,4 @@ transform = Transform3D(1, 0, 0, -1.09139e-11, 1, 0, -3.49246e-10, 0, 1, -0.0007
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.343504, -25)
 ignore_occlusion_culling = true
 mesh = SubResource("QuadMesh_bx6c8")
-surface_material_override/0 = SubResource("StandardMaterial3D_yy572")
+surface_material_override/0 = SubResource("StandardMaterial3D_dev0o")

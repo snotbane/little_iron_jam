@@ -1,5 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://c00o6may2xxnq"]
+[gd_scene load_steps=5 format=3 uid="uid://c00o6may2xxnq"]
 
 [ext_resource type="PackedScene" uid="uid://bj01gxryr1x3x" path="res://assets/scenes/detritus/detritus_weapon.tscn" id="1_543f6"]
+[ext_resource type="PackedScene" uid="uid://b2xxb4sye565j" path="res://assets/models/rifle/rifle.glb" id="2_552ru"]
+[ext_resource type="Material" uid="uid://cl5whrdvbjlel" path="res://assets/models/pistol/pistol_material.tres" id="3_ro1yg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m30pj"]
+size = Vector3(0.25, 0.684082, 4.87555)
 
 [node name="detritus" instance=ExtResource("1_543f6")]
+
+[node name="shape" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032959, -0.0622253)
+shape = SubResource("BoxShape3D_m30pj")
+
+[node name="rifle2" parent="." index="3" instance=ExtResource("2_552ru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="Mesh" parent="rifle2/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_ro1yg")
+
+[editable path="rifle2"]

@@ -8,12 +8,15 @@ enum State {
 	FIRING,
 }
 
+@export var personal_target : Node3D
 @export var aim_bone : BoneAttachment3D
 @export var laser_path : Node3D
 # @export var laser_path : Path3D
 
 @export var aim_turn_speed : float = 0.25
-@export var aim_acceptance_range : float = 0.005
+
+## How many points to pick on the map. The higher the number, the more likely it is for this enemy to keep away from the player.
+@export var move_target_iterations : int = 10
 
 @onready var aim_timer : Timer = $aim_giveup_timer
 
@@ -42,7 +45,9 @@ var state : State :
 
 
 func _ready() -> void:
+	move_target = personal_target
 	await super._ready()
+	pick_new_personal_target()
 	aim_timer.timeout.connect(fire)
 	self.target_reached.connect(begin_aim)
 	state = State.MOVING
@@ -53,13 +58,14 @@ func _process(delta: float) -> void:
 		State.MOVING:
 			process_rotate_to_target_forwards(delta)
 		State.AIMING:
-			if aim_bone.override_pose and target:
-				# laser_length = (laser_path.global_position - target.global_position).length()
-				var step := (target.global_position - aim_bone.global_position).normalized()
-				var dot_x := -step.dot(aim_bone.global_basis.x)
-				aim_bone.rotation.y += aim_turn_speed * signf(dot_x) * delta
-				if prev_dot_x != 0 and prev_dot_x != signf(dot_x): fire()
-				prev_dot_x = signf(dot_x)
+			if not kill_target: return
+			var rotate_node : Node3D = aim_bone as Node3D if aim_bone.override_pose else pawn as Node3D
+			# laser_length = (laser_path.global_position - target.global_position).length()
+			var step := (kill_target.global_position - rotate_node.global_position).normalized()
+			var dot_x := -step.dot(rotate_node.global_basis.x)
+			rotate_node.rotation.y += aim_turn_speed * signf(dot_x) * delta
+			if prev_dot_x != 0 and prev_dot_x != signf(dot_x): fire()
+			prev_dot_x = signf(dot_x)
 
 
 func _physics_process(delta: float) -> void:
@@ -73,6 +79,7 @@ func begin_aim() -> void:
 
 
 func fire() -> void:
+	pick_new_personal_target()
 	state = State.FIRING
 	weapon_config.is_shooting = true
 	pawn.global_rotation.y = aim_bone.global_rotation.y
@@ -82,3 +89,16 @@ func fire() -> void:
 	state = State.IDLING
 	await wait(1.0)
 	state = State.MOVING
+
+
+func pick_new_personal_target() -> void:
+	var result := pawn.global_position
+	var length := 0.0
+	for i in move_target_iterations:
+		var pos := WaveController.inst.random_floor_position
+		var l := (pawn.global_position - pos).length_squared()
+		if l < length: continue
+		length = l
+		result = pos
+
+	move_target.global_position = result * Vector3(1, 0, 1)

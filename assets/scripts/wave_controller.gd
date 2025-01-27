@@ -35,6 +35,10 @@ var wave_hour : int :
 	get: return wave_index % Wave.HOURS_IN_DAY
 
 
+var random_floor_position : Vector3 :
+	get: return spawn_origin.global_position + Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)).limit_length() * spawn_radius
+
+
 func _ready() -> void:
 	inst = self
 	if is_game_over: return
@@ -103,13 +107,18 @@ func end_wave() -> void:
 
 func spawn_scene(scene: PackedScene) -> void:
 	var node : Node3D = scene.instantiate()
-	setup_spawned_node.call_deferred(node)
+	var at := random_floor_position
+	var query := PhysicsRayQueryParameters3D.create(at, Vector3.DOWN * 100, 1)
+	var spacestate := get_world_3d().direct_space_state
+	var hit := spacestate.intersect_ray(query)
+	at = hit["position"]
+	setup_spawned_node.call_deferred(node, at)
 
 
-func setup_spawned_node(node: Node3D) -> void:
+func setup_spawned_node(node: Node3D, at: Vector3) -> void:
 	get_tree().root.add_child(node)
-	node.global_position = spawn_origin.global_position + Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)).limit_length() * spawn_radius
-
+	node.global_position = at
+	node.global_rotation_degrees.y = randf_range(0, 360)
 
 
 func check_enemy_group() -> void:

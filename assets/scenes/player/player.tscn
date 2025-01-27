@@ -102,6 +102,7 @@ graph_offset = Vector2(-3, -65)
 script = ExtResource("1_b2uww")
 
 [node name="pawn" parent="." instance=ExtResource("1_w8p5k")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -236,6 +237,8 @@ current = true
 [node name="ui" parent="canvas_layer" instance=ExtResource("10_50bck")]
 
 [node name="ammo_label" parent="canvas_layer/ui" index="0" node_paths=PackedStringArray("ammo")]
+scale_up_per_bullet = 0.1
+scale_down_alpha = 1.0
 ammo = NodePath("../../../pawn/ammo")
 
 [connection signal="received_weapon_config" from="pawn" to="camera_hook/crosshair" method="_on_received_weapon_config"]

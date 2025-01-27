@@ -1,0 +1,17 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://bmbn3c6dttqq"]
+
+[ext_resource type="AudioStream" uid="uid://823kvdfx3atg" path="res://assets/audio/vulture_cackle_00.ogg" id="1_ok5ss"]
+[ext_resource type="AudioStream" uid="uid://df2otyud57es4" path="res://assets/audio/vulture_cackle_01.ogg" id="2_6x88q"]
+[ext_resource type="AudioStream" uid="uid://b3fg6nopcssrd" path="res://assets/audio/vulture_cackle_02.ogg" id="3_x37bk"]
+[ext_resource type="AudioStream" uid="uid://77yvj7bmocn2" path="res://assets/audio/vulture_cackle_03.ogg" id="4_nhwdx"]
+[ext_resource type="AudioStream" uid="uid://b33iajsipxkox" path="res://assets/audio/vulture_cackle_04.ogg" id="5_jixht"]
+[ext_resource type="AudioStream" uid="uid://140fm7b6d0ii" path="res://assets/audio/vulture_cackle_05.ogg" id="6_okmkk"]
+
+[resource]
+streams_count = 6
+stream_0/stream = ExtResource("1_ok5ss")
+stream_1/stream = ExtResource("2_6x88q")
+stream_2/stream = ExtResource("3_x37bk")
+stream_3/stream = ExtResource("4_nhwdx")
+stream_4/stream = ExtResource("5_jixht")
+stream_5/stream = ExtResource("6_okmkk")

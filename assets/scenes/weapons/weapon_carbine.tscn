@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2xqcvhlhks64"]
+
+[ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_4mcss"]
+[ext_resource type="PackedScene" uid="uid://4qnnt1bkuj4w" path="res://assets/prefabs/shotgun.tscn" id="2_gtpt0"]
+
+[node name="weapon" instance=ExtResource("1_4mcss")]
+
+[node name="shotgun" parent="." index="1" instance=ExtResource("2_gtpt0")]

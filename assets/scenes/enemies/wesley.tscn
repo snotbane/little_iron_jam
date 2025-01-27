@@ -1,0 +1,174 @@
+[gd_scene load_steps=25 format=3 uid="uid://brbm7ub2jbg4p"]
+
+[ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_sf727"]
+[ext_resource type="PackedScene" uid="uid://6d5gqqfyogj6" path="res://assets/models/wesley/wesley.glb" id="2_4rdvv"]
+[ext_resource type="Material" uid="uid://dbicob5d8wu5w" path="res://assets/models/wesley/wesley_material.tres" id="3_r16x8"]
+[ext_resource type="Script" path="res://assets/scripts/brain_wesley.gd" id="4_i2k7d"]
+[ext_resource type="PackedScene" uid="uid://ctkeqktbiic1l" path="res://assets/models/shotgun/shotgun.glb" id="4_rm3ds"]
+[ext_resource type="Script" path="res://assets/scripts/root_motion.gd" id="4_xrh1b"]
+[ext_resource type="AudioStream" uid="uid://ds2iofdu4ho74" path="res://assets/audio/robotic_lycan_howl_01.ogg" id="5_af5m6"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_bdlb5"]
+size = Vector2(0.025, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbsu1"]
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 1
+albedo_color = Color(0.333333, 1, 0, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xawel"]
+animation = &"dropin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rk8ir"]
+animation = &"fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_01kr1"]
+animation = &"howl"
+use_custom_timeline = true
+timeline_length = 5.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xd33j"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ht6xd"]
+animation = &"ready_aim"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vd2uf"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q6eal"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6v802"]
+xfade_time = 0.25
+advance_mode = 2
+advance_expression = "is_walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_herc0"]
+xfade_time = 0.25
+advance_mode = 2
+advance_expression = "not is_walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jdvk7"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w485l"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qxgsg"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "state == 2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7uv1i"]
+advance_mode = 2
+advance_expression = "state == 3"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qo77p"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8rvsn"]
+states/dropin/node = SubResource("AnimationNodeAnimation_xawel")
+states/dropin/position = Vector2(346.333, 99.8889)
+states/fire/node = SubResource("AnimationNodeAnimation_rk8ir")
+states/fire/position = Vector2(670.444, 250.889)
+states/howl/node = SubResource("AnimationNodeAnimation_01kr1")
+states/howl/position = Vector2(516.556, -35)
+states/idle/node = SubResource("AnimationNodeAnimation_xd33j")
+states/idle/position = Vector2(517, 100.778)
+states/ready_aim/node = SubResource("AnimationNodeAnimation_ht6xd")
+states/ready_aim/position = Vector2(346.086, 250)
+states/run/node = SubResource("AnimationNodeAnimation_vd2uf")
+states/run/position = Vector2(671, 100.111)
+transitions = ["Start", "dropin", SubResource("AnimationNodeStateMachineTransition_q6eal"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_6v802"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_herc0"), "howl", "idle", SubResource("AnimationNodeStateMachineTransition_jdvk7"), "dropin", "howl", SubResource("AnimationNodeStateMachineTransition_w485l"), "idle", "ready_aim", SubResource("AnimationNodeStateMachineTransition_qxgsg"), "ready_aim", "fire", SubResource("AnimationNodeStateMachineTransition_7uv1i"), "fire", "idle", SubResource("AnimationNodeStateMachineTransition_qo77p")]
+graph_offset = Vector2(-85, -74)
+
+[node name="wesley" instance=ExtResource("1_sf727")]
+
+[node name="ammo" parent="pawn" index="1"]
+shell_loss_amount = 20
+health = 20
+
+[node name="wesley" parent="pawn" index="2" instance=ExtResource("2_4rdvv")]
+
+[node name="Skeleton3D" parent="pawn/wesley/Armature" index="0"]
+bones/1/position = Vector3(-4.31647e-08, 0.493838, -0.620915)
+bones/1/rotation = Quaternion(-7.542e-08, 0.95354, 0.301266, -2.99332e-07)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-0.452243, -3.3572e-07, -8.49527e-08, 0.891895)
+bones/3/position = Vector3(-1.69538e-14, 0.90332, -3.63018e-08)
+bones/3/rotation = Quaternion(-0.174894, 3.84545e-07, -3.53286e-08, 0.984587)
+bones/4/position = Vector3(-0.225024, 0.265341, -0.141411)
+bones/4/rotation = Quaternion(-0.344345, -1.1705e-07, 7.90525e-08, 0.938843)
+bones/5/position = Vector3(0.222651, 0.52944, -0.361813)
+bones/5/rotation = Quaternion(-0.107026, -2.48944e-07, 4.14364e-08, 0.994256)
+bones/6/rotation = Quaternion(-0.675408, -2.60154e-07, -2.41402e-07, 0.737444)
+bones/7/rotation = Quaternion(-3.58891e-08, -0.318288, 0.947994, 2.40301e-08)
+bones/8/rotation = Quaternion(-0.377252, -2.41002e-07, -1.06513e-07, 0.926111)
+bones/9/rotation = Quaternion(9.92322e-08, -0.480327, 0.87709, -3.62636e-08)
+bones/10/rotation = Quaternion(-2.43506e-07, 0.232121, 0.972687, 7.28664e-08)
+bones/11/position = Vector3(0.225024, 0.259996, -0.371957)
+bones/11/rotation = Quaternion(-1.96811e-08, 0.396116, 0.9182, -2.99059e-08)
+bones/13/position = Vector3(-0.225024, 0.259996, -0.0891952)
+bones/13/rotation = Quaternion(1.18963e-07, 0.396116, 0.9182, 2.99059e-08)
+
+[node name="Cube" parent="pawn/wesley/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_r16x8")
+
+[node name="aim_bone" type="BoneAttachment3D" parent="pawn/wesley/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 3.25775e-07, -1.95146e-07, 1.88526e-07, 0.020198, 0.999796, 3.2965e-07, -0.999796, 0.020198, -7.09292e-08, 1.05214, 0.229009)
+bone_name = "chest"
+bone_idx = 2
+
+[node name="laser_bone" type="BoneAttachment3D" parent="pawn/wesley/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 3.0687e-07, -2.12458e-07, 3.5846e-07, -0.631032, 0.775757, 1.03989e-07, -0.775757, -0.631032, -0.225024, 0.916117, -0.0391342)
+bone_name = "canister"
+bone_idx = 4
+
+[node name="mesh_instance_3d" type="MeshInstance3D" parent="pawn/wesley/Armature/Skeleton3D/laser_bone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
+visible = false
+ignore_occlusion_culling = true
+mesh = SubResource("QuadMesh_bdlb5")
+surface_material_override/0 = SubResource("StandardMaterial3D_lbsu1")
+
+[node name="weapon_bone" type="BoneAttachment3D" parent="pawn/wesley/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 3.30733e-07, -6.25241e-07, 6.77326e-07, -0.193044, 0.98119, 2.03813e-07, -0.98119, -0.193044, 0.222652, 0.701095, -0.307631)
+bone_name = "rifle"
+bone_idx = 5
+
+[node name="shotgun2" parent="pawn/wesley/Armature/Skeleton3D/weapon_bone" index="0" instance=ExtResource("4_rm3ds")]
+transform = Transform3D(0.997986, -0.0619103, -0.0137991, -0.0137997, 0.000417784, -0.999905, 0.0619101, 0.998082, -0.000437409, 0.0226078, -0.00317666, 0.0145847)
+
+[node name="animation_tree" type="AnimationTree" parent="pawn/wesley" index="2"]
+root_motion_track = NodePath("Armature/Skeleton3D:root")
+tree_root = SubResource("AnimationNodeStateMachine_8rvsn")
+advance_expression_base_node = NodePath("../../agent")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="audio_stream_player_3d" type="AudioStreamPlayer3D" parent="pawn/wesley" index="3"]
+stream = ExtResource("5_af5m6")
+
+[node name="agent" parent="pawn" index="3" node_paths=PackedStringArray("aim_bone", "laser_path")]
+target_desired_distance = 5.0
+script = ExtResource("4_i2k7d")
+aim_bone = NodePath("../wesley/Armature/Skeleton3D/aim_bone")
+laser_path = NodePath("../wesley/Armature/Skeleton3D/laser_bone/mesh_instance_3d")
+aim_turn_speed = 0.5
+idle_on_ready = 7.0
+walk_speed = 500.0
+turn_speed = 1.5
+
+[node name="character_root_motion" type="RootMotionView" parent="pawn" index="4"]
+animation_path = NodePath("../wesley/animation_tree")
+script = ExtResource("4_xrh1b")
+
+[editable path="pawn"]
+[editable path="pawn/wesley"]

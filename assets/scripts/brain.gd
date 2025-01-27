@@ -29,6 +29,7 @@ var target_direction : Vector3 :
 
 func _ready():
 	nav_timer.timeout.connect(update_target_position)
+	self.target_reached.connect(func(): pawn.velocity = Vector3.ZERO )
 	await get_tree().create_timer(idle_on_ready).timeout
 
 

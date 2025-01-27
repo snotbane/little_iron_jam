@@ -13,6 +13,5 @@ func _process(delta: float) -> void:
 
 func _on_ammo_changed() -> void:
 	var difference := absi(ammo.health - count)
-	print(difference)
 	self.scale += Vector2.ONE * difference * scale_up_per_bullet
 	super._on_ammo_changed()

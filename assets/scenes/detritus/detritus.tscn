@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dineitjbro1ik"]
+[gd_scene load_steps=8 format=3 uid="uid://dineitjbro1ik"]
 
 [ext_resource type="Script" path="res://assets/scripts/detritus.gd" id="1_man4y"]
+[ext_resource type="AudioStream" uid="uid://bph7jtpkgt2u4" path="res://assets/audio/bullet_casings/bullet_casing_single.tres" id="2_5t67r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6qu2r"]
 size = Vector3(0.25, 0.25, 0.25)
@@ -80,6 +81,21 @@ tracks/1/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("audio_stream_player_3d")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_5t67r")
+}],
+"times": PackedFloat32Array(0.433333)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lnukw"]
 _data = {
@@ -100,3 +116,7 @@ shape = SubResource("BoxShape3D_6qu2r")
 libraries = {
 "": SubResource("AnimationLibrary_lnukw")
 }
+
+[node name="audio_stream_player_3d" type="AudioStreamPlayer3D" parent="."]
+attenuation_model = 3
+volume_db = -5.0

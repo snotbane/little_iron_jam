@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://d1sk0wvksw42q"]
+
+[ext_resource type="AudioStream" uid="uid://b5pvt7jno61lk" path="res://assets/audio/bullet_casings/bullet_casing_small_02.ogg" id="7_uauor"]
+[ext_resource type="AudioStream" uid="uid://br5ic8d57d4mc" path="res://assets/audio/bullet_casings/bullet_casing_multi_00.ogg" id="8_mmwej"]
+[ext_resource type="AudioStream" uid="uid://gyvwdqua0nwe" path="res://assets/audio/bullet_casings/bullet_casing_multi_01.ogg" id="9_ht53w"]
+[ext_resource type="AudioStream" uid="uid://dkmbkqw1gwasw" path="res://assets/audio/bullet_casings/bullet_casing_multi_02.ogg" id="10_dw80w"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("7_uauor")
+stream_1/stream = ExtResource("8_mmwej")
+stream_2/stream = ExtResource("9_ht53w")
+stream_3/stream = ExtResource("10_dw80w")

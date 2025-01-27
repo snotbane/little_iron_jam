@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://trxflnqnxyay"]
+
+[ext_resource type="AudioStream" uid="uid://bdhqprpg1dspu" path="res://assets/audio/weapons/garand_ping_01.ogg" id="1_h7eqg"]
+
+[resource]
+random_pitch = 1.02
+streams_count = 1
+stream_0/stream = ExtResource("1_h7eqg")

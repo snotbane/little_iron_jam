@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://dxc0y6nso8o2u"]
+
+[ext_resource type="AudioStream" uid="uid://cm6p31uiti5y1" path="res://assets/audio/weapons/railgun_fire.ogg" id="1_eufma"]
+
+[resource]
+random_pitch = 1.01
+streams_count = 1
+stream_0/stream = ExtResource("1_eufma")

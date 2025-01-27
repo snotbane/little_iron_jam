@@ -16,4 +16,4 @@ health = 1000
 shape = SubResource("SphereShape3D_52ikf")
 
 [node name="bullet_pistol" parent="." index="2" instance=ExtResource("2_jh7sm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, -1.5)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 8, 0, 0, -1.5)

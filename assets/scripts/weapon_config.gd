@@ -6,6 +6,8 @@ signal weapon_added
 @export var weapon_scene : PackedScene
 @export var ammo : Ammo
 
+@onready var cooldown : Timer = $cooldown
+
 var fire_direction : Vector3
 
 @export var sockets : Array[Node3D]

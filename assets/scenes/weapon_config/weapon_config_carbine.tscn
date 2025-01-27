@@ -1,24 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://ciy73altvwc82"]
+[gd_scene load_steps=6 format=3 uid="uid://ciy73altvwc82"]
 
 [ext_resource type="PackedScene" uid="uid://d07hpd5wlopok" path="res://assets/scenes/weapon_config/weapon_config.tscn" id="1_d4ytu"]
 [ext_resource type="Script" path="res://assets/scripts/weapon_config_cyclic.gd" id="2_akv0p"]
 [ext_resource type="PackedScene" uid="uid://d2xqcvhlhks64" path="res://assets/scenes/weapons/weapon_carbine.tscn" id="2_j180g"]
 
-[node name="weapon_config" node_paths=PackedStringArray("sockets") instance=ExtResource("1_d4ytu")]
+[sub_resource type="QuadMesh" id="QuadMesh_bx6c8"]
+size = Vector2(0.025, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy572"]
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 1
+albedo_color = Color(0.333333, 1, 0, 1)
+
+[node name="weapon_config_carbine" node_paths=PackedStringArray("sockets") instance=ExtResource("1_d4ytu")]
 script = ExtResource("2_akv0p")
 socket_fire_order = Array[int]([0, 2, 1, 3])
 weapon_scene = ExtResource("2_j180g")
 sockets = [NodePath("node_3d"), NodePath("node_3d2"), NodePath("node_3d3"), NodePath("node_3d4")]
 
 [node name="cooldown" parent="." index="1"]
-wait_time = 0.35
+wait_time = 0.4
 one_shot = false
 autostart = false
 
 [node name="node_3d" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, -1.45519e-11, 1, 0, -4.65661e-10, 0, 1, 0.416151, 0.299408, 0.838007)
 
 [node name="node_3d2" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, -3.63798e-12, 1, 0, -1.16415e-10, 0, 1, -0.415997, 0.299509, 0.838427)
 
 [node name="node_3d3" type="Node3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, -1.09139e-11, 1, 0, -3.49246e-10, 0, 1, -0.00153058, 0.735029, 1.14014)
 
 [node name="node_3d4" type="Node3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, -1.09139e-11, 1, 0, -3.49246e-10, 0, 1, -0.000701239, -0.147309, 0.522386)
+
+[node name="mesh_instance_3d" type="MeshInstance3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.343504, -25)
+ignore_occlusion_culling = true
+mesh = SubResource("QuadMesh_bx6c8")
+surface_material_override/0 = SubResource("StandardMaterial3D_yy572")

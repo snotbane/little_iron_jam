@@ -18,6 +18,8 @@ enum State {
 @onready var aim_timer : Timer = $aim_giveup_timer
 
 
+var prev_dot_x : float
+
 var _state : State
 var state : State :
 	get: return _state
@@ -29,6 +31,7 @@ var state : State :
 
 		if state == State.AIMING:
 			aim_timer.start()
+			prev_dot_x = 0
 		else:
 			aim_timer.stop()
 
@@ -55,7 +58,8 @@ func _process(delta: float) -> void:
 				var step := (target.global_position - aim_bone.global_position).normalized()
 				var dot_x := -step.dot(aim_bone.global_basis.x)
 				aim_bone.rotation.y += aim_turn_speed * signf(dot_x) * delta
-				if absf(dot_x) <= aim_acceptance_range : fire()
+				if prev_dot_x != 0 and prev_dot_x != signf(dot_x): fire()
+				prev_dot_x = signf(dot_x)
 
 
 func _physics_process(delta: float) -> void:

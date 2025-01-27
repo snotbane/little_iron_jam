@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://brbm7ub2jbg4p"]
+[gd_scene load_steps=26 format=3 uid="uid://brbm7ub2jbg4p"]
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_sf727"]
 [ext_resource type="PackedScene" uid="uid://6d5gqqfyogj6" path="res://assets/models/wesley/wesley.glb" id="2_4rdvv"]
+[ext_resource type="PackedScene" uid="uid://boyloil5dmnft" path="res://assets/scenes/pickups/pickup_carbine.tscn" id="2_citca"]
 [ext_resource type="Material" uid="uid://dbicob5d8wu5w" path="res://assets/models/wesley/wesley_material.tres" id="3_r16x8"]
 [ext_resource type="PackedScene" uid="uid://m3g6mj32wfve" path="res://assets/scenes/weapon_config/weapon_config_wesley.tscn" id="4_05i2f"]
 [ext_resource type="Script" path="res://assets/scripts/brain_wesley.gd" id="4_i2k7d"]
@@ -88,52 +89,56 @@ states/ready_aim/position = Vector2(346.086, 250)
 states/run/node = SubResource("AnimationNodeAnimation_vd2uf")
 states/run/position = Vector2(671, 100.111)
 transitions = ["Start", "dropin", SubResource("AnimationNodeStateMachineTransition_q6eal"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_6v802"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_herc0"), "howl", "idle", SubResource("AnimationNodeStateMachineTransition_jdvk7"), "dropin", "howl", SubResource("AnimationNodeStateMachineTransition_w485l"), "idle", "ready_aim", SubResource("AnimationNodeStateMachineTransition_qxgsg"), "ready_aim", "fire", SubResource("AnimationNodeStateMachineTransition_7uv1i"), "fire", "idle", SubResource("AnimationNodeStateMachineTransition_qo77p")]
-graph_offset = Vector2(-85, -74)
+graph_offset = Vector2(-124, 46)
 
 [node name="wesley" instance=ExtResource("1_sf727")]
 
+[node name="pawn" parent="." index="0"]
+damage = 10
+
 [node name="ammo" parent="pawn" index="1"]
 shell_loss_amount = 20
+weapon_drop_on_death = ExtResource("2_citca")
 health = 20
 
 [node name="wesley" parent="pawn" index="2" instance=ExtResource("2_4rdvv")]
 
 [node name="Skeleton3D" parent="pawn/wesley/Armature" index="0"]
-bones/1/position = Vector3(-4.31647e-08, 0.493838, -0.620915)
+bones/1/position = Vector3(-4.99621e-08, 0.307737, -0.620915)
 bones/1/rotation = Quaternion(-7.542e-08, 0.95354, 0.301266, -2.99332e-07)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-0.452243, -3.3572e-07, -8.49527e-08, 0.891895)
-bones/3/position = Vector3(-1.69538e-14, 0.90332, -3.63018e-08)
-bones/3/rotation = Quaternion(-0.174894, 3.84545e-07, -3.53286e-08, 0.984587)
+bones/2/rotation = Quaternion(-0.463706, -3.33716e-07, -8.75383e-08, 0.885989)
+bones/3/position = Vector3(0.000650767, 0.903241, 0.011096)
+bones/3/rotation = Quaternion(0.0432397, 3.9154e-07, 1.62807e-08, 0.999065)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/position = Vector3(-0.225024, 0.127397, -0.0244944)
-bones/4/rotation = Quaternion(-0.344345, -1.22984e-07, 8.12289e-08, 0.938843)
-bones/5/position = Vector3(0.222651, 0.52944, -0.361813)
-bones/5/rotation = Quaternion(-0.107026, -2.48944e-07, 4.14364e-08, 0.994256)
+bones/4/position = Vector3(-0.225024, 0.530155, -0.359894)
+bones/4/rotation = Quaternion(0.000416964, -1.24023e-07, -1.09267e-08, 1)
+bones/5/position = Vector3(0.177195, 0.52944, -0.361813)
+bones/5/rotation = Quaternion(0.00362336, -2.4316e-07, 6.71896e-08, 0.999994)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(-0.675408, -2.60154e-07, -2.41402e-07, 0.737444)
+bones/6/rotation = Quaternion(-0.347787, 0.15967, 0.239999, 0.89216)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(-3.58889e-08, -0.318288, 0.947994, 2.40301e-08)
-bones/8/rotation = Quaternion(-0.377252, -2.41002e-07, -1.06513e-07, 0.926111)
-bones/9/rotation = Quaternion(9.92322e-08, -0.480327, 0.87709, -3.62636e-08)
-bones/10/rotation = Quaternion(-2.43506e-07, 0.232121, 0.972687, 7.28664e-08)
+bones/7/rotation = Quaternion(-1.67428e-08, -0.899882, 0.436134, 5.40023e-08)
+bones/8/rotation = Quaternion(-0.347787, -0.15967, -0.239999, 0.89216)
+bones/9/rotation = Quaternion(5.90023e-08, -0.899882, 0.436134, -6.3066e-08)
+bones/10/rotation = Quaternion(-2.40229e-07, 0.334952, 0.942235, 1.2336e-07)
 bones/10/scale = Vector3(1, 1, 1)
-bones/11/position = Vector3(0.225024, 0.259996, -0.371957)
-bones/11/rotation = Quaternion(-1.96811e-08, 0.396116, 0.9182, -2.99059e-08)
-bones/13/position = Vector3(-0.225024, 0.259996, -0.0891952)
-bones/13/rotation = Quaternion(1.18963e-07, 0.396116, 0.9182, 2.99059e-08)
+bones/11/position = Vector3(0.621652, 0.196503, 0.218013)
+bones/11/rotation = Quaternion(0.253982, 0.452879, 0.843686, -0.136334)
+bones/13/position = Vector3(-0.621652, 0.196503, 0.218013)
+bones/13/rotation = Quaternion(-0.253982, 0.452879, 0.843686, 0.136334)
 bones/13/scale = Vector3(1, 1, 1)
 
 [node name="Cube" parent="pawn/wesley/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_r16x8")
 
 [node name="aim_bone" type="BoneAttachment3D" parent="pawn/wesley/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 3.25775e-07, -1.95146e-07, 1.88526e-07, 0.0201981, 0.999796, 3.2965e-07, -0.999796, 0.0201981, -7.09292e-08, 1.05214, 0.229009)
+transform = Transform3D(1, 3.26805e-07, -1.8673e-07, 1.88555e-07, -0.00559255, 0.999984, 3.25756e-07, -0.999984, -0.00559258, -6.41318e-08, 0.866039, 0.229009)
 bone_name = "chest"
 bone_idx = 2
 
 [node name="laser_bone" type="BoneAttachment3D" parent="pawn/wesley/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 3.0687e-07, -2.25098e-07, 3.68266e-07, -0.631032, 0.775757, 9.60121e-08, -0.775757, -0.631032, -0.225024, 1.03022, 0.101142)
+transform = Transform3D(1, 3.48399e-07, -4.35057e-07, 4.3671e-07, -0.00475864, 0.999989, 3.46325e-07, -0.999989, -0.00475867, -0.225023, 0.503186, -0.299126)
 bone_name = "canister"
 bone_idx = 4
 
@@ -145,7 +150,7 @@ mesh = SubResource("QuadMesh_bdlb5")
 surface_material_override/0 = SubResource("StandardMaterial3D_lbsu1")
 
 [node name="weapon_bone" type="BoneAttachment3D" parent="pawn/wesley/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 3.30733e-07, -6.25241e-07, 6.77326e-07, -0.193044, 0.98119, 2.03813e-07, -0.98119, -0.193044, 0.222652, 0.701095, -0.307631)
+transform = Transform3D(1, 1.89303e-07, -6.74924e-07, 6.7461e-07, 0.00165415, 0.999999, 1.90419e-07, -0.999999, 0.00165412, 0.177195, 0.501271, -0.298399)
 bone_name = "rifle"
 bone_idx = 5
 

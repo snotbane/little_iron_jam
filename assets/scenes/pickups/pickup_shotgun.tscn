@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1kew6f04nb1m"]
 
-[ext_resource type="PackedScene" uid="uid://bthvfuwp8orlx" path="res://assets/scenes/pickups/weapon_pickup.tscn" id="1_l31ri"]
+[ext_resource type="PackedScene" uid="uid://bthvfuwp8orlx" path="res://assets/scenes/pickups/pickup_weapon.tscn" id="1_l31ri"]
 [ext_resource type="PackedScene" uid="uid://bpfyvj6aqfoac" path="res://assets/scenes/weapon_config/weapon_config_shotgun.tscn" id="2_bi1th"]
 [ext_resource type="PackedScene" uid="uid://cfklhupbq2fkr" path="res://assets/prefabs/shotgun_pickup.tscn" id="2_ceda5"]
 

@@ -1,8 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2xqcvhlhks64"]
+[gd_scene load_steps=5 format=3 uid="uid://d2xqcvhlhks64"]
 
 [ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_4mcss"]
+[ext_resource type="PackedScene" uid="uid://bgprjopdnyaba" path="res://assets/scenes/bullets/bullet_carbine.tscn" id="2_4pk8x"]
 [ext_resource type="PackedScene" uid="uid://4qnnt1bkuj4w" path="res://assets/prefabs/shotgun.tscn" id="2_gtpt0"]
+[ext_resource type="PackedScene" uid="uid://c00o6may2xxnq" path="res://assets/scenes/detritus/detritus_carbine.tscn" id="3_k3mus"]
 
-[node name="weapon" instance=ExtResource("1_4mcss")]
+[node name="weapon_carbine" node_paths=PackedStringArray("anim_player", "bullet_spawn_location") instance=ExtResource("1_4mcss")]
+anim_player = NodePath("shotgun/AnimationPlayer")
+health = 100
+bullet_scene = ExtResource("2_4pk8x")
+bullet_spawn_location = NodePath("shotgun/Armature/Skeleton3D/bullet_spawn")
+bullet_cost = 5
+deviation_degrees = 0.0
+detritus_scene = ExtResource("3_k3mus")
+_pickup_scene = "res://assets/scenes/pickups/pickup_carbine.tscn"
 
-[node name="shotgun" parent="." index="1" instance=ExtResource("2_gtpt0")]
+[node name="shotgun" parent="." index="0" instance=ExtResource("2_gtpt0")]
+
+[node name="bullet_spawn" type="BoneAttachment3D" parent="shotgun/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 3.25841e-07, 1.11273e-07, -1.11273e-07, -3.87681e-21, 1, 3.25841e-07, -1, 4.18149e-14, 4.05939e-07, 0, -1.24582)
+bone_name = "barrel"
+bone_idx = 2
+
+[editable path="shotgun"]

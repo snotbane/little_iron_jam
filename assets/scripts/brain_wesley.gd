@@ -14,7 +14,9 @@ enum State {
 
 @export var aim_turn_speed : float = 0.25
 @export var aim_acceptance_range : float = 0.005
-@export var aim_max_duration : float = 8.0
+
+@onready var aim_timer : Timer = $aim_giveup_timer
+
 
 var _state : State
 var state : State :
@@ -25,11 +27,10 @@ var state : State :
 
 		laser_path.visible = _state == State.AIMING
 
-		match _state:
-			State.AIMING:
-				await wait(aim_max_duration)
-				if _state == State.AIMING:
-					fire()
+		if state == State.AIMING:
+			aim_timer.start()
+		else:
+			aim_timer.stop()
 
 
 # var laser_length : float :
@@ -39,6 +40,7 @@ var state : State :
 
 func _ready() -> void:
 	await super._ready()
+	aim_timer.timeout.connect(fire)
 	self.target_reached.connect(begin_aim)
 	state = State.MOVING
 
@@ -68,9 +70,11 @@ func begin_aim() -> void:
 
 func fire() -> void:
 	state = State.FIRING
+	weapon_config.is_shooting = true
 	pawn.global_rotation.y = aim_bone.global_rotation.y
 	aim_bone.override_pose = false
 	await wait(0.25)
+	weapon_config.is_shooting = false
 	state = State.IDLING
 	await wait(1.0)
 	state = State.MOVING

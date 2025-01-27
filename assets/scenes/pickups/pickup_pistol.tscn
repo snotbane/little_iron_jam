@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://15e61md7nldj"]
 
-[ext_resource type="PackedScene" uid="uid://bthvfuwp8orlx" path="res://assets/scenes/pickups/weapon_pickup.tscn" id="1_nf5s3"]
+[ext_resource type="PackedScene" uid="uid://bthvfuwp8orlx" path="res://assets/scenes/pickups/pickup_weapon.tscn" id="1_nf5s3"]
 [ext_resource type="PackedScene" uid="uid://dy7r1lox3r877" path="res://assets/prefabs/pistol_pickup.tscn" id="2_wclcv"]
 
 [node name="pistol_pickup" instance=ExtResource("1_nf5s3")]

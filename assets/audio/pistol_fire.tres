@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://h5luf2b4mnvq" path="res://assets/audio/pistol_fire_06.ogg" id="6_tbyq5"]
 
 [resource]
+random_pitch = 1.02
 streams_count = 6
 stream_0/stream = ExtResource("1_cb5ck")
 stream_1/stream = ExtResource("2_d5owd")

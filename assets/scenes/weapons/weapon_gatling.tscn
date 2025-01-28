@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://0f4vk8qx8f57"]
+
+[ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_pywu8"]
+[ext_resource type="Script" path="res://assets/scripts/weapons/weapon_gatling.gd" id="2_1kktl"]
+[ext_resource type="PackedScene" uid="uid://ctkeqktbiic1l" path="res://assets/models/shotgun/shotgun.glb" id="2_am8k7"]
+[ext_resource type="PackedScene" uid="uid://c7uios12yce4b" path="res://assets/scenes/bullets/bullet_pistol.tscn" id="2_kcujr"]
+
+[node name="weapon_gatling" node_paths=PackedStringArray("anim_player", "bullet_spawn_location") instance=ExtResource("1_pywu8")]
+script = ExtResource("2_1kktl")
+min_fire_delay = 0.12
+max_fire_delay = 0.8
+fire_delay_alpha = 0.65
+anim_player = NodePath("shotgun2/AnimationPlayer")
+health = 2500
+bullet_scene = ExtResource("2_kcujr")
+bullet_spawn_location = NodePath("node_3d")
+
+[node name="warmup" type="Timer" parent="." index="1"]
+
+[node name="node_3d" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+
+[node name="shotgun2" parent="." index="3" instance=ExtResource("2_am8k7")]
+
+[node name="Skeleton3D" parent="shotgun2/Armature" index="0"]
+bones/1/rotation = Quaternion(-8.43219e-09, 0.707107, 0.707107, -5.33851e-08)
+bones/3/position = Vector3(7.08925e-09, 0.257839, -0.0637105)
+bones/3/rotation = Quaternion(9.48422e-22, 6.55127e-22, 4.26326e-14, 1)
+
+[editable path="shotgun2"]

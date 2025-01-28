@@ -47,7 +47,7 @@ var drops_detritus : bool = true
 # func _physics_process(delta: float) -> void:
 
 
-func fire(ammo: Ammo, direction := Vector3.ZERO) -> void:
+func fire(ammo: Ammo, direction := Vector3.ZERO, pitch := 1.0) -> void:
 	if not cooldown.is_stopped() or ammo.health == 0: return
 	if anim_player:
 		if anim_player.is_playing(): anim_player.stop()
@@ -55,12 +55,12 @@ func fire(ammo: Ammo, direction := Vector3.ZERO) -> void:
 	health -= 1 if ammo.belongs_to_player else 0
 	ammo.consume_bullets(bullet_cost)
 	for i in projectile_count + (ammo.extra_ammo_cost if cost_direct_to_bullets else 0):
-		create_bullet(ammo, direction)
+		create_bullet(ammo, direction, pitch)
 	cooldown.start()
 	fired.emit()
 
 
-func create_bullet(ammo: Ammo, direction := Vector3.ZERO) -> void:
+func create_bullet(ammo: Ammo, direction := Vector3.ZERO, pitch := 1.0) -> void:
 	var projectile : Bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(projectile)
 	projectile.global_position = bullet_spawn_location.global_position
@@ -69,7 +69,7 @@ func create_bullet(ammo: Ammo, direction := Vector3.ZERO) -> void:
 	else:
 		projectile.global_rotation = bullet_spawn_location.global_rotation
 	projectile.global_rotation_degrees.y += randf_range(-1, 1) * deviation_degrees
-	projectile.populate(ammo, audio_stream, cost_direct_to_bullets)
+	projectile.populate(ammo, audio_stream, cost_direct_to_bullets, pitch)
 
 
 func drop_detritus() -> void:

@@ -45,7 +45,9 @@ func _ready() -> void:
 	pass
 
 
-func _set_is_shooting(value: bool) -> void:	pass
+func _set_is_shooting(value: bool) -> void:
+	if value: cooldown.start()
+	else: cooldown.stop()
 
 
 func try_add_weapon() -> bool:

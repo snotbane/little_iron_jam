@@ -1,10 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://dyxm7j7w035yn"]
+[gd_scene load_steps=26 format=3 uid="uid://dyxm7j7w035yn"]
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_q0wik"]
 [ext_resource type="PackedScene" uid="uid://bhqcj17jj8jpg" path="res://assets/models/magnus/magnus.glb" id="2_yqnmd"]
 [ext_resource type="Material" uid="uid://bcedyhx60b05d" path="res://assets/models/magnus/magnus_material.tres" id="3_020vm"]
+[ext_resource type="PackedScene" uid="uid://c75u30qwoxwb3" path="res://assets/scenes/weapon_config/weapon_config_gatling.tscn" id="4_41thd"]
 [ext_resource type="AudioStream" uid="uid://bmbn3c6dttqq" path="res://assets/audio/vulture_cackle.tres" id="4_o1vk5"]
 [ext_resource type="Script" path="res://assets/scripts/brains/brain_magnus.gd" id="4_obwwn"]
+[ext_resource type="PackedScene" uid="uid://0f4vk8qx8f57" path="res://assets/scenes/weapons/weapon_gatling.tscn" id="5_njxo0"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sd750"]
 animation = &"cackle"
@@ -110,7 +112,7 @@ bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(-0.653613, -0.340677, 0.421536, 0.52824)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(0.528239, -0.421534, -0.340678, 0.653614)
-bones/4/rotation = Quaternion(0.304651, 6.49807e-07, -5.67704e-07, 0.952464)
+bones/4/rotation = Quaternion(-0.194397, 8.43392e-07, -1.82281e-07, 0.980923)
 bones/5/rotation = Quaternion(0.615761, 0.476667, 0.38336, -0.49665)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.398836, -0.366992, 0.618417, 0.569041)
@@ -120,6 +122,14 @@ bones/8/scale = Vector3(1, 1, 1)
 
 [node name="Mesh" parent="pawn/magnus/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_020vm")
+
+[node name="body" type="BoneAttachment3D" parent="pawn/magnus/Armature/Skeleton3D" index="1"]
+bone_name = "body"
+bone_idx = 1
+
+[node name="weapon_config" parent="pawn/magnus/Armature/Skeleton3D/body" index="0" instance=ExtResource("4_41thd")]
+
+[node name="weapon_gatling" parent="pawn/magnus/Armature/Skeleton3D/body/weapon_config/node_3d" index="0" instance=ExtResource("5_njxo0")]
 
 [node name="animation_tree" type="AnimationTree" parent="pawn/magnus" index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_w06p1")
@@ -144,3 +154,4 @@ turn_speed = 1.0
 [editable path="pawn"]
 [editable path="pawn/ammo"]
 [editable path="pawn/magnus"]
+[editable path="pawn/magnus/Armature/Skeleton3D/body/weapon_config"]

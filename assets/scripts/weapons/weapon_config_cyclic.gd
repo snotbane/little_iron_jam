@@ -31,9 +31,7 @@ func _set_is_shooting(value: bool) -> void:
 			if sockets[fire_index_ordered].get_child_count() != 0: break
 			fire_index += 1
 		fire_single()
-		cooldown.start()
-	else:
-		cooldown.stop()
+	super._set_is_shooting(value)
 
 
 func fire_single() -> void:

@@ -22,7 +22,7 @@ var ammo : Ammo :
 		if _ammo == value: return
 		_ammo = value
 var shooter : Node3D :
-	get: return ammo.get_parent()
+	get: return ammo.get_parent() if ammo else null
 
 var _velocity : Vector3
 @export var velocity : Vector3 :
@@ -37,7 +37,7 @@ var _velocity : Vector3
 @onready var collider : CollisionShape3D = $shape
 
 
-func populate(__ammo: Ammo, audio : AudioStream = preload("res://assets/audio/pistol_fire.tres"), cost_direct_to_bullets := false) -> void:
+func populate(__ammo: Ammo, audio : AudioStream = preload("res://assets/audio/pistol_fire.tres"), cost_direct_to_bullets := false, pitch := 1.0) -> void:
 	ammo = __ammo
 	damage += 0 if cost_direct_to_bullets else ammo.extra_ammo_cost
 	velocity = (-self.global_basis.z * Vector3(1, 0, 1)).normalized() * impulse * ammo.bullet_speed_multiplier
@@ -48,6 +48,7 @@ func populate(__ammo: Ammo, audio : AudioStream = preload("res://assets/audio/pi
 	audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED
 	get_tree().root.add_child(audio_player)
 	audio_player.global_position = self.global_position
+	audio_player.pitch_scale = pitch
 	audio_player.play()
 
 

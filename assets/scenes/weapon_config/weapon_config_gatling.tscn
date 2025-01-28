@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c75u30qwoxwb3"]
+
+[ext_resource type="PackedScene" uid="uid://d07hpd5wlopok" path="res://assets/scenes/weapon_config/weapon_config.tscn" id="1_tawua"]
+[ext_resource type="PackedScene" uid="uid://0f4vk8qx8f57" path="res://assets/scenes/weapons/weapon_gatling.tscn" id="2_m3c0b"]
+[ext_resource type="Script" path="res://assets/scripts/weapons/weapon_config_simultaneous.gd" id="2_ped4s"]
+
+[node name="weapon_config" node_paths=PackedStringArray("sockets") instance=ExtResource("1_tawua")]
+script = ExtResource("2_ped4s")
+weapon_scene = ExtResource("2_m3c0b")
+sockets = [NodePath("node_3d"), NodePath("node_3d2"), NodePath("node_3d3")]
+
+[node name="cooldown" parent="." index="1"]
+wait_time = 0.2
+autostart = false
+
+[node name="node_3d" type="Node3D" parent="." index="2"]
+
+[node name="node_3d2" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="node_3d3" type="Node3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)

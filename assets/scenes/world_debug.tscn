@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvxkxri6msep5"]
+[gd_scene load_steps=4 format=3 uid="uid://cvxkxri6msep5"]
 
 [ext_resource type="PackedScene" uid="uid://cmm5rafal8ul4" path="res://assets/scenes/world.tscn" id="1_ka81f"]
-[ext_resource type="PackedScene" uid="uid://boyloil5dmnft" path="res://assets/scenes/pickups/pickup_carbine.tscn" id="3_b0s8h"]
-[ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pickup_pistol.tscn" id="3_pryv8"]
 [ext_resource type="PackedScene" uid="uid://dyxm7j7w035yn" path="res://assets/scenes/enemies/magnus.tscn" id="5_3j61g"]
-[ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/pickup_shotgun.tscn" id="5_8wimb"]
+[ext_resource type="PackedScene" uid="uid://buobjj4nvosgp" path="res://assets/scenes/pickups/pickup_gatling.tscn" id="6_5fsl7"]
 
 [node name="world" instance=ExtResource("1_ka81f")]
 
@@ -12,7 +10,7 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.5)
 
 [node name="ammo" parent="player/pawn" index="1"]
-health = 1000
+health = 99999
 
 [node name="Skeleton3D" parent="player/pawn/mesh_scene/Armature" index="0"]
 bones/8/position = Vector3(8.88178e-14, -3.55765e-07, 0)
@@ -22,17 +20,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31)
 is_game_over = true
 wave_index = 10
 
-[node name="weapon_pickup" parent="." index="2" instance=ExtResource("3_b0s8h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.37343, -0.1, -22.9357)
-
-[node name="pistol_pickup" parent="." index="3" instance=ExtResource("3_pryv8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.58788, -0.100001, -19.5389)
-
-[node name="shotgun_pickup" parent="." index="4" instance=ExtResource("5_8wimb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999279, -0.100001, -23.5347)
-
-[node name="magnus" parent="." index="5" instance=ExtResource("5_3j61g")]
+[node name="magnus" parent="." index="2" instance=ExtResource("5_3j61g")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -4.22951, -0.1, -26.6403)
+
+[node name="pickup_gatling" parent="." index="3" instance=ExtResource("6_5fsl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.61282, 0.818198, -22.6618)
+
+[node name="pickup_gatling2" parent="." index="4" instance=ExtResource("6_5fsl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.61282, 0.818198, -22.6618)
+
+[node name="pickup_gatling3" parent="." index="5" instance=ExtResource("6_5fsl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.61282, 0.818198, -22.6618)
 
 [connection signal="died" from="player/pawn/ammo" to="player/canvas_layer/ui/animation_player" method="play" binds= [&"game_over"]]
 

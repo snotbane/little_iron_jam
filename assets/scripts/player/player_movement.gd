@@ -20,6 +20,9 @@ signal on_dodge
 @export var dodge_delay : float = 1.0
 @export var dodge_ammo_cost : int = 3
 
+@export var dodge_upgrade_impulse : float = 10.0
+@export var dodge_upgrade_damping : float = 10.0
+
 @onready var pawn : CharacterBody3D = self.get_parent()
 @onready var ammo : Ammo = pawn.find_child("ammo")
 
@@ -86,4 +89,8 @@ func dodge() -> void:
 
 
 func receive_upgrade_dodge() -> void:
-	pass
+	dodge_ammo_cost += 1
+	pawn.damage = dodge_ammo_cost * 2
+	dodge_impulse += dodge_upgrade_impulse
+	dodge_damping += dodge_upgrade_damping
+

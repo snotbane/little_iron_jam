@@ -207,6 +207,8 @@ dodge_impulse = 20.0
 dodge_damping = 4.0
 dodge_delay = 0.6
 dodge_ammo_cost = 1
+dodge_upgrade_impulse = 3.0
+dodge_upgrade_damping = 0.0
 
 [node name="omni_light_3d" type="OmniLight3D" parent="pawn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19368, 0)

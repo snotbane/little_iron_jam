@@ -15,3 +15,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00158711, 0)
 shape = SubResource("BoxShape3D_5rnrg")
 
 [node name="casing_particle" parent="." index="2" instance=ExtResource("2_nytn6")]
+
+[node name="audio_stream_player_3d" parent="." index="3"]
+volume_db = -15.0

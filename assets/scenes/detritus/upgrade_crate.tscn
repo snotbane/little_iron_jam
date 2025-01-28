@@ -30,6 +30,7 @@ shape = SubResource("BoxShape3D_auucf")
 
 [node name="ammo" parent="." index="1" instance=ExtResource("8_hnlmp")]
 can_scream = false
+health = 1
 
 [node name="shape" parent="ammo" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

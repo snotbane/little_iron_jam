@@ -78,6 +78,7 @@ func consume_bullets(amount: int) -> void:
 
 
 func die() -> void:
+	if actor.is_queued_for_deletion(): return
 	if last_hit_by is not Bullet:
 		drop_weapon()
 	drop_shells()

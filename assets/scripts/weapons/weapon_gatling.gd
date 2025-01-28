@@ -5,6 +5,10 @@ extends Weapon
 @export var max_fire_delay := 0.8
 @export var fire_delay_alpha := 10.0
 
+@export var rotator_visual_speed := 1.0
+@export var rotator_main : Node3D
+@export var rotator_sub : Node3D
+
 var fire_rate := max_fire_delay
 var bullet_timer := fire_rate
 var fire_rate_percent : float :
@@ -16,6 +20,9 @@ var direction_ : Vector3
 func _process(delta: float) -> void:
 	fire_rate = lerpf(fire_rate, min_fire_delay if is_shooting else max_fire_delay, fire_delay_alpha * delta)
 	cooldown.stop()
+	var visual_rotation_degrees_y = rotator_visual_speed * fire_rate_percent * delta
+	rotator_main.rotation_degrees.y += visual_rotation_degrees_y
+	rotator_sub.rotation_degrees.y -= visual_rotation_degrees_y
 
 	bullet_timer -= delta
 	if is_shooting and ammo_ and bullet_timer <= 0.0:

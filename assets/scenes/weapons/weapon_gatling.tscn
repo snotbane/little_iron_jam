@@ -1,19 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://0f4vk8qx8f57"]
+[gd_scene load_steps=7 format=3 uid="uid://0f4vk8qx8f57"]
 
 [ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_pywu8"]
 [ext_resource type="Script" path="res://assets/scripts/weapons/weapon_gatling.gd" id="2_1kktl"]
 [ext_resource type="PackedScene" uid="uid://c7uios12yce4b" path="res://assets/scenes/bullets/bullet_pistol.tscn" id="2_kcujr"]
 [ext_resource type="PackedScene" uid="uid://dyt6oitg7ejkk" path="res://assets/scenes/detritus/detritus_gatling.tscn" id="4_j7h8v"]
 [ext_resource type="PackedScene" uid="uid://dbk7uke1u4jo3" path="res://assets/prefabs/gattler.tscn" id="5_lkg1b"]
+[ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="6_x38i6"]
 
-[node name="weapon_gatling" node_paths=PackedStringArray("bullet_spawn_location") instance=ExtResource("1_pywu8")]
+[node name="weapon_gatling" node_paths=PackedStringArray("rotator_main", "rotator_sub", "anim_player", "bullet_spawn_location") instance=ExtResource("1_pywu8")]
 script = ExtResource("2_1kktl")
 min_fire_delay = 0.12
 max_fire_delay = 0.8
 fire_delay_alpha = 0.7
+rotator_visual_speed = 750.0
+rotator_main = NodePath("gattler/Armature/Skeleton3D/rotator_1")
+rotator_sub = NodePath("gattler/Armature/Skeleton3D/rotator_2")
+anim_player = NodePath("gattler/AnimationPlayer")
 health = 2500
 bullet_scene = ExtResource("2_kcujr")
-bullet_spawn_location = NodePath("bullet_spawn")
+bullet_spawn_location = NodePath("gattler/bullet_spawn")
 deviation_degrees = 1.5
 detritus_scene = ExtResource("4_j7h8v")
 _pickup_scene = "res://assets/scenes/pickups/pickup_gatling.tscn"
@@ -23,30 +28,38 @@ _pickup_scene = "res://assets/scenes/pickups/pickup_gatling.tscn"
 [node name="gattler" parent="." index="2" instance=ExtResource("5_lkg1b")]
 
 [node name="Skeleton3D" parent="gattler/Armature" index="0"]
-bones/1/rotation = Quaternion(-7.36772e-07, 0.646375, 0.76302, -6.65231e-07)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/position = Vector3(4.54747e-13, 0.912414, 2.98023e-08)
-bones/2/rotation = Quaternion(0.0824805, -1.00743e-06, 2.44631e-07, 0.996593)
+bones/2/position = Vector3(2.84217e-13, 0.912414, 2.08616e-07)
+bones/2/rotation = Quaternion(0.0824807, 4.39933e-08, 1.68171e-07, 0.996593)
 bones/2/scale = Vector3(1, 1, 1)
-bones/4/position = Vector3(9.84954e-08, 0.616154, -0.0493767)
-bones/4/rotation = Quaternion(0.0824805, -1.00743e-06, 2.44631e-07, 0.996593)
+bones/4/position = Vector3(9.84956e-08, 0.616154, -0.0493766)
+bones/4/rotation = Quaternion(0.0824807, 4.39933e-08, 1.68171e-07, 0.996593)
 bones/4/scale = Vector3(1, 1, 1)
 
-[node name="rotator_main" type="BoneAttachment3D" parent="gattler/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.93258e-07, -0.15, -0.9)
+[node name="barrel" type="BoneAttachment3D" parent="gattler/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 3.21408e-07, 2.04834e-06, -1.96763e-06, -0.164399, 0.986394, 6.5378e-07, -0.986394, -0.164399, 0, 0, 0)
+bone_name = "gun"
+bone_idx = 1
+
+[node name="muzzle_flash" parent="gattler/Armature/Skeleton3D/barrel" index="0" instance=ExtResource("6_x38i6")]
+transform = Transform3D(1.44012, -8.20508e-07, 9.63078e-08, 4.36072e-07, 2.74335, -0.204253, -3.60421e-08, 0.406962, 1.37688, 0.00152358, 2.4972, 0.471371)
+visible = false
+
+[node name="rotator_1" type="BoneAttachment3D" parent="gattler/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 3.25842e-07, 2.08306e-06, -2.08306e-06, 2.68221e-07, 1, 3.25842e-07, -1, 2.68221e-07, 2.93258e-07, -0.15, -0.9)
 rotation_order = 0
 bone_name = "rotator"
 bone_idx = 2
 override_pose = true
 
-[node name="rotator_2" type="BoneAttachment3D" parent="gattler/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.95392e-07, -0.15, -0.599653)
+[node name="rotator_2" type="BoneAttachment3D" parent="gattler/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 3.25842e-07, 2.08306e-06, -2.08306e-06, 2.5332e-07, 1, 3.25842e-07, -1, 2.68221e-07, 1.95392e-07, -0.15, -0.599653)
 rotation_order = 0
 bone_name = "rotator2"
 bone_idx = 4
 override_pose = true
 
-[node name="bullet_spawn" type="Node3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+[node name="bullet_spawn" type="Node3D" parent="gattler" index="1"]
+transform = Transform3D(1.02787, 0, 0, 0, 0.993483, 0, 0, 0, 1.02787, 0, 0, -2.5)
 
 [editable path="gattler"]

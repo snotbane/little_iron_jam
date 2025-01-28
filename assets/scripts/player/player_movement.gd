@@ -40,6 +40,7 @@ var is_dodging : bool :
 		pawn.set_collision_layer_value(2, not _is_dodging)
 		pawn.set_collision_layer_value(3, _is_dodging)
 		pawn.set_collision_mask_value(2, not _is_dodging)
+		ammo.invincible = _is_dodging
 
 var damping : float :
 	get: return dodge_damping if is_dodging else walk_damping
@@ -78,9 +79,9 @@ func _input(event: InputEvent) -> void:
 
 func dodge() -> void:
 	if is_dodging or ammo.health == 0: return
+	ammo.health -= dodge_ammo_cost
 	is_dodging = true
 	on_dodge.emit()
-	ammo.health -= dodge_ammo_cost
 	if move_vector:
 		pawn.look_at(pawn.global_position + move_vector)
 	pawn.velocity += -pawn.global_basis.z * dodge_impulse

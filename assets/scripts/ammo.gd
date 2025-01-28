@@ -8,9 +8,9 @@ signal died
 
 
 signal received_upgrade_dodge
-signal received_upgrade_ricochet
 signal received_upgrade_vacuum
-signal received_upgrade_damage
+signal received_upgrade_bullet_speed
+signal received_upgrade_bullet_damage
 
 
 @export var shell_scene : PackedScene
@@ -18,8 +18,12 @@ signal received_upgrade_damage
 @export var shell_loss_linear_impulse := Vector2.ONE
 @export var shell_loss_angular_impulse := 1.0
 
+@export var invincible := false
 @export var belongs_to_player := false
 @export var can_scream := true
+@export var extra_ammo_cost := 0
+@export var bullet_speed_multiplier := 1.0
+@export var upgrade_bullet_speed_multiplier := 0.2
 
 @export var weapon_drop_on_death : PackedScene
 
@@ -33,10 +37,8 @@ var _health : int = 10
 	set(value):
 		value = max(value, -1) if _health == 0 else max(value, 0)
 		if _health == value: return
-		if value < _health: _on_lost_ammo(_health - value)
 
-		_health = value
-
+		_health = max(_health, value) if invincible else value
 		changed.emit()
 
 		if _health < 0 if belongs_to_player else health <= 0:
@@ -45,12 +47,8 @@ var _health : int = 10
 
 func _ready() -> void:
 	body_entered.connect(_body_entered)
-
-
-func _on_lost_ammo(amount: int) -> void:
-	pass
-	# for i in amount:
-	# 	create_shell()
+	received_upgrade_bullet_speed.connect(_received_upgrade_bullet_speed)
+	received_upgrade_bullet_damage.connect(_received_upgrade_bullet_damage)
 
 
 func _body_entered(body: Node3D) -> void:
@@ -74,7 +72,7 @@ func create_hitspark(bullet: Bullet) -> void:
 
 
 func consume_bullets(amount: int) -> void:
-	if belongs_to_player: self.health -= amount
+	if belongs_to_player: self.health -= amount + extra_ammo_cost
 
 
 func die() -> void:
@@ -115,3 +113,11 @@ func create_shell() -> void:
 	var result : RigidBody3D = shell_scene.instantiate()
 	get_tree().root.add_child(result)
 	result.global_position = actor.global_position
+
+
+func _received_upgrade_bullet_speed() -> void:
+	bullet_speed_multiplier += upgrade_bullet_speed_multiplier
+
+
+func _received_upgrade_bullet_damage() -> void:
+	extra_ammo_cost += 1

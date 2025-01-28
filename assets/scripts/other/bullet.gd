@@ -15,7 +15,14 @@ var _health : int = 1
 
 		if _health == 0: rest()
 
-var shooter : Node3D
+var _ammo : Ammo
+var ammo : Ammo :
+	get: return _ammo
+	set(value):
+		if _ammo == value: return
+		_ammo = value
+var shooter : Node3D :
+	get: return ammo.get_parent()
 
 var _velocity : Vector3
 @export var velocity : Vector3 :
@@ -30,9 +37,10 @@ var _velocity : Vector3
 @onready var collider : CollisionShape3D = $shape
 
 
-func populate(_shooter: Node3D, audio : AudioStream = preload("res://assets/audio/pistol_fire.tres")) -> void:
-	shooter = _shooter
-	velocity = (-self.global_basis.z * Vector3(1, 0, 1)).normalized() * impulse
+func populate(__ammo: Ammo, audio : AudioStream = preload("res://assets/audio/pistol_fire.tres"), cost_direct_to_bullets := false) -> void:
+	ammo = __ammo
+	damage += 0 if cost_direct_to_bullets else ammo.extra_ammo_cost
+	velocity = (-self.global_basis.z * Vector3(1, 0, 1)).normalized() * impulse * ammo.bullet_speed_multiplier
 
 	var audio_player := AudioStreamPlayer3D.new()
 	audio_player.finished.connect(audio_player.queue_free)
@@ -63,7 +71,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var collision := self.move_and_collide(velocity * delta)
 	if collision:
-		bounce(collision.get_normal())
+		if ammo.belongs_to_player:
+			bounce(collision.get_normal())
+		else:
+			rest()
 
 
 func rest() -> void:

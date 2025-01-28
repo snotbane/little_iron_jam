@@ -7,13 +7,12 @@
 
 [node name="bullet" instance=ExtResource("1_t3w6d")]
 collision_mask = 0
-damage = 10
-impulse = 100.0
-falloff = 2.0
+damage = 5
+falloff = 5.0
 health = 1000
 
 [node name="shape" parent="." index="0"]
 shape = SubResource("SphereShape3D_52ikf")
 
 [node name="bullet_pistol" parent="." index="2" instance=ExtResource("2_jh7sm")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 8, 0, 0, -1.5)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 8, 0, 0, -1.5)

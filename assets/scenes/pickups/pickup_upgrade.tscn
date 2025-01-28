@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://bthvfuwp8orlx" path="res://assets/scenes/pickups/pickup_weapon.tscn" id="1_2yrub"]
 [ext_resource type="Script" path="res://assets/scripts/pickups/pickup_upgrade.gd" id="2_k02e3"]
 [ext_resource type="Resource" uid="uid://doiayejuokyi6" path="res://assets/data/upgrades/upgrade_dodge_boost.tres" id="4_4x480"]
-[ext_resource type="Resource" uid="uid://dbu0vm8a7mkpw" path="res://assets/data/upgrades/upgrade_ricochet.tres" id="5_4usci"]
+[ext_resource type="Resource" uid="uid://dbu0vm8a7mkpw" path="res://assets/data/upgrades/upgrade_bullet_speed.tres" id="5_4usci"]
 [ext_resource type="Resource" uid="uid://t3iguj23ci0t" path="res://assets/data/upgrades/upgrade_vacuum.tres" id="6_wo5el"]
-[ext_resource type="Resource" uid="uid://dy62fogwexb8a" path="res://assets/data/upgrades/upgrade_damage.tres" id="7_rcitm"]
+[ext_resource type="Resource" uid="uid://dy62fogwexb8a" path="res://assets/data/upgrades/upgrade_bullet_damage.tres" id="7_rcitm"]
 [ext_resource type="Texture2D" uid="uid://ktg4ojfu65aw" path="res://assets/models/upgrades/boost_power_sprite.tres" id="8_oxcut"]
 [ext_resource type="Script" path="res://assets/scripts/pickups/upgrade.gd" id="11_hheqf"]
 

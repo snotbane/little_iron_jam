@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://de0ro50s3xwww" path="res://assets/models/upgrades/upcrate.glb" id="2_hfuk6"]
 [ext_resource type="Script" path="res://assets/scripts/pickups/upgrade.gd" id="3_ogkyp"]
 [ext_resource type="Resource" uid="uid://doiayejuokyi6" path="res://assets/data/upgrades/upgrade_dodge_boost.tres" id="4_xvog1"]
-[ext_resource type="Resource" uid="uid://dbu0vm8a7mkpw" path="res://assets/data/upgrades/upgrade_ricochet.tres" id="5_05ute"]
+[ext_resource type="Resource" uid="uid://dbu0vm8a7mkpw" path="res://assets/data/upgrades/upgrade_bullet_speed.tres" id="5_05ute"]
 [ext_resource type="Resource" uid="uid://t3iguj23ci0t" path="res://assets/data/upgrades/upgrade_vacuum.tres" id="6_jqpb2"]
-[ext_resource type="Resource" uid="uid://dy62fogwexb8a" path="res://assets/data/upgrades/upgrade_damage.tres" id="7_attdy"]
+[ext_resource type="Resource" uid="uid://dy62fogwexb8a" path="res://assets/data/upgrades/upgrade_bullet_damage.tres" id="7_attdy"]
 [ext_resource type="PackedScene" uid="uid://bado36smvpa2e" path="res://assets/scenes/ammo.tscn" id="8_hnlmp"]
 [ext_resource type="Texture2D" uid="uid://bcy36b67jjlqg" path="res://assets/models/upgrades/boost_power.png" id="9_qwnno"]
 

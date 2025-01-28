@@ -22,6 +22,8 @@ var _health : int = 10
 @export var bullet_spawn_location : Node3D
 @export var projectile_count : int = 1
 @export var bullet_cost : int = 1
+@export var cost_direct_to_bullets := false
+
 @export_range(0.0, 90.0) var deviation_degrees : float = 0.5
 
 @export var detritus_scene : PackedScene
@@ -52,13 +54,13 @@ func fire(ammo: Ammo, direction := Vector3.ZERO) -> void:
 		anim_player.play(fire_anim_name)
 	health -= 1 if ammo.belongs_to_player else 0
 	ammo.consume_bullets(bullet_cost)
-	for i in projectile_count:
-		create_bullet(ammo.get_parent(), direction)
+	for i in projectile_count + (ammo.extra_ammo_cost if cost_direct_to_bullets else 0):
+		create_bullet(ammo, direction)
 	cooldown.start()
 	fired.emit()
 
 
-func create_bullet(shooter: Node3D, direction := Vector3.ZERO) -> void:
+func create_bullet(ammo: Ammo, direction := Vector3.ZERO) -> void:
 	var projectile : Bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(projectile)
 	projectile.global_position = bullet_spawn_location.global_position
@@ -67,7 +69,7 @@ func create_bullet(shooter: Node3D, direction := Vector3.ZERO) -> void:
 	else:
 		projectile.global_rotation = bullet_spawn_location.global_rotation
 	projectile.global_rotation_degrees.y += randf_range(-1, 1) * deviation_degrees
-	projectile.populate(shooter, audio_stream)
+	projectile.populate(ammo, audio_stream, cost_direct_to_bullets)
 
 
 func drop_detritus() -> void:

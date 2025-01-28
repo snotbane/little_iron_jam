@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ecv66i3mxd88" path="res://assets/prefabs/bullet_shotgun.tscn" id="2_34u26"]
 
 [node name="bullet" instance=ExtResource("1_f3df6")]
+impulse = 25.0
 falloff = 0.3
 
 [node name="audio_stream_player_3d" parent="." index="1"]

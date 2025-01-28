@@ -6,12 +6,6 @@
 
 [node name="pawn" parent="." groups=["enemy"] instance=ExtResource("1_p5ahr")]
 
-[node name="shape" parent="pawn" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="shape" parent="pawn/ammo" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
 [node name="agent" type="NavigationAgent3D" parent="pawn"]
 path_height_offset = 0.25
 

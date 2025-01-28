@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://c1v25otsnjc6a"]
+
+[ext_resource type="Texture2D" uid="uid://c661b0yefbd3p" path="res://assets/models/upgrades/bounce.png" id="1_pev5w"]
+
+[resource]
+atlas = ExtResource("1_pev5w")
+region = Rect2(17.5, 366.6, 627, 657.8)

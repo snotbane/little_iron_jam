@@ -9,13 +9,16 @@
 height = 1.0
 radius = 3.0
 
-[node name="vacuum" type="Area3D" node_paths=PackedStringArray("region")]
+[node name="vacuum" type="Area3D" node_paths=PackedStringArray("blend_shape_mesh", "region")]
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("1_hqy5b")
+blend_shape_mesh = NodePath("region/intake_effect/Armature_001/Skeleton3D/Cube")
 region = NodePath("region")
 suck_power = 80.0
 collect_radius_squared = 1.5
+upgrade_angle = 4.0
+upgrade_distance = 0.75
 
 [node name="shape" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_8g00v")

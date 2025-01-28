@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://col72wnisved7"]
+
+[ext_resource type="Texture2D" uid="uid://cocn5huh6epmd" path="res://assets/models/upgrades/intake_radius.png" id="1_7pgb6"]
+
+[resource]
+atlas = ExtResource("1_7pgb6")
+region = Rect2(18.7273, 278, 727.273, 749.091)

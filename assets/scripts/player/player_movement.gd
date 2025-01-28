@@ -83,3 +83,7 @@ func dodge() -> void:
 	pawn.velocity += -pawn.global_basis.z * dodge_impulse
 	await get_tree().create_timer(dodge_delay).timeout
 	is_dodging = false
+
+
+func receive_upgrade_dodge() -> void:
+	pass

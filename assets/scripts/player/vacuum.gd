@@ -4,7 +4,9 @@ class_name Vacuum extends Area3D
 signal on_sucked(value: bool)
 
 
+
 @export var ammo : Ammo
+@export var blend_shape_mesh : MeshInstance3D
 @export var region : Camera3D
 @export var suck_angle : float = 45.0 :
 	get: return region.fov
@@ -17,9 +19,13 @@ signal on_sucked(value: bool)
 		value = max(value, 0.001)
 		region.far = value
 		($shape.shape as CylinderShape3D).radius = value
+		blend_shape_mesh.set_blend_shape_value(0, clampf(remap(value, 3.0, 9.0, 0.0, 1.0), 0, 1))
 
 @export var suck_power := 1.0
 @export var collect_radius_squared := 1.0
+
+@export var upgrade_angle := 2.0
+@export var upgrade_distance := 0.5
 
 var prospects : Array[RigidBody3D]
 
@@ -71,3 +77,8 @@ func collect(body: RigidBody3D) -> void:
 func fail_collect(body: RigidBody3D) -> void:
 	prospects.push_back(body)
 
+
+
+func receive_upgrade() -> void:
+	suck_angle += upgrade_angle
+	suck_distance += upgrade_distance

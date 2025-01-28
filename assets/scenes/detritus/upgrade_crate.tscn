@@ -1,0 +1,53 @@
+[gd_scene load_steps=13 format=3 uid="uid://8sxys71pcvd7"]
+
+[ext_resource type="PackedScene" uid="uid://dineitjbro1ik" path="res://assets/scenes/detritus/detritus.tscn" id="1_g01yb"]
+[ext_resource type="Script" path="res://assets/scripts/pickups/upgrade_crate.gd" id="2_g58xt"]
+[ext_resource type="PackedScene" uid="uid://de0ro50s3xwww" path="res://assets/models/upgrades/upcrate.glb" id="2_hfuk6"]
+[ext_resource type="Script" path="res://assets/scripts/pickups/upgrade.gd" id="3_ogkyp"]
+[ext_resource type="Resource" uid="uid://doiayejuokyi6" path="res://assets/data/upgrades/upgrade_dodge_boost.tres" id="4_xvog1"]
+[ext_resource type="Resource" uid="uid://dbu0vm8a7mkpw" path="res://assets/data/upgrades/upgrade_ricochet.tres" id="5_05ute"]
+[ext_resource type="Resource" uid="uid://t3iguj23ci0t" path="res://assets/data/upgrades/upgrade_vacuum.tres" id="6_jqpb2"]
+[ext_resource type="Resource" uid="uid://dy62fogwexb8a" path="res://assets/data/upgrades/upgrade_damage.tres" id="7_attdy"]
+[ext_resource type="PackedScene" uid="uid://bado36smvpa2e" path="res://assets/scenes/ammo.tscn" id="8_hnlmp"]
+[ext_resource type="Texture2D" uid="uid://bcy36b67jjlqg" path="res://assets/models/upgrades/boost_power.png" id="9_qwnno"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_auucf"]
+size = Vector3(2.70504, 1.52246, 2.11035)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqksp"]
+transparency = 4
+albedo_texture = ExtResource("9_qwnno")
+
+[node name="upgrade_crate" instance=ExtResource("1_g01yb")]
+collision_mask = 3
+script = ExtResource("2_g58xt")
+upgrades = Array[ExtResource("3_ogkyp")]([ExtResource("4_xvog1"), ExtResource("5_05ute"), ExtResource("6_jqpb2"), ExtResource("7_attdy")])
+effect_index = 0
+anim = &""
+
+[node name="shape" parent="." index="0"]
+shape = SubResource("BoxShape3D_auucf")
+
+[node name="ammo" parent="." index="1" instance=ExtResource("8_hnlmp")]
+can_scream = false
+
+[node name="shape" parent="ammo" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_auucf")
+
+[node name="ammo_count_label" parent="ammo" index="1"]
+double_sided = false
+render_priority = 1
+outline_render_priority = 0
+
+[node name="upcrate" parent="." index="4" instance=ExtResource("2_hfuk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.685, 0)
+
+[node name="Cube" parent="upcrate" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_sqksp")
+
+[connection signal="material_changed" from="." to="upcrate/Cube" method="set_surface_override_material"]
+[connection signal="died" from="ammo" to="." method="spawn_pickup"]
+
+[editable path="ammo"]
+[editable path="upcrate"]

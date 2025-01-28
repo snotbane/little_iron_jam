@@ -13,3 +13,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0556641, 0.00160217)
 shape = SubResource("BoxShape3D_3dbed")
 
 [node name="pistol_pickup" parent="." index="1" instance=ExtResource("2_70ypr")]
+
+[node name="audio_stream_player_3d" parent="." index="3"]
+attenuation_model = 3

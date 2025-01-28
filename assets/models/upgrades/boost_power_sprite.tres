@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ktg4ojfu65aw"]
+
+[ext_resource type="Texture2D" uid="uid://bcy36b67jjlqg" path="res://assets/models/upgrades/boost_power.png" id="1_nayr6"]
+
+[resource]
+atlas = ExtResource("1_nayr6")
+region = Rect2(44.265, 267.094, 720, 720)

@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bph7jtpkgt2u4" path="res://assets/audio/bullet_casings/bullet_casing_single.tres" id="2_5t67r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6qu2r"]
-size = Vector3(0.25, 0.25, 0.25)
+size = Vector3(1.15, 0.25, 0.25)
 
 [sub_resource type="Animation" id="Animation_8u385"]
 resource_name = "RESET"
@@ -118,5 +118,4 @@ libraries = {
 }
 
 [node name="audio_stream_player_3d" type="AudioStreamPlayer3D" parent="."]
-attenuation_model = 3
-volume_db = -5.0
+volume_db = -2.0

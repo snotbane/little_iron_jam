@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj01gxryr1x3x"]
+[gd_scene load_steps=2 format=3 uid="uid://bj01gxryr1x3x"]
 
 [ext_resource type="PackedScene" uid="uid://dineitjbro1ik" path="res://assets/scenes/detritus/detritus.tscn" id="1_xcnm5"]
-[ext_resource type="AudioStream" uid="uid://c1an71pl0w4y1" path="res://assets/audio/weapon_break.tres" id="2_f85c4"]
 
 [node name="detritus" instance=ExtResource("1_xcnm5")]
 
-[node name="audio_stream_player_3d" type="AudioStreamPlayer3D" parent="." index="2"]
-stream = ExtResource("2_f85c4")
+[node name="audio_stream_player_3d" parent="." index="2"]
 volume_db = 5.0
 autoplay = true

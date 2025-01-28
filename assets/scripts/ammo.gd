@@ -6,12 +6,20 @@ const SCREAM_AUDIO : AudioStream = preload("res://assets/audio/scream.tres")
 signal changed
 signal died
 
+
+signal received_upgrade_dodge
+signal received_upgrade_ricochet
+signal received_upgrade_vacuum
+signal received_upgrade_damage
+
+
 @export var shell_scene : PackedScene
 @export var shell_loss_amount := 10
 @export var shell_loss_linear_impulse := Vector2.ONE
 @export var shell_loss_angular_impulse := 1.0
 
 @export var belongs_to_player := false
+@export var can_scream := true
 
 @export var weapon_drop_on_death : PackedScene
 
@@ -73,7 +81,7 @@ func die() -> void:
 	if last_hit_by is not Bullet:
 		drop_weapon()
 	drop_shells()
-	scream()
+	if can_scream: scream()
 	died.emit()
 	actor.queue_free.call_deferred()
 

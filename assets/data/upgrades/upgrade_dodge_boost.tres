@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=5 format=3 uid="uid://doiayejuokyi6"]
+
+[ext_resource type="Texture2D" uid="uid://bcy36b67jjlqg" path="res://assets/models/upgrades/boost_power.png" id="1_m6adl"]
+[ext_resource type="Script" path="res://assets/scripts/pickups/upgrade.gd" id="2_4gfjx"]
+[ext_resource type="Texture2D" uid="uid://ktg4ojfu65aw" path="res://assets/models/upgrades/boost_power_sprite.tres" id="3_yr546"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqksp"]
+transparency = 4
+albedo_texture = ExtResource("1_m6adl")
+
+[resource]
+script = ExtResource("2_4gfjx")
+mesh_material = SubResource("StandardMaterial3D_sqksp")
+sprite = ExtResource("3_yr546")
+signal_name = &"received_upgrade_dodge"

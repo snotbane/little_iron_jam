@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dwfp6khjoj43e"]
+
+[ext_resource type="Texture2D" uid="uid://b84kvd7ghgj0l" path="res://assets/models/upgrades/loader_capacity.png" id="1_p875u"]
+
+[resource]
+atlas = ExtResource("1_p875u")
+region = Rect2(6.85185, 269.479, 633.408, 646.056)

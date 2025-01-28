@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://becpsh0bwexhi"]
+[gd_scene load_steps=30 format=3 uid="uid://becpsh0bwexhi"]
 
 [ext_resource type="Script" path="res://assets/scripts/player/player.gd" id="1_b2uww"]
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
 [ext_resource type="Script" path="res://assets/scripts/player/player_movement.gd" id="2_52ijy"]
 [ext_resource type="PackedScene" uid="uid://38l7tovwc1uw" path="res://assets/scenes/player/crosshair.tscn" id="2_bufda"]
+[ext_resource type="Script" path="res://assets/scenes/player/interaction.gd" id="3_235ft"]
 [ext_resource type="PackedScene" uid="uid://csrge5d3x14ri" path="res://assets/models/jack/jack.glb" id="3_txy8l"]
 [ext_resource type="Script" path="res://assets/scripts/jack_anim_tree.gd" id="4_ew1kc"]
 [ext_resource type="PackedScene" uid="uid://c48e78yo3bqt7" path="res://assets/scenes/player/vacuum.tscn" id="4_yu1wx"]
@@ -112,6 +113,7 @@ damage = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="ammo" parent="pawn" index="1"]
+collision_mask = 12
 belongs_to_player = true
 health = 6
 
@@ -121,6 +123,9 @@ shape = SubResource("CylinderShape3D_nd0xb")
 
 [node name="ammo_count_label" parent="pawn/ammo" index="1"]
 visible = false
+
+[node name="interaction" type="Node" parent="pawn/ammo" index="2"]
+script = ExtResource("3_235ft")
 
 [node name="mesh_scene" parent="pawn" instance=ExtResource("3_txy8l")]
 

@@ -57,6 +57,8 @@ func _body_entered(body: Node3D) -> void:
 
 
 func take_damage(body: Node3D) -> void:
+	if body is not CharacterBody3D and body is not Bullet: return
+
 	last_hit_by = body
 	health -= body.damage
 	if body is Bullet:

@@ -39,6 +39,7 @@ func _process(delta: float) -> void:
 		State.CHASING, State.WANDERING:
 			process_rotate_to_target_forwards(delta)
 		State.AIMING:
+			if not kill_target: return
 			process_rotate_to_target_forwards(delta, true, 1, kill_target)
 
 

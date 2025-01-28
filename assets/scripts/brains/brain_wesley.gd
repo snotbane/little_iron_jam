@@ -87,16 +87,16 @@ func fire() -> void:
 	await wait(0.25)
 	weapon_config.is_shooting = false
 	state = State.IDLING
-	await wait(1.0)
+	await wait(2.5)
 	state = State.MOVING
 
 
 func pick_new_personal_target() -> void:
-	var result := pawn.global_position
+	var result := kill_target.global_position
 	var length := 0.0
 	for i in move_target_iterations:
 		var pos := WaveController.inst.random_floor_position
-		var l := (pawn.global_position - pos).length_squared()
+		var l := (kill_target.global_position - pos).length_squared()
 		if l < length: continue
 		length = l
 		result = pos

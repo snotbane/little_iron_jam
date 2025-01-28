@@ -58,20 +58,23 @@ shell_loss_amount = 12
 weapon_drop_on_death = ExtResource("2_nhst2")
 health = 6
 
+[node name="ammo_count_label" parent="pawn/ammo" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
 [node name="smokey" parent="pawn" index="2" instance=ExtResource("2_5giu5")]
 
 [node name="Skeleton3D" parent="pawn/smokey/Armature" index="0"]
-bones/1/position = Vector3(-0.012259, 0.741928, 0.011364)
-bones/1/rotation = Quaternion(-0.00819127, 0.989772, 0.142422, -0.00106782)
+bones/1/position = Vector3(0.0171815, 0.74191, 0.0643525)
+bones/1/rotation = Quaternion(0.0114799, 0.993547, 0.112831, 0.0014958)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/position = Vector3(2.79184e-14, 3.50211e-07, -2.57698e-08)
-bones/2/rotation = Quaternion(-0.607918, -1.82439e-07, -2.01412e-07, 0.794)
+bones/2/rotation = Quaternion(-0.656166, -1.69238e-07, -2.12419e-07, 0.754617)
 
 [node name="mesh" parent="pawn/smokey/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_hwle1")
 
 [node name="bone_attachment_3d" type="BoneAttachment3D" parent="pawn/smokey/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999863, 0.0159109, 0.00444665, -0.0165191, 0.959298, 0.281913, 0.000219827, -0.281948, 0.95943, 0.012259, 0.741928, -0.011364)
+transform = Transform3D(0.999732, -0.0224741, -0.00556326, 0.0231493, 0.974275, 0.224171, 0.000382109, -0.22424, 0.974534, -0.0171815, 0.74191, -0.0643525)
 bone_name = "body"
 bone_idx = 1
 
@@ -89,12 +92,18 @@ transform = Transform3D(0.991531, -0.0776027, -0.104131, 0.0868241, 0.992404, 0.
 tree_root = SubResource("AnimationNodeStateMachine_11dx5")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="agent" parent="pawn" index="3" node_paths=PackedStringArray("weapon_config")]
-target_desired_distance = 10.0
+[node name="agent" parent="pawn" index="3" node_paths=PackedStringArray("personal_target", "weapon_config")]
+target_desired_distance = 8.0
 script = ExtResource("2_dkyrx")
+personal_target = NodePath("../../personal_target")
 weapon_config = NodePath("../smokey/Armature/Skeleton3D/bone_attachment_3d/weapon_config_pistol")
+idle_on_ready = 1.5
 walk_speed = 350.0
+turn_speed = 5.0
+
+[node name="personal_target" type="Node3D" parent="." index="1"]
 
 [editable path="pawn"]
+[editable path="pawn/ammo"]
 [editable path="pawn/smokey"]
 [editable path="pawn/smokey/Armature/Skeleton3D/bone_attachment_3d/weapon_config_pistol"]

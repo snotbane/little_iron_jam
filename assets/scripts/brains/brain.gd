@@ -8,6 +8,7 @@ class_name Brain extends NavigationAgent3D
 
 @export var weapon_config : WeaponConfig
 @export var idle_on_ready : float = 2.0
+@export var cancel_velocity_on_target_reached := true
 @export var walk_speed : float = 100.0
 @export var turn_speed : float = 0.0
 
@@ -41,9 +42,11 @@ var is_walking : bool :
 var target_direction : Vector3 :
 	get: return (kill_target.global_position - pawn.global_position).normalized()
 
+
 func _ready():
 	nav_timer.timeout.connect(update_target_position)
-	self.target_reached.connect(func(): pawn.velocity = Vector3.ZERO )
+	if cancel_velocity_on_target_reached:
+		self.target_reached.connect(func(): pawn.velocity = Vector3.ZERO )
 	await get_tree().create_timer(idle_on_ready).timeout
 
 
@@ -51,16 +54,16 @@ func wait(delay : float) :
 	await get_tree().create_timer(delay).timeout
 
 
-func process_rotate_to_target_forwards(delta: float, towards := true, turn_speed_scalar := 1.0) -> void:
-	if not move_target: return
-	var step := self.get_next_path_position() - pawn.global_position
+func process_rotate_to_target_forwards(delta: float, towards := true, turn_speed_scalar := 1.0, custom_target: Node3D = null) -> void:
+	if not move_target and not custom_target: return
+	var step := (custom_target.global_position if custom_target else self.get_next_path_position()) - pawn.global_position
 	var dot_x := step.dot(pawn.global_basis.x) * (-1 if towards else 1)
 	pawn.rotation.y += turn_speed * sqrt(absf(dot_x)) * signf(dot_x) * delta * turn_speed_scalar
 
 
-func process_rotate_to_target_sideways(delta: float, clockwise := true, turn_speed_scalar := 1.0) -> void:
-	if not move_target: return
-	var step := self.get_next_path_position() - pawn.global_position
+func process_rotate_to_target_sideways(delta: float, clockwise := true, turn_speed_scalar := 1.0, custom_target: Node3D = null) -> void:
+	if not move_target and not custom_target: return
+	var step := (custom_target.global_position if custom_target else self.get_next_path_position()) - pawn.global_position
 	var dot_z := step.dot(pawn.global_basis.z) * (-1 if clockwise else 1)
 	pawn.rotation.y += turn_speed * sqrt(absf(dot_z)) * signf(dot_z) * delta * turn_speed_scalar
 

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyt6oitg7ejkk"]
+
+[ext_resource type="PackedScene" uid="uid://bj01gxryr1x3x" path="res://assets/scenes/detritus/detritus_weapon.tscn" id="1_jww3u"]
+
+[node name="detritus" instance=ExtResource("1_jww3u")]

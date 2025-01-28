@@ -1,20 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://0f4vk8qx8f57"]
+[gd_scene load_steps=6 format=3 uid="uid://0f4vk8qx8f57"]
 
 [ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_pywu8"]
 [ext_resource type="Script" path="res://assets/scripts/weapons/weapon_gatling.gd" id="2_1kktl"]
 [ext_resource type="PackedScene" uid="uid://ctkeqktbiic1l" path="res://assets/models/shotgun/shotgun.glb" id="2_am8k7"]
 [ext_resource type="PackedScene" uid="uid://c7uios12yce4b" path="res://assets/scenes/bullets/bullet_pistol.tscn" id="2_kcujr"]
+[ext_resource type="PackedScene" uid="uid://dyt6oitg7ejkk" path="res://assets/scenes/detritus/detritus_gatling.tscn" id="4_j7h8v"]
 
 [node name="weapon_gatling" node_paths=PackedStringArray("anim_player", "bullet_spawn_location") instance=ExtResource("1_pywu8")]
 script = ExtResource("2_1kktl")
 min_fire_delay = 0.12
 max_fire_delay = 0.8
-fire_delay_alpha = 0.65
+fire_delay_alpha = 0.7
 anim_player = NodePath("shotgun2/AnimationPlayer")
 health = 2500
 bullet_scene = ExtResource("2_kcujr")
 bullet_spawn_location = NodePath("node_3d")
 deviation_degrees = 1.5
+detritus_scene = ExtResource("4_j7h8v")
+_pickup_scene = "res://assets/scenes/pickups/pickup_gatling.tscn"
 
 [node name="warmup" type="Timer" parent="." index="1"]
 

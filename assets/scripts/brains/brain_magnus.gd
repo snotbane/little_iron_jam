@@ -15,6 +15,7 @@ var state : State :
 
 		if _state != State.ATTACKING: weapon_config.is_shooting = false
 
+var turn_switch : bool
 
 @export var anim_tree : AnimationTree
 @export var cackle_sound : AudioStreamPlayer3D
@@ -53,7 +54,7 @@ func _process(delta: float) -> void:
 			else:
 				process_rotate_to_target_forwards(delta)
 		State.ATTACKING:
-			process_rotate_to_target_forwards(delta, true, 3.0)
+			process_rotate_to_target_forwards(delta, true, 3.0, kill_target if can_see_kill_target else null)
 
 
 func _physics_process(delta: float) -> void:
@@ -62,9 +63,10 @@ func _physics_process(delta: float) -> void:
 			physics_process_walk_forward(delta)
 		State.ATTACKING:
 			if can_see_kill_target:
-				physics_process_walk_sideways(delta)
+				physics_process_walk_sideways(delta, turn_switch)
 			else:
 				physics_process_walk_forward(delta)
+				turn_switch = not turn_switch
 
 
 func attack() -> void:

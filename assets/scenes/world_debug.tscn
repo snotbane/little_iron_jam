@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvxkxri6msep5"]
+[gd_scene load_steps=3 format=3 uid="uid://cvxkxri6msep5"]
 
 [ext_resource type="PackedScene" uid="uid://cmm5rafal8ul4" path="res://assets/scenes/world.tscn" id="1_ka81f"]
-[ext_resource type="PackedScene" uid="uid://b65ambxvqs4de" path="res://assets/scenes/enemies/smokey.tscn" id="3_ycchp"]
 [ext_resource type="PackedScene" uid="uid://buobjj4nvosgp" path="res://assets/scenes/pickups/pickup_gatling.tscn" id="6_5fsl7"]
 
 [node name="world" instance=ExtResource("1_ka81f")]
@@ -51,15 +50,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.61282, 0.818198, -22.6618)
 
 [node name="pickup_gatling3" parent="." index="4" instance=ExtResource("6_5fsl7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.61282, 0.818198, -22.6618)
-
-[node name="smokey" parent="." index="5" instance=ExtResource("3_ycchp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97812, -0.1, -28.6082)
-
-[node name="smokey2" parent="." index="6" instance=ExtResource("3_ycchp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02188, -0.1, -31.6082)
-
-[node name="smokey3" parent="." index="7" instance=ExtResource("3_ycchp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4781, 1.9, -28.1082)
 
 [editable path="player"]
 [editable path="player/pawn"]

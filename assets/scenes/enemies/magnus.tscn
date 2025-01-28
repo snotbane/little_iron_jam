@@ -106,28 +106,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51116, 0)
 [node name="magnus" parent="pawn" index="2" instance=ExtResource("2_yqnmd")]
 
 [node name="Skeleton3D" parent="pawn/magnus/Armature" index="0"]
-bones/1/position = Vector3(-3.01632e-07, 1.49954, 2.29571e-07)
-bones/1/rotation = Quaternion(0.776971, -7.31875e-05, -5.94875e-05, 0.629537)
+bones/1/position = Vector3(-1.848e-05, 1.47537, 1.40891e-05)
+bones/1/rotation = Quaternion(0.761438, -7.41878e-05, -5.76021e-05, 0.648238)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-0.653613, -0.340677, 0.421536, 0.52824)
+bones/2/rotation = Quaternion(-0.0900621, -0.62434, 0.772522, 0.0727883)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.528239, -0.421534, -0.340678, 0.653614)
-bones/4/rotation = Quaternion(-0.194397, 8.43392e-07, -1.82281e-07, 0.980923)
-bones/5/rotation = Quaternion(0.615761, 0.476667, 0.38336, -0.49665)
+bones/3/rotation = Quaternion(0.0727866, -0.772522, -0.624339, 0.0900641)
+bones/4/rotation = Quaternion(0.304651, 6.49807e-07, -5.67704e-07, 0.952464)
+bones/5/rotation = Quaternion(0.531015, 0.568, 0.459362, -0.429401)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(0.398836, -0.366992, 0.618417, 0.569041)
-bones/7/rotation = Quaternion(-0.61576, 0.476669, 0.383362, 0.496649)
-bones/8/rotation = Quaternion(0.398836, 0.366992, -0.618417, 0.569041)
+bones/6/rotation = Quaternion(0.730923, -0.672564, 0.0852133, 0.0784096)
+bones/7/rotation = Quaternion(-0.531007, 0.568008, 0.459369, 0.429394)
+bones/8/rotation = Quaternion(0.730923, 0.672564, -0.0852133, 0.0784096)
 bones/8/scale = Vector3(1, 1, 1)
 
 [node name="Mesh" parent="pawn/magnus/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_020vm")
 
 [node name="body" type="BoneAttachment3D" parent="pawn/magnus/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-1, 3.86834e-05, 0.000183841, -0.000187659, -0.159574, -0.987186, -8.8513e-06, -0.987186, 0.159574, 1.848e-05, 1.47537, -1.40891e-05)
 bone_name = "body"
 bone_idx = 1
 
-[node name="weapon_config" parent="pawn/magnus/Armature/Skeleton3D/body" index="0" instance=ExtResource("4_41thd")]
+[node name="weapon_config" parent="pawn/magnus/Armature/Skeleton3D/body" index="0" node_paths=PackedStringArray("ammo") instance=ExtResource("4_41thd")]
+transform = Transform3D(-1, -0.000131694, 0.000221049, -0.000191319, -0.193896, -0.981022, 0.000172055, -0.981022, 0.193896, 0.000162226, 0.182814, 0.974469)
+ammo = NodePath("../../../../../ammo")
 
 [node name="weapon_gatling" parent="pawn/magnus/Armature/Skeleton3D/body/weapon_config/node_3d" index="0" instance=ExtResource("5_njxo0")]
 
@@ -141,15 +144,14 @@ parameters/all/movement/walk/blend_position = Vector2(-0.000530481, -0.00803208)
 [node name="audio_stream_player_3d" type="AudioStreamPlayer3D" parent="pawn/magnus" index="3"]
 stream = ExtResource("4_o1vk5")
 
-[node name="agent" parent="pawn" index="3" node_paths=PackedStringArray("anim_tree", "cackle_sound")]
+[node name="agent" parent="pawn" index="3" node_paths=PackedStringArray("anim_tree", "cackle_sound", "weapon_config")]
 script = ExtResource("4_obwwn")
 anim_tree = NodePath("../magnus/animation_tree")
 cackle_sound = NodePath("../magnus/audio_stream_player_3d")
+weapon_config = NodePath("../magnus/Armature/Skeleton3D/body/weapon_config")
 idle_on_ready = 4.0
 walk_speed = 200.0
 turn_speed = 1.0
-
-[connection signal="cackled" from="pawn/agent" to="pawn/magnus/audio_stream_player_3d" method="play"]
 
 [editable path="pawn"]
 [editable path="pawn/ammo"]

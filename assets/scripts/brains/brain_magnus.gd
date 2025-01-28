@@ -6,14 +6,25 @@ enum State {
 	CHASING,
 	ATTACKING,
 }
-var state : State
+var _state : State
+var state : State :
+	get: return _state
+	set(value):
+		if _state == value: return
+		_state = value
 
-
-signal cackled
+		if _state != State.ATTACKING: weapon_config.is_shooting = false
 
 
 @export var anim_tree : AnimationTree
 @export var cackle_sound : AudioStreamPlayer3D
+
+@export var min_chase_time := 5.0
+@export var max_chase_time := 8.0
+@export var min_attack_time := 12.0
+@export var max_attack_time := 22.0
+@export var min_cackle_time := 6.0
+@export var max_cackle_time := 9.0
 
 var is_cackling_in_animation : bool :
 	get: return anim_tree["parameters/all/cackle/blend_amount"] == 1.0
@@ -25,10 +36,10 @@ func _ready() -> void:
 	await super._ready()
 
 	while true:
-		state = State.CHASING
-		await wait(5.0)
 		attack()
-		await wait(5.0)
+		await wait(randf_range(min_attack_time, max_attack_time))
+		state = State.CHASING
+		await wait(randf_range(min_chase_time, max_chase_time))
 
 
 func _process(delta: float) -> void:
@@ -57,8 +68,11 @@ func _physics_process(delta: float) -> void:
 
 
 func attack() -> void:
-	cackle()
 	state = State.ATTACKING
+	await wait(0.75)
+	weapon_config.is_shooting = true
+	await wait(randf_range(min_cackle_time, max_cackle_time))
+	cackle()
 
 
 func cackle():

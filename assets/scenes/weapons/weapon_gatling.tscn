@@ -14,6 +14,7 @@ anim_player = NodePath("shotgun2/AnimationPlayer")
 health = 2500
 bullet_scene = ExtResource("2_kcujr")
 bullet_spawn_location = NodePath("node_3d")
+deviation_degrees = 1.5
 
 [node name="warmup" type="Timer" parent="." index="1"]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cocn5huh6epmd" path="res://assets/models/upgrades/intake_radius.png" id="1_qwr14"]
 [ext_resource type="Script" path="res://assets/scripts/pickups/upgrade.gd" id="2_ugccf"]
-[ext_resource type="Texture2D" uid="uid://col72wnisved7" path="res://assets/models/upgrades/intake_radius_sprite.tres" id="3_1x0jl"]
+[ext_resource type="Texture2D" path="res://assets/models/upgrades/intake_radius_sprite.tres" id="3_1x0jl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fig42"]
 transparency = 4

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b84kvd7ghgj0l" path="res://assets/models/upgrades/loader_capacity.png" id="1_fkf2m"]
 [ext_resource type="Script" path="res://assets/scripts/pickups/upgrade.gd" id="2_hj8h2"]
-[ext_resource type="Texture2D" uid="uid://dwfp6khjoj43e" path="res://assets/models/upgrades/loader_capacity_sprite.tres" id="3_vyug1"]
+[ext_resource type="Texture2D" path="res://assets/models/upgrades/loader_capacity_sprite.tres" id="3_vyug1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ouyva"]
 transparency = 4

@@ -71,7 +71,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var collision := self.move_and_collide(velocity * delta)
 	if collision:
-		if ammo.belongs_to_player:
+		if ammo and ammo.belongs_to_player:
 			bounce(collision.get_normal())
 		else:
 			rest()

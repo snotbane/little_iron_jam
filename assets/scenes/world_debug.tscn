@@ -3,13 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://cmm5rafal8ul4" path="res://assets/scenes/world.tscn" id="1_ka81f"]
 [ext_resource type="PackedScene" uid="uid://boyloil5dmnft" path="res://assets/scenes/pickups/pickup_carbine.tscn" id="3_b0s8h"]
 [ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pickup_pistol.tscn" id="3_pryv8"]
+[ext_resource type="PackedScene" uid="uid://dyxm7j7w035yn" path="res://assets/scenes/enemies/magnus.tscn" id="5_3j61g"]
 [ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/pickup_shotgun.tscn" id="5_8wimb"]
-[ext_resource type="PackedScene" uid="uid://clq3nof8vclwo" path="res://assets/scenes/enemies/stinker.tscn" id="5_rsa73"]
 
 [node name="world" instance=ExtResource("1_ka81f")]
 
 [node name="player" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.5)
+
+[node name="ammo" parent="player/pawn" index="1"]
+health = 1000
+
+[node name="Skeleton3D" parent="player/pawn/mesh_scene/Armature" index="0"]
+bones/8/position = Vector3(8.88178e-14, -3.55765e-07, 0)
 
 [node name="arena" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31)
@@ -25,5 +31,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.58788, -0.100001, -19.5389)
 [node name="shotgun_pickup" parent="." index="4" instance=ExtResource("5_8wimb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999279, -0.100001, -23.5347)
 
-[node name="stinker" parent="." index="5" instance=ExtResource("5_rsa73")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93773, -0.100001, -25.9441)
+[node name="magnus" parent="." index="5" instance=ExtResource("5_3j61g")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -4.22951, -0.1, -26.6403)
+
+[connection signal="died" from="player/pawn/ammo" to="player/canvas_layer/ui/animation_player" method="play" binds= [&"game_over"]]
+
+[editable path="player"]
+[editable path="player/pawn"]
+[editable path="player/pawn/ammo"]
+[editable path="player/pawn/mesh_scene"]
+[editable path="player/canvas_layer/ui"]

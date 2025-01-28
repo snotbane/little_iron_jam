@@ -12,9 +12,17 @@ class_name Brain extends NavigationAgent3D
 @export var turn_speed : float = 0.0
 
 
-var pawn_laterial_velocity : Vector3 :
+var pawn_lateral_velocity : Vector3 :
 	get: return pawn.velocity * Vector3(1, 0, 1)
 	set(value): pawn.velocity = Vector3(value.x, pawn.velocity.y, value.z)
+
+
+var can_see_kill_target : bool :
+	get:
+		var query := PhysicsRayQueryParameters3D.create(pawn.global_position + Vector3.UP, kill_target.global_position + Vector3.UP, 1, [ pawn.get_rid(), kill_target.get_rid() ])
+		var dss := pawn.get_world_3d().direct_space_state
+		var collision := dss.intersect_ray(query)
+		return not collision
 
 
 var _is_volatile : bool
@@ -58,13 +66,17 @@ func process_rotate_to_target_sideways(delta: float, clockwise := true, turn_spe
 
 
 func physics_process_walk_forward(delta: float, towards := true) -> void:
-	pawn_laterial_velocity = pawn.global_basis.z * (-1 if towards else 1) * walk_speed * delta
+	pawn_lateral_velocity = pawn.global_basis.z * (-1 if towards else 1) * walk_speed * delta
+	pawn.move_and_slide()
+
+func physics_process_walk_sideways(delta: float, clockwise := true) -> void:
+	pawn_lateral_velocity = pawn.global_basis.x * (-1 if clockwise else 1) * walk_speed * delta
 	pawn.move_and_slide()
 
 
 func physics_process_walk_to_target(delta: float) -> void:
 	var difference := self.get_next_path_position() - pawn.global_position
-	pawn_laterial_velocity = difference.normalized() * walk_speed * delta
+	pawn_lateral_velocity = difference.normalized() * walk_speed * delta
 	pawn.move_and_slide()
 
 

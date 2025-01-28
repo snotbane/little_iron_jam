@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bikrt5av7f0d3"]
+[gd_scene load_steps=13 format=3 uid="uid://bikrt5av7f0d3"]
 
 [ext_resource type="FontFile" uid="uid://cgs4jbvrniee0" path="res://assets/fonts/Arbutus-Regular.ttf" id="1_pbwtn"]
 [ext_resource type="Script" path="res://assets/scripts/other/ammo_label_fancy.gd" id="2_lbq4v"]
@@ -10,6 +10,12 @@
 font = ExtResource("1_pbwtn")
 font_size = 80
 outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ggdod"]
+font = ExtResource("3_fc223")
+font_size = 48
+outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qx8tg"]
@@ -162,6 +168,33 @@ vertical_alignment = 2
 script = ExtResource("2_lbq4v")
 scale_up_per_bullet = 0.04
 scale_down_alpha = 2.0
+
+[node name="control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="info_label" type="Label" parent="control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 80.0
+offset_top = -44.0
+offset_right = 120.0
+offset_bottom = 19.0
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_ggdod")
+vertical_alignment = 1
 
 [node name="game_over" type="Control" parent="."]
 visible = false

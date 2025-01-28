@@ -51,13 +51,8 @@ func _process(delta: float) -> void:
 
 	var time := timer.wait_time if timer.is_stopped() else timer.time_left
 
-	var minutes := floori(time / 60)
-	var seconds := floori(fmod(time, 60))
-	var milliseconds := floori(fmod(time, 1) * 10)
-	var time_string = "%02d:%02d.%01d" % [minutes, seconds, milliseconds]
-	time_label.text = time_string
-
 	if not timer.is_stopped():
+		time_label.text = get_time_string(time)
 		time_minute_hand.rotation_degrees = -360.0 * time / time_left_at_wave_start
 
 
@@ -84,6 +79,8 @@ func start_wave(wave: Wave) -> void:
 		timer.wait_time = timer.time_left + wave.duration
 		timer.stop()
 
+	if wave_hour != Wave.Hour.MIDNIGHT:
+		time_label.text += "   +   " + get_time_string(wave.duration)
 	time_hour_hand.rotation_degrees = (360.0 * wave_hour / Wave.HOURS_IN_DAY) + 90.0
 	time_minute_hand.rotation_degrees = 0.0
 
@@ -128,3 +125,10 @@ func check_enemy_group() -> void:
 	is_enemies_cleared = get_tree().get_node_count_in_group(&"enemy") == 0
 	if is_enemies_cleared:
 		end_wave()
+
+
+static func get_time_string(time: float) -> String:
+	var minutes := floori(time / 60)
+	var seconds := floori(fmod(time, 60))
+	var milliseconds := floori(fmod(time, 1) * 10)
+	return "%02d:%02d.%01d" % [minutes, seconds, milliseconds]

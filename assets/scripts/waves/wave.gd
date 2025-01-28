@@ -25,7 +25,7 @@ static var RANDOM := RandomNumberGenerator.new()
 
 @export var scenes : Dictionary
 @export var crates : int
-@export var duration : float = 5.0
+@export var duration : float = 30.0
 
 
 static func new_from_wave_index(index : int) -> Wave:
@@ -33,7 +33,8 @@ static func new_from_wave_index(index : int) -> Wave:
 	var hour := index % HOURS_IN_DAY
 
 	if hour == Hour.MIDNIGHT:
-		result.duration = 30.0
+		result.duration = 0.0
+		result.scenes["res://assets/scenes/pickups/shell.tscn"] = 10
 		return result
 
 
@@ -50,7 +51,5 @@ static func new_from_wave_index(index : int) -> Wave:
 			result.scenes[scene_path] += 1
 		else:
 			result.scenes[scene_path] = 1
-
-	print(result.scenes)
 
 	return result

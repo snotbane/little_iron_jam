@@ -40,7 +40,7 @@ var is_walking : bool :
 	get: return pawn.velocity.length_squared() > 0.1
 
 var target_direction : Vector3 :
-	get: return (kill_target.global_position - pawn.global_position).normalized()
+	get: return (kill_target.global_position - pawn.global_position).normalized() if kill_target else -pawn.global_basis.z
 
 
 func _ready():

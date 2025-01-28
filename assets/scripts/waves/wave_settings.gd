@@ -1,6 +1,8 @@
 
 class_name WaveSettings extends Resource
 
+@export var objects : Array[WaveObject]
+
 @export var overall_difficulty_curve : Curve
 @export var overall_difficulty_levels : float
 

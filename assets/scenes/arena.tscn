@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c1aiimxh63ws2"]
+[gd_scene load_steps=30 format=3 uid="uid://c1aiimxh63ws2"]
 
 [ext_resource type="Script" path="res://assets/scripts/waves/wave_controller.gd" id="1_8vdcl"]
 [ext_resource type="PackedScene" uid="uid://dxn1ecuhl0csi" path="res://assets/prefabs/fmj_level_mesh.tscn" id="1_mdv7l"]
@@ -38,10 +38,12 @@ scenes = {
 crates = 0
 duration = 15.0
 
-[sub_resource type="Resource" id="Resource_cnsst"]
+[sub_resource type="Resource" id="Resource_8lwtp"]
 script = ExtResource("2_ywm6p")
-scenes = {}
-crates = 0
+scenes = {
+"res://assets/scenes/enemies/buck.tscn": 1
+}
+crates = 1
 duration = 30.0
 
 [sub_resource type="Resource" id="Resource_bgc7j"]
@@ -49,7 +51,15 @@ script = ExtResource("2_ywm6p")
 scenes = {
 "res://assets/scenes/enemies/wesley.tscn": 1
 }
-crates = 0
+crates = 1
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_e6j2y"]
+script = ExtResource("2_ywm6p")
+scenes = {
+"res://assets/scenes/enemies/magnus.tscn": 1
+}
+crates = 1
 duration = 30.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_kv482"]
@@ -274,8 +284,9 @@ predefined_waves = {
 0: SubResource("Resource_n45ke"),
 1: SubResource("Resource_m86u1"),
 2: SubResource("Resource_5b0ha"),
-3: SubResource("Resource_cnsst"),
-11: SubResource("Resource_bgc7j")
+9: SubResource("Resource_8lwtp"),
+15: SubResource("Resource_bgc7j"),
+21: SubResource("Resource_e6j2y")
 }
 spawn_origin = NodePath("wave_spawner")
 nav_region = NodePath("nav_region")
@@ -305,8 +316,10 @@ grow_vertical = 2
 [node name="wave_clock" type="Control" parent="wave_spawner/canvas_layer/ui"]
 layout_mode = 1
 anchors_preset = 0
-offset_right = 106.0
-offset_bottom = 106.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 138.0
+offset_bottom = 138.0
 pivot_offset = Vector2(53, 53)
 
 [node name="name_label_stuff" type="Control" parent="wave_spawner/canvas_layer/ui/wave_clock"]
@@ -405,7 +418,7 @@ grow_horizontal = 0
 layout_mode = 1
 offset_right = 98.0
 offset_bottom = 47.0
-text = "00:24"
+text = "00:00.0"
 label_settings = SubResource("LabelSettings_5t3y8")
 
 [node name="animation_player" type="AnimationPlayer" parent="wave_spawner/canvas_layer/ui"]
@@ -466,7 +479,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.220747, 0.399534, 4.17233e-07, -0.875287, 0.483604, 0.456461, -0.430283, -0.778781, 0, 0, 0)
+transform = Transform3D(0.889744, 0.220747, 0.399534, 4.61936e-07, -0.875287, 0.483604, 0.456461, -0.430283, -0.778781, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.948, 1, 0.87, 1)
 shadow_enabled = true

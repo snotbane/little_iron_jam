@@ -19,37 +19,20 @@ enum Hour {
 const HOURS_IN_DAY := 12
 const SETTINGS := preload("res://assets/data/wave_settings_default.tres")
 
-
-static var RANDOM := RandomNumberGenerator.new()
-
-
 @export var scenes : Dictionary
 @export var crates : int
-@export var duration : float = 30.0
-
+@export var duration : float = 0.0
+@export var difficulty : float = 0.0
 
 static func new_from_wave_index(index : int) -> Wave:
-	var result := Wave.new()
+	var result : Wave
 	var hour := index % HOURS_IN_DAY
-
 	if hour == Hour.MIDNIGHT:
-		result.duration = 0.0
+		result = Wave.new()
 		result.scenes["res://assets/scenes/pickups/shell.tscn"] = 10
-		return result
+	else:
+		result = SETTINGS.generate_wave(index)
 
-
-	var difficulty := SETTINGS.get_difficulty(index)
-	print("Wave difficulty: ", difficulty)
-
-
-	while difficulty > 0.0:
-		var i := RANDOM.rand_weighted(SETTINGS.scene_chance_weights.values())
-		var scene_path : String = SETTINGS.scene_chance_weights.keys()[i]
-		difficulty -= SETTINGS.scene_costs[scene_path]
-
-		if result.scenes.has(scene_path):
-			result.scenes[scene_path] += 1
-		else:
-			result.scenes[scene_path] = 1
-
+	print("Wave difficulty: ", result.difficulty)
+	print("Wave scenes: ", result.scenes)
 	return result

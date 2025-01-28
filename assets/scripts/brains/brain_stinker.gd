@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 		state = State.IDLING
 	match state:
 		State.CHASING:
-			physics_process_walk_to_target(delta)
+			physics_process_walk_forward(delta)
 		_:
 			pawn.velocity = Vector3.ZERO
 

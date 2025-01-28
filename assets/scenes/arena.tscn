@@ -20,6 +20,7 @@ scenes = {
 }
 crates = 0
 duration = 15.0
+difficulty = 0.0
 
 [sub_resource type="Resource" id="Resource_m86u1"]
 script = ExtResource("2_ywm6p")
@@ -28,6 +29,7 @@ scenes = {
 }
 crates = 0
 duration = 15.0
+difficulty = 0.0
 
 [sub_resource type="Resource" id="Resource_5b0ha"]
 script = ExtResource("2_ywm6p")
@@ -37,6 +39,7 @@ scenes = {
 }
 crates = 0
 duration = 15.0
+difficulty = 0.0
 
 [sub_resource type="Resource" id="Resource_8lwtp"]
 script = ExtResource("2_ywm6p")
@@ -45,6 +48,7 @@ scenes = {
 }
 crates = 1
 duration = 30.0
+difficulty = 0.0
 
 [sub_resource type="Resource" id="Resource_bgc7j"]
 script = ExtResource("2_ywm6p")
@@ -53,6 +57,7 @@ scenes = {
 }
 crates = 1
 duration = 0.0
+difficulty = 0.0
 
 [sub_resource type="Resource" id="Resource_e6j2y"]
 script = ExtResource("2_ywm6p")
@@ -61,6 +66,7 @@ scenes = {
 }
 crates = 1
 duration = 30.0
+difficulty = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_kv482"]
 font = ExtResource("4_2y70v")
@@ -316,10 +322,8 @@ grow_vertical = 2
 [node name="wave_clock" type="Control" parent="wave_spawner/canvas_layer/ui"]
 layout_mode = 1
 anchors_preset = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 138.0
-offset_bottom = 138.0
+offset_right = 106.0
+offset_bottom = 106.0
 pivot_offset = Vector2(53, 53)
 
 [node name="name_label_stuff" type="Control" parent="wave_spawner/canvas_layer/ui/wave_clock"]
@@ -479,7 +483,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.220747, 0.399534, 4.61936e-07, -0.875287, 0.483604, 0.456461, -0.430283, -0.778781, 0, 0, 0)
+transform = Transform3D(0.889744, 0.220747, 0.399534, 3.7998e-07, -0.875287, 0.483604, 0.456461, -0.430283, -0.778781, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.948, 1, 0.87, 1)
 shadow_enabled = true

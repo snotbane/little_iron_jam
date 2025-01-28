@@ -1,8 +1,7 @@
 
 class_name Ammo extends Area3D
 
-const WILHELM_CHANCE := 0.01
-const WILHELM_AUDIO := preload("res://assets/audio/wilhelm_robot.ogg")
+const SCREAM_AUDIO : AudioStream = preload("res://assets/audio/scream.tres")
 
 signal changed
 signal died
@@ -74,16 +73,15 @@ func die() -> void:
 	if last_hit_by is not Bullet:
 		drop_weapon()
 	drop_shells()
-	if randf() < WILHELM_CHANCE:
-		wilhelm()
+	scream()
 	died.emit()
 	actor.queue_free.call_deferred()
 
 
-func wilhelm() -> void:
+func scream() -> void:
 	var audio := AudioStreamPlayer3D.new()
 	audio.volume_db = 2.0
-	audio.stream = WILHELM_AUDIO
+	audio.stream = SCREAM_AUDIO
 	get_tree().root.add_child(audio)
 	audio.global_position = self.global_position
 	audio.finished.connect(audio.queue_free)

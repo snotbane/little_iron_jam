@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvxkxri6msep5"]
+[gd_scene load_steps=6 format=3 uid="uid://cvxkxri6msep5"]
 
 [ext_resource type="PackedScene" uid="uid://cmm5rafal8ul4" path="res://assets/scenes/world.tscn" id="1_ka81f"]
 [ext_resource type="PackedScene" uid="uid://boyloil5dmnft" path="res://assets/scenes/pickups/pickup_carbine.tscn" id="3_fgqbh"]
 [ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/pickup_shotgun.tscn" id="4_jcov4"]
+[ext_resource type="PackedScene" uid="uid://brbm7ub2jbg4p" path="res://assets/scenes/enemies/wesley.tscn" id="4_phqw0"]
 [ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pickup_pistol.tscn" id="4_yyvvg"]
 
 [node name="world" instance=ExtResource("1_ka81f")]
@@ -62,6 +63,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.26002, -0.1, -21.6837)
 
 [node name="shotgun_pickup4" parent="." index="13" instance=ExtResource("4_jcov4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.26002, -0.1, -21.6837)
+
+[node name="wesley" parent="." index="14" instance=ExtResource("4_phqw0")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -6.08401, -0.0999994, -28.5853)
 
 [connection signal="died" from="player/pawn/ammo" to="player/canvas_layer/ui/animation_player" method="play" binds= [&"game_over"]]
 

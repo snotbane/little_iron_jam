@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_jdxd2"]
 [ext_resource type="PackedScene" uid="uid://bk2dewnkyfejk" path="res://assets/prefabs/stinkhopper.tscn" id="2_4tm7l"]
-[ext_resource type="Script" path="res://assets/scripts/brain_stinker.gd" id="2_xem13"]
+[ext_resource type="Script" path="res://assets/scripts/brains/brain_stinker.gd" id="2_xem13"]
 [ext_resource type="Script" path="res://assets/scripts/root_motion.gd" id="4_40lkl"]
 
 [node name="stinker" instance=ExtResource("1_jdxd2")]

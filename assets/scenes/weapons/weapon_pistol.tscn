@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c7uios12yce4b" path="res://assets/scenes/bullets/bullet_pistol.tscn" id="2_tqc70"]
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="3_esfny"]
 [ext_resource type="Material" uid="uid://cl5whrdvbjlel" path="res://assets/models/pistol/pistol_material.tres" id="3_gr5ey"]
-[ext_resource type="Script" path="res://assets/scripts/casing_spawner.gd" id="7_jpaq2"]
+[ext_resource type="Script" path="res://assets/scripts/other/casing_spawner.gd" id="7_jpaq2"]
 
 [node name="weapon_pistol" node_paths=PackedStringArray("anim_player", "bullet_spawn_location") instance=ExtResource("1_k5kur")]
 anim_player = NodePath("pistol/AnimationPlayer")

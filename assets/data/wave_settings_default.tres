@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WaveSettings" load_steps=4 format=3 uid="uid://bpvtrpkd8u74d"]
 
-[ext_resource type="Script" path="res://assets/scripts/wave_settings.gd" id="1_f2uto"]
+[ext_resource type="Script" path="res://assets/scripts/waves/wave_settings.gd" id="1_f2uto"]
 
 [sub_resource type="Curve" id="Curve_62dev"]
 max_value = 2.0

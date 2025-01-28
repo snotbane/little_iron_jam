@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2xxb4sye565j" path="res://assets/models/rifle/rifle.glb" id="4_12b6f"]
 [ext_resource type="AudioStream" uid="uid://dxc0y6nso8o2u" path="res://assets/audio/weapons/railgun_fire.tres" id="4_47p0j"]
 [ext_resource type="Material" uid="uid://cl5whrdvbjlel" path="res://assets/models/pistol/pistol_material.tres" id="5_as2pa"]
-[ext_resource type="Script" path="res://assets/scripts/casing_spawner.gd" id="6_fdxfa"]
+[ext_resource type="Script" path="res://assets/scripts/other/casing_spawner.gd" id="6_fdxfa"]
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="8_6k0hx"]
 [ext_resource type="AudioStream" uid="uid://trxflnqnxyay" path="res://assets/audio/weapons/garand_ping.tres" id="8_j3vl8"]
 

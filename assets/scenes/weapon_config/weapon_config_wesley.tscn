@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://m3g6mj32wfve"]
 
 [ext_resource type="PackedScene" uid="uid://d07hpd5wlopok" path="res://assets/scenes/weapon_config/weapon_config.tscn" id="1_l8pwe"]
-[ext_resource type="Script" path="res://assets/scripts/weapon_config_cyclic.gd" id="2_nrttk"]
+[ext_resource type="Script" path="res://assets/scripts/weapons/weapon_config_cyclic.gd" id="2_nrttk"]
 [ext_resource type="PackedScene" uid="uid://d2xqcvhlhks64" path="res://assets/scenes/weapons/weapon_carbine.tscn" id="3_80ftn"]
 
 [node name="weapon_config_wesley" node_paths=PackedStringArray("sockets") instance=ExtResource("1_l8pwe")]

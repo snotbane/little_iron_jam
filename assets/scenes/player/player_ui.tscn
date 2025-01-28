@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://bikrt5av7f0d3"]
 
 [ext_resource type="FontFile" uid="uid://cgs4jbvrniee0" path="res://assets/fonts/Arbutus-Regular.ttf" id="1_pbwtn"]
-[ext_resource type="Script" path="res://assets/scripts/ammo_label_fancy.gd" id="2_lbq4v"]
+[ext_resource type="Script" path="res://assets/scripts/other/ammo_label_fancy.gd" id="2_lbq4v"]
 [ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="3_fc223"]
 [ext_resource type="AudioStream" uid="uid://breoqkbo0agvm" path="res://assets/audio/game_over_church_bell.ogg" id="4_341nf"]
-[ext_resource type="Script" path="res://assets/scripts/randomized_text.gd" id="4_ube7t"]
+[ext_resource type="Script" path="res://assets/scripts/other/randomized_text.gd" id="4_ube7t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ukhfm"]
 font = ExtResource("1_pbwtn")

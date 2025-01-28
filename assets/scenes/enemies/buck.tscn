@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b27ly3vvi5qc4" path="res://assets/prefabs/buck.tscn" id="2_kvpmg"]
 [ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/pickup_shotgun.tscn" id="2_ywup7"]
 [ext_resource type="PackedScene" uid="uid://brb5pt2v7s810" path="res://assets/scenes/weapon_config/weapon_config_shotgun_buck.tscn" id="3_33abw"]
-[ext_resource type="Script" path="res://assets/scripts/brain_buck.gd" id="3_ipyb7"]
+[ext_resource type="Script" path="res://assets/scripts/brains/brain_buck.gd" id="3_ipyb7"]
 [ext_resource type="Script" path="res://assets/scripts/root_motion.gd" id="4_e8eal"]
 [ext_resource type="AudioStream" uid="uid://dl1tqnsmhq3tg" path="res://assets/audio/elk_call.ogg" id="6_hubhc"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c414vt4mwkrah"]
 
-[ext_resource type="Script" path="res://assets/scripts/bell.gd" id="1_tr0yt"]
+[ext_resource type="Script" path="res://assets/scripts/other/bell.gd" id="1_tr0yt"]
 [ext_resource type="PackedScene" uid="uid://dll8gybqf0tn8" path="res://assets/prefabs/time_bell.tscn" id="2_67bby"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v1yqn"]

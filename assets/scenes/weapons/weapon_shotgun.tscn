@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cvg0w07fbril0" path="res://assets/scenes/detritus/detritus_shotgun.tscn" id="2_r6l33"]
 [ext_resource type="PackedScene" uid="uid://b2klgr6x5g16g" path="res://assets/scenes/bullets/bullet_shotgun.tscn" id="2_u7q83"]
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="3_6spum"]
-[ext_resource type="Script" path="res://assets/scripts/casing_spawner.gd" id="6_fm851"]
+[ext_resource type="Script" path="res://assets/scripts/other/casing_spawner.gd" id="6_fm851"]
 
 [node name="weapon_shotgun" node_paths=PackedStringArray("anim_player", "bullet_spawn_location") instance=ExtResource("1_iibum")]
 anim_player = NodePath("shotgun/AnimationPlayer")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cysuu86r47xum"]
 
 [ext_resource type="PackedScene" uid="uid://d07hpd5wlopok" path="res://assets/scenes/weapon_config/weapon_config.tscn" id="1_let8r"]
-[ext_resource type="Script" path="res://assets/scripts/weapon_config_pistol.gd" id="2_i8bkp"]
+[ext_resource type="Script" path="res://assets/scripts/weapons/weapon_config_pistol.gd" id="2_i8bkp"]
 [ext_resource type="PackedScene" uid="uid://d0vjbjmoyj1he" path="res://assets/scenes/weapons/weapon_pistol.tscn" id="3_2mlwd"]
 
 [node name="weapon_config_pistol" node_paths=PackedStringArray("sockets") instance=ExtResource("1_let8r")]

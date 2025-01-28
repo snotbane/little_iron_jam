@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d0goiuqrxv0rs" path="res://assets/scenes/pickups/pickup.tscn" id="1_o3ki3"]
 [ext_resource type="PackedScene" uid="uid://skr1gal6unvr" path="res://assets/models/shell_pickup.glb" id="1_yis7u"]
 [ext_resource type="Material" uid="uid://b0gpbk5qkyvsa" path="res://assets/models/shell_material.tres" id="2_6s4h5"]
-[ext_resource type="Script" path="res://assets/scripts/pickup_shell.gd" id="2_gy0p7"]
+[ext_resource type="Script" path="res://assets/scripts/pickups/pickup_shell.gd" id="2_gy0p7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0vnso"]
 size = Vector3(0.2, 0.347852, 0.2)

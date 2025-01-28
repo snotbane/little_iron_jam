@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d07hpd5wlopok" path="res://assets/scenes/weapon_config/weapon_config.tscn" id="1_rpuqm"]
 [ext_resource type="PackedScene" uid="uid://dsk5wbdmyh1yn" path="res://assets/scenes/weapons/weapon_shotgun.tscn" id="2_pqlf4"]
-[ext_resource type="Script" path="res://assets/scripts/weapon_config_cyclic.gd" id="2_py3na"]
+[ext_resource type="Script" path="res://assets/scripts/weapons/weapon_config_cyclic.gd" id="2_py3na"]
 
 [node name="weapon_config" node_paths=PackedStringArray("sockets") instance=ExtResource("1_rpuqm")]
 script = ExtResource("2_py3na")

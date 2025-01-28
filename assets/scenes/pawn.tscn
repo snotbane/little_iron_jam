@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://assets/scripts/ammo.gd" id="1_a2tth"]
 [ext_resource type="PackedScene" uid="uid://fkba2vvj2bfy" path="res://assets/scenes/pickups/shell.tscn" id="2_s4lk7"]
 [ext_resource type="FontFile" uid="uid://cgs4jbvrniee0" path="res://assets/fonts/Arbutus-Regular.ttf" id="4_pqbxh"]
-[ext_resource type="Script" path="res://assets/scripts/ammo_label.gd" id="5_bqah7"]
+[ext_resource type="Script" path="res://assets/scripts/other/ammo_label.gd" id="5_bqah7"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nmtem"]
 radius = 0.808106

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d07hpd5wlopok"]
 
-[ext_resource type="Script" path="res://assets/scripts/weapon_config.gd" id="1_iiek1"]
+[ext_resource type="Script" path="res://assets/scripts/weapons/weapon_config.gd" id="1_iiek1"]
 [ext_resource type="AudioStream" uid="uid://ccxb7bra74r13" path="res://assets/audio/weapon_pickup.ogg" id="2_44w3s"]
 
 [node name="weapon_config" type="Node3D"]

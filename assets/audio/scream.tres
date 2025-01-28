@@ -1,15 +1,17 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://dc3gxpfixc5rw"]
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://dc3gxpfixc5rw"]
 
 [ext_resource type="AudioStream" uid="uid://brkg235xgabe4" path="res://assets/audio/scream_wazowski.ogg" id="1_b7g2m"]
 [ext_resource type="AudioStream" uid="uid://d0tuqhf4wb5mt" path="res://assets/audio/whip_johnny.ogg" id="1_h1siy"]
+[ext_resource type="AudioStream" uid="uid://bix5olw0hvicr" path="res://assets/audio/silence.ogg" id="1_imp8i"]
 [ext_resource type="AudioStream" uid="uid://cu067mw0holm" path="res://assets/audio/scream_wilhelm.ogg" id="2_k2hdk"]
 
 [resource]
 playback_mode = 1
-streams_count = 3
-stream_0/stream = ExtResource("1_h1siy")
-stream_0/weight = 99.0
-stream_1/stream = ExtResource("1_b7g2m")
-stream_1/weight = 0.1
-stream_2/stream = ExtResource("2_k2hdk")
-stream_2/weight = 0.9
+streams_count = 4
+stream_0/stream = ExtResource("1_imp8i")
+stream_0/weight = 98.0
+stream_1/stream = ExtResource("1_h1siy")
+stream_2/stream = ExtResource("1_b7g2m")
+stream_2/weight = 0.1
+stream_3/stream = ExtResource("2_k2hdk")
+stream_3/weight = 0.9

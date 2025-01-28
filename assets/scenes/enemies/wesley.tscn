@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://boyloil5dmnft" path="res://assets/scenes/pickups/pickup_carbine.tscn" id="2_citca"]
 [ext_resource type="Material" uid="uid://dbicob5d8wu5w" path="res://assets/models/wesley/wesley_material.tres" id="3_r16x8"]
 [ext_resource type="PackedScene" uid="uid://m3g6mj32wfve" path="res://assets/scenes/weapon_config/weapon_config_wesley.tscn" id="4_05i2f"]
-[ext_resource type="Script" path="res://assets/scripts/brain_wesley.gd" id="4_i2k7d"]
+[ext_resource type="Script" path="res://assets/scripts/brains/brain_wesley.gd" id="4_i2k7d"]
 [ext_resource type="Script" path="res://assets/scripts/root_motion.gd" id="4_xrh1b"]
 [ext_resource type="AudioStream" uid="uid://ds2iofdu4ho74" path="res://assets/audio/robotic_lycan_howl_01.ogg" id="5_af5m6"]
 

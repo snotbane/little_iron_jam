@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c661b0yefbd3p" path="res://assets/models/upgrades/bounce.png" id="1_wopwk"]
 [ext_resource type="Script" path="res://assets/scripts/pickups/upgrade.gd" id="2_11jok"]
-[ext_resource type="Texture2D" path="res://assets/models/upgrades/bounce_sprite.tres" id="3_bg3sv"]
+[ext_resource type="Texture2D" uid="uid://c1v25otsnjc6a" path="res://assets/models/upgrades/bounce_sprite.tres" id="3_bg3sv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j660e"]
 transparency = 4

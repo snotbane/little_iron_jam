@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbk7uke1u4jo3"]
+
+[ext_resource type="PackedScene" uid="uid://beg2e5uq1dbev" path="res://assets/models/gattler/gattler.glb" id="1_hijlx"]
+[ext_resource type="Material" uid="uid://kn1x77fba10f" path="res://assets/models/gattler/gattler_material.tres" id="2_2wyth"]
+
+[node name="gattler" instance=ExtResource("1_hijlx")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(-7.36772e-07, 0.646375, 0.76302, -6.65231e-07)
+bones/2/scale = Vector3(1, 1, 1)
+
+[node name="Mesh" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_2wyth")

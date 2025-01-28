@@ -79,7 +79,7 @@ func start_wave(wave: Wave) -> void:
 	# wave_started.emit(wave_index)
 
 	if timer.is_stopped():
-		timer.wait_time = wave.duration
+		timer.wait_time = wave.duration + (timer.wait_time if wave_hour == Wave.Hour.MIDNIGHT + 1 else 0.0)
 	else:
 		timer.wait_time = timer.time_left + wave.duration
 		timer.stop()
@@ -93,7 +93,8 @@ func start_wave(wave: Wave) -> void:
 
 func actually_start_wave() -> void:
 	time_left_at_wave_start = timer.wait_time
-	timer.start()
+	if wave_hour != Wave.Hour.MIDNIGHT:
+		timer.start()
 	for scene_path in current_wave.scenes:
 		var scene : PackedScene = load(scene_path)
 		for i in current_wave.scenes[scene_path]:

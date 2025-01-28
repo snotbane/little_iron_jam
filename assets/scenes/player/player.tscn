@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
 [ext_resource type="Script" path="res://assets/scripts/player/player_movement.gd" id="2_52ijy"]
 [ext_resource type="PackedScene" uid="uid://38l7tovwc1uw" path="res://assets/scenes/player/crosshair.tscn" id="2_bufda"]
-[ext_resource type="Script" path="res://assets/scenes/player/interaction.gd" id="3_235ft"]
+[ext_resource type="Script" path="res://assets/scripts/player/interaction.gd" id="3_235ft"]
 [ext_resource type="PackedScene" uid="uid://csrge5d3x14ri" path="res://assets/models/jack/jack.glb" id="3_txy8l"]
 [ext_resource type="Script" path="res://assets/scripts/jack_anim_tree.gd" id="4_ew1kc"]
 [ext_resource type="PackedScene" uid="uid://c48e78yo3bqt7" path="res://assets/scenes/player/vacuum.tscn" id="4_yu1wx"]

@@ -107,8 +107,8 @@ func end_wave() -> void:
 
 func spawn_scene(scene: PackedScene) -> void:
 	var node : Node3D = scene.instantiate()
-	var at := random_floor_position
-	var query := PhysicsRayQueryParameters3D.create(at, Vector3.DOWN * 100, 1)
+	var at := random_floor_position + Vector3.UP * 50.0
+	var query := PhysicsRayQueryParameters3D.create(at, at + Vector3.DOWN * 100, 1)
 	var spacestate := get_world_3d().direct_space_state
 	var hit := spacestate.intersect_ray(query)
 	at = hit["position"]

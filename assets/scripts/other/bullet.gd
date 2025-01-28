@@ -39,6 +39,7 @@ var _velocity : Vector3
 
 func populate(__ammo: Ammo, audio : AudioStream = preload("res://assets/audio/pistol_fire.tres"), cost_direct_to_bullets := false, pitch := 1.0) -> void:
 	ammo = __ammo
+	ammo.tree_exiting.connect(func(): self.ammo = null)
 	damage += 0 if cost_direct_to_bullets else ammo.extra_ammo_cost
 	velocity = (-self.global_basis.z * Vector3(1, 0, 1)).normalized() * impulse * ammo.bullet_speed_multiplier
 

@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://bix5olw0hvicr" path="res://assets/audio/silence.ogg" id="5_i53ek"]
 
 [resource]
-initial_clip = 4
 clip_count = 6
 clip_0/name = &"standard"
 clip_0/stream = ExtResource("1_bph6v")
@@ -48,7 +47,7 @@ Vector2i(-1, 5): {
 },
 Vector2i(4, -1): {
 "fade_beats": 0,
-"fade_mode": 1,
+"fade_mode": 0,
 "from_time": 0,
 "to_time": 1
 }

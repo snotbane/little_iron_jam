@@ -12,9 +12,9 @@
 
 [node name="pickup" instance=ExtResource("1_2yrub")]
 script = ExtResource("2_k02e3")
+randomize_index = true
 upgrades = Array[ExtResource("11_hheqf")]([ExtResource("4_4x480"), ExtResource("5_4usci"), ExtResource("6_wo5el"), ExtResource("7_rcitm")])
 effect_index = 0
-discreet_pickup = false
 
 [node name="visual" parent="." index="1"]
 script = ExtResource("8_ishnx")

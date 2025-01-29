@@ -1,5 +1,5 @@
 
-extends Pickup
+class_name PickupWeapon extends Pickup
 
 @export var weapon_config_scene : PackedScene
 @export var health := -1

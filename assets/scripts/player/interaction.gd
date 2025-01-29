@@ -20,7 +20,7 @@ func _input(event: InputEvent) -> void:
 
 
 func body_entered(body: Node3D) -> void:
-	if not (body is Pickup and body.discreet_pickup): return
+	if not (body is PickupWeapon): return
 	pickup_stack.push_back(body)
 
 

@@ -2,12 +2,14 @@
 class_name Weapon extends Node3D
 
 signal fired
+signal died
 
 @export var anim_player : AnimationPlayer
 @export var fire_anim_name : StringName = &"fire"
 
-var _health : int = 10
-@export var health : int = 10 :
+@export var max_health := 10
+var _health : int = max_health
+var health : int = max_health :
 	get: return _health
 	set(value):
 		if _health == value: return
@@ -45,6 +47,8 @@ var drops_detritus : bool = true
 @onready var cooldown : Timer = $cooldown
 
 # func _physics_process(delta: float) -> void:
+func _ready() -> void:
+	_health = max_health
 
 
 func fire(ammo: Ammo, direction := Vector3.ZERO, pitch := 1.0) -> void:
@@ -73,6 +77,7 @@ func create_bullet(ammo: Ammo, direction := Vector3.ZERO, pitch := 1.0) -> void:
 
 
 func drop_detritus() -> void:
+	is_shooting = false
 	var detritus : Detritus = detritus_scene.instantiate()
 	get_tree().root.add_child(detritus)
 	detritus.global_position = self.global_position

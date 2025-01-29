@@ -14,9 +14,10 @@ wait_time = 0.2
 autostart = false
 
 [node name="node_3d" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000438149, 0.00959918, 0.326413)
 
 [node name="node_3d2" type="Node3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.358, 0.632299, 0.545)
 
 [node name="node_3d3" type="Node3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.358134, 0.632165, 0.545)

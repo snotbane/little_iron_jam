@@ -525,7 +525,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.220747, 0.399534, 4.24683e-07, -0.875287, 0.483604, 0.456461, -0.430283, -0.778781, 0, 0, 0)
+transform = Transform3D(0.889744, 0.220747, 0.399534, 3.72529e-07, -0.875287, 0.483604, 0.456461, -0.430283, -0.778781, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.948, 1, 0.87, 1)
 shadow_enabled = true
@@ -583,7 +583,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.566971, -0.00312386, -0.823731, 0.0302847, -0.999238, 0.0246343, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
+transform = Transform3D(0.566971, -0.00312384, -0.823731, 0.0302847, -0.999238, 0.0246342, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(5.2267e-08, 0.0158411, 0.0197509, 1)
 light_energy = 0.0

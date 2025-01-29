@@ -30,7 +30,18 @@ var available_socket : Node3D :
 			return socket
 		return null
 
+var unhealthiest_weapon : Weapon :
+	get:
+		var result : Weapon = null
+		var health := 100000
+		for weapon in visible_weapons:
+			if weapon.health < health:
+				result = weapon
+				health = weapon.health
+		return result
 
+var is_all_sockets_full : bool :
+	get: return visible_weapons.size() == max_sockets
 
 var _is_shooting : bool
 var is_shooting : bool :

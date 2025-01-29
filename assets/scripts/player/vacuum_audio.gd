@@ -7,11 +7,11 @@ func set_is_sucking(value: bool) -> void:
 
 	if value:
 		self["parameters/looping"] = true
-		self.stream = preload("res://assets/audio/vacuum_start.ogg")
+		self.stream = preload("res://assets/audio/vacuum/vacuum_start.ogg")
 		self.play()
 	else:
 		self["parameters/looping"] = false
 		self.stop()
-		self.stream = preload("res://assets/audio/vacuum_end.ogg")
+		self.stream = preload("res://assets/audio/vacuum/vacuum_end.ogg")
 		self.play()
 

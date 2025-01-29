@@ -2,8 +2,11 @@
 class_name Vacuum extends Area3D
 
 signal on_sucked(value: bool)
+signal collected
 
-
+@export var crosshair : Node
+var weapon_config : WeaponConfig :
+	get: return crosshair.weapon_config
 
 @export var ammo : Ammo
 @export var blend_shape_mesh : MeshInstance3D
@@ -13,7 +16,7 @@ signal on_sucked(value: bool)
 	set(value):
 		value = clamp(value, 0, 179)
 		region.fov = value
-@export var suck_distance : float = 3.0 :
+@export var suck_distance : float = 4.0 :
 	get: return region.far
 	set(value):
 		value = max(value, 0.001)
@@ -53,9 +56,14 @@ func _physics_process(delta: float) -> void:
 			if body.find_child("safe"): continue
 
 			var difference := (self.global_position - body.global_position) * Vector3(1, 0, 1)
-			if difference.length_squared() < collect_radius_squared and not (body is Pickup and body.discreet_pickup):
-				collect(body); continue
-			elif region.is_position_in_frustum(body.global_position * Vector3(1, 0, 1)):
+			if difference.length_squared() < collect_radius_squared:
+				if body is PickupWeapon:
+					if weapon_config and weapon_config.scene_file_path == body.weapon_config_scene.resource_path:
+						collect(body); continue
+				else:
+					collect(body); continue
+
+			if region.is_position_in_frustum(body.global_position * Vector3(1, 0, 1)):
 				body.apply_force(difference.normalized() * suck_power)
 			fail_collect(body)
 
@@ -69,9 +77,15 @@ func _body_exited(body: Node3D) -> void:
 
 
 func collect(body: RigidBody3D) -> void:
-	if body is Pickup:
+	if body is PickupWeapon:
+		if weapon_config and weapon_config.is_all_sockets_full:
+			weapon_config.unhealthiest_weapon.health += weapon_config.unhealthiest_weapon.max_health
+		else:
+			body.collect(ammo)
+	elif body is Pickup:
 		body.collect(ammo)
 	body.queue_free()
+	collected.emit()
 
 
 func fail_collect(body: RigidBody3D) -> void:

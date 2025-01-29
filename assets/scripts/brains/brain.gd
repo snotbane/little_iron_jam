@@ -20,6 +20,7 @@ var pawn_lateral_velocity : Vector3 :
 
 var can_see_kill_target : bool :
 	get:
+		if not kill_target: return false
 		var query := PhysicsRayQueryParameters3D.create(pawn.global_position + Vector3.UP, kill_target.global_position + Vector3.UP, 1, [ pawn.get_rid(), kill_target.get_rid() ])
 		var dss := pawn.get_world_3d().direct_space_state
 		var collision := dss.intersect_ray(query)

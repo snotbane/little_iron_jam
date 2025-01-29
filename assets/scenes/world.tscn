@@ -2,19 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
-[ext_resource type="AudioStream" uid="uid://c17kciqr3rhwq" path="res://assets/audio/music/music_standard.ogg" id="3_h3ia3"]
+[ext_resource type="AudioStream" uid="uid://cjuw21v63yg62" path="res://assets/audio/music/music.tres" id="3_uxruw"]
 
 [node name="world" type="Node3D"]
 
 [node name="player" parent="." instance=ExtResource("1_fd1we")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
 
-[node name="arena" parent="." instance=ExtResource("2_asn8h")]
+[node name="arena" parent="." node_paths=PackedStringArray("music_player") instance=ExtResource("2_asn8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -31)
-wave_index = 8
+music_player = NodePath("../music_controller")
 
 [node name="music_controller" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_h3ia3")
+stream = ExtResource("3_uxruw")
 autoplay = true
+bus = &"Music"
 
 [connection signal="game_over" from="player" to="arena" method="stop_everything"]

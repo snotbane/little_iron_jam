@@ -75,9 +75,10 @@ func create_hitspark(bullet: Bullet) -> void:
 func consume_bullets(amount: int) -> void:
 	if belongs_to_player: self.health -= amount + extra_ammo_cost
 
-
+var dead := false
 func die() -> void:
-	if actor.is_queued_for_deletion(): return
+	if dead: return
+	dead = true
 	# if last_hit_by is not Bullet:
 		# drop_weapon()
 	drop_weapon()

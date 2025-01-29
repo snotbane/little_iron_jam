@@ -5,6 +5,7 @@ signal wave_started(index: int)
 
 static var inst : WaveController
 
+@export var music_player : AudioStreamPlayer
 @export var predefined_waves : Dictionary
 @export var spawn_radius : float = 22.0
 @export var spawn_origin : Node3D = self
@@ -21,6 +22,12 @@ var current_wave : Wave
 var is_enemies_cleared : bool
 var time_left_at_wave_start : float = 60.0
 @export var is_game_over : bool
+
+var music_clip : StringName :
+	get: return music_player["parameters/switch_to_clip"]
+	set(value):
+		if music_player["parameters/switch_to_clip"] == value: return
+		music_player["parameters/switch_to_clip"] = value
 
 @export var wave_index : int = -1
 var next_wave : Wave :
@@ -62,12 +69,21 @@ func proceed_to_next_wave() -> void:
 
 
 func stop_everything() -> void:
+	music_clip = &"death"
 	timer.stop()
 	is_game_over = true
 
 
 func start_wave(wave: Wave) -> void:
 	current_wave = wave
+
+	if wave_index == Wave.Events.WESLEY:
+		music_clip = &"silence"
+	else:
+		match wave_hour:
+			Wave.Hour.HIGH_NOON: music_clip = &"high_noon"
+			Wave.Hour.MIDNIGHT: music_clip = &"dead_of_night"
+			_: music_clip = &"standard"
 
 	ui_anim_player.play(&"notify_clock")
 	get_tree().call_group(&"wave_timed", "set_current_hour", wave_index)
@@ -98,6 +114,10 @@ func actually_start_wave() -> void:
 			spawn_scene(scene)
 			await get_tree().create_timer(0.25).timeout
 	check_enemy_group.call_deferred()
+
+	if wave_index == Wave.Events.WESLEY:
+		await get_tree().create_timer(3.0).timeout
+		music_clip = &"wesley"
 
 
 func end_wave() -> void:

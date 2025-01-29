@@ -16,6 +16,12 @@ enum Hour {
 	AFTERNOON,
 }
 
+enum Events {
+	BUCK = 9,
+	WESLEY = 15,
+	MAGNUS = 21,
+}
+
 const HOURS_IN_DAY := 12
 const SETTINGS := preload("res://assets/data/wave_settings_default.tres")
 
@@ -29,7 +35,7 @@ static func new_from_wave_index(index : int) -> Wave:
 	var hour := index % HOURS_IN_DAY
 	if hour == Hour.MIDNIGHT:
 		result = Wave.new()
-		result.scenes["res://assets/scenes/pickups/shell.tscn"] = 10
+		result.scenes["res://assets/scenes/pickups/shell.tscn"] = 3
 	else:
 		result = SETTINGS.generate_wave(index)
 

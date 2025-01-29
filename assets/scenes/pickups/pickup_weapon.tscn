@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bthvfuwp8orlx"]
+[gd_scene load_steps=5 format=3 uid="uid://bthvfuwp8orlx"]
 
 [ext_resource type="PackedScene" uid="uid://d0goiuqrxv0rs" path="res://assets/scenes/pickups/pickup.tscn" id="1_gdhfu"]
-[ext_resource type="Script" path="res://assets/scripts/other/spinny.gd" id="2_i65ns"]
 [ext_resource type="Script" path="res://assets/scripts/pickups/pickup_weapon.gd" id="2_nsi1g"]
 [ext_resource type="PackedScene" uid="uid://bi77uc1w3jvfh" path="res://assets/scenes/weapon_config/weapon_config_pistol.tscn" id="3_lm18e"]
 
@@ -17,11 +16,4 @@ discreet_pickup = true
 [node name="shape" parent="." index="0"]
 shape = SubResource("BoxShape3D_n6vrx")
 
-[node name="remote_transform_3d" type="RemoteTransform3D" parent="." index="1"]
-remote_path = NodePath("../visual")
-update_rotation = false
-update_scale = false
-
-[node name="visual" type="Node3D" parent="." index="2"]
-script = ExtResource("2_i65ns")
-spin_speed_degrees = Vector3(0, 150, 0)
+[node name="visual" type="Node3D" parent="." index="1"]

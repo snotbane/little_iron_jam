@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmm5rafal8ul4"]
+[gd_scene load_steps=4 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
+[ext_resource type="AudioStream" uid="uid://c17kciqr3rhwq" path="res://assets/audio/music/music_standard.ogg" id="3_h3ia3"]
 
 [node name="world" type="Node3D"]
 
@@ -10,6 +11,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
 
 [node name="arena" parent="." instance=ExtResource("2_asn8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -31)
-wave_index = 2
+wave_index = 8
+
+[node name="music_controller" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_h3ia3")
+autoplay = true
 
 [connection signal="game_over" from="player" to="arena" method="stop_everything"]

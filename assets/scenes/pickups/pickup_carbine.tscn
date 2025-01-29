@@ -1,21 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://boyloil5dmnft"]
+[gd_scene load_steps=6 format=3 uid="uid://boyloil5dmnft"]
 
 [ext_resource type="PackedScene" uid="uid://bthvfuwp8orlx" path="res://assets/scenes/pickups/pickup_weapon.tscn" id="1_v8jnm"]
 [ext_resource type="PackedScene" uid="uid://ciy73altvwc82" path="res://assets/scenes/weapon_config/weapon_config_carbine.tscn" id="2_r5euh"]
 [ext_resource type="PackedScene" uid="uid://b2xxb4sye565j" path="res://assets/models/rifle/rifle.glb" id="3_8vvaf"]
 [ext_resource type="Material" uid="uid://cl5whrdvbjlel" path="res://assets/models/pistol/pistol_material.tres" id="4_ya3jd"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ibvxu"]
+size = Vector3(0.34375, 0.86499, 4.98926)
+
 [node name="weapon_pickup" instance=ExtResource("1_v8jnm")]
 weapon_config_scene = ExtResource("2_r5euh")
 
-[node name="rifle" parent="visual" index="0" instance=ExtResource("3_8vvaf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.5)
+[node name="shape" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0185547, 0)
+shape = SubResource("BoxShape3D_ibvxu")
 
-[node name="Skeleton3D" parent="visual/rifle/Armature" index="0"]
+[node name="rifle" parent="." index="1" instance=ExtResource("3_8vvaf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="Skeleton3D" parent="rifle/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.707107, -1.15202e-07, -1.15202e-07, 0.707107)
 bones/3/position = Vector3(-2.84716e-14, 0.498244, 0.0883931)
 
-[node name="Mesh" parent="visual/rifle/Armature/Skeleton3D" index="0"]
+[node name="Mesh" parent="rifle/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("4_ya3jd")
 
-[editable path="visual/rifle"]
+[editable path="rifle"]

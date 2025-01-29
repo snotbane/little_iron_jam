@@ -15,7 +15,7 @@ var object_weights : Array
 
 
 func get_difficulty(index: int) -> float:
-	return overall_difficulty_curve.sample(float(index) / overall_difficulty_levels)
+	return overall_difficulty_curve.sample(float(index) / overall_difficulty_levels) * hour_difficulty_curve.sample(float(index % Wave.HOURS_IN_DAY) / Wave.HOURS_IN_DAY)
 
 
 func generate_wave(index: int) -> Wave:

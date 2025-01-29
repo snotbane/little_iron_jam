@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://buobjj4nvosgp"]
+[gd_scene load_steps=5 format=3 uid="uid://buobjj4nvosgp"]
 
 [ext_resource type="PackedScene" uid="uid://bthvfuwp8orlx" path="res://assets/scenes/pickups/pickup_weapon.tscn" id="1_ogre8"]
 [ext_resource type="PackedScene" uid="uid://c75u30qwoxwb3" path="res://assets/scenes/weapon_config/weapon_config_gatling.tscn" id="2_1vuw4"]
-[ext_resource type="PackedScene" uid="uid://ctkeqktbiic1l" path="res://assets/models/shotgun/shotgun.glb" id="2_lyuf7"]
+[ext_resource type="PackedScene" uid="uid://dbk7uke1u4jo3" path="res://assets/prefabs/gattler.tscn" id="3_cyk8a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tgg07"]
+size = Vector3(0.779297, 0.825684, 2.69971)
 
 [node name="pickup_gatling" instance=ExtResource("1_ogre8")]
 weapon_config_scene = ExtResource("2_1vuw4")
 
-[node name="shotgun2" parent="visual" index="0" instance=ExtResource("2_lyuf7")]
+[node name="shape" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.108643, 0.0368652)
+shape = SubResource("BoxShape3D_tgg07")
+
+[node name="gattler" parent="." index="1" instance=ExtResource("3_cyk8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236315, 1.18795)

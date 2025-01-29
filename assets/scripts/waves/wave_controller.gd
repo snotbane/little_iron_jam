@@ -96,6 +96,7 @@ func actually_start_wave() -> void:
 		var scene : PackedScene = load(scene_path)
 		for i in current_wave.scenes[scene_path]:
 			spawn_scene(scene)
+			await get_tree().create_timer(0.25).timeout
 	check_enemy_group.call_deferred()
 
 

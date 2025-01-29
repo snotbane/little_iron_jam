@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://15e61md7nldj"]
+[gd_scene load_steps=4 format=3 uid="uid://15e61md7nldj"]
 
 [ext_resource type="PackedScene" uid="uid://bthvfuwp8orlx" path="res://assets/scenes/pickups/pickup_weapon.tscn" id="1_nf5s3"]
 [ext_resource type="PackedScene" uid="uid://dy7r1lox3r877" path="res://assets/prefabs/pistol_pickup.tscn" id="2_wclcv"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_illar"]
+size = Vector3(0.385742, 0.742676, 1.06055)
+
 [node name="pistol_pickup" instance=ExtResource("1_nf5s3")]
 
-[node name="pistol_pickup" parent="visual" index="0" instance=ExtResource("2_wclcv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="shape" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0720215, 0)
+shape = SubResource("BoxShape3D_illar")
+
+[node name="pistol_pickup" parent="." index="1" instance=ExtResource("2_wclcv")]

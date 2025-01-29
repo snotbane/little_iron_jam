@@ -6,7 +6,6 @@ const SCREAM_AUDIO : AudioStream = preload("res://assets/audio/scream.tres")
 signal changed
 signal died
 
-
 signal received_upgrade_dodge
 signal received_upgrade_vacuum
 signal received_upgrade_bullet_speed
@@ -79,8 +78,9 @@ func consume_bullets(amount: int) -> void:
 
 func die() -> void:
 	if actor.is_queued_for_deletion(): return
-	if last_hit_by is not Bullet:
-		drop_weapon()
+	# if last_hit_by is not Bullet:
+		# drop_weapon()
+	drop_weapon()
 	drop_shells()
 	if can_scream: scream()
 	died.emit()

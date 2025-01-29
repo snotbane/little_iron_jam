@@ -451,6 +451,48 @@ vertices = PackedVector3Array(0.264742, 0, 27.2033, 23.423, 0, 14.1139, 23.24, 0
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 
+[node name="navigation_link_3d" type="NavigationLink3D" parent="nav_region"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5791, 0, 10.0091)
+bidirectional = false
+start_position = Vector3(0, 9, 0)
+end_position = Vector3(-6.734, 0, -1.45)
+travel_cost = 0.0
+
+[node name="navigation_link_3d2" type="NavigationLink3D" parent="nav_region"]
+transform = Transform3D(-0.433801, 0, 0.901009, 0, 1, 0, -0.901009, 0, -0.433801, -12.3527, 0, -13.0241)
+bidirectional = false
+start_position = Vector3(0, 9, 0)
+end_position = Vector3(-6.734, 0, -1.45)
+travel_cost = 0.0
+
+[node name="navigation_link_3d3" type="NavigationLink3D" parent="nav_region"]
+transform = Transform3D(-0.939746, 0, -0.341872, 0, 1, 0, 0.341872, 0, -0.939746, -15.9297, 9.53674e-07, -5.05561)
+bidirectional = false
+start_position = Vector3(0, 2, 0)
+end_position = Vector3(-2.569, 0, -2.311)
+travel_cost = 0.0
+
+[node name="navigation_link_3d4" type="NavigationLink3D" parent="nav_region"]
+transform = Transform3D(-0.0620762, 0, 0.998071, 0, 1, 0, -0.998071, 0, -0.0620762, 9.25105, 9.53674e-07, -2.35609)
+bidirectional = false
+start_position = Vector3(0, 2, 0)
+end_position = Vector3(-2.569, 0, -2.311)
+travel_cost = 0.0
+
+[node name="navigation_link_3d5" type="NavigationLink3D" parent="nav_region"]
+transform = Transform3D(-0.867531, 0, 0.497383, 0, 1, 0, -0.497383, 0, -0.867531, -1.48446, 9.53674e-07, -11.4114)
+bidirectional = false
+start_position = Vector3(0, 2, 0)
+end_position = Vector3(-2.569, 0, -2.311)
+travel_cost = 0.0
+
+[node name="navigation_link_3d6" type="NavigationLink3D" parent="nav_region"]
+transform = Transform3D(0.867531, 0, -0.497383, 0, 1, 0, 0.497383, 0, 0.867531, -0.784221, 9.53674e-07, 15.6224)
+bidirectional = false
+start_position = Vector3(0, 2, 0)
+end_position = Vector3(-2.569, 0, -2.311)
+travel_cost = 0.0
+
 [node name="environment" type="WorldEnvironment" parent="." groups=["wave_timed"]]
 environment = SubResource("Environment_od2qt")
 script = ExtResource("3_3py3g")
@@ -483,7 +525,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.220747, 0.399534, 4.24683e-07, -0.875287, 0.483604, 0.456461, -0.430283, -0.778781, 0, 0, 0)
+transform = Transform3D(0.889744, 0.220747, 0.399534, 4.17233e-07, -0.875287, 0.483604, 0.456461, -0.430283, -0.778781, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.948, 1, 0.87, 1)
 shadow_enabled = true
@@ -541,7 +583,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.566971, -0.00312387, -0.823731, 0.0302847, -0.999238, 0.0246343, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
+transform = Transform3D(0.566971, -0.00312384, -0.823731, 0.0302847, -0.999238, 0.0246342, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(5.2267e-08, 0.0158411, 0.0197509, 1)
 light_energy = 0.0

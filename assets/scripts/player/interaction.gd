@@ -4,7 +4,9 @@ extends Node
 @onready var ammo : Ammo = self.get_parent()
 
 
-var focused_pickup : Pickup
+var pickup_stack : Array[Pickup]
+var focused_pickup : Pickup :
+	get: return pickup_stack.back()
 
 
 func _ready() -> void:
@@ -19,16 +21,15 @@ func _input(event: InputEvent) -> void:
 
 func body_entered(body: Node3D) -> void:
 	if not (body is Pickup and body.discreet_pickup): return
-	focused_pickup = body
+	pickup_stack.push_back(body)
 
 
 func body_exited(body: Node3D) -> void:
-	if not body == focused_pickup: return
-	focused_pickup = null
+	pickup_stack.erase(body)
 
 
 func try_collect() -> void:
 	if not focused_pickup: return
 	focused_pickup._collect(ammo)
 	focused_pickup.queue_free()
-	focused_pickup = null
+	pickup_stack.pop_back()

@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 
 	bullet_timer -= delta
 	if is_shooting and ammo_ and bullet_timer <= 0.0:
-		super.fire(ammo_, direction_, lerp(0.6, 1.1, fire_rate_percent * fire_rate_percent))
+		super.fire(ammo_, direction_, lerp(0.6, 1.1, pow(fire_rate_percent, 4.0)))
 		bullet_timer = wrapf(bullet_timer, 0.0, fire_rate)
 
 

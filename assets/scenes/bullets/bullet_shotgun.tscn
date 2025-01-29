@@ -5,7 +5,7 @@
 
 [node name="bullet" instance=ExtResource("1_f3df6")]
 impulse = 25.0
-falloff = 0.3
+falloff = 0.4
 
 [node name="audio_stream_player_3d" parent="." index="1"]
 volume_db = -8.0

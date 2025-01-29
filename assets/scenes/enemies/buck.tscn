@@ -21,9 +21,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51245, 0.339539)
 shape = SubResource("BoxShape3D_qrv6e")
 
 [node name="ammo" parent="pawn" index="1"]
-shell_loss_amount = 30
+shell_loss_amount = 60
 weapon_drop_on_death = ExtResource("2_ywup7")
-health = 30
+health = 40
 
 [node name="shape" parent="pawn/ammo" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51245, 0.339539)
@@ -36,17 +36,17 @@ text = "30"
 [node name="buck" parent="pawn" index="2" instance=ExtResource("2_kvpmg")]
 
 [node name="Skeleton3D" parent="pawn/buck/Armature" index="0"]
-bones/1/position = Vector3(-0.00807185, 0.407106, 1.77977)
-bones/1/rotation = Quaternion(-0.691883, -0.00618909, 0.00681396, 0.721951)
+bones/1/position = Vector3(0.021407, 0.412741, 1.77977)
+bones/1/rotation = Quaternion(-0.681513, 0.0181133, -0.0185405, 0.731346)
 bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
 bones/3/rotation = Quaternion(-2.06384e-08, 0.952897, 0.303295, 7.19417e-08)
-bones/4/position = Vector3(-0.878772, 2.34217, 0.00385864)
-bones/4/rotation = Quaternion(0.0331025, 3.07323e-05, 0.00319815, 0.999447)
+bones/4/position = Vector3(-0.893188, 2.11881, 0.144814)
+bones/4/rotation = Quaternion(-0.0244686, -0.00167327, -6.65613e-05, 0.999699)
 bones/5/position = Vector3(0.884316, 1.85048, 1.8528e-09)
 bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
 
 [node name="body" type="BoneAttachment3D" parent="pawn/buck/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.999831, -0.0147914, -0.0109602, -0.018403, 0.81897, 0.573541, 0.000492598, 0.573646, -0.819103, -0.0104302, 0.485757, -0.0690364)
+transform = Transform3D(-0.998656, 0.0423173, 0.0299131, 0.0518079, 0.801637, 0.595562, 0.00122309, 0.596311, -0.802752, 0.025904, 0.542998, -0.0661145)
 bone_name = "body"
 bone_idx = 2
 
@@ -79,5 +79,6 @@ stream = ExtResource("6_hubhc")
 [connection signal="attack_warning" from="pawn/agent" to="audio_stream_player_3d" method="play"]
 
 [editable path="pawn"]
+[editable path="pawn/ammo"]
 [editable path="pawn/buck"]
 [editable path="pawn/buck/Armature/Skeleton3D/body/weapon_config_buck"]

@@ -122,6 +122,8 @@ func actually_start_wave() -> void:
 
 func end_wave() -> void:
 	bell.is_enabled = true
+	if wave_index == Wave.Events.WESLEY:
+		music_clip = &"dead_of_night"
 
 
 func spawn_scene(scene: PackedScene) -> void:

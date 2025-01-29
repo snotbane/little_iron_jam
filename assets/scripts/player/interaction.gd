@@ -25,6 +25,7 @@ func body_entered(body: Node3D) -> void:
 
 
 func body_exited(body: Node3D) -> void:
+	if body is not Pickup: return
 	pickup_stack.erase(body)
 
 

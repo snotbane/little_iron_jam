@@ -1,12 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://fkba2vvj2bfy"]
+[gd_scene load_steps=9 format=3 uid="uid://fkba2vvj2bfy"]
 
 [ext_resource type="PackedScene" uid="uid://d0goiuqrxv0rs" path="res://assets/scenes/pickups/pickup.tscn" id="1_o3ki3"]
 [ext_resource type="PackedScene" uid="uid://skr1gal6unvr" path="res://assets/models/shell_pickup.glb" id="1_yis7u"]
-[ext_resource type="Material" uid="uid://b0gpbk5qkyvsa" path="res://assets/models/shell_material.tres" id="2_6s4h5"]
 [ext_resource type="Script" path="res://assets/scripts/pickups/pickup_shell.gd" id="2_gy0p7"]
+[ext_resource type="Shader" uid="uid://dt4a4ew3m1rwr" path="res://assets/shaders/shiny_shader.tres" id="4_hpt8b"]
+[ext_resource type="Texture2D" uid="uid://d3qlicn8pvmjb" path="res://assets/models/shelltexture.png" id="5_dmmbh"]
+[ext_resource type="Texture2D" uid="uid://8r42kwy27ah2" path="res://assets/shaders/shine.png" id="5_n02tc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0vnso"]
 size = Vector3(0.2, 0.347852, 0.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0oj43"]
+render_priority = 0
+shader = ExtResource("4_hpt8b")
+shader_parameter/Metallic = 1.0
+shader_parameter/Roughness = 0.3
+shader_parameter/ShineColor = Color(1, 1, 1, 1)
+shader_parameter/Shine_Speed = 1.0
+shader_parameter/Shine_Frequency = 3.0
+shader_parameter/Albedo = ExtResource("5_dmmbh")
+shader_parameter/ShineTexture = ExtResource("5_n02tc")
 
 [node name="shell" instance=ExtResource("1_o3ki3")]
 script = ExtResource("2_gy0p7")
@@ -19,6 +32,6 @@ shape = SubResource("BoxShape3D_0vnso")
 [node name="shell_pickup" parent="." index="1" instance=ExtResource("1_yis7u")]
 
 [node name="shell" parent="shell_pickup" index="0"]
-surface_material_override/0 = ExtResource("2_6s4h5")
+surface_material_override/0 = SubResource("ShaderMaterial_0oj43")
 
 [editable path="shell_pickup"]

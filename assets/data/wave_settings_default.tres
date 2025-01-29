@@ -20,7 +20,7 @@ appearance_minimum_wave = 0
 [sub_resource type="Resource" id="Resource_55813"]
 script = ExtResource("1_5b8u2")
 scene_path = "res://assets/scenes/enemies/smokey.tscn"
-difficulty_cost = 3.5
+difficulty_cost = 4.0
 difficulty_time = 2.0
 appearance_weight = 3.0
 appearance_minimum_wave = 0
@@ -28,24 +28,24 @@ appearance_minimum_wave = 0
 [sub_resource type="Resource" id="Resource_l66g2"]
 script = ExtResource("1_5b8u2")
 scene_path = "res://assets/scenes/enemies/buck.tscn"
-difficulty_cost = 11.0
-difficulty_time = 10.0
-appearance_weight = 1.0
+difficulty_cost = 10.0
+difficulty_time = 6.0
+appearance_weight = 1.5
 appearance_minimum_wave = 9
 
 [sub_resource type="Resource" id="Resource_p6er8"]
 script = ExtResource("1_5b8u2")
 scene_path = "res://assets/scenes/enemies/wesley.tscn"
 difficulty_cost = 8.0
-difficulty_time = 12.0
-appearance_weight = 1.5
+difficulty_time = 8.0
+appearance_weight = 1.0
 appearance_minimum_wave = 15
 
 [sub_resource type="Resource" id="Resource_58c4n"]
 script = ExtResource("1_5b8u2")
 scene_path = "res://assets/scenes/enemies/magnus.tscn"
 difficulty_cost = 15.0
-difficulty_time = 18.0
+difficulty_time = 16.0
 appearance_weight = 1.0
 appearance_minimum_wave = 21
 

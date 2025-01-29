@@ -143,6 +143,7 @@ bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(-3.09086e-08, -0.707107, 0.707107, -5.33851e-08)
 bones/7/rotation = Quaternion(-3.09086e-08, -0.707107, 0.707107, -5.33851e-08)
 bones/8/rotation = Quaternion(0.707107, 0.000474727, 0.000474727, 0.707107)
+bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(-0.206189, 0.0900564, -0.369741, 0.901481)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(0.201848, 0.0836077, -0.373438, 0.90156)
@@ -204,12 +205,12 @@ suck_angle = 50.0
 
 [node name="player_input" type="Node" parent="pawn"]
 script = ExtResource("2_52ijy")
-walk_speed = 50.0
+walk_speed = 75.0
 walk_damping = 10.0
 turn_speed = 20.0
 dodge_impulse = 20.0
 dodge_damping = 4.0
-dodge_delay = 0.6
+dodge_delay = 0.25
 dodge_ammo_cost = 1
 dodge_upgrade_impulse = 3.0
 dodge_upgrade_damping = 0.0

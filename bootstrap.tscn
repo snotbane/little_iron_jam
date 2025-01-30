@@ -5,20 +5,22 @@
 [sub_resource type="GDScript" id="GDScript_145kv"]
 script/source = "extends Control
 
-@export_dir var load_all_path : String
+signal loading_finished
+
+@export_dir var path_sequence : Array[String]
 
 var paths : PackedStringArray
 var total_resources_to_load := 0
 
 func _ready() -> void:
-	check_load()
-	paths = get_paths_in_project(\".tscn\", load_all_path)
+	start_loading_paths(path_sequence.pop_front())
+		
+func start_loading_paths(dir : String) -> void:
+	paths.append_array(get_paths_in_project(\".\", dir))
 	total_resources_to_load = paths.size()
 	for path in paths:
-		ResourceLoader.load_threaded_request(path)
-	check_load()
-#
-#
+		ResourceLoader.load_threaded_request(path, \"\", false, ResourceLoader.CACHE_MODE_REPLACE_DEEP)
+
 func check_load() -> void:
 	var finished : Array[String]
 	for path in paths:
@@ -26,6 +28,8 @@ func check_load() -> void:
 		match status:
 			3:
 				print(\"Finished loading %s!\" % path)
+				var loaded_resource = ResourceLoader.load_threaded_get(path)
+				Autoload.inst.loaded_resources.push_back(loaded_resource)
 				finished.push_back(path)
 			2:
 				printerr(\"Failed to load %s...\" % path)
@@ -33,7 +37,23 @@ func check_load() -> void:
 	for path in finished:
 		paths.remove_at(paths.find(path))
 		
-		
+	if paths.is_empty():
+		if path_sequence.is_empty():
+			finished_load()
+		else:
+			start_loading_paths(path_sequence.pop_front())
+			
+
+func finished_load() -> void:
+	$timer.stop()
+	loading_finished.emit()
+	var farts := Node3D.new()
+	for loaded_resource in Autoload.inst.loaded_resources:
+		if loaded_resource is PackedScene:
+			var node : Node = loaded_resource.instantiate()
+			farts.add_child(node)
+	Autoload.inst.add_child(farts)
+	get_tree().change_scene_to_file(\"res://assets/scenes/main_menu.tscn\")
 		
 static func get_paths_in_project(ext: String, start_path := \"res://\") -> Array[String]:
 	var dir := DirAccess.open(start_path)
@@ -45,7 +65,7 @@ static func get_paths_in_project(ext: String, start_path := \"res://\") -> Array
 		var next_path := start_path + \"/\" + file_name
 		if dir.current_is_dir():
 			result.append_array(get_paths_in_project(ext, next_path))
-		elif file_name.ends_with(ext):
+		elif not file_name.ends_with(\".import\") and not file_name.ends_with(\".tmp\"):
 			result.push_back(next_path)
 		file_name = dir.get_next()
 	return result
@@ -59,7 +79,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_145kv")
-load_all_path = "res://assets/scenes"
+path_sequence = Array[String](["res://assets/scripts", "res://assets/scenes"])
 
 [node name="color_rect" type="ColorRect" parent="."]
 layout_mode = 1

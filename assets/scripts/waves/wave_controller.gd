@@ -26,8 +26,11 @@ var time_left_at_wave_start : float = 60.0
 @export var is_game_over : bool
 
 var music_clip : StringName :
-	get: return music_player["parameters/switch_to_clip"]
+	get:
+		if music_player == null: return &"silence"
+		return music_player["parameters/switch_to_clip"]
 	set(value):
+		if music_player == null: return
 		if music_player["parameters/switch_to_clip"] == value: return
 		music_player["parameters/switch_to_clip"] = value
 

@@ -29,11 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.31207, 1.9, -24.3363)
 [node name="magnus" parent="." index="4" instance=ExtResource("3_ha2im")]
 transform = Transform3D(-0.220851, 0, 0.975308, 0, 1, 0, -0.975308, 0, -0.220851, 5.73339, -0.0999999, -26.2133)
 
-[connection signal="died" from="player/pawn/ammo" to="player/canvas_layer/ui/animation_player" method="play" binds= [&"game_over"]]
-[connection signal="received_upgrade_bullet_speed" from="player/pawn/ammo" to="player/canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [1]]
-[connection signal="received_upgrade_dodge" from="player/pawn/ammo" to="player/canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [0]]
-[connection signal="received_upgrade_vacuum" from="player/pawn/ammo" to="player/canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [2]]
-
 [editable path="player"]
 [editable path="player/pawn"]
 [editable path="player/pawn/ammo"]

@@ -38,12 +38,8 @@ text = "30"
 [node name="Skeleton3D" parent="pawn/buck/Armature" index="0"]
 bones/1/position = Vector3(0.014449, 0.41299, 1.77977)
 bones/1/rotation = Quaternion(-0.684325, 0.0122268, -0.0125152, 0.728967)
-bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
-bones/3/rotation = Quaternion(-2.06384e-08, 0.952897, 0.303295, 7.19417e-08)
 bones/4/position = Vector3(-0.893442, 2.05236, 0.152501)
 bones/4/rotation = Quaternion(-0.139157, -0.000542974, -0.00653024, 0.990249)
-bones/5/position = Vector3(0.884316, 1.85048, 1.8528e-09)
-bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
 
 [node name="body" type="BoneAttachment3D" parent="pawn/buck/Armature/Skeleton3D" index="1"]
 transform = Transform3D(-0.999388, 0.0286443, 0.0200903, 0.0349804, 0.806599, 0.590063, 0.000697092, 0.590404, -0.807107, 0.0172471, 0.529729, -0.067022)

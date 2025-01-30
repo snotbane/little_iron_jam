@@ -3,7 +3,7 @@ class_name Brain extends NavigationAgent3D
 
 @onready var pawn : CharacterBody3D = self.get_parent()
 @onready var nav_timer : Timer = $nav_timer
-@onready var kill_target : Node3D = PlayerMovement.inst.pawn
+@onready var kill_target : Node3D = PlayerMovement.inst.pawn if PlayerMovement.inst else null
 @onready var move_target : Node3D = kill_target
 
 @export var weapon_config : WeaponConfig

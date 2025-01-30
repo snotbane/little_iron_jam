@@ -29,7 +29,7 @@ signal received_upgrade_bullet_damage
 
 @export var weapon_drop_on_death : PackedScene
 
-@onready var actor : Node3D = self.get_parent()
+@onready var actor : Node3D = self.get_parent() if self.get_parent() is Node3D else null
 
 var last_hit_by : Node3D
 

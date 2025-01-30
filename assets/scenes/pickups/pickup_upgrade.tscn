@@ -7,14 +7,14 @@
 [ext_resource type="Resource" uid="uid://t3iguj23ci0t" path="res://assets/data/upgrades/upgrade_vacuum.tres" id="6_wo5el"]
 [ext_resource type="Resource" uid="uid://dy62fogwexb8a" path="res://assets/data/upgrades/upgrade_bullet_damage.tres" id="7_rcitm"]
 [ext_resource type="Script" path="res://assets/scripts/other/spinny.gd" id="8_ishnx"]
-[ext_resource type="Texture2D" uid="uid://ktg4ojfu65aw" path="res://assets/models/upgrades/boost_power_sprite.tres" id="8_oxcut"]
+[ext_resource type="Texture2D" uid="uid://c1v25otsnjc6a" path="res://assets/models/upgrades/bounce_sprite.tres" id="9_0o7yn"]
 [ext_resource type="Script" path="res://assets/scripts/pickups/upgrade.gd" id="11_hheqf"]
 
 [node name="pickup" instance=ExtResource("1_2yrub")]
 script = ExtResource("2_k02e3")
 randomize_index = true
 upgrades = Array[ExtResource("11_hheqf")]([ExtResource("4_4x480"), ExtResource("5_4usci"), ExtResource("6_wo5el"), ExtResource("7_rcitm")])
-effect_index = 0
+effect_index = 1
 
 [node name="visual" parent="." index="1"]
 script = ExtResource("8_ishnx")
@@ -24,13 +24,13 @@ spin_speed_degrees = Vector3(0, 150, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 pixel_size = 0.0025
 double_sided = false
-texture = ExtResource("8_oxcut")
+texture = ExtResource("9_0o7yn")
 
 [node name="sprite_3d2" type="Sprite3D" parent="visual" index="1"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 1.5, 0)
 pixel_size = 0.0025
 double_sided = false
-texture = ExtResource("8_oxcut")
+texture = ExtResource("9_0o7yn")
 
 [connection signal="texture_changed" from="." to="visual/sprite_3d" method="set_texture"]
 [connection signal="texture_changed" from="." to="visual/sprite_3d2" method="set_texture"]

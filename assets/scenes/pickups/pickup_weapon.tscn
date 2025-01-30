@@ -8,7 +8,6 @@
 size = Vector3(0.25, 0.25, 0.25)
 
 [node name="weapon_pickup" instance=ExtResource("1_gdhfu")]
-collision_mask = 11
 script = ExtResource("2_nsi1g")
 weapon_config_scene = ExtResource("3_lm18e")
 

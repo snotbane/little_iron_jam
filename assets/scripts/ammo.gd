@@ -8,6 +8,7 @@ const PLAYER_DAMAGE_AUDIO : AudioStream = preload("res://assets/audio/damage_pla
 signal changed
 signal died
 
+signal received_upgrade_any
 signal received_upgrade_dodge
 signal received_upgrade_vacuum
 signal received_upgrade_bullet_speed
@@ -51,6 +52,10 @@ func _ready() -> void:
 	body_entered.connect(_body_entered)
 	received_upgrade_bullet_speed.connect(_received_upgrade_bullet_speed)
 	received_upgrade_bullet_damage.connect(_received_upgrade_bullet_damage)
+	received_upgrade_bullet_speed.connect(received_upgrade_any.emit)
+	received_upgrade_bullet_damage.connect(received_upgrade_any.emit)
+	received_upgrade_dodge.connect(received_upgrade_any.emit)
+	received_upgrade_vacuum.connect(received_upgrade_any.emit)
 
 
 func _body_entered(body: Node3D) -> void:

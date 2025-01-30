@@ -175,7 +175,7 @@ E | B     .   .   .   .   .   .   .   Swap Weapon on Ground
 
 		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]HOW   TO   PLAY[/font][/font_size]
 
-You are about to face (or currently facing) many waves of foes of increasing difficulty. Starting out, you will have no weapons -- only yourself. Every move you make, every shot you take, consumes BULLETS. If you run out, you'll be destroyed. Aim well, aim wisely, and go forth into the sunset!
+EVERYTHING IS BULLETS. You are about to face (or are currently facing) many waves of foes. Starting out, you will have no weapons -- only yourself. Every move you make, every shot you take, consumes BULLETS. If you run out, you'll be destroyed. Aim well, aim wisely, and go forth into the sunset!
 
 		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]UPGRADES[/font][/font_size]
 
@@ -255,7 +255,7 @@ text = "[img]res://assets/user_interface/credits_nulture_icon.png[/img]     [fon
 					Codesmithing  •  Foley  •  Game Design
 
 [img]res://assets/user_interface/credits_natesolio_icon.png[/img]     [font_size=36][font=res://assets/fonts/Arbutus-Regular.ttf]NATESOLIO[/font][/font_size]
-					Art  •  Animation  •  Music  •  Game Design
+					Modeling  •  Animation  •  Music  •  Game Design
 
 
 This project was made from scratch for the [url=https://itch.io/jam/pirate][hint=https://itch.io/jam/pirate]Pirate Software Game Jam 16[/hint][/url], starting on 2025 January 17, and ending on 2025 January 31. View the [url=https://github.com/nulture/full_metal_jack][hint=https://github.com/nulture/full_metal_jack]source code on GitHub[/hint][/url]."

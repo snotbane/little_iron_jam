@@ -65,6 +65,7 @@ func _physics_process(delta: float) -> void:
 
 			if region.is_position_in_frustum(body.global_position * Vector3(1, 0, 1)):
 				body.apply_force(difference.normalized() * suck_power)
+
 			fail_collect(body)
 
 

@@ -11,7 +11,6 @@ var _is_enabled : bool
 var is_enabled : bool :
 	get: return _is_enabled
 	set(value):
-		if _is_enabled == value: return
 		_is_enabled = value
 
 		anim_player.stop()
@@ -32,8 +31,8 @@ func on_hit(body: Node3D) -> void:
 
 
 func try_ring_bell() -> bool:
+	is_enabled = false
 	if is_enabled:
-		is_enabled = false
 		bell_rang.emit()
 		return true
 	return false

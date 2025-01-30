@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvxkxri6msep5"]
+[gd_scene load_steps=6 format=3 uid="uid://cvxkxri6msep5"]
 
 [ext_resource type="PackedScene" uid="uid://cmm5rafal8ul4" path="res://assets/scenes/world.tscn" id="1_ka81f"]
 [ext_resource type="PackedScene" uid="uid://8sxys71pcvd7" path="res://assets/scenes/detritus/upgrade_crate.tscn" id="3_ca7to"]
 [ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pickup_pistol.tscn" id="3_doi8k"]
+[ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/pickup_shotgun.tscn" id="5_63wp5"]
 [ext_resource type="PackedScene" uid="uid://buobjj4nvosgp" path="res://assets/scenes/pickups/pickup_gatling.tscn" id="6_5fsl7"]
 
 [node name="world" instance=ExtResource("1_ka81f")]
@@ -88,6 +89,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72079, -0.1, -22.5696)
 
 [node name="pickup_gatling3" parent="." index="16" instance=ExtResource("6_5fsl7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72079, -0.1, -22.5696)
+
+[node name="shotgun_pickup" parent="." index="17" instance=ExtResource("5_63wp5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82942, 2.03564, -20.16)
+
+[node name="shotgun_pickup2" parent="." index="18" instance=ExtResource("5_63wp5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82942, 2.03564, -20.16)
+
+[node name="shotgun_pickup3" parent="." index="19" instance=ExtResource("5_63wp5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82942, 2.03564, -20.16)
+
+[node name="shotgun_pickup4" parent="." index="20" instance=ExtResource("5_63wp5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82942, 2.03564, -20.16)
 
 [editable path="player"]
 [editable path="player/pawn"]

@@ -27,6 +27,7 @@ const game_scene_path := \"res://assets/scenes/world.tscn\"
 const menu_scene_path := \"res://assets/scenes/main_menu.tscn\"
 
 @export var instant_new_game := false
+@export var resume_parent : Control
 
 func set_use_resume_button(value: bool) -> void:
 		$v_box_container/resume.visible = value
@@ -60,7 +61,7 @@ func play_main_menu() -> void:
 func resume() -> void:
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if get_tree().paused else Autoload.hidden_mouse_mode
-	self.visible = get_tree().paused
+	resume_parent.visible = get_tree().paused
 
 
 func access_tab(idx: int) -> void:
@@ -127,17 +128,17 @@ text = "Main   Menu"
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_dlw7g")
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 tab_focus_mode = 0
 
 [node name="control" type="Control" parent="windows"]
-visible = false
 layout_mode = 2
 mouse_filter = 1
 metadata/_tab_index = 0
 
 [node name="how_to_play" type="MarginContainer" parent="windows"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0

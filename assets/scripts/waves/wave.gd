@@ -49,3 +49,7 @@ static func new_from_wave_index(index : int) -> Wave:
 
 static func wave_stops_time(idx: int, offset := 0) -> bool:
 	return idx - offset == Hour.MIDNIGHT or idx - offset == Hour.HIGH_NOON
+
+static func wave_uses_victory_music(idx: int) -> bool:
+	var hour := idx % HOURS_IN_DAY
+	return idx > Hour.HIGH_NOON and (hour > Hour.HIGH_NOON or hour < Hour.MIDNIGHT)

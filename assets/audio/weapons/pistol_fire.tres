@@ -1,0 +1,18 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://m7s6pci2n508"]
+
+[ext_resource type="AudioStream" uid="uid://debej0drevtto" path="res://assets/audio/weapons/pistol_fire_01.ogg" id="1_cb5ck"]
+[ext_resource type="AudioStream" uid="uid://bsckso3fifsai" path="res://assets/audio/weapons/pistol_fire_02.ogg" id="2_d5owd"]
+[ext_resource type="AudioStream" uid="uid://7xae6ltltgoh" path="res://assets/audio/weapons/pistol_fire_03.ogg" id="3_xw53q"]
+[ext_resource type="AudioStream" uid="uid://qkc4dxh1nnx7" path="res://assets/audio/weapons/pistol_fire_04.ogg" id="4_0ffgf"]
+[ext_resource type="AudioStream" uid="uid://ucy6q0fdxm34" path="res://assets/audio/weapons/pistol_fire_05.ogg" id="5_gu54a"]
+[ext_resource type="AudioStream" uid="uid://h5luf2b4mnvq" path="res://assets/audio/weapons/pistol_fire_06.ogg" id="6_tbyq5"]
+
+[resource]
+random_pitch = 1.02
+streams_count = 6
+stream_0/stream = ExtResource("1_cb5ck")
+stream_1/stream = ExtResource("2_d5owd")
+stream_2/stream = ExtResource("3_xw53q")
+stream_3/stream = ExtResource("4_0ffgf")
+stream_4/stream = ExtResource("5_gu54a")
+stream_5/stream = ExtResource("6_tbyq5")

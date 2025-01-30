@@ -1,0 +1,15 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://be5mlpirlx1s4"]
+
+[ext_resource type="AudioStream" uid="uid://ced8cri31jtl" path="res://assets/audio/robot_destroyed_00.ogg" id="1_0ko6k"]
+[ext_resource type="AudioStream" uid="uid://dgqtvtbaonh4w" path="res://assets/audio/robot_destroyed_01.ogg" id="2_wjn3d"]
+[ext_resource type="AudioStream" uid="uid://cdiq8mbwebobd" path="res://assets/audio/robot_destroyed_02.ogg" id="3_th43a"]
+[ext_resource type="AudioStream" uid="uid://rsgiumnan5l5" path="res://assets/audio/robot_destroyed_03.ogg" id="4_wi7kw"]
+[ext_resource type="AudioStream" uid="uid://btmw4fcv5ti4y" path="res://assets/audio/robot_destroyed_04.ogg" id="5_tm6n2"]
+
+[resource]
+streams_count = 5
+stream_0/stream = ExtResource("1_0ko6k")
+stream_1/stream = ExtResource("2_wjn3d")
+stream_2/stream = ExtResource("3_th43a")
+stream_3/stream = ExtResource("4_wi7kw")
+stream_4/stream = ExtResource("5_tm6n2")

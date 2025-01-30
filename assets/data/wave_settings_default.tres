@@ -39,7 +39,7 @@ scene_path = "res://assets/scenes/enemies/wesley.tscn"
 difficulty_cost = 8.0
 difficulty_time = 8.0
 appearance_weight = 1.0
-appearance_minimum_wave = 15
+appearance_minimum_wave = 27
 
 [sub_resource type="Resource" id="Resource_58c4n"]
 script = ExtResource("1_5b8u2")
@@ -47,7 +47,7 @@ scene_path = "res://assets/scenes/enemies/magnus.tscn"
 difficulty_cost = 15.0
 difficulty_time = 16.0
 appearance_weight = 1.0
-appearance_minimum_wave = 21
+appearance_minimum_wave = 45
 
 [sub_resource type="Curve" id="Curve_r0mv2"]
 max_value = 100.0

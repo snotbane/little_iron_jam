@@ -301,14 +301,14 @@ sky = SubResource("Sky_cdym1")
 tonemap_mode = 2
 
 [sub_resource type="GDScript" id="GDScript_hu4e8"]
-script/source = "extends MarginContainer
+script/source = "extends Control
 
 var is_paused : bool :
 	get: return get_tree().paused
 	set(value):
 		get_tree().paused = value
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if is_paused else Autoload.hidden_mouse_mode
-		$h_box_container.visible = is_paused
+		self.visible = is_paused
 	
 
 func _input(event: InputEvent) -> void:
@@ -569,7 +569,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.220746, 0.399535, 3.65079e-07, -0.875287, 0.483604, 0.456462, -0.430283, -0.778781, 0, 0, 0)
+transform = Transform3D(0.889744, 0.220747, 0.399535, 4.09782e-07, -0.875287, 0.483604, 0.456462, -0.430283, -0.778781, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.948, 1, 0.87, 1)
 shadow_enabled = true
@@ -627,7 +627,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.566971, -0.00312384, -0.823731, 0.0302847, -0.999238, 0.0246342, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
+transform = Transform3D(0.566971, -0.00312385, -0.823731, 0.0302847, -0.999238, 0.0246342, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(5.2267e-08, 0.0158411, 0.0197509, 1)
 light_energy = 0.0
@@ -690,35 +690,54 @@ transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 
 [node name="canvas_layer" type="CanvasLayer" parent="."]
 
-[node name="margin_container" type="MarginContainer" parent="canvas_layer"]
+[node name="margin_container" type="Control" parent="canvas_layer"]
 process_mode = 3
+visible = false
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
 script = SubResource("GDScript_hu4e8")
 
-[node name="h_box_container" parent="canvas_layer/margin_container" instance=ExtResource("13_kqw5i")]
+[node name="color_rect" type="ColorRect" parent="canvas_layer/margin_container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.745098)
+
+[node name="margin_container" type="MarginContainer" parent="canvas_layer/margin_container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="h_box_container" parent="canvas_layer/margin_container/margin_container" node_paths=PackedStringArray("resume_parent") instance=ExtResource("13_kqw5i")]
 process_mode = 2
-visible = false
 layout_mode = 2
 instant_new_game = true
+resume_parent = NodePath("../..")
 
-[node name="quit" parent="canvas_layer/margin_container/h_box_container/v_box_container" index="4"]
+[node name="quit" parent="canvas_layer/margin_container/margin_container/h_box_container/v_box_container" index="4"]
 visible = false
 
-[node name="main_menu" parent="canvas_layer/margin_container/h_box_container/v_box_container" index="5"]
+[node name="main_menu" parent="canvas_layer/margin_container/margin_container/h_box_container/v_box_container" index="5"]
 visible = true
 
-[connection signal="any_wave_started" from="." to="canvas_layer/margin_container/h_box_container" method="set_use_resume_button" binds= [true]]
-[connection signal="stopped_everything" from="." to="canvas_layer/margin_container/h_box_container" method="set_use_resume_button" binds= [false]]
+[connection signal="any_wave_started" from="." to="canvas_layer/margin_container/margin_container/h_box_container" method="set_use_resume_button" binds= [true]]
+[connection signal="stopped_everything" from="." to="canvas_layer/margin_container/margin_container/h_box_container" method="set_use_resume_button" binds= [false]]
 [connection signal="wave_started" from="." to="wave_spawner/canvas_layer/ui/wave_clock/wave_timer/wave_index_label" method="set_wave_index"]
 [connection signal="bell_rang" from="bell" to="." method="proceed_to_next_wave"]
 
 [editable path="nav_region/fmj_level_mesh"]
-[editable path="canvas_layer/margin_container/h_box_container"]
+[editable path="canvas_layer/margin_container/margin_container/h_box_container"]

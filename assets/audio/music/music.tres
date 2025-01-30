@@ -1,31 +1,36 @@
-[gd_resource type="AudioStreamInteractive" load_steps=6 format=3 uid="uid://cjuw21v63yg62"]
+[gd_resource type="AudioStreamInteractive" load_steps=7 format=3 uid="uid://cjuw21v63yg62"]
 
 [ext_resource type="AudioStream" uid="uid://c17kciqr3rhwq" path="res://assets/audio/music/music_standard.ogg" id="1_bph6v"]
 [ext_resource type="AudioStream" uid="uid://p80gpe2d3ler" path="res://assets/audio/music/music_high_noon.ogg" id="2_slw4t"]
+[ext_resource type="AudioStream" uid="uid://k3qeq6ycl81q" path="res://assets/audio/music/music_victory.ogg" id="3_57jrp"]
 [ext_resource type="AudioStream" uid="uid://br7v6jli6gury" path="res://assets/audio/music/music_dead_of_night.ogg" id="3_lyo6n"]
 [ext_resource type="AudioStream" uid="uid://cj3b05ajxd82k" path="res://assets/audio/music/music_wesley.ogg" id="4_oghon"]
 [ext_resource type="AudioStream" uid="uid://bix5olw0hvicr" path="res://assets/audio/silence.ogg" id="5_i53ek"]
 
 [resource]
-clip_count = 6
+initial_clip = 5
+clip_count = 7
 clip_0/name = &"standard"
 clip_0/stream = ExtResource("1_bph6v")
 clip_0/auto_advance = 0
 clip_1/name = &"high_noon"
 clip_1/stream = ExtResource("2_slw4t")
 clip_1/auto_advance = 0
-clip_2/name = &"dead_of_night"
-clip_2/stream = ExtResource("3_lyo6n")
+clip_2/name = &"victory"
+clip_2/stream = ExtResource("3_57jrp")
 clip_2/auto_advance = 0
-clip_3/name = &"wesley"
-clip_3/stream = ExtResource("4_oghon")
+clip_3/name = &"dead_of_night"
+clip_3/stream = ExtResource("3_lyo6n")
 clip_3/auto_advance = 0
-clip_4/name = &"silence"
-clip_4/stream = ExtResource("5_i53ek")
+clip_4/name = &"wesley"
+clip_4/stream = ExtResource("4_oghon")
 clip_4/auto_advance = 0
-clip_5/name = &"death"
+clip_5/name = &"silence"
 clip_5/stream = ExtResource("5_i53ek")
 clip_5/auto_advance = 0
+clip_6/name = &"death"
+clip_6/stream = ExtResource("5_i53ek")
+clip_6/auto_advance = 0
 _transitions = {
 Vector2i(-1, -1): {
 "fade_beats": 8,
@@ -33,19 +38,25 @@ Vector2i(-1, -1): {
 "from_time": 2,
 "to_time": 2
 },
-Vector2i(-1, 4): {
+Vector2i(-1, 2): {
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 1
+},
+Vector2i(-1, 5): {
 "fade_beats": 8,
 "fade_mode": 2,
 "from_time": 0,
 "to_time": 1
 },
-Vector2i(-1, 5): {
+Vector2i(-1, 6): {
 "fade_beats": 4,
 "fade_mode": 2,
 "from_time": 0,
 "to_time": 1
 },
-Vector2i(4, -1): {
+Vector2i(5, -1): {
 "fade_beats": 0,
 "fade_mode": 0,
 "from_time": 0,

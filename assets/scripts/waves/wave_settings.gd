@@ -9,7 +9,7 @@ static var RANDOM := RandomNumberGenerator.new()
 @export var overall_difficulty_levels : float
 
 @export var hour_difficulty_curve : Curve
-@export var wave_duration_interval : float = 15.0
+@export var wave_duration_interval : float = 30.0
 
 var object_weights : Array
 

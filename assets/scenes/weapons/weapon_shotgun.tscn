@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsk5wbdmyh1yn"]
+[gd_scene load_steps=8 format=3 uid="uid://dsk5wbdmyh1yn"]
 
 [ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_iibum"]
 [ext_resource type="PackedScene" uid="uid://4qnnt1bkuj4w" path="res://assets/prefabs/shotgun.tscn" id="2_64re0"]
 [ext_resource type="PackedScene" uid="uid://cvg0w07fbril0" path="res://assets/scenes/detritus/detritus_shotgun.tscn" id="2_r6l33"]
 [ext_resource type="PackedScene" uid="uid://b2klgr6x5g16g" path="res://assets/scenes/bullets/bullet_shotgun.tscn" id="2_u7q83"]
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="3_6spum"]
+[ext_resource type="AudioStream" uid="uid://b62sxtxpcswc2" path="res://assets/audio/weapons/shotgun_fire.tres" id="4_2rp4j"]
 [ext_resource type="Script" path="res://assets/scripts/other/casing_spawner.gd" id="6_fm851"]
 
 [node name="weapon_shotgun" node_paths=PackedStringArray("anim_player", "mesh", "bullet_spawn_location") instance=ExtResource("1_iibum")]
@@ -19,6 +20,7 @@ cost_direct_to_bullets = true
 deviation_degrees = 12.0
 detritus_scene = ExtResource("2_r6l33")
 _pickup_scene = "res://assets/scenes/pickups/pickup_shotgun.tscn"
+audio_stream = ExtResource("4_2rp4j")
 
 [node name="shotgun" parent="." index="0" instance=ExtResource("2_64re0")]
 

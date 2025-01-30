@@ -86,7 +86,7 @@ func start_wave(wave: Wave) -> void:
 		match wave_hour:
 			Wave.Hour.HIGH_NOON: music_clip = &"high_noon"
 			Wave.Hour.MIDNIGHT: music_clip = &"dead_of_night"
-			_: music_clip = &"standard"
+			_: music_clip = &"victory" if Wave.wave_uses_victory_music(wave_index) else &"standard"
 
 	ui_anim_player.play(&"notify_clock")
 	get_tree().call_group(&"wave_timed", "set_current_hour", wave_index)
@@ -129,7 +129,7 @@ func end_wave() -> void:
 	if wave_index == Wave.Events.WESLEY:
 		music_clip = &"dead_of_night"
 	elif wave_hour == Wave.Hour.HIGH_NOON:
-		music_clip = &"dead_of_night"
+		music_clip = &"victory"
 
 
 func spawn_scene(scene: PackedScene) -> void:

@@ -38,7 +38,7 @@ var health_percent : float :
 var pickup_scene : PackedScene :
 	get: return load(_pickup_scene)
 
-@export var audio_stream : AudioStream = preload("res://assets/audio/pistol_fire.tres")
+@export var audio_stream : AudioStream = preload("res://assets/audio/weapons/pistol_fire.tres")
 @export var normal_material : Material
 @export var damage_material : Material
 
@@ -67,6 +67,16 @@ func fire(ammo: Ammo, direction := Vector3.ZERO, pitch := 1.0) -> void:
 	ammo.consume_bullets(bullet_cost)
 	for i in projectile_count + (ammo.extra_ammo_cost if cost_direct_to_bullets else 0):
 		create_bullet(ammo, direction, pitch)
+
+	var audio_player := AudioStreamPlayer3D.new()
+	audio_player.finished.connect(audio_player.queue_free)
+	audio_player.stream = audio_stream
+	audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED
+	get_tree().root.add_child(audio_player)
+	audio_player.global_position = self.global_position
+	audio_player.pitch_scale = pitch
+	audio_player.play()
+
 	cooldown.start()
 	fired.emit()
 

@@ -1,0 +1,16 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://b62sxtxpcswc2"]
+
+[ext_resource type="AudioStream" uid="uid://dd702hy4jeb6f" path="res://assets/audio/weapons/shotgun_fire_00.ogg" id="1_be11n"]
+[ext_resource type="AudioStream" uid="uid://cwncelime22yh" path="res://assets/audio/weapons/shotgun_fire_01.ogg" id="2_vy002"]
+[ext_resource type="AudioStream" uid="uid://cw1xsqwm3yvfy" path="res://assets/audio/weapons/shotgun_fire_02.ogg" id="3_grrxa"]
+[ext_resource type="AudioStream" uid="uid://c8fb853hf3moh" path="res://assets/audio/weapons/shotgun_fire_03.ogg" id="4_8rcct"]
+[ext_resource type="AudioStream" uid="uid://c6ekmie433cu1" path="res://assets/audio/weapons/shotgun_fire_04.ogg" id="5_eus2t"]
+
+[resource]
+random_pitch = 1.02
+streams_count = 5
+stream_0/stream = ExtResource("1_be11n")
+stream_1/stream = ExtResource("2_vy002")
+stream_2/stream = ExtResource("3_grrxa")
+stream_3/stream = ExtResource("4_8rcct")
+stream_4/stream = ExtResource("5_eus2t")

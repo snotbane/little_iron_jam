@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cjuw21v63yg62" path="res://assets/audio/music/music.tres" id="3_uxruw"]
 
 [node name="world" type="Node3D"]
+process_mode = 1
 
 [node name="player" parent="." instance=ExtResource("1_fd1we")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)

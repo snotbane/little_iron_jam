@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dl02l1cjw2rrw"]
+
+[ext_resource type="Shader" uid="uid://dt4a4ew3m1rwr" path="res://assets/shaders/shiny_shader.tres" id="1_uic46"]
+[ext_resource type="Texture2D" uid="uid://keti5vk2s8uq" path="res://assets/models/gattler/gattler_texture.png" id="2_p782t"]
+[ext_resource type="Texture2D" uid="uid://8r42kwy27ah2" path="res://assets/shaders/shine.png" id="3_ysxr1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_uic46")
+shader_parameter/Metallic = 1.0
+shader_parameter/Roughness = 0.33
+shader_parameter/ShineColor = Color(1, 0, 0, 1)
+shader_parameter/Shine_Speed = 5.0
+shader_parameter/Shine_Frequency = 5.0
+shader_parameter/Albedo = ExtResource("2_p782t")
+shader_parameter/ShineTexture = ExtResource("3_ysxr1")

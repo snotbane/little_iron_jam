@@ -8,9 +8,10 @@
 [ext_resource type="Material" uid="uid://cl5whrdvbjlel" path="res://assets/models/pistol/pistol_material.tres" id="3_gr5ey"]
 [ext_resource type="Script" path="res://assets/scripts/other/casing_spawner.gd" id="7_jpaq2"]
 
-[node name="weapon_pistol" node_paths=PackedStringArray("anim_player", "bullet_spawn_location") instance=ExtResource("1_k5kur")]
+[node name="weapon_pistol" node_paths=PackedStringArray("anim_player", "mesh", "bullet_spawn_location") instance=ExtResource("1_k5kur")]
 anim_player = NodePath("pistol/AnimationPlayer")
-max_health = 15
+mesh = NodePath("pistol/Armature/Skeleton3D/Cube")
+max_health = 25
 bullet_scene = ExtResource("2_tqc70")
 bullet_spawn_location = NodePath("pistol/bullet_spawn")
 deviation_degrees = 4.0

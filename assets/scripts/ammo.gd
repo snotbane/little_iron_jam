@@ -90,13 +90,14 @@ func die() -> void:
 
 func scream() -> void:
 	var audio := AudioStreamPlayer3D.new()
+	audio.finished.connect(audio.queue_free)
 	audio.volume_db = 2.0
 	audio.stream = SCREAM_AUDIO
 	get_tree().root.add_child(audio)
 	audio.global_position = self.global_position
-	audio.finished.connect(audio.queue_free)
 	audio.play()
-
+	await get_tree().create_timer(3.0).timeout
+	audio.queue_free()
 
 
 

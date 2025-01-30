@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://0f4vk8qx8f57"]
+[gd_scene load_steps=9 format=3 uid="uid://0f4vk8qx8f57"]
 
 [ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_pywu8"]
 [ext_resource type="Script" path="res://assets/scripts/weapons/weapon_gatling.gd" id="2_1kktl"]
 [ext_resource type="PackedScene" uid="uid://c7uios12yce4b" path="res://assets/scenes/bullets/bullet_pistol.tscn" id="2_kcujr"]
 [ext_resource type="PackedScene" uid="uid://dyt6oitg7ejkk" path="res://assets/scenes/detritus/detritus_gatling.tscn" id="4_j7h8v"]
 [ext_resource type="PackedScene" uid="uid://dbk7uke1u4jo3" path="res://assets/prefabs/gattler.tscn" id="5_lkg1b"]
+[ext_resource type="Material" uid="uid://kn1x77fba10f" path="res://assets/models/gattler/gattler_material.tres" id="5_n5pqe"]
+[ext_resource type="Material" uid="uid://dl02l1cjw2rrw" path="res://assets/models/gattler/gattler_damage_material.tres" id="6_u6jx5"]
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="6_x38i6"]
 
-[node name="weapon_gatling" node_paths=PackedStringArray("rotator_main", "rotator_sub", "anim_player", "bullet_spawn_location") instance=ExtResource("1_pywu8")]
+[node name="weapon_gatling" node_paths=PackedStringArray("rotator_main", "rotator_sub", "anim_player", "mesh", "bullet_spawn_location") instance=ExtResource("1_pywu8")]
 script = ExtResource("2_1kktl")
 min_fire_delay = 0.105
 max_fire_delay = 0.8
@@ -16,12 +18,15 @@ rotator_visual_speed = 750.0
 rotator_main = NodePath("gattler/Armature/Skeleton3D/rotator1/rotator1_controller")
 rotator_sub = NodePath("gattler/Armature/Skeleton3D/rotator2/rotator2_controller")
 anim_player = NodePath("gattler/AnimationPlayer")
+mesh = NodePath("gattler/Armature/Skeleton3D/Mesh")
 max_health = 500
 bullet_scene = ExtResource("2_kcujr")
 bullet_spawn_location = NodePath("gattler/bullet_spawn")
 deviation_degrees = 1.5
 detritus_scene = ExtResource("4_j7h8v")
 _pickup_scene = "res://assets/scenes/pickups/pickup_gatling.tscn"
+normal_material = ExtResource("5_n5pqe")
+damage_material = ExtResource("6_u6jx5")
 
 [node name="warmup" type="Timer" parent="." index="1"]
 
@@ -38,7 +43,6 @@ bones/4/scale = Vector3(1.00826, 1, 1.00826)
 bones/5/rotation = Quaternion(0.0824806, 4.39934e-08, 1.68171e-07, 0.996593)
 bones/6/position = Vector3(0, 0, 0)
 bones/6/rotation = Quaternion(0, 4.16334e-14, 0, 1)
-bones/6/scale = Vector3(1, 1, 1)
 
 [node name="barrel" type="BoneAttachment3D" parent="gattler/Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 3.2148e-07, 2.05099e-06, -1.96478e-06, -0.17251, 0.985008, 6.70476e-07, -0.985008, -0.17251, 1.39107e-08, 2.93671e-14, -0.0441064)

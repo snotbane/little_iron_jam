@@ -26,6 +26,7 @@ var aim_vector : Vector2 :
 
 var aim_position : Vector3
 
+var is_using_face_buttons_to_shoot : bool
 var mouse_position : Vector2
 var _is_using_mouse : bool = true
 var is_using_mouse : bool = true :
@@ -37,7 +38,7 @@ var is_using_mouse : bool = true :
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,6 +51,8 @@ func _process(delta: float) -> void:
 		aim_vector = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down").normalized()
 		if aim_vector:
 			aim_position = Vector3(aim_vector.x * aim_distance, 0, aim_vector.y * aim_distance)
+		elif is_using_face_buttons_to_shoot:
+			aim_position = -pawn.global_basis.z * Vector3(1, 0, 1) * aim_distance
 		self.position = lerp(self.position, aim_position, aim_visual_alpha * delta)
 	self.global_position.y = 0
 	if self.position:
@@ -59,13 +62,24 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		is_using_mouse = false
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CONFINED_HIDDEN:
+		if Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down"):
+			is_using_face_buttons_to_shoot = false
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_HIDDEN:
 		is_using_mouse = true
 		mouse_position = event.position
 
 	if not pawn: return
 
 	if weapon_config:
+		if event.is_action_pressed("shoot_enforce_gamepad"):
+			aim_position = -pawn.global_basis.z * Vector3(1, 0, 1) * aim_distance
+			angle_changed.emit(aim_position)
+			weapon_config.is_shooting = true
+			shoot_start.emit()
+			is_using_face_buttons_to_shoot = true
+		elif event.is_action_released("shoot_enforce_gamepad"):
+			weapon_config.is_shooting = false
+
 		if event.is_action_pressed("shoot"):
 			weapon_config.is_shooting = true
 			shoot_start.emit()

@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://7gyev2nksefd"]
+
+[ext_resource type="Shader" uid="uid://dt4a4ew3m1rwr" path="res://assets/shaders/shiny_shader.tres" id="1_7icgd"]
+[ext_resource type="Texture2D" uid="uid://b56c6og6oafuc" path="res://assets/models/pistol/pistol texture.png" id="2_yvhci"]
+[ext_resource type="Texture2D" uid="uid://8r42kwy27ah2" path="res://assets/shaders/shine.png" id="3_15x6v"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7icgd")
+shader_parameter/Metallic = 1.0
+shader_parameter/Roughness = 0.33
+shader_parameter/ShineColor = Color(1, 0, 0, 1)
+shader_parameter/Shine_Speed = 5.0
+shader_parameter/Shine_Frequency = 5.0
+shader_parameter/Albedo = ExtResource("2_yvhci")
+shader_parameter/ShineTexture = ExtResource("3_15x6v")

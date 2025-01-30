@@ -66,8 +66,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72079, -0.1, -22.5696)
 [node name="pickup_gatling3" parent="." index="16" instance=ExtResource("6_5fsl7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72079, -0.1, -22.5696)
 
-[connection signal="died" from="player/pawn/ammo" to="player/canvas_layer/ui/animation_player" method="play" binds= [&"game_over"]]
-
 [editable path="player"]
 [editable path="player/pawn"]
 [editable path="player/pawn/ammo"]

@@ -5,6 +5,7 @@ signal fired
 signal died
 
 @export var anim_player : AnimationPlayer
+@export var mesh : MeshInstance3D
 @export var fire_anim_name : StringName = &"fire"
 
 @export var max_health := 10
@@ -12,13 +13,17 @@ var _health : int = max_health
 var health : int = max_health :
 	get: return _health
 	set(value):
+		value = clamp(value, 0, max_health)
 		if _health == value: return
 		_health = value
 
+		mesh.set_surface_override_material(0, damage_material if health_percent < 0.33 else normal_material)
 		if _health == 0:
 			if drops_detritus:
 				drop_detritus()
 			close.call_deferred()
+var health_percent : float :
+	get: return float(health) / float(max_health)
 
 @export var bullet_scene : PackedScene
 @export var bullet_spawn_location : Node3D
@@ -34,6 +39,8 @@ var pickup_scene : PackedScene :
 	get: return load(_pickup_scene)
 
 @export var audio_stream : AudioStream = preload("res://assets/audio/pistol_fire.tres")
+@export var normal_material : Material
+@export var damage_material : Material
 
 var _is_shooting : bool
 var is_shooting : bool :

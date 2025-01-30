@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c1aiimxh63ws2"]
+[gd_scene load_steps=32 format=3 uid="uid://c1aiimxh63ws2"]
 
 [ext_resource type="Script" path="res://assets/scripts/waves/wave_controller.gd" id="1_8vdcl"]
 [ext_resource type="PackedScene" uid="uid://dxn1ecuhl0csi" path="res://assets/prefabs/fmj_level_mesh.tscn" id="1_mdv7l"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://df8bw0if6ebti" path="res://assets/user_interface/hour_hand.png" id="6_8283e"]
 [ext_resource type="Texture2D" uid="uid://bfigonhxnwf82" path="res://assets/user_interface/minute_hand.png" id="7_4ylih"]
 [ext_resource type="PackedScene" uid="uid://c414vt4mwkrah" path="res://assets/scenes/bell.tscn" id="11_wuec8"]
+[ext_resource type="PackedScene" uid="uid://g54n2e4wj0v6" path="res://assets/scenes/menu.tscn" id="13_kqw5i"]
 
 [sub_resource type="Resource" id="Resource_n45ke"]
 script = ExtResource("2_ywm6p")
@@ -19,7 +20,7 @@ scenes = {
 "res://assets/scenes/enemies/stinker.tscn": 1
 }
 crates = 0
-duration = 15.0
+duration = 30.0
 difficulty = 0.0
 
 [sub_resource type="Resource" id="Resource_m86u1"]
@@ -28,7 +29,7 @@ scenes = {
 "res://assets/scenes/enemies/stinker.tscn": 3
 }
 crates = 0
-duration = 15.0
+duration = 20.0
 difficulty = 0.0
 
 [sub_resource type="Resource" id="Resource_5b0ha"]
@@ -38,7 +39,7 @@ scenes = {
 "res://assets/scenes/enemies/stinker.tscn": 2
 }
 crates = 0
-duration = 15.0
+duration = 20.0
 difficulty = 0.0
 
 [sub_resource type="Resource" id="Resource_8lwtp"]
@@ -284,6 +285,24 @@ background_energy_multiplier = 0.8
 sky = SubResource("Sky_cdym1")
 tonemap_mode = 2
 
+[sub_resource type="GDScript" id="GDScript_hu4e8"]
+script/source = "extends MarginContainer
+
+@export var pause_node : Node
+
+var is_paused : bool :
+	get: return get_tree().paused
+	set(value):
+		get_tree().paused = value
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if is_paused else Input.MOUSE_MODE_HIDDEN
+		$h_box_container.visible = is_paused
+	
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"menu\"):
+		is_paused = not is_paused
+"
+
 [node name="arena" type="Node3D" node_paths=PackedStringArray("spawn_origin", "nav_region", "timer", "bell", "ui_anim_player", "time_hour_hand", "time_minute_hand", "time_label")]
 script = ExtResource("1_8vdcl")
 predefined_waves = {
@@ -409,7 +428,7 @@ text = "Sunset"
 label_settings = SubResource("LabelSettings_kv482")
 horizontal_alignment = 1
 script = ExtResource("4_eftfn")
-wave_values = ["Sunset", "Moonrise", "", "Dead   of   Night", "Wee   Hours", "The   Darkest", "Crack   of   Dawn", "Daybreak", "Morning Glory", "High   Noon", "", "Quittin'   Time"]
+wave_values = ["Sunset", "Moonrise", "Starlight", "Dead   of   Night", "Wee   Hours", "The   Darkest", "Crack   of   Dawn", "Morning   Glory", "Tea   Time", "High   Noon", "The   Finest", "Quittin'   Time"]
 
 [node name="wave_timer" type="Control" parent="wave_spawner/canvas_layer/ui/wave_clock"]
 layout_mode = 1
@@ -525,7 +544,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.220747, 0.399534, 3.72529e-07, -0.875287, 0.483604, 0.456461, -0.430283, -0.778781, 0, 0, 0)
+transform = Transform3D(0.889744, 0.220747, 0.399535, 4.17233e-07, -0.875287, 0.483604, 0.456462, -0.430283, -0.778781, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.948, 1, 0.87, 1)
 shadow_enabled = true
@@ -583,7 +602,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.566971, -0.00312384, -0.823731, 0.0302847, -0.999238, 0.0246342, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
+transform = Transform3D(0.566971, -0.00312387, -0.823731, 0.0302847, -0.999238, 0.0246343, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(5.2267e-08, 0.0158411, 0.0197509, 1)
 light_energy = 0.0
@@ -644,7 +663,35 @@ current_hour = 7
 [node name="bell" parent="." instance=ExtResource("11_wuec8")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 
+[node name="canvas_layer" type="CanvasLayer" parent="."]
+
+[node name="margin_container" type="MarginContainer" parent="canvas_layer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = SubResource("GDScript_hu4e8")
+
+[node name="h_box_container" parent="canvas_layer/margin_container" instance=ExtResource("13_kqw5i")]
+process_mode = 2
+visible = false
+layout_mode = 2
+instant_new_game = true
+
+[node name="quit" parent="canvas_layer/margin_container/h_box_container/v_box_container" index="3"]
+visible = false
+
+[node name="main_menu" parent="canvas_layer/margin_container/h_box_container/v_box_container" index="4"]
+visible = true
+
 [connection signal="wave_started" from="." to="wave_spawner/canvas_layer/ui/wave_clock/name_label_stuff/wave_name_label" method="set_current_hour"]
 [connection signal="bell_rang" from="bell" to="." method="proceed_to_next_wave"]
 
 [editable path="nav_region/fmj_level_mesh"]
+[editable path="canvas_layer/margin_container/h_box_container"]

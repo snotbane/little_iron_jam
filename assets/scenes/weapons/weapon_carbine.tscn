@@ -10,10 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="8_6k0hx"]
 [ext_resource type="AudioStream" uid="uid://trxflnqnxyay" path="res://assets/audio/weapons/garand_ping.tres" id="8_j3vl8"]
 
-[node name="weapon_carbine" node_paths=PackedStringArray("anim_player", "bullet_spawn_location") instance=ExtResource("1_4mcss")]
+[node name="weapon_carbine" node_paths=PackedStringArray("anim_player", "mesh", "bullet_spawn_location") instance=ExtResource("1_4mcss")]
 anim_player = NodePath("rifle/AnimationPlayer")
+mesh = NodePath("rifle/Armature/Skeleton3D/Mesh")
 fire_anim_name = &"fire+reload"
-health = 100
+max_health = 30
 bullet_scene = ExtResource("2_4pk8x")
 bullet_spawn_location = NodePath("rifle/bullet_spawn")
 bullet_cost = 5

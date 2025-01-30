@@ -92,6 +92,7 @@ func fire() -> void:
 
 
 func pick_new_personal_target() -> void:
+	if not kill_target: return
 	var result := kill_target.global_position
 	var length := 0.0
 	for i in move_target_iterations:

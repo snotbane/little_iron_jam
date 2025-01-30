@@ -1,0 +1,203 @@
+[gd_scene load_steps=8 format=3 uid="uid://g54n2e4wj0v6"]
+
+[ext_resource type="AudioStream" uid="uid://c1an71pl0w4y1" path="res://assets/audio/weapon_break.tres" id="1_2jav2"]
+[ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="1_rpb7g"]
+[ext_resource type="FontFile" uid="uid://dqhrdjyxkgdx6" path="res://assets/fonts/SofiaSansCondensed-VariableFont_wght.ttf" id="2_3b2va"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mt8l6"]
+bg_color = Color(0, 0, 0, 0.784314)
+
+[sub_resource type="Theme" id="Theme_ehmqx"]
+default_font = ExtResource("2_3b2va")
+default_font_size = 24
+Button/constants/outline_size = 12
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_rpb7g")
+Label/constants/outline_size = 12
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_rpb7g")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_mt8l6")
+RichTextLabel/constants/outline_size = 12
+RichTextLabel/fonts/normal_font = ExtResource("2_3b2va")
+
+[sub_resource type="GDScript" id="GDScript_cpt0d"]
+script/source = "extends HBoxContainer
+
+const game_scene_path := \"res://assets/scenes/world.tscn\"
+const menu_scene_path := \"res://assets/scenes/main_menu.tscn\"
+
+@export var instant_new_game := false
+
+func _ready() -> void:
+	if OS.has_feature(\"web\"):
+		$v_box_container/quit.visible = false
+	visibility_changed.connect(_visibility_changed)
+	_visibility_changed()
+	
+
+func _visibility_changed() -> void:
+	if self.visible:
+		$v_box_container/how_to_play.grab_focus()
+
+
+func play_game() -> void:
+	$buttons_sounds.play()
+	if not instant_new_game:
+		await get_tree().create_timer(3.0).timeout
+	get_tree().paused = false
+	get_tree().change_scene_to_file(game_scene_path)
+	
+	
+func play_main_menu() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(menu_scene_path)
+	
+
+
+func access_tab(idx: int) -> void:
+	$windows.current_tab = 0 \\
+		if idx == $windows.current_tab \\
+		else idx
+	$buttons_sounds.play()
+	
+	
+func quit() -> void:
+	get_tree().quit()
+
+
+func _on_rich_text_label_meta_clicked(meta: Variant) -> void:
+	OS.shell_open(str(meta))
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dlw7g"]
+
+[node name="menu" type="HBoxContainer"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_ehmqx")
+script = SubResource("GDScript_cpt0d")
+
+[node name="v_box_container" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="play_game" type="Button" parent="v_box_container"]
+layout_mode = 2
+text = "New   Game"
+
+[node name="how_to_play" type="Button" parent="v_box_container"]
+layout_mode = 2
+text = "How   to   Play"
+
+[node name="credits" type="Button" parent="v_box_container"]
+layout_mode = 2
+text = "Credits"
+
+[node name="quit" type="Button" parent="v_box_container"]
+layout_mode = 2
+text = "Quit"
+
+[node name="main_menu" type="Button" parent="v_box_container"]
+visible = false
+layout_mode = 2
+text = "Main   Menu"
+
+[node name="windows" type="TabContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dlw7g")
+current_tab = 0
+tabs_visible = false
+tab_focus_mode = 0
+
+[node name="control" type="Control" parent="windows"]
+layout_mode = 2
+mouse_filter = 1
+metadata/_tab_index = 0
+
+[node name="how_to_play" type="MarginContainer" parent="windows"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+metadata/_tab_index = 1
+
+[node name="panel_container" type="PanelContainer" parent="windows/how_to_play"]
+layout_mode = 2
+
+[node name="margin_container" type="MarginContainer" parent="windows/how_to_play/panel_container"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="rich_text_label" type="RichTextLabel" parent="windows/how_to_play/panel_container/margin_container"]
+texture_filter = 1
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "WASD | LS  .   .   .   .   .   Move
+Mouse | RS    .   .   .   .   Aim
+
+Mouse1 | X     .   .   .   .   Fire
+Mouse2 | LT   .   .   .   .   Vacuum
+
+Space | A        .   .   .   .   Dodge
+E | B     .   .   .   .   .   .   .   Swap Weapon on Ground
+
+
+Shoot the enemies!"
+
+[node name="credits" type="MarginContainer" parent="windows"]
+visible = false
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+metadata/_tab_index = 2
+
+[node name="panel_container" type="PanelContainer" parent="windows/credits"]
+layout_mode = 2
+
+[node name="margin_container" type="MarginContainer" parent="windows/credits/panel_container"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="rich_text_label" type="RichTextLabel" parent="windows/credits/panel_container/margin_container"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[img]res://assets/user_interface/credits_nulture_icon.png[/img]     [font_size=36][font=res://assets/fonts/Danfo-Regular.ttf][color=#9a3f9f][url=https://nulture.carrd.co][hint=https://nulture.carrd.co]Nulture[/hint][/url][/color][/font][/font_size]
+					Codesmithing, Foley, Game Design
+
+[img]res://assets/user_interface/credits_natesolio_icon.png[/img]     [font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]Natesolio[/font][/font_size]
+					Art, Animation, Music, Game Design
+
+
+This project was made from scratch for the [url=https://itch.io/jam/pirate]Pirate Software Game Jam 16[/url], starting on 2025 January 17, and ending on 2025 January 31. View the [url=https://github.com/nulture/full_metal_jack]source code on GitHub[/url]."
+
+[node name="buttons_sounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_2jav2")
+volume_db = -10.0
+max_polyphony = 3
+bus = &"Foley"
+
+[connection signal="pressed" from="v_box_container/play_game" to="." method="play_game"]
+[connection signal="pressed" from="v_box_container/how_to_play" to="." method="access_tab" binds= [1]]
+[connection signal="pressed" from="v_box_container/credits" to="." method="access_tab" binds= [2]]
+[connection signal="pressed" from="v_box_container/quit" to="." method="quit"]
+[connection signal="pressed" from="v_box_container/main_menu" to="." method="play_main_menu"]
+[connection signal="meta_clicked" from="windows/credits/panel_container/margin_container/rich_text_label" to="." method="_on_rich_text_label_meta_clicked"]

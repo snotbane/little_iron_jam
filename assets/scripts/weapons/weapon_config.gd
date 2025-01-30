@@ -63,9 +63,9 @@ func _set_is_shooting(value: bool) -> void:
 
 func try_add_weapon() -> bool:
 	var socket := available_socket
+	weapon_added.emit()
 	if socket:
 		socket.add_child(weapon_scene.instantiate())
-		weapon_added.emit()
 		return true
 	return false
 

@@ -1,0 +1,169 @@
+[gd_scene load_steps=11 format=3 uid="uid://bev2ptnq6l83r"]
+
+[ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="1_5cce8"]
+[ext_resource type="Texture2D" uid="uid://c14ly2r5osdyd" path="res://assets/user_interface/cover_menu.tres" id="1_y6007"]
+[ext_resource type="AudioStream" uid="uid://1o1psgkb77ii" path="res://assets/audio/music/music_dead_of_night_menu.ogg" id="3_0lptd"]
+[ext_resource type="PackedScene" uid="uid://g54n2e4wj0v6" path="res://assets/scenes/menu.tscn" id="5_4k6d2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wu38"]
+
+[sub_resource type="Theme" id="Theme_xxpx4"]
+default_font = ExtResource("1_5cce8")
+default_font_size = 24
+Button/constants/outline_size = 12
+Label/constants/outline_size = 12
+MarginContainer/constants/margin_bottom = 40
+MarginContainer/constants/margin_left = 40
+MarginContainer/constants/margin_right = 40
+MarginContainer/constants/margin_top = 40
+RichTextLabel/constants/outline_size = 12
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_4wu38")
+
+[sub_resource type="Animation" id="Animation_u7gws"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("audio_stream_player:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_cnlul"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_td4ic"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("audio_stream_player:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_game"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8eoh6"]
+_data = {
+"RESET": SubResource("Animation_u7gws"),
+"fade_in": SubResource("Animation_cnlul"),
+"fade_out": SubResource("Animation_td4ic")
+}
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_xxpx4")
+
+[node name="texture_rect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_y6007")
+stretch_mode = 6
+
+[node name="audio_stream_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0lptd")
+autoplay = true
+bus = &"Music"
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8eoh6")
+}
+
+[node name="main" type="MarginContainer" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 12
+
+[node name="v_box_container" type="VBoxContainer" parent="main"]
+layout_mode = 2
+
+[node name="title" type="RichTextLabel" parent="main/v_box_container"]
+layout_mode = 2
+theme_override_constants/outline_size = 40
+bbcode_enabled = true
+text = "
+[font_size=60][center][wave][color=yellow]Little[/color]   [color=#d0d0d0][font_size=90][font=res://assets/fonts/Arbutus-Regular.ttf]IRON"
+fit_content = true
+
+[node name="h_box_container" parent="main/v_box_container" instance=ExtResource("5_4k6d2")]
+layout_mode = 2
+
+[connection signal="ready" from="animation_player" to="animation_player" method="play" binds= [&"fade_in"]]
+[connection signal="pressed" from="main/v_box_container/h_box_container/v_box_container/play_game" to="animation_player" method="play" binds= [&"fade_out"]]
+
+[editable path="main/v_box_container/h_box_container"]

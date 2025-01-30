@@ -6,7 +6,7 @@ const MAX_UPGRADES_AVAILABLE := 3 - 1
 
 signal texture_changed(texture: Texture2D)
 
-@export var randomize_index := true
+@export var randomize_index := false
 
 @export var upgrades : Array[Upgrade]
 var upgrade : Upgrade :

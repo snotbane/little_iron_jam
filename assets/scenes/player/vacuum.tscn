@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dckxr0jt8l8e3" path="res://assets/audio/vacuum/vacuum_start.ogg" id="5_q81i6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8g00v"]
-height = 1.0
+height = 4.0
 radius = 3.0
 
 [node name="vacuum" type="Area3D" node_paths=PackedStringArray("blend_shape_mesh", "region")]

@@ -248,7 +248,7 @@ current = true
 
 [node name="ui" parent="canvas_layer" instance=ExtResource("10_50bck")]
 
-[node name="ammo_label" parent="canvas_layer/ui" index="0" node_paths=PackedStringArray("ammo")]
+[node name="ammo_label" parent="canvas_layer/ui" index="1" node_paths=PackedStringArray("ammo")]
 scale_up_per_bullet = 0.1
 scale_down_alpha = 1.0
 ammo = NodePath("../../../pawn/ammo")
@@ -257,8 +257,11 @@ ammo = NodePath("../../../pawn/ammo")
 [connection signal="died" from="pawn/ammo" to="." method="emit_signal" binds= [&"game_over"]]
 [connection signal="died" from="pawn/ammo" to="canvas_layer/ui/animation_player" method="play" binds= [&"game_over"]]
 [connection signal="received_upgrade_any" from="pawn/ammo" to="pawn/ammo/upgrade_sfx" method="play"]
+[connection signal="received_upgrade_bullet_speed" from="pawn/ammo" to="canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [1]]
 [connection signal="received_upgrade_dodge" from="pawn/ammo" to="pawn/player_input" method="receive_upgrade_dodge"]
+[connection signal="received_upgrade_dodge" from="pawn/ammo" to="canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [0]]
 [connection signal="received_upgrade_vacuum" from="pawn/ammo" to="pawn/vacuum" method="receive_upgrade"]
+[connection signal="received_upgrade_vacuum" from="pawn/ammo" to="canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [2]]
 [connection signal="on_dodge" from="pawn/player_input" to="pawn/mesh_scene/animation_tree" method="dodge"]
 [connection signal="speed_changed" from="pawn/player_input" to="pawn/mesh_scene/animation_tree" method="set_walk_speed"]
 [connection signal="angle_changed" from="camera_hook/crosshair" to="pawn/mesh_scene/animation_tree" method="set_aim_vector"]
@@ -268,3 +271,6 @@ ammo = NodePath("../../../pawn/ammo")
 [editable path="pawn/ammo"]
 [editable path="pawn/mesh_scene"]
 [editable path="canvas_layer/ui"]
+[editable path="canvas_layer/ui/upgrades/upgrade_list/boost"]
+[editable path="canvas_layer/ui/upgrades/upgrade_list/bullet_speed"]
+[editable path="canvas_layer/ui/upgrades/upgrade_list/vacuum"]

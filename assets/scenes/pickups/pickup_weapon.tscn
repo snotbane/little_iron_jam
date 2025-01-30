@@ -10,6 +10,7 @@ size = Vector3(0.25, 0.25, 0.25)
 [node name="weapon_pickup" instance=ExtResource("1_gdhfu")]
 script = ExtResource("2_nsi1g")
 weapon_config_scene = ExtResource("3_lm18e")
+impulse = Vector3(4, 8, 3)
 
 [node name="shape" parent="." index="0"]
 shape = SubResource("BoxShape3D_n6vrx")

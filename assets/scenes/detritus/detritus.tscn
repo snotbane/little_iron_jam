@@ -124,6 +124,7 @@ _data = {
 collision_layer = 0
 script = ExtResource("1_man4y")
 anim = &"flash_out"
+impulse = Vector3(4, 8, 3)
 
 [node name="shape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_6qu2r")

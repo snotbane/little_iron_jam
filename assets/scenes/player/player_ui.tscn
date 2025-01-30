@@ -1,11 +1,24 @@
-[gd_scene load_steps=15 format=3 uid="uid://bikrt5av7f0d3"]
+[gd_scene load_steps=19 format=3 uid="uid://bikrt5av7f0d3"]
 
+[ext_resource type="PackedScene" uid="uid://ip5qkum8p3xt" path="res://assets/scenes/ui/upgrade_counter.tscn" id="1_bbbd2"]
 [ext_resource type="FontFile" uid="uid://cgs4jbvrniee0" path="res://assets/fonts/Arbutus-Regular.ttf" id="1_pbwtn"]
+[ext_resource type="Texture2D" uid="uid://boehxpw7cruh0" path="res://assets/user_interface/ui_bounce.png" id="2_8x2ti"]
 [ext_resource type="Script" path="res://assets/scripts/other/ammo_label_fancy.gd" id="2_lbq4v"]
 [ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="3_fc223"]
+[ext_resource type="Texture2D" uid="uid://cu61fp557o4cg" path="res://assets/user_interface/ui_intake_radius.png" id="3_l5i0n"]
 [ext_resource type="AudioStream" uid="uid://breoqkbo0agvm" path="res://assets/audio/game_over_church_bell.ogg" id="4_341nf"]
 [ext_resource type="Script" path="res://assets/scripts/other/randomized_text.gd" id="4_ube7t"]
 [ext_resource type="FontFile" uid="uid://dqhrdjyxkgdx6" path="res://assets/fonts/SofiaSansCondensed-VariableFont_wght.ttf" id="5_ibrwm"]
+
+[sub_resource type="GDScript" id="GDScript_uc6wy"]
+script/source = "extends Control
+
+func add_upgrade(idx: int) -> void:
+	var container : Control = self.get_child(idx)
+	container.visible = true
+	var label : Label = container.find_child(\"label\")
+	label.text = \"+\" + str(int(label.text) + 1)
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_ukhfm"]
 font = ExtResource("1_pbwtn")
@@ -175,12 +188,49 @@ _data = {
 }
 
 [node name="ui" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="upgrades" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="upgrade_list" type="VBoxContainer" parent="upgrades"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+script = SubResource("GDScript_uc6wy")
+
+[node name="boost" parent="upgrades/upgrade_list" instance=ExtResource("1_bbbd2")]
+visible = false
+layout_mode = 2
+
+[node name="bullet_speed" parent="upgrades/upgrade_list" instance=ExtResource("1_bbbd2")]
+visible = false
+layout_mode = 2
+
+[node name="texture_rect" parent="upgrades/upgrade_list/bullet_speed" index="0"]
+texture = ExtResource("2_8x2ti")
+
+[node name="vacuum" parent="upgrades/upgrade_list" instance=ExtResource("1_bbbd2")]
+visible = false
+layout_mode = 2
+
+[node name="texture_rect" parent="upgrades/upgrade_list/vacuum" index="0"]
+texture = ExtResource("3_l5i0n")
 
 [node name="ammo_label" type="Label" parent="."]
 layout_mode = 1
@@ -272,3 +322,7 @@ texts = PackedStringArray("Game   Over")
 libraries = {
 "": SubResource("AnimationLibrary_0qa7h")
 }
+
+[editable path="upgrades/upgrade_list/boost"]
+[editable path="upgrades/upgrade_list/bullet_speed"]
+[editable path="upgrades/upgrade_list/vacuum"]

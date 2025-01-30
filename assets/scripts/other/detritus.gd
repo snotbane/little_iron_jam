@@ -12,5 +12,5 @@ var random_unit : float :
 func _ready() -> void:
 	anim_player = find_child(&"animation_player")
 	if anim: anim_player.play(anim)
-	self.apply_impulse(Vector3(random_unit * impulse.x, impulse.y, random_unit * impulse.x))
+	self.apply_impulse(Vector3(random_unit * impulse.x, randf_range(impulse.y * 0.8, impulse.y * 1.2), random_unit * impulse.x))
 	self.apply_torque_impulse(Vector3(random_unit, random_unit, random_unit) * impulse.z)

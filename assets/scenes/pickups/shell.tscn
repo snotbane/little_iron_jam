@@ -15,16 +15,16 @@ render_priority = 0
 shader = ExtResource("4_hpt8b")
 shader_parameter/Metallic = 1.0
 shader_parameter/Roughness = 0.3
-shader_parameter/ShineColor = Color(1, 1, 1, 1)
 shader_parameter/Shine_Speed = 1.0
 shader_parameter/Shine_Frequency = 3.0
+shader_parameter/ShineColor = Color(1, 1, 1, 1)
 shader_parameter/Albedo = ExtResource("5_dmmbh")
 shader_parameter/ShineTexture = ExtResource("5_n02tc")
 
 [node name="shell" instance=ExtResource("1_o3ki3")]
 collision_mask = 1
 script = ExtResource("2_gy0p7")
-impulse = Vector3(7, 5, 7)
+impulse = Vector3(4.5, 8, 7)
 
 [node name="shape" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.073401, 0)

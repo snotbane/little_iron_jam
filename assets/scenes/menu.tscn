@@ -109,6 +109,7 @@ text = "Resume"
 
 [node name="how_to_play" type="Button" parent="v_box_container"]
 layout_mode = 2
+focus_next = NodePath("../../windows/how_to_play/panel_container/margin_container/All")
 text = "How   to   Play"
 
 [node name="credits" type="Button" parent="v_box_container"]
@@ -160,6 +161,8 @@ texture_filter = 1
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
+focus_previous = NodePath("../../../../../v_box_container/how_to_play")
+focus_mode = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]CONTROLS[/font][/font_size]
@@ -167,11 +170,11 @@ text = "		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]CONTROLS[/fon
 WASD | LS  .   .   .   .   .   Move
 Mouse | RS    .   .   .   .   Aim
 
-Mouse1 | X     .   .   .   .   Fire
-Mouse2 | LT   .   .   .   .   Vacuum
+Mouse1 | RT or X  .   .   Fire
+Mouse2 | LT or Y  .   .   Vacuum
 
-Space | A        .   .   .   .   Dodge
-E | B     .   .   .   .   .   .   .   Swap Weapon on Ground
+Space | LB or A .   .   .   Dodge
+E | RB or B  .   .   .   .   .   Swap Weapon on Ground
 
 		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]HOW   TO   PLAY[/font][/font_size]
 
@@ -181,14 +184,20 @@ EVERYTHING IS BULLETS. You are about to face (or are currently facing) many wave
 
 		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]UPGRADES[/font][/font_size]
 
-[img]res://assets/user_interface/ui_boost_power.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=36][/font_size]DODGE BLAST[/font]
-					Your dodge will have increased range and power, but will cost   [font_size=36]1[/font_size]   extra bullet per rank.
+[img]res://assets/user_interface/ui_boost_power.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=32]DODGE BLAST[/font_size][/font]
+					Your dodge will have increased range and power, but will cost 1 extra bullet per rank.
 
-[img]res://assets/user_interface/ui_bounce.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=36][/font_size]GUNPOWDER[/font]
-					All bullets you fire will travel faster.
+[img]res://assets/user_interface/ui_bounce.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=32]EXTRA POWDER[/font_size][/font]
+					Any bullets you fire will travel faster and for longer.
 
-[img]res://assets/user_interface/ui_intake_radius.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=36][/font_size]VACUUM SUCTION[/font]
-					Your vacuum will have increased range."
+[img]res://assets/user_interface/ui_intake_radius.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=32]SUCTION SERVO[/font_size][/font]
+					Your vacuum will suck even more than usual.
+
+		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]TIPS[/font][/font_size]
+
+•   Use your dodge! It deals twice the amount of damage that it costs.
+•   Striking the bell before time runs out will give you extra time in future waves!
+•   Enemies can damage each other. Use this to your advantage!"
 
 [node name="tab_container" type="TabContainer" parent="windows/how_to_play/panel_container/margin_container"]
 visible = false

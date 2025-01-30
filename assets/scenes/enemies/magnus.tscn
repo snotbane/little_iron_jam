@@ -109,31 +109,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51116, 0)
 [node name="magnus" parent="pawn" index="2" instance=ExtResource("2_yqnmd")]
 
 [node name="Skeleton3D" parent="pawn/magnus/Armature" index="0"]
-bones/1/position = Vector3(-2.83358e-06, 1.49481, 2.16732e-06)
-bones/1/rotation = Quaternion(0.778011, -7.72507e-05, -6.1215e-05, 0.628251)
+bones/1/position = Vector3(-1.04957e-05, 1.49526, 8.02691e-06)
+bones/1/rotation = Quaternion(0.770186, -6.35457e-05, -5.51255e-05, 0.63782)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-0.264413, -0.591128, 0.731429, 0.213695)
+bones/2/rotation = Quaternion(-0.349503, -0.561526, 0.694802, 0.282464)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.213694, -0.731428, -0.591128, 0.264415)
+bones/3/rotation = Quaternion(0.282463, -0.694801, -0.561527, 0.349505)
 bones/4/rotation = Quaternion(0.304651, 6.49807e-07, -5.67704e-07, 0.952464)
-bones/5/rotation = Quaternion(0.618255, 0.473099, 0.380863, -0.49888)
+bones/5/rotation = Quaternion(0.584434, 0.513478, 0.414609, -0.472098)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(0.692042, -0.636787, 0.250175, 0.2302)
-bones/7/rotation = Quaternion(-0.618254, 0.4731, 0.380865, 0.498879)
-bones/8/rotation = Quaternion(0.692042, 0.636787, -0.250175, 0.2302)
+bones/6/rotation = Quaternion(0.657387, -0.6049, 0.330684, 0.304281)
+bones/7/rotation = Quaternion(-0.584427, 0.513484, 0.414616, 0.472093)
+bones/8/rotation = Quaternion(0.657387, 0.604899, -0.330684, 0.304281)
 bones/8/scale = Vector3(1, 1, 1)
 
 [node name="Mesh" parent="pawn/magnus/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_020vm")
 
 [node name="body" type="BoneAttachment3D" parent="pawn/magnus/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-1, 4.36675e-05, 0.000192236, -0.000197121, -0.210601, -0.977572, -2.20316e-06, -0.977572, 0.210601, 2.83358e-06, 1.49481, -2.16731e-06)
+transform = Transform3D(-1, 2.79463e-05, 0.000165902, -0.000168204, -0.186372, -0.982479, 3.46288e-06, -0.982479, 0.186372, 1.04957e-05, 1.49526, -8.0269e-06)
 bone_name = "body"
 bone_idx = 1
 
 [node name="weapon_config" parent="pawn/magnus/Armature/Skeleton3D/body" index="0" node_paths=PackedStringArray("ammo") instance=ExtResource("4_41thd")]
 transform = Transform3D(-1, -0.000131694, 0.000221049, -0.000191319, -0.193896, -0.981022, 0.000172055, -0.981022, 0.193896, 0.000162226, 0.182814, 0.974469)
 ammo = NodePath("../../../../../ammo")
+
+[node name="node_3d" parent="pawn/magnus/Armature/Skeleton3D/body/weapon_config" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000365257, 0.0118935, 0.602231)
 
 [node name="weapon_gatling" parent="pawn/magnus/Armature/Skeleton3D/body/weapon_config/node_3d" index="0" instance=ExtResource("5_njxo0")]
 

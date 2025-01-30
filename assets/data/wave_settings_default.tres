@@ -47,7 +47,7 @@ scene_path = "res://assets/scenes/enemies/magnus.tscn"
 difficulty_cost = 15.0
 difficulty_time = 16.0
 appearance_weight = 1.0
-appearance_minimum_wave = 45
+appearance_minimum_wave = 34
 
 [sub_resource type="Curve" id="Curve_r0mv2"]
 max_value = 100.0
@@ -60,4 +60,4 @@ objects = Array[ExtResource("1_5b8u2")]([SubResource("Resource_o6xqb"), SubResou
 overall_difficulty_curve = SubResource("Curve_r0mv2")
 overall_difficulty_levels = 100.0
 hour_difficulty_curve = SubResource("Curve_2jpjp")
-wave_duration_interval = 15.0
+wave_duration_interval = 30.0

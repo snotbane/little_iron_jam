@@ -177,6 +177,8 @@ E | B     .   .   .   .   .   .   .   Swap Weapon on Ground
 
 EVERYTHING IS BULLETS. You are about to face (or are currently facing) many waves of foes. Starting out, you will have no weapons -- only yourself. Every move you make, every shot you take, consumes BULLETS. If you run out, you'll be destroyed. Aim well, aim wisely, and go forth into the sunset!
 
+[font_size=16][color=#808080][i]...The final boss appears on the 3rd High Noon.[/i][/color][/font_size]
+
 		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]UPGRADES[/font][/font_size]
 
 [img]res://assets/user_interface/ui_boost_power.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=36][/font_size]DODGE BLAST[/font]
@@ -251,12 +253,14 @@ theme_override_constants/margin_bottom = 10
 [node name="rich_text_label" type="RichTextLabel" parent="windows/credits/panel_container/margin_container"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[img]res://assets/user_interface/credits_nulture_icon.png[/img]     [font_size=36][font=res://assets/fonts/Arbutus-Regular.ttf][color=#9a3f9f][url=https://nulture.carrd.co][hint=https://nulture.carrd.co]NULTURE[/hint][/url][/color][/font][/font_size]
-					Codesmithing  •  Foley  •  Game Design
+text = "		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]THE   MAKERS[/font][/font_size]
 
+[img]res://assets/user_interface/credits_nulture_icon.png[/img]     [font_size=36][font=res://assets/fonts/Arbutus-Regular.ttf][color=#9a3f9f][url=https://nulture.carrd.co][hint=https://nulture.carrd.co]NULTURE[/hint][/url][/color][/font][/font_size]
+					Codesmithing  •  Foley  •  Game Design
 [img]res://assets/user_interface/credits_natesolio_icon.png[/img]     [font_size=36][font=res://assets/fonts/Arbutus-Regular.ttf]NATESOLIO[/font][/font_size]
 					Modeling  •  Animation  •  Music  •  Game Design
 
+		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]INFORMATION[/font][/font_size]
 
 This project was made from scratch for the [url=https://itch.io/jam/pirate][hint=https://itch.io/jam/pirate]Pirate Software Game Jam 16[/hint][/url], starting on 2025 January 17, and ending on 2025 January 31. View the [url=https://github.com/nulture/full_metal_jack][hint=https://github.com/nulture/full_metal_jack]source code on GitHub[/hint][/url]."
 

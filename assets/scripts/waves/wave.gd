@@ -19,7 +19,7 @@ enum Hour {
 enum Events {
 	BUCK = 9,
 	WESLEY = 27,
-	MAGNUS = 45,
+	MAGNUS = 34,
 }
 
 const HOURS_IN_DAY := 12

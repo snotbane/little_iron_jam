@@ -32,5 +32,8 @@ pixel_size = 0.0025
 double_sided = false
 texture = ExtResource("9_0o7yn")
 
+[node name="lifetime" parent="." index="2"]
+autostart = false
+
 [connection signal="texture_changed" from="." to="visual/sprite_3d" method="set_texture"]
 [connection signal="texture_changed" from="." to="visual/sprite_3d2" method="set_texture"]

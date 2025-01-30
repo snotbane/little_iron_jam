@@ -127,17 +127,17 @@ text = "Main   Menu"
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_dlw7g")
-current_tab = 0
+current_tab = 1
 tabs_visible = false
 tab_focus_mode = 0
 
 [node name="control" type="Control" parent="windows"]
+visible = false
 layout_mode = 2
 mouse_filter = 1
 metadata/_tab_index = 0
 
 [node name="how_to_play" type="MarginContainer" parent="windows"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
@@ -147,18 +147,58 @@ metadata/_tab_index = 1
 layout_mode = 2
 
 [node name="margin_container" type="MarginContainer" parent="windows/how_to_play/panel_container"]
+clip_contents = true
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="rich_text_label" type="RichTextLabel" parent="windows/how_to_play/panel_container/margin_container"]
+[node name="All" type="RichTextLabel" parent="windows/how_to_play/panel_container/margin_container"]
 texture_filter = 1
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]CONTROLS[/font][/font_size]
+
+WASD | LS  .   .   .   .   .   Move
+Mouse | RS    .   .   .   .   Aim
+
+Mouse1 | X     .   .   .   .   Fire
+Mouse2 | LT   .   .   .   .   Vacuum
+
+Space | A        .   .   .   .   Dodge
+E | B     .   .   .   .   .   .   .   Swap Weapon on Ground
+
+		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]HOW   TO   PLAY[/font][/font_size]
+
+You are about to face (or currently facing) many waves of foes of increasing difficulty. Starting out, you will have no weapons -- only yourself. Every move you make, every shot you take, consumes BULLETS. If you run out, you'll be destroyed. Aim well, aim wisely, and go forth into the sunset!
+
+		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]UPGRADES[/font][/font_size]
+
+[img]res://assets/user_interface/ui_boost_power.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=36][/font_size]DODGE BLAST[/font]
+					Your dodge will have increased range and power, but will cost   [font_size=36]1[/font_size]   extra bullet per rank.
+
+[img]res://assets/user_interface/ui_bounce.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=36][/font_size]GUNPOWDER[/font]
+					All bullets you fire will travel faster.
+
+[img]res://assets/user_interface/ui_intake_radius.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=36][/font_size]VACUUM SUCTION[/font]
+					Your vacuum will have increased range."
+
+[node name="tab_container" type="TabContainer" parent="windows/how_to_play/panel_container/margin_container"]
+visible = false
+layout_mode = 2
 size_flags_vertical = 3
+current_tab = 0
+tabs_position = 1
+
+[node name="Controls" type="RichTextLabel" parent="windows/how_to_play/panel_container/margin_container/tab_container"]
+texture_filter = 1
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "WASD | LS  .   .   .   .   .   Move
@@ -170,8 +210,24 @@ Mouse2 | LT   .   .   .   .   Vacuum
 Space | A        .   .   .   .   Dodge
 E | B     .   .   .   .   .   .   .   Swap Weapon on Ground
 
+"
+fit_content = true
+metadata/_tab_index = 0
 
-Shoot the enemies!"
+[node name="Upgrades" type="RichTextLabel" parent="windows/how_to_play/panel_container/margin_container/tab_container"]
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+text = "[img]res://assets/user_interface/ui_boost_power.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=36][/font_size]DODGE BLAST[/font]
+					Your dodge will have increased range and power, but will cost   [font_size=36]1[/font_size]   extra bullet per rank.
+
+[img]res://assets/user_interface/ui_bounce.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=36][/font_size]GUNPOWDER[/font]
+					All bullets you fire will travel faster.
+
+[img]res://assets/user_interface/ui_intake_radius.png[/img]	[font=res://assets/fonts/Arbutus-Regular.ttf][font_size=36][/font_size]VACUUM SUCTION[/font]
+					Your vacuum will have increased range.
+"
+metadata/_tab_index = 1
 
 [node name="credits" type="MarginContainer" parent="windows"]
 visible = false

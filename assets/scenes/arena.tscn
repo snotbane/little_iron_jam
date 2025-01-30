@@ -48,7 +48,7 @@ scenes = {
 "res://assets/scenes/enemies/buck.tscn": 1
 }
 crates = 1
-duration = 30.0
+duration = 0.0
 difficulty = 0.0
 
 [sub_resource type="Resource" id="Resource_bgc7j"]
@@ -66,7 +66,7 @@ scenes = {
 "res://assets/scenes/enemies/magnus.tscn": 1
 }
 crates = 1
-duration = 30.0
+duration = 0.0
 difficulty = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_kv482"]
@@ -323,8 +323,8 @@ predefined_waves = {
 1: SubResource("Resource_m86u1"),
 2: SubResource("Resource_5b0ha"),
 9: SubResource("Resource_8lwtp"),
-15: SubResource("Resource_bgc7j"),
-21: SubResource("Resource_e6j2y")
+27: SubResource("Resource_bgc7j"),
+45: SubResource("Resource_e6j2y")
 }
 spawn_origin = NodePath("wave_spawner")
 nav_region = NodePath("nav_region")
@@ -569,7 +569,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.220747, 0.399535, 4.24683e-07, -0.875287, 0.483604, 0.456462, -0.430283, -0.778781, 0, 0, 0)
+transform = Transform3D(0.889744, 0.220746, 0.399535, 3.65079e-07, -0.875287, 0.483604, 0.456462, -0.430283, -0.778781, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.948, 1, 0.87, 1)
 shadow_enabled = true
@@ -627,7 +627,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.566971, -0.00312386, -0.823731, 0.0302847, -0.999238, 0.0246342, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
+transform = Transform3D(0.566971, -0.00312384, -0.823731, 0.0302847, -0.999238, 0.0246342, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(5.2267e-08, 0.0158411, 0.0197509, 1)
 light_energy = 0.0

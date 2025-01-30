@@ -18,11 +18,12 @@ enum Hour {
 
 enum Events {
 	BUCK = 9,
-	WESLEY = 15,
-	MAGNUS = 21,
+	WESLEY = 27,
+	MAGNUS = 45,
 }
 
 const HOURS_IN_DAY := 12
+const UPGRADE_FREQUENCY := 3
 const SETTINGS := preload("res://assets/data/wave_settings_default.tres")
 
 @export var scenes : Dictionary
@@ -38,6 +39,9 @@ static func new_from_wave_index(index : int) -> Wave:
 		result.scenes["res://assets/scenes/pickups/shell.tscn"] = 3
 	else:
 		result = SETTINGS.generate_wave(index)
+	if hour > 0 and hour % UPGRADE_FREQUENCY == 0:
+		result.scenes["res://assets/scenes/detritus/upgrade_crate.tscn"] = 1
+
 
 	print("Wave difficulty: ", result.difficulty)
 	print("Wave scenes: ", result.scenes)

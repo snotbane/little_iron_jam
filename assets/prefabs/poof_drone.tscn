@@ -1,29 +1,37 @@
-[gd_scene load_steps=6 format=4 uid="uid://d05bwccl52ssj"]
+[gd_scene load_steps=8 format=4 uid="uid://brjyyjfucqicg"]
 
-[sub_resource type="Curve" id="Curve_3kwvy"]
+[sub_resource type="Curve" id="Curve_ea8ix"]
+_data = [Vector2(0.131532, 0.00910437), 0.0, 0.0, 0, 0, Vector2(0.169369, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lt63n"]
+curve = SubResource("Curve_ea8ix")
+
+[sub_resource type="Curve" id="Curve_4frdo"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_ba77u"]
-curve = SubResource("Curve_3kwvy")
+[sub_resource type="CurveTexture" id="CurveTexture_kafdj"]
+curve = SubResource("Curve_4frdo")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hhujq"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jfrkd"]
 lifetime_randomness = 0.25
 emission_shape_scale = Vector3(1, 0, 1)
 spread = 180.0
 flatness = 1.0
-initial_velocity_min = 6.0
-initial_velocity_max = 6.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 gravity = Vector3(0, 4, 0)
-damping_min = 7.0
-damping_max = 11.0
+damping_min = 38.0
+damping_max = 42.0
 scale_min = 0.5
 scale_max = 4.5
+scale_curve = SubResource("CurveTexture_lt63n")
 scale_over_velocity_min = 0.5
 scale_over_velocity_max = 3.0
-scale_over_velocity_curve = SubResource("CurveTexture_ba77u")
+scale_over_velocity_curve = SubResource("CurveTexture_kafdj")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ewfm"]
 albedo_color = Color(0.484398, 0.484398, 0.484398, 1)
@@ -46,14 +54,13 @@ _surfaces = [{
 }]
 
 [node name="poof_ring" type="GPUParticles3D"]
-amount = 30
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+amount = 80
 lifetime = 2.0
-one_shot = true
-explosiveness = 0.95
 fixed_fps = 0
 visibility_aabb = AABB(-2, -1, -2, 4, 2, 4)
 local_coords = true
 draw_order = 3
 transform_align = 2
-process_material = SubResource("ParticleProcessMaterial_hhujq")
+process_material = SubResource("ParticleProcessMaterial_jfrkd")
 draw_pass_1 = SubResource("ArrayMesh_2v2hr")

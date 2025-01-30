@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmm5rafal8ul4"]
+[gd_scene load_steps=6 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
 [ext_resource type="AudioStream" uid="uid://cjuw21v63yg62" path="res://assets/audio/music/music.tres" id="3_uxruw"]
+[ext_resource type="PackedScene" uid="uid://dok6qd3hy7tp1" path="res://assets/prefabs/poof_moving.tscn" id="4_13lu5"]
 
 [sub_resource type="GDScript" id="GDScript_53k6p"]
 script/source = "extends Node3D
@@ -27,5 +28,8 @@ music_player = NodePath("../music_controller")
 stream = ExtResource("3_uxruw")
 autoplay = true
 bus = &"Music"
+
+[node name="gpu_particles_3d" parent="." instance=ExtResource("4_13lu5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63045, -0.2, -26.1637)
 
 [connection signal="game_over" from="player" to="arena" method="stop_everything"]

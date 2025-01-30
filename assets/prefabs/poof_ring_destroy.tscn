@@ -47,5 +47,6 @@ _surfaces = [{
 
 [node name="poof_ring" instance=ExtResource("1_bag13")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+emitting = false
 process_material = SubResource("ParticleProcessMaterial_nieq2")
 draw_pass_1 = SubResource("ArrayMesh_bjygd")

@@ -161,8 +161,6 @@ texture_filter = 1
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
-focus_previous = NodePath("../../../../../v_box_container/how_to_play")
-focus_mode = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]CONTROLS[/font][/font_size]

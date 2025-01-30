@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dyxm7j7w035yn"]
+[gd_scene load_steps=28 format=3 uid="uid://dyxm7j7w035yn"]
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_q0wik"]
 [ext_resource type="PackedScene" uid="uid://buobjj4nvosgp" path="res://assets/scenes/pickups/pickup_gatling.tscn" id="2_72aob"]
@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bmbn3c6dttqq" path="res://assets/audio/vulture_cackle.tres" id="4_o1vk5"]
 [ext_resource type="Script" path="res://assets/scripts/brains/brain_magnus.gd" id="4_obwwn"]
 [ext_resource type="PackedScene" uid="uid://0f4vk8qx8f57" path="res://assets/scenes/weapons/weapon_gatling.tscn" id="5_njxo0"]
-[ext_resource type="PackedScene" uid="uid://d05bwccl52ssj" path="res://assets/prefabs/poof_ring.tscn" id="8_y75hl"]
+[ext_resource type="PackedScene" uid="uid://brjyyjfucqicg" path="res://assets/prefabs/poof_drone.tscn" id="8_8p531"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sd750"]
 animation = &"cackle"
@@ -97,38 +97,6 @@ states/all/position = Vector2(382, 99.1536)
 transitions = ["Start", "all", SubResource("AnimationNodeStateMachineTransition_hf67i")]
 graph_offset = Vector2(-72, -95)
 
-[sub_resource type="Curve" id="Curve_lnown"]
-_data = [Vector2(0.0897129, 0.00510216), 0.0, 0.0114395, 0, 0, Vector2(0.133971, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 1, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_j2ci1"]
-curve = SubResource("Curve_lnown")
-
-[sub_resource type="Curve" id="Curve_3kwvy"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_ba77u"]
-curve = SubResource("Curve_3kwvy")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wh6us"]
-lifetime_randomness = 0.25
-emission_shape_scale = Vector3(1, 0, 1)
-direction = Vector3(0, 0, 0)
-spread = 180.0
-flatness = 1.0
-initial_velocity_min = 20.0
-initial_velocity_max = 20.0
-gravity = Vector3(0, 4, 0)
-damping_min = 18.0
-damping_max = 22.0
-scale_min = 0.25
-scale_max = 2.25
-scale_curve = SubResource("CurveTexture_j2ci1")
-scale_over_velocity_min = 0.5
-scale_over_velocity_max = 3.0
-scale_over_velocity_curve = SubResource("CurveTexture_ba77u")
-
 [node name="magnus" instance=ExtResource("1_q0wik")]
 
 [node name="ammo" parent="pawn" index="1"]
@@ -142,25 +110,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51116, 0)
 [node name="magnus" parent="pawn" index="2" instance=ExtResource("2_yqnmd")]
 
 [node name="Skeleton3D" parent="pawn/magnus/Armature" index="0"]
-bones/1/position = Vector3(-8.78647e-07, 1.49935, 6.69569e-07)
-bones/1/rotation = Quaternion(0.776526, -7.24633e-05, -5.91621e-05, 0.630085)
+bones/1/position = Vector3(-1.57734e-07, 1.49962, 1.19991e-07)
+bones/1/rotation = Quaternion(0.777067, -7.33565e-05, -5.95819e-05, 0.629417)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-0.405063, -0.53659, 0.663947, 0.327367)
+bones/2/rotation = Quaternion(-0.731611, -0.213284, 0.263907, 0.591277)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.327365, -0.663946, -0.536591, 0.405065)
+bones/3/rotation = Quaternion(0.591276, -0.263905, -0.213285, 0.731612)
 bones/4/rotation = Quaternion(0.304651, 6.49807e-07, -5.67704e-07, 0.952464)
-bones/5/rotation = Quaternion(0.614301, 0.478476, 0.384917, -0.495514)
+bones/5/rotation = Quaternion(0.616119, 0.476222, 0.382977, -0.496929)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(0.628194, -0.578037, 0.383252, 0.352652)
-bones/7/rotation = Quaternion(-0.614299, 0.478478, 0.384919, 0.495512)
-bones/8/rotation = Quaternion(0.628194, 0.578037, -0.383252, 0.352652)
+bones/6/rotation = Quaternion(0.249695, -0.229759, 0.692215, 0.636947)
+bones/7/rotation = Quaternion(-0.616118, 0.476223, 0.382979, 0.496927)
+bones/8/rotation = Quaternion(0.249695, 0.229759, -0.692215, 0.636947)
 bones/8/scale = Vector3(1, 1, 1)
 
 [node name="Mesh" parent="pawn/magnus/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_020vm")
 
 [node name="body" type="BoneAttachment3D" parent="pawn/magnus/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-1, 3.8366e-05, 0.000183118, -0.000187094, -0.205986, -0.978555, 1.7643e-07, -0.978555, 0.205986, 8.78647e-07, 1.49935, -6.69568e-07)
+transform = Transform3D(-1, 3.93831e-05, 0.000184861, -0.00018901, -0.207668, -0.978199, -1.34821e-07, -0.978199, 0.207668, 1.57734e-07, 1.49962, -1.19991e-07)
 bone_name = "body"
 bone_idx = 1
 
@@ -184,15 +152,7 @@ parameters/all/movement/walk/blend_position = Vector2(-0.000530481, -0.00803208)
 stream = ExtResource("4_o1vk5")
 volume_db = 4.0
 
-[node name="poof_ring" parent="pawn/magnus" index="4" instance=ExtResource("8_y75hl")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-emitting = true
-amount = 80
-one_shot = false
-explosiveness = 0.0
-local_coords = false
-draw_order = 0
-process_material = SubResource("ParticleProcessMaterial_wh6us")
+[node name="poof_ring" parent="pawn/magnus" index="4" instance=ExtResource("8_8p531")]
 
 [node name="agent" parent="pawn" index="3" node_paths=PackedStringArray("anim_tree", "cackle_sound", "weapon_config")]
 script = ExtResource("4_obwwn")

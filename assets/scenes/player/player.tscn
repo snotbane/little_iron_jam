@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://becpsh0bwexhi"]
+[gd_scene load_steps=32 format=3 uid="uid://becpsh0bwexhi"]
 
 [ext_resource type="Script" path="res://assets/scripts/player/player.gd" id="1_b2uww"]
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://cepjnnytjndrn" path="res://assets/audio/player_dodge.ogg" id="5_i1xyr"]
 [ext_resource type="Material" uid="uid://c713old11x4xp" path="res://assets/models/jack/jack_material.tres" id="5_qnspn"]
 [ext_resource type="PackedScene" uid="uid://bikrt5av7f0d3" path="res://assets/scenes/player/player_ui.tscn" id="10_50bck"]
+[ext_resource type="PackedScene" uid="uid://dok6qd3hy7tp1" path="res://assets/prefabs/poof_moving.tscn" id="12_bepjl"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nd0xb"]
 height = 1.0
@@ -100,53 +101,6 @@ states/walk/position = Vector2(506.037, 6.22222)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_3tb4j"), "walk", "bash", SubResource("AnimationNodeStateMachineTransition_5eunj"), "bash", "walk", SubResource("AnimationNodeStateMachineTransition_2qugt"), "walk", "recoil", SubResource("AnimationNodeStateMachineTransition_o5jry"), "recoil", "walk", SubResource("AnimationNodeStateMachineTransition_82tdi")]
 graph_offset = Vector2(-3, -65)
 
-[sub_resource type="Curve" id="Curve_3kwvy"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_ba77u"]
-curve = SubResource("Curve_3kwvy")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tysyx"]
-lifetime_randomness = 0.25
-emission_shape = 3
-emission_box_extents = Vector3(0.6, 0, 0)
-direction = Vector3(0, -1, 0)
-spread = 10.0
-flatness = 1.0
-initial_velocity_min = 6.0
-initial_velocity_max = 6.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-gravity = Vector3(0, 2, 0)
-damping_min = 7.0
-damping_max = 11.0
-scale_min = 0.75
-scale_max = 2.25
-scale_over_velocity_min = 0.5
-scale_over_velocity_max = 3.0
-scale_over_velocity_curve = SubResource("CurveTexture_ba77u")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ewfm"]
-albedo_color = Color(0.484398, 0.484398, 0.484398, 1)
-metallic_specular = 1.0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_p7dmn"]
-resource_name = "puff_Cube"
-_surfaces = [{
-"aabb": AABB(-0.149551, -0.0642383, -0.11854, 0.281988, 0.276479, 0.235095),
-"attribute_data": PackedByteArray("AABgr7noYK+LLmCvXHSv1+iir9dz0a/XRRev1///r9fRRa/Xiy7//xZd//+ii///Lbr//7no//8tumCvootgrxZdYK/RRRGHXHQRh+iiEYdz0RGHLjrX63RR1+sCuHHbuWiIw+gi1+tc9Nfrueiv1xZdr9eJya7waeHX63RRiMO5aNfr/3/X64sur9eii6/XRZfX64qu1+voIojDLjqIwxbdiMOiC4jDXPSIw4quiMPQxYjD/3+Iw0WXiMPRRWCvRRdgr3PRYK/oomCvXHRgr+giOZsuOjmbdFE5m7loOZuiCzmbFt05m4quOZvQxTmb/385m0WXOZuLLmCviy5gr1x0r9dcdK/XXHSv1+iir9fooq/Xc9Gv13PRr9dz0a/XRRev10UXr9dFF6/X//+v1///r9f//6/X0UWv19FFr9eLLv//Fl3//6KL//+56P//Lbpgry26YK8tumCvLbpgry26YK+ii2CvootgrxZdYK8WXWCvFl1grxZdYK8WXWCv0UURh3PREYcuOtfrLjrX63RR1+uJya7waeHX67lo1+v/f9frRZfX6y46OZt0UTmbuWg5m4quOZvQxTmbRZc5mw=="),
-"format": 34896613399,
-"index_count": 240,
-"index_data": PackedByteArray("DAAlAB0ACAAcABYACQAZABUADQAeABoACwAhACQACAAfABwABgAmACIABQAoABsABAArABcAAwAtACMACAAnAB8ABgApACYABQAsACgABAAuACsAAwAYAC0AAgA1AC8AAAA4ADAADgA7ADEADwA9ADIAEAA3ADMANwASADwANwA8ADMAMwA8AA8APQATADoAPQA6ADIAMgA6AA4AOwAUADkAOwA5ADEAMQA5AAEANAAwABEAOAARADAAMAA0AAIANQARADYANQA2AC8ALwA2ABAAGAAQADMAGAAzAC0ALQAzAA8ALgAPADIALgAyACsAKwAyAA4ALAAOADEALAAxACgAKAAxAAEAKQAAADAAKQAwACYAJgAwAAIAJwACAC8AJwAvAB8AHwAvABAALQAPAC4ALQAuACMAIwAuAAQAKwAOACwAKwAsABcAFwAsAAUAKAABACoAKAAqABsAGwAqAAcAJgACACcAJgAnACIAIgAnAAgAHwAQABgAHwAYABwAHAAYAAMAIQADACMAIQAjACQAJAAjAAQAHgAFABsAHgAbABoAGgAbAAcAGQAGACIAGQAiABUAFQAiAAgAHAADACAAHAAgABYAFgAgAAoAJQAEABcAJQAXAB0AHQAXAAUA"),
-"lods": [0.077928, PackedByteArray("DAAlAGUAJQAEAGUAZQAEAEcARgAEAFUAZgBHAEsAUwBmAEsAaABCAAQAaAAEAGkAUgBoAGkAUABIAGIARQBUAEwAbgBMAFcAbgBhAE0AQABZAEMARABZAG8AQwBvAFgAQQBbAFoAXABsAFoAbAA8AFoAbAASADwATwBfAEEATwBBAGcATwBnAGQAZABnAFEAPQATAG0APQBtAFYANAA+AGAASQBgAD4AagBgAGsAagBrAD4APgBrAF0ATgA+AF4AYwA/AE4ASgA/AGMA")],
-"material": SubResource("StandardMaterial3D_8ewfm"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 112,
-"vertex_data": PackedByteArray("Hk8F7vSeYqQeTwXu9J5Bq3OnVNDUqJOnkukkV5VJh9PDfaRxLTqQ7+wlKoGPlo68TIXMs5r8EppMhcyzmvyzmI3Xi5YkurOqGV4AAEyAKtEZXgAATID06hleAABMgLrzGV4AAEyAbeQZXgAATIDwzmM+Nd75BOnvmKW+sAomf/Sv+8nuCVze062VA+TbatXMrZUD5NtqofCtlQPk22ou/62VA+TbatrRg8yAV5nNHK2DzIBXmc3Suc1dX3AoY8nmo+q+qL1PvNN4fgJvbuzfoXh+Am9u7H+hfFsnl+y/6Z404nKDi403v7VqonC0onDPtWqicLSiObr//yDLrqR2q5S78k6xd0/UlLvyTrF34unhvq2c//8wmFWraFEIG+H8bpL8X+5yiPJukvxf7nIq6reg3MnHz1ewlcC5wkC+Sp8KCf3PaIhErVZ1dMZPvEWmVnV0xk+85KasP0WXAAAB9gAATJkoQU/Sj9b7i04VseonkQ2K2R8z/zLcwP7poFivPI1Gyd2epKywLf//rEqnzPuHSMd/FSDv5s6ct/M8nusHptrveJC2sAem2u94kP7CIMEH+f5Xa94gwQf5/lc09UR+xe6YhkeyRH7F7piG3cwDbZr8oj8m9wNtmvyiP0bgA5uszdZB7+YDm6zN1kHw+HOnVNDUqCCtc6dU0NSoLJmS6SRXlUn03pLpJFeVSbjRkukkV5VJNd7DfaRxLTqs9MN9pHEtOt/17CUqgY+W4bXsJSqBj5YYzOwlKoGPlpC8TIXMs5r8JJpMhcyzmvxarEyFzLOa/DacTIXMs5r8JJhMhcyzmvxYqEyFzLOa/AaxjdeLliS6KKaN14uWJLpmshleAABMgOenGV4AAEyAidEZXgAATIAN9BleAABMgCy8Yz413vkE1N1jPjXe+QQA6GM+Nd75BP//Yz413vkE4+RjPjXe+QSw9ZilvrAKJhv2mKW+sAomEfKv+8nuCVwz1a/7ye4JXLDgr/vJ7glcatOv+8nuCVyhua/7ye4JXKXHrZUD5NtqhMatlQPk22oCy4PMgFeZzZWtg8yAV5nNy6CDzIBXmc2nvbVqonC0oi3WtWqicLSiQrOUu/JOsXdgzJS78k6xdwPybpL8X+5yb/IHptrveJCuxSDBB/n+Vw7GIMEH+f5X5u0DbZr8oj86+ANtmvyiPw/KA5uszdZBHP2WyIGZqbRWnbvxIqmOfjou0K/b/a05qu6Bs8SxOtEWvGqHiB00JvqH0EywXUbCQ+2NTEz9PzzZ0EWYatUOZEUFl7FRLDnc2zwPxbwPYIK/wUC1l6aeVBo+C3GUQcdA1/MSmrcqg06bn7Q1kuSoXCX7voE1Kl6/n/ZwS9jedI8eIRBjPUMugRk6NpyrOluut/XVtvHuAFge/4Xw0XmC0kE7abMF2cDPHaAoyu2gn5m3/pmlyviNkscPzZb489/dGjuN3hOO4KrsubJXkRJgrLMdhNe+s8D98kNV301IssCqHGnOv3DHsZaRakNLCq63VaJBs0gZ1UjRFAn/x5q14QY4kX9JKFWJmyjtcVhF9Vop+wtxYvHTuobX/DtD7i8+tvFkM/WycMzgmAHHcnbPShbpqdfYqpLypYoTn5opw25TLiY7u3TnUNFNVcgg+KpKkdEkbU7iQqwL+OiF7b79hjnrmmury4B2vwtPYckGu6D6Jd+/3CsBzEI0Ta5cQqmXhDB24k9A17ZCooZF3lcnjowFLWxfRWNBJv8sUBPhFWeaOz9+e1SNvxL4SfH1Pibiyk/at1IeXEcOCj21C6lYUWgr")
-}]
-
 [node name="player" type="Node3D"]
 script = ExtResource("1_b2uww")
 
@@ -194,6 +148,7 @@ bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(-3.09086e-08, -0.707107, 0.707107, -5.33851e-08)
 bones/7/rotation = Quaternion(-3.09086e-08, -0.707107, 0.707107, -5.33851e-08)
 bones/8/rotation = Quaternion(0.707107, 0.000474727, 0.000474727, 0.707107)
+bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(-0.206189, 0.0900564, -0.369741, 0.901481)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(0.201848, 0.0836077, -0.373438, 0.90156)
@@ -256,7 +211,7 @@ suck_angle = 50.0
 
 [node name="player_input" type="Node" parent="pawn" node_paths=PackedStringArray("particles")]
 script = ExtResource("2_52ijy")
-particles = NodePath("../gpu_particles_3d")
+particles = NodePath("../moving_particles")
 walk_speed = 75.0
 walk_damping = 10.0
 turn_speed = 20.0
@@ -272,18 +227,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19368, 0)
 light_energy = 0.2
 omni_range = 40.0
 
-[node name="gpu_particles_3d" type="GPUParticles3D" parent="pawn"]
-transform = Transform3D(0.994833, 0.00298469, 0.101481, -0.101525, 0.0292434, 0.994403, 3.28863e-07, -0.999568, 0.0293955, 1.34251e-08, 0.22237, 0.223477)
-emitting = false
-amount = 4
-lifetime = 0.5
-randomness = 0.25
-fixed_fps = 0
-interpolate = false
-draw_order = 3
-transform_align = 2
-process_material = SubResource("ParticleProcessMaterial_tysyx")
-draw_pass_1 = SubResource("ArrayMesh_p7dmn")
+[node name="moving_particles" parent="pawn" instance=ExtResource("12_bepjl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34251e-08, 0.22237, 0.223477)
 
 [node name="camera_hook" type="Node3D" parent="."]
 

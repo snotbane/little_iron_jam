@@ -1,0 +1,113 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl32b6bgrhyfu"]
+
+[ext_resource type="FontFile" uid="uid://cgs4jbvrniee0" path="res://assets/fonts/Arbutus-Regular.ttf" id="1_d0lwd"]
+
+[sub_resource type="GDScript" id="GDScript_145kv"]
+script/source = "extends Control
+
+signal loading_finished
+
+@export_dir var path_sequence : Array[String]
+
+var paths : PackedStringArray
+var total_resources_to_load := 0
+
+func _ready() -> void:
+	#start_loading_paths(path_sequence.pop_front())
+	simple_load()
+	
+	
+func simple_load() -> void:
+	for path in paths:
+		Autoload.loaded_resources[path] = load(path)
+		
+
+func start_loading_paths(dir : String) -> void:
+	paths.append_array(get_paths_in_project(\".\", dir))
+	total_resources_to_load = paths.size()
+	for path in paths:
+		ResourceLoader.load_threaded_request(path, \"\", false, ResourceLoader.CACHE_MODE_REPLACE_DEEP)
+
+func check_load() -> void:
+	var finished : Array[String]
+	for path in paths:
+		var status : int = ResourceLoader.load_threaded_get_status(path)
+		match status:
+			3:
+				print(\"Finished loading %s!\" % path)
+				var loaded_resource = ResourceLoader.load_threaded_get(path)
+				Autoload.loaded_resources[path] = loaded_resource
+				finished.push_back(path)
+			2:
+				printerr(\"Failed to load %s...\" % path)
+				
+	for path in finished:
+		paths.remove_at(paths.find(path))
+		
+	if paths.is_empty():
+		if path_sequence.is_empty():
+			finished_load()
+		else:
+			start_loading_paths(path_sequence.pop_front())
+			
+
+func finished_load() -> void:
+	$timer.stop()
+	loading_finished.emit()
+	get_tree().change_scene_to_file(\"res://assets/scenes/main_menu.tscn\")
+		
+static func get_paths_in_project(ext: String, start_path := \"res://\") -> Array[String]:
+	var dir := DirAccess.open(start_path)
+	if not dir: return []
+	var result : Array[String]
+	dir.list_dir_begin()
+	var file_name := dir.get_next()
+	while file_name != \"\":
+		var next_path := start_path + \"/\" + file_name
+		if dir.current_is_dir():
+			result.append_array(get_paths_in_project(ext, next_path))
+		elif not file_name.ends_with(\".import\") and not file_name.ends_with(\".tmp\"):
+			result.push_back(next_path)
+		file_name = dir.get_next()
+	return result
+"
+
+[node name="bootstrap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_145kv")
+path_sequence = Array[String](["res://assets/scripts", "res://assets/scenes"])
+
+[node name="color_rect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="label" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_d0lwd")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center][wave]LOADING..."
+fit_content = true
+
+[node name="timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="timer" to="." method="check_load"]

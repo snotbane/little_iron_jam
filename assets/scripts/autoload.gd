@@ -1,9 +1,7 @@
 
 class_name Autoload extends Node
 
-static var inst : Autoload
-
-var loaded_resources : Array
+static var loaded_resources : Dictionary
 
 var _is_fullscreen_exclusive : bool = true
 var is_fullscreen_exclusive : bool = true :
@@ -35,7 +33,6 @@ static var hidden_mouse_mode : Input.MouseMode :
 
 
 func _ready() -> void:
-	inst = self
 	if not OS.is_debug_build(): self.is_fullscreen = true
 
 

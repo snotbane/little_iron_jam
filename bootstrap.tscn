@@ -1,9 +1,59 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl32b6bgrhyfu"]
+[gd_scene load_steps=53 format=3 uid="uid://cl32b6bgrhyfu"]
 
 [ext_resource type="FontFile" uid="uid://cgs4jbvrniee0" path="res://assets/fonts/Arbutus-Regular.ttf" id="1_d0lwd"]
+[ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_gir4e"]
+[ext_resource type="PackedScene" uid="uid://vk56c3de00ln" path="res://assets/scenes/enemies/buck.tscn" id="3_o80nr"]
+[ext_resource type="PackedScene" uid="uid://dyxm7j7w035yn" path="res://assets/scenes/enemies/magnus.tscn" id="4_g5fia"]
+[ext_resource type="PackedScene" uid="uid://b65ambxvqs4de" path="res://assets/scenes/enemies/smokey.tscn" id="5_ndtie"]
+[ext_resource type="PackedScene" uid="uid://clq3nof8vclwo" path="res://assets/scenes/enemies/stinker.tscn" id="6_6djl3"]
+[ext_resource type="PackedScene" uid="uid://brbm7ub2jbg4p" path="res://assets/scenes/enemies/wesley.tscn" id="7_y0fmb"]
+[ext_resource type="PackedScene" uid="uid://dmtodg443y4k8" path="res://assets/scenes/muzzle_flash.tscn" id="8_bujof"]
+[ext_resource type="PackedScene" uid="uid://dyawu3xlq3ioo" path="res://assets/scenes/hitspark.tscn" id="9_wdkls"]
+[ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="10_clnbb"]
+[ext_resource type="PackedScene" uid="uid://dok6qd3hy7tp1" path="res://assets/prefabs/poof_moving.tscn" id="11_tfwve"]
+[ext_resource type="PackedScene" uid="uid://d05bwccl52ssj" path="res://assets/prefabs/poof_ring.tscn" id="12_o7igq"]
+[ext_resource type="PackedScene" uid="uid://be4jh3mapup53" path="res://assets/prefabs/poof_ring_destroy.tscn" id="13_j42pn"]
+[ext_resource type="PackedScene" uid="uid://boyloil5dmnft" path="res://assets/scenes/pickups/pickup_carbine.tscn" id="14_85rdj"]
+[ext_resource type="PackedScene" uid="uid://buobjj4nvosgp" path="res://assets/scenes/pickups/pickup_gatling.tscn" id="15_uf70h"]
+[ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pickup_pistol.tscn" id="16_ue0ov"]
+[ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/pickup_shotgun.tscn" id="17_f2by5"]
+[ext_resource type="PackedScene" uid="uid://7at1y74rcbqf" path="res://assets/scenes/pickups/pickup_upgrade.tscn" id="18_fb32j"]
+[ext_resource type="PackedScene" uid="uid://ciy73altvwc82" path="res://assets/scenes/weapon_config/weapon_config_carbine.tscn" id="19_yq1w1"]
+[ext_resource type="PackedScene" uid="uid://c75u30qwoxwb3" path="res://assets/scenes/weapon_config/weapon_config_gatling.tscn" id="20_020sd"]
+[ext_resource type="PackedScene" uid="uid://bi77uc1w3jvfh" path="res://assets/scenes/weapon_config/weapon_config_pistol.tscn" id="21_0xotq"]
+[ext_resource type="PackedScene" uid="uid://bpfyvj6aqfoac" path="res://assets/scenes/weapon_config/weapon_config_shotgun.tscn" id="22_giur5"]
+[ext_resource type="PackedScene" uid="uid://brb5pt2v7s810" path="res://assets/scenes/weapon_config/weapon_config_shotgun_buck.tscn" id="23_3kvg4"]
+[ext_resource type="PackedScene" uid="uid://cysuu86r47xum" path="res://assets/scenes/weapon_config/weapon_config_smokey.tscn" id="24_ahnjo"]
+[ext_resource type="PackedScene" uid="uid://m3g6mj32wfve" path="res://assets/scenes/weapon_config/weapon_config_wesley.tscn" id="25_q68fr"]
+[ext_resource type="PackedScene" uid="uid://d2xqcvhlhks64" path="res://assets/scenes/weapons/weapon_carbine.tscn" id="26_w6s2w"]
+[ext_resource type="PackedScene" uid="uid://0f4vk8qx8f57" path="res://assets/scenes/weapons/weapon_gatling.tscn" id="27_d8htg"]
+[ext_resource type="PackedScene" uid="uid://d0vjbjmoyj1he" path="res://assets/scenes/weapons/weapon_pistol.tscn" id="28_5r6j5"]
+[ext_resource type="PackedScene" uid="uid://dsk5wbdmyh1yn" path="res://assets/scenes/weapons/weapon_shotgun.tscn" id="29_hbj28"]
+[ext_resource type="PackedScene" uid="uid://b27ly3vvi5qc4" path="res://assets/prefabs/buck.tscn" id="30_v68eu"]
+[ext_resource type="PackedScene" uid="uid://cqw4lxtfymwfw" path="res://assets/prefabs/bullet_pistol.tscn" id="31_mn3go"]
+[ext_resource type="PackedScene" uid="uid://ecv66i3mxd88" path="res://assets/prefabs/bullet_shotgun.tscn" id="32_5o6by"]
+[ext_resource type="PackedScene" uid="uid://blkae0a56744f" path="res://assets/prefabs/casing_particle.tscn" id="33_iapal"]
+[ext_resource type="PackedScene" uid="uid://dxn1ecuhl0csi" path="res://assets/prefabs/fmj_level_mesh.tscn" id="34_kb7db"]
+[ext_resource type="PackedScene" uid="uid://dbk7uke1u4jo3" path="res://assets/prefabs/gattler.tscn" id="35_i88sg"]
+[ext_resource type="PackedScene" uid="uid://cxtu4r7sps7if" path="res://assets/prefabs/hitspark.tscn" id="36_s3s0l"]
+[ext_resource type="PackedScene" uid="uid://bxvidt1ojxpj7" path="res://assets/prefabs/intake_effect.tscn" id="37_p4woo"]
+[ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="38_g7w5q"]
+[ext_resource type="PackedScene" uid="uid://dy7r1lox3r877" path="res://assets/prefabs/pistol_pickup.tscn" id="39_cedl3"]
+[ext_resource type="PackedScene" uid="uid://4qnnt1bkuj4w" path="res://assets/prefabs/shotgun.tscn" id="40_72lih"]
+[ext_resource type="PackedScene" uid="uid://cfklhupbq2fkr" path="res://assets/prefabs/shotgun_pickup.tscn" id="41_30ls0"]
+[ext_resource type="PackedScene" uid="uid://bk2dewnkyfejk" path="res://assets/prefabs/stinkhopper.tscn" id="42_uw7m6"]
+[ext_resource type="PackedScene" uid="uid://dll8gybqf0tn8" path="res://assets/prefabs/time_bell.tscn" id="43_tymjm"]
+[ext_resource type="PackedScene" uid="uid://8sxys71pcvd7" path="res://assets/scenes/detritus/upgrade_crate.tscn" id="44_xappb"]
+[ext_resource type="PackedScene" uid="uid://c00o6may2xxnq" path="res://assets/scenes/detritus/detritus_carbine.tscn" id="45_21hju"]
+[ext_resource type="PackedScene" uid="uid://dblaoufpekirg" path="res://assets/scenes/detritus/detritus_casing.tscn" id="46_mv0lg"]
+[ext_resource type="PackedScene" uid="uid://dyt6oitg7ejkk" path="res://assets/scenes/detritus/detritus_gatling.tscn" id="47_d474e"]
+[ext_resource type="PackedScene" uid="uid://bh7yocmhago8" path="res://assets/scenes/detritus/detritus_pistol.tscn" id="48_tg0h5"]
+[ext_resource type="PackedScene" uid="uid://brjyyjfucqicg" path="res://assets/prefabs/poof_drone.tscn" id="49_3xgle"]
+[ext_resource type="PackedScene" uid="uid://cvg0w07fbril0" path="res://assets/scenes/detritus/detritus_shotgun.tscn" id="49_7sisc"]
+[ext_resource type="PackedScene" uid="uid://fkba2vvj2bfy" path="res://assets/scenes/pickups/shell.tscn" id="50_ep7u2"]
 
 [sub_resource type="GDScript" id="GDScript_145kv"]
-script/source = "extends Control
+script/source = "extends Node
 
 signal loading_finished
 
@@ -13,75 +63,28 @@ var paths : PackedStringArray
 var total_resources_to_load := 0
 
 func _ready() -> void:
-	start_loading_paths(path_sequence.pop_front())
-		
-func start_loading_paths(dir : String) -> void:
-	paths.append_array(get_paths_in_project(\".\", dir))
-	total_resources_to_load = paths.size()
-	for path in paths:
-		ResourceLoader.load_threaded_request(path, \"\", false, ResourceLoader.CACHE_MODE_REPLACE_DEEP)
-
-func check_load() -> void:
-	var finished : Array[String]
-	for path in paths:
-		var status : int = ResourceLoader.load_threaded_get_status(path)
-		match status:
-			3:
-				print(\"Finished loading %s!\" % path)
-				var loaded_resource = ResourceLoader.load_threaded_get(path)
-				Autoload.inst.loaded_resources.push_back(loaded_resource)
-				finished.push_back(path)
-			2:
-				printerr(\"Failed to load %s...\" % path)
-				
-	for path in finished:
-		paths.remove_at(paths.find(path))
-		
-	if paths.is_empty():
-		if path_sequence.is_empty():
-			finished_load()
-		else:
-			start_loading_paths(path_sequence.pop_front())
-			
-
-func finished_load() -> void:
-	$timer.stop()
-	loading_finished.emit()
-	var farts := Node3D.new()
-	for loaded_resource in Autoload.inst.loaded_resources:
-		if loaded_resource is PackedScene:
-			var node : Node = loaded_resource.instantiate()
-			farts.add_child(node)
-	Autoload.inst.add_child(farts)
+	AudioServer.set_bus_mute(0, true)
+	await get_tree().create_timer(3.0).timeout
 	get_tree().change_scene_to_file(\"res://assets/scenes/main_menu.tscn\")
-		
-static func get_paths_in_project(ext: String, start_path := \"res://\") -> Array[String]:
-	var dir := DirAccess.open(start_path)
-	if not dir: return []
-	var result : Array[String]
-	dir.list_dir_begin()
-	var file_name := dir.get_next()
-	while file_name != \"\":
-		var next_path := start_path + \"/\" + file_name
-		if dir.current_is_dir():
-			result.append_array(get_paths_in_project(ext, next_path))
-		elif not file_name.ends_with(\".import\") and not file_name.ends_with(\".tmp\"):
-			result.push_back(next_path)
-		file_name = dir.get_next()
-	return result
+	AudioServer.set_bus_mute.call_deferred(0, false)
 "
 
-[node name="bootstrap" type="Control"]
+[node name="bootstrap" type="Node3D"]
+script = SubResource("GDScript_145kv")
+path_sequence = Array[String](["res://assets/scripts", "res://assets/scenes"])
+
+[node name="canvas_layer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="control" type="Control" parent="canvas_layer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_145kv")
-path_sequence = Array[String](["res://assets/scripts", "res://assets/scenes"])
 
-[node name="color_rect" type="ColorRect" parent="."]
+[node name="color_rect" type="ColorRect" parent="canvas_layer/control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,14 +93,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="label" type="RichTextLabel" parent="."]
+[node name="label" type="RichTextLabel" parent="canvas_layer/control"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
+offset_top = -23.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("1_d0lwd")
@@ -106,7 +109,220 @@ bbcode_enabled = true
 text = "[center][wave]LOADING..."
 fit_content = true
 
-[node name="timer" type="Timer" parent="."]
-autostart = true
+[node name="timer" type="Timer" parent="canvas_layer/control"]
 
-[connection signal="timeout" from="timer" to="." method="check_load"]
+[node name="camera_3d" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.000279264, 1, 0, -1, 0.000279264, 0, 13.9522, 4.67731)
+current = true
+fov = 143.0
+
+[node name="world" type="Node3D" parent="."]
+
+[node name="arena" parent="world" instance=ExtResource("2_gir4e")]
+
+[node name="buck" parent="world" instance=ExtResource("3_o80nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.11972, -0.100002, 5.06298)
+
+[node name="magnus" parent="world" instance=ExtResource("4_g5fia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.12348, -0.100001, 7.30469)
+
+[node name="smokey" parent="world" instance=ExtResource("5_ndtie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07424, -0.100002, -1.07675)
+
+[node name="stinker" parent="world" instance=ExtResource("6_6djl3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.84786, -0.100001, -0.465077)
+
+[node name="wesley" parent="world" instance=ExtResource("7_y0fmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87752, -0.100002, 10.2236)
+
+[node name="muzzle_flash" parent="world" instance=ExtResource("8_bujof")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.16707, 5.76255, 4.16025)
+
+[node name="hitspark" parent="world" instance=ExtResource("9_wdkls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54698, 5.04178, 3.90236)
+
+[node name="hitspark" parent="world/hitspark" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="player" parent="world" instance=ExtResource("10_clnbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70992, -0.1, 4.34625)
+
+[node name="Skeleton3D" parent="world/player/pawn/mesh_scene/Armature" index="0"]
+bones/8/position = Vector3(4.82685e-09, 1.21072e-07, 0)
+
+[node name="camera_3d" parent="world/player/camera_hook" index="1"]
+current = false
+
+[node name="canvas_layer" parent="world/player" index="2"]
+visible = false
+
+[node name="gpu_particles_3d" parent="world" instance=ExtResource("11_tfwve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.888609, 5.53551, 4.80194)
+
+[node name="weapon_pickup" parent="world" instance=ExtResource("14_85rdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32931, 6.94159, 4.99944)
+
+[node name="pickup_gatling" parent="world" instance=ExtResource("15_uf70h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32931, 6.94159, 4.99944)
+
+[node name="pistol_pickup" parent="world" instance=ExtResource("16_ue0ov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32931, 6.94159, 4.99944)
+
+[node name="shotgun_pickup" parent="world" instance=ExtResource("17_f2by5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32931, 6.94159, 4.99944)
+
+[node name="pickup" parent="world" instance=ExtResource("18_fb32j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32931, 6.94159, 4.99944)
+
+[node name="weapon_config_carbine" parent="world" instance=ExtResource("19_yq1w1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00413, 5.38534, 8.74997)
+
+[node name="weapon_config" parent="world" instance=ExtResource("20_020sd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00413, 5.38534, 8.74997)
+
+[node name="weapon_config_pistol" parent="world" instance=ExtResource("21_0xotq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00413, 5.38534, 8.74997)
+
+[node name="weapon_config_shotgun" parent="world" instance=ExtResource("22_giur5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00413, 5.38534, 8.74997)
+
+[node name="weapon_config2" parent="world" instance=ExtResource("23_3kvg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00413, 5.38534, 8.74997)
+
+[node name="weapon_config_pistol2" parent="world" instance=ExtResource("24_ahnjo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00413, 5.38534, 8.74997)
+
+[node name="weapon_config_wesley" parent="world" instance=ExtResource("25_q68fr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00413, 5.38534, 8.74997)
+
+[node name="weapon_carbine" parent="world" instance=ExtResource("26_w6s2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62936, 3.92576, 11.4235)
+
+[node name="weapon_gatling" parent="world" instance=ExtResource("27_d8htg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62936, 3.92576, 11.4235)
+
+[node name="weapon_pistol" parent="world" instance=ExtResource("28_5r6j5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62936, 3.92576, 11.4235)
+
+[node name="weapon_shotgun" parent="world" instance=ExtResource("29_hbj28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62936, 3.92576, 11.4235)
+
+[node name="buck2" parent="world" instance=ExtResource("30_v68eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="bullet_pistol" parent="world" instance=ExtResource("31_mn3go")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="buckshot_projectile" parent="world" instance=ExtResource("32_5o6by")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="casing_particle" parent="world" instance=ExtResource("33_iapal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="fmj_level_mesh" parent="world" instance=ExtResource("34_kb7db")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="gattler" parent="world" instance=ExtResource("35_i88sg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="hitspark2" parent="world" instance=ExtResource("36_s3s0l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="intake_effect" parent="world" instance=ExtResource("37_p4woo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="muzzle_flash2" parent="world" instance=ExtResource("38_g7w5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="pistol_pickup2" parent="world" instance=ExtResource("39_cedl3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="gpu_particles_3d2" parent="world" instance=ExtResource("11_tfwve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="shotgun" parent="world" instance=ExtResource("40_72lih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="shotgun_pickup2" parent="world" instance=ExtResource("41_30ls0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="stinkhopper" parent="world" instance=ExtResource("42_uw7m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="time_bell" parent="world" instance=ExtResource("43_tymjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53292, -0.1, 1.65249)
+
+[node name="upgrade_crate" parent="world" instance=ExtResource("44_xappb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.191652, -0.1, 5.71049)
+randomize_index = false
+
+[node name="upgrade_crate2" parent="world" instance=ExtResource("44_xappb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29519, -0.1, 3.14905)
+effect_index = 1
+randomize_index = false
+
+[node name="upgrade_crate3" parent="world" instance=ExtResource("44_xappb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.26327, -0.1, 0.446138)
+effect_index = 2
+randomize_index = false
+
+[node name="detritus" parent="world" instance=ExtResource("45_21hju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.46154, 4.01407, 9.28289)
+
+[node name="detritus2" parent="world" instance=ExtResource("46_mv0lg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.46154, 4.01407, 9.28289)
+
+[node name="detritus3" parent="world" instance=ExtResource("47_d474e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.46154, 4.01407, 9.28289)
+
+[node name="detritus4" parent="world" instance=ExtResource("48_tg0h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.46154, 4.01407, 9.28289)
+
+[node name="detritus5" parent="world" instance=ExtResource("49_7sisc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.46154, 4.01407, 9.28289)
+
+[node name="shell" parent="world" instance=ExtResource("50_ep7u2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.72361, 6.49661, 8.39301)
+
+[node name="weapon_gatling2" parent="world" instance=ExtResource("27_d8htg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.53913, 3.05936, 11.1811)
+
+[node name="weapon_pistol2" parent="world" instance=ExtResource("28_5r6j5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10249, 1.78663, 8.78528)
+
+[node name="poof_ring" parent="world" instance=ExtResource("49_3xgle")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.146425, 5.29451, 2.50842)
+
+[node name="gpu_particles_3d3" parent="world" instance=ExtResource("11_tfwve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.09504, -0.0999985, 11.1206)
+
+[node name="poof_ring2" parent="world" instance=ExtResource("12_o7igq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.09504, 13.822, 11.1206)
+emitting = false
+
+[node name="poof_ring3" parent="world" instance=ExtResource("13_j42pn")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.62374, 5.5359, 0.929665)
+one_shot = false
+
+[node name="gpu_particles_3d4" parent="world" instance=ExtResource("11_tfwve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.401889, 4.34861, 3.30779)
+
+[connection signal="timeout" from="canvas_layer/control/timer" to="." method="check_load"]
+[connection signal="died" from="world/player/pawn/ammo" to="world/player/canvas_layer/ui/animation_player" method="play" binds= [&"game_over"]]
+[connection signal="received_upgrade_bullet_speed" from="world/player/pawn/ammo" to="world/player/canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [1]]
+[connection signal="received_upgrade_dodge" from="world/player/pawn/ammo" to="world/player/canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [0]]
+[connection signal="received_upgrade_vacuum" from="world/player/pawn/ammo" to="world/player/canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [2]]
+[connection signal="ready" from="world/weapon_gatling2" to="world/weapon_gatling2" method="set" binds= [&"health", 1]]
+[connection signal="ready" from="world/weapon_pistol2" to="world/weapon_pistol2" method="set" binds= [&"health", 1]]
+[connection signal="ready" from="world/poof_ring2" to="world/poof_ring2" method="restart"]
+[connection signal="ready" from="world/poof_ring3" to="world/poof_ring3" method="restart"]
+
+[editable path="world/hitspark"]
+[editable path="world/player"]
+[editable path="world/player/pawn"]
+[editable path="world/player/pawn/ammo"]
+[editable path="world/player/pawn/mesh_scene"]
+[editable path="world/player/canvas_layer/ui"]
+[editable path="world/player/canvas_layer/ui/upgrades/upgrade_list/boost"]
+[editable path="world/player/canvas_layer/ui/upgrades/upgrade_list/bullet_speed"]
+[editable path="world/player/canvas_layer/ui/upgrades/upgrade_list/vacuum"]

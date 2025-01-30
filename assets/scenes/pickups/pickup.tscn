@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0goiuqrxv0rs"]
 
-[node name="pickup" type="RigidBody3D"]
+[node name="pickup" type="RigidBody3D" groups=["destroy_on_reset"]]
 collision_layer = 8
 collision_mask = 9
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bikrt5av7f0d3"]
+[gd_scene load_steps=15 format=3 uid="uid://bikrt5av7f0d3"]
 
 [ext_resource type="FontFile" uid="uid://cgs4jbvrniee0" path="res://assets/fonts/Arbutus-Regular.ttf" id="1_pbwtn"]
 [ext_resource type="Script" path="res://assets/scripts/other/ammo_label_fancy.gd" id="2_lbq4v"]
 [ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="3_fc223"]
 [ext_resource type="AudioStream" uid="uid://breoqkbo0agvm" path="res://assets/audio/game_over_church_bell.ogg" id="4_341nf"]
 [ext_resource type="Script" path="res://assets/scripts/other/randomized_text.gd" id="4_ube7t"]
+[ext_resource type="FontFile" uid="uid://dqhrdjyxkgdx6" path="res://assets/fonts/SofiaSansCondensed-VariableFont_wght.ttf" id="5_ibrwm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ukhfm"]
 font = ExtResource("1_pbwtn")
@@ -23,6 +24,11 @@ font = ExtResource("3_fc223")
 font_size = 80
 font_color = Color(1, 0.16, 0.258, 1)
 outline_size = 40
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ga74"]
+font = ExtResource("5_ibrwm")
+font_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_umlne"]
@@ -63,10 +69,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("game_over/v_box_container/label2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_jr2kp"]
 resource_name = "game_over"
-length = 10.0
+length = 8.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -109,7 +127,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("game_over/label")
+tracks/3/path = NodePath("game_over/v_box_container/label")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -119,6 +137,18 @@ tracks/3/keys = {
 "args": [],
 "method": &"randomize_text"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("game_over/v_box_container/label2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 6, 7.56667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_p6v7o"]
@@ -207,16 +237,21 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(480, 0)
 
-[node name="label" type="Label" parent="game_over"]
+[node name="audio_stream_player" type="AudioStreamPlayer" parent="game_over"]
+
+[node name="v_box_container" type="VBoxContainer" parent="game_over"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -52.0
-offset_bottom = 52.0
+offset_top = -102.0
+offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="label" type="Label" parent="game_over/v_box_container"]
+layout_mode = 2
 theme_override_constants/outline_size = 40
 text = "GAME   OVER"
 label_settings = SubResource("LabelSettings_qx8tg")
@@ -224,7 +259,14 @@ horizontal_alignment = 1
 script = ExtResource("4_ube7t")
 texts = PackedStringArray("Game   Over")
 
-[node name="audio_stream_player" type="AudioStreamPlayer" parent="game_over"]
+[node name="label2" type="Label" parent="game_over/v_box_container"]
+layout_mode = 2
+theme_override_constants/outline_size = 40
+text = "Press ESC or START"
+label_settings = SubResource("LabelSettings_7ga74")
+horizontal_alignment = 1
+script = ExtResource("4_ube7t")
+texts = PackedStringArray("Game   Over")
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
 libraries = {

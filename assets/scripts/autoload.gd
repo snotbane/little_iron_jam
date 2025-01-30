@@ -1,5 +1,5 @@
 
-extends Node
+class_name Autoload extends Node
 
 var _is_fullscreen_exclusive : bool = true
 var is_fullscreen_exclusive : bool = true :
@@ -26,6 +26,10 @@ var is_fullscreen : bool :
 			get_window().mode = Window.MODE_WINDOWED
 
 
+static var hidden_mouse_mode : Input.MouseMode :
+	get: return Input.MOUSE_MODE_HIDDEN if OS.has_feature("web") else Input.MOUSE_MODE_CONFINED_HIDDEN
+
+
 func _ready() -> void:
 	if not OS.is_debug_build(): self.is_fullscreen = true
 
@@ -34,7 +38,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fullscreen"):
 		self.is_fullscreen = not self.is_fullscreen
 	# if event.is_action_pressed("menu"):
-	# 	if Input.mouse_mode == Input.MOUSE_MODE_HIDDEN:
+	# 	if Input.mouse_mode == Input.Autoload.hidden_mouse_mode:
 	# 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	# 	elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-	# 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	# 		Input.mouse_mode = Input.Autoload.hidden_mouse_mode

@@ -180,14 +180,14 @@ theme_override_constants/margin_bottom = 10
 [node name="rich_text_label" type="RichTextLabel" parent="windows/credits/panel_container/margin_container"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[img]res://assets/user_interface/credits_nulture_icon.png[/img]     [font_size=36][font=res://assets/fonts/Danfo-Regular.ttf][color=#9a3f9f][url=https://nulture.carrd.co][hint=https://nulture.carrd.co]Nulture[/hint][/url][/color][/font][/font_size]
+text = "[img]res://assets/user_interface/credits_nulture_icon.png[/img]     [font_size=36][font=res://assets/fonts/Arbutus-Regular.ttf][color=#9a3f9f][url=https://nulture.carrd.co][hint=https://nulture.carrd.co]NULTURE[/hint][/url][/color][/font][/font_size]
 					Codesmithing, Foley, Game Design
 
-[img]res://assets/user_interface/credits_natesolio_icon.png[/img]     [font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]Natesolio[/font][/font_size]
+[img]res://assets/user_interface/credits_natesolio_icon.png[/img]     [font_size=36][font=res://assets/fonts/Arbutus-Regular.ttf]NATESOLIO[/font][/font_size]
 					Art, Animation, Music, Game Design
 
 
-This project was made from scratch for the [url=https://itch.io/jam/pirate]Pirate Software Game Jam 16[/url], starting on 2025 January 17, and ending on 2025 January 31. View the [url=https://github.com/nulture/full_metal_jack]source code on GitHub[/url]."
+This project was made from scratch for the [url=https://itch.io/jam/pirate][hint=https://itch.io/jam/pirate]Pirate Software Game Jam 16[/hint][/url], starting on 2025 January 17, and ending on 2025 January 31. View the [url=https://github.com/nulture/full_metal_jack][hint=https://github.com/nulture/full_metal_jack]source code on GitHub[/hint][/url]."
 
 [node name="buttons_sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_2jav2")

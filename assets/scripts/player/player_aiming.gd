@@ -38,7 +38,7 @@ var is_using_mouse : bool = true :
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	Input.mouse_mode = Autoload.hidden_mouse_mode
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,7 +64,7 @@ func _input(event: InputEvent) -> void:
 		is_using_mouse = false
 		if Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down"):
 			is_using_face_buttons_to_shoot = false
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_HIDDEN:
+	if event is InputEventMouseMotion and Input.mouse_mode == Autoload.hidden_mouse_mode:
 		is_using_mouse = true
 		mouse_position = event.position
 

@@ -1,11 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmm5rafal8ul4"]
+[gd_scene load_steps=5 format=3 uid="uid://cmm5rafal8ul4"]
 
 [ext_resource type="PackedScene" uid="uid://becpsh0bwexhi" path="res://assets/scenes/player/player.tscn" id="1_fd1we"]
 [ext_resource type="PackedScene" uid="uid://c1aiimxh63ws2" path="res://assets/scenes/arena.tscn" id="2_asn8h"]
 [ext_resource type="AudioStream" uid="uid://cjuw21v63yg62" path="res://assets/audio/music/music.tres" id="3_uxruw"]
 
+[sub_resource type="GDScript" id="GDScript_53k6p"]
+script/source = "extends Node3D
+
+func _ready() -> void:
+	get_tree().call_group(\"destroy_on_reset\", \"queue_free\")
+"
+
 [node name="world" type="Node3D"]
 process_mode = 1
+script = SubResource("GDScript_53k6p")
 
 [node name="player" parent="." instance=ExtResource("1_fd1we")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)

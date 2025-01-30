@@ -1,40 +1,69 @@
-[gd_scene load_steps=7 format=3 uid="uid://vk56c3de00ln"]
+[gd_scene load_steps=9 format=3 uid="uid://vk56c3de00ln"]
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_5cnvb"]
 [ext_resource type="PackedScene" uid="uid://b27ly3vvi5qc4" path="res://assets/prefabs/buck.tscn" id="2_kvpmg"]
+[ext_resource type="PackedScene" uid="uid://c1kew6f04nb1m" path="res://assets/scenes/pickups/pickup_shotgun.tscn" id="2_ywup7"]
 [ext_resource type="PackedScene" uid="uid://brb5pt2v7s810" path="res://assets/scenes/weapon_config/weapon_config_shotgun_buck.tscn" id="3_33abw"]
 [ext_resource type="Script" path="res://assets/scripts/brains/brain_buck.gd" id="3_ipyb7"]
 [ext_resource type="Script" path="res://assets/scripts/root_motion.gd" id="4_e8eal"]
 [ext_resource type="AudioStream" uid="uid://dl1tqnsmhq3tg" path="res://assets/audio/elk_call.ogg" id="6_hubhc"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qrv6e"]
+size = Vector3(1.73413, 3.021, 3.33826)
+
 [node name="buck" instance=ExtResource("1_5cnvb")]
 
-[node name="audio_stream_player_3d" type="AudioStreamPlayer3D" parent="." index="0"]
-stream = ExtResource("6_hubhc")
+[node name="pawn" parent="." index="0"]
+damage = 20
+
+[node name="shape" parent="pawn" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51245, 0.339539)
+shape = SubResource("BoxShape3D_qrv6e")
+
+[node name="ammo" parent="pawn" index="1"]
+shell_loss_amount = 60
+weapon_drop_on_death = ExtResource("2_ywup7")
+health = 40
+
+[node name="shape" parent="pawn/ammo" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51245, 0.339539)
+shape = SubResource("BoxShape3D_qrv6e")
+
+[node name="ammo_count_label" parent="pawn/ammo" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.81014, 0)
+text = "30"
 
 [node name="buck" parent="pawn" index="2" instance=ExtResource("2_kvpmg")]
 
 [node name="Skeleton3D" parent="pawn/buck/Armature" index="0"]
-bones/1/position = Vector3(-0.0123623, 0.408134, 1.77977)
-bones/1/rotation = Quaternion(-0.693618, -0.00989778, 0.0105501, 0.720198)
+bones/1/position = Vector3(0.0223313, 0.412667, 1.77977)
+bones/1/rotation = Quaternion(-0.681136, 0.0188951, -0.0193407, 0.731658)
 bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
-bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(-2.06384e-08, 0.952897, 0.303295, 7.19417e-08)
-bones/4/position = Vector3(-0.877961, 2.33413, 0.0252809)
-bones/4/rotation = Quaternion(0.00265116, -1.55263e-06, 0.00148005, 0.999995)
+bones/4/position = Vector3(-0.893061, 2.12373, 0.14231)
+bones/4/rotation = Quaternion(0.00788471, -0.00159673, 0.00177626, 0.999966)
 bones/5/position = Vector3(0.884316, 1.85048, 1.8528e-09)
 bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
 
-[node name="body" type="BoneAttachment3D" parent="pawn/buck/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.999582, -0.02356, -0.016788, -0.0289269, 0.821584, 0.569353, 0.000378842, 0.5696, -0.821922, -0.0150746, 0.477649, -0.069402)
+[node name="body" type="BoneAttachment3D" parent="pawn/buck/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.998538, 0.0441272, 0.0312249, 0.0540417, 0.800958, 0.596277, 0.00130225, 0.597093, -0.802171, 0.0270711, 0.544717, -0.0659864)
 bone_name = "body"
 bone_idx = 2
 
-[node name="weapon_config_buck" parent="pawn/buck/Armature/Skeleton3D/body" index="0" instance=ExtResource("3_33abw")]
-transform = Transform3D(-0.998387, 0.0566805, -0.00353653, 0.0566805, 0.990637, -0.124206, -0.00353662, -0.124206, -0.992251, 0.00967317, 0.325819, -0.00138322)
+[node name="weapon_config_buck" parent="pawn/buck/Armature/Skeleton3D/body" index="0" node_paths=PackedStringArray("ammo") instance=ExtResource("3_33abw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 socket_fire_order = Array[int]([0, 2, 1, 3])
+ammo = NodePath("../../../../../ammo")
+
+[node name="node_3d" parent="pawn/buck/Armature/Skeleton3D/body/weapon_config_buck" index="1"]
+transform = Transform3D(1, 0.000136316, 0.000613763, -0.000539042, 0.688354, 0.725374, -0.000323606, -0.725374, 0.688354, -0.395306, 0.484465, 0.13757)
+
+[node name="animation_tree" parent="pawn/buck" index="3"]
+root_motion_track = NodePath("Armature/Skeleton3D:root")
+advance_expression_base_node = NodePath("../../agent")
 
 [node name="agent" parent="pawn" index="3" node_paths=PackedStringArray("weapon_config")]
+target_desired_distance = 3.5
 script = ExtResource("3_ipyb7")
 weapon_config = NodePath("../buck/Armature/Skeleton3D/body/weapon_config_buck")
 walk_speed = 140.0
@@ -44,5 +73,12 @@ turn_speed = 0.8
 animation_path = NodePath("../buck/animation_tree")
 script = ExtResource("4_e8eal")
 
+[node name="audio_stream_player_3d" type="AudioStreamPlayer3D" parent="." index="1"]
+stream = ExtResource("6_hubhc")
+
+[connection signal="attack_warning" from="pawn/agent" to="audio_stream_player_3d" method="play"]
+
 [editable path="pawn"]
+[editable path="pawn/ammo"]
 [editable path="pawn/buck"]
+[editable path="pawn/buck/Armature/Skeleton3D/body/weapon_config_buck"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_p5ahr"]
 
-[node name="enemy" type="Node3D"]
+[node name="enemy" type="Node3D" groups=["destroy_on_reset"]]
 
 [node name="pawn" parent="." groups=["enemy"] instance=ExtResource("1_p5ahr")]
 

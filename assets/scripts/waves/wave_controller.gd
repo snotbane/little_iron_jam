@@ -2,6 +2,8 @@
 class_name WaveController extends Node3D
 
 signal wave_started(index: int)
+signal any_wave_started
+signal stopped_everything
 
 static var inst : WaveController
 
@@ -69,6 +71,7 @@ func proceed_to_next_wave() -> void:
 
 
 func stop_everything() -> void:
+	stopped_everything.emit()
 	music_clip = &"death"
 	timer.stop()
 	is_game_over = true
@@ -87,15 +90,16 @@ func start_wave(wave: Wave) -> void:
 
 	ui_anim_player.play(&"notify_clock")
 	get_tree().call_group(&"wave_timed", "set_current_hour", wave_index)
-	# wave_started.emit(wave_index)
+	wave_started.emit(wave_index)
+	any_wave_started.emit()
 
 	if timer.is_stopped():
-		timer.wait_time = wave.duration + (timer.wait_time if wave_hour == Wave.Hour.MIDNIGHT + 1 else 0.0)
+		timer.wait_time = wave.duration + (timer.wait_time if Wave.wave_stops_time(wave_hour, 1) else 0.0)
 	else:
 		timer.wait_time = timer.time_left + wave.duration
 		timer.stop()
 
-	if wave_hour != Wave.Hour.MIDNIGHT:
+	if not Wave.wave_stops_time(wave_hour):
 		time_label.text += "   +   " + get_time_string(wave.duration)
 	time_hour_hand.rotation_degrees = (360.0 * wave_hour / Wave.HOURS_IN_DAY) + 90.0
 	time_minute_hand.rotation_degrees = 0.0
@@ -106,7 +110,7 @@ func start_wave(wave: Wave) -> void:
 
 func actually_start_wave() -> void:
 	time_left_at_wave_start = timer.wait_time
-	if wave_hour != Wave.Hour.MIDNIGHT:
+	if not Wave.wave_stops_time(wave_hour):
 		timer.start()
 	for scene_path in current_wave.scenes:
 		var scene : PackedScene = load(scene_path)

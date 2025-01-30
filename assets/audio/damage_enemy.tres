@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://jp1bwa48bugd"]
+
+[ext_resource type="AudioStream" uid="uid://77fh15r7xqrf" path="res://assets/audio/damage_enemy_00.ogg" id="1_elrbm"]
+[ext_resource type="AudioStream" uid="uid://dqn4usmg8p7vp" path="res://assets/audio/damage_enemy_01.ogg" id="2_s0onv"]
+[ext_resource type="AudioStream" uid="uid://bgmtvrml52guw" path="res://assets/audio/damage_enemy_02.ogg" id="3_hlt3n"]
+[ext_resource type="AudioStream" uid="uid://cs3atoqnnmot6" path="res://assets/audio/damage_enemy_03.ogg" id="4_e3wu6"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_elrbm")
+stream_1/stream = ExtResource("2_s0onv")
+stream_2/stream = ExtResource("3_hlt3n")
+stream_3/stream = ExtResource("4_e3wu6")

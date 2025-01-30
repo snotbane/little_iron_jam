@@ -40,8 +40,11 @@ var _is_volatile : bool
 var is_walking : bool :
 	get: return pawn.velocity.length_squared() > 0.1
 
+
 var target_direction : Vector3 :
-	get: return (kill_target.global_position - pawn.global_position).normalized() if kill_target else -pawn.global_basis.z
+	get:
+		if not kill_target: return -pawn.global_basis.z
+		return (kill_target.global_position - pawn.global_position).normalized()
 
 
 func _ready():
@@ -82,6 +85,14 @@ func physics_process_walk_to_target(delta: float) -> void:
 	var difference := self.get_next_path_position() - pawn.global_position
 	pawn_lateral_velocity = difference.normalized() * walk_speed * delta
 	pawn.move_and_slide()
+
+
+func get_is_facing_kill_target(angle_margin := 2.0) -> bool:
+	if not kill_target: return false
+	var delta := (kill_target.global_position - pawn.global_position).normalized()
+	var dot_x := pawn.global_basis.x.dot(delta)
+	var dot_z := -pawn.global_basis.z.dot(delta)
+	return rad_to_deg(sin(dot_x)) < angle_margin and dot_z > 0.0
 
 
 func update_target_position() -> void:

@@ -2,6 +2,8 @@
 class_name Ammo extends Area3D
 
 const SCREAM_AUDIO : AudioStream = preload("res://assets/audio/scream.tres")
+const ENEMY_DAMAGE_AUDIO : AudioStream = preload("res://assets/audio/damage_enemy.tres")
+const PLAYER_DAMAGE_AUDIO : AudioStream = preload("res://assets/audio/damage_player.tres")
 
 signal changed
 signal died
@@ -30,11 +32,12 @@ signal received_upgrade_bullet_damage
 
 var last_hit_by : Node3D
 
-var _health : int = 10
-@export var health : int = 10 :
+var _health : int = 1
+@export var health : int = 1 :
 	get: return _health
 	set(value):
 		value = max(value, -1) if _health == 0 else max(value, 0)
+
 		if _health == value: return
 
 		_health = max(_health, value) if invincible else value
@@ -60,15 +63,16 @@ func take_damage(body: Node3D) -> void:
 
 	last_hit_by = body
 	health -= body.damage
+	create_hitspark(body)
 	if body is Bullet:
-		create_hitspark(body)
 		body.health -= 1
 
 
-func create_hitspark(bullet: Bullet) -> void:
+func create_hitspark(bullet: Node3D) -> void:
+	scream(PLAYER_DAMAGE_AUDIO if belongs_to_player else ENEMY_DAMAGE_AUDIO)
 	var hitspark := preload("res://assets/scenes/hitspark.tscn").instantiate()
 	get_tree().root.add_child(hitspark)
-	hitspark.global_position = bullet.global_position + bullet.global_basis.z * 1.5
+	hitspark.global_position = bullet.global_position + bullet.global_basis.z * (1.5 if bullet is Bullet else 0.0)
 	hitspark.look_at(hitspark.global_position + bullet.global_basis.z)
 
 
@@ -83,21 +87,24 @@ func die() -> void:
 		# drop_weapon()
 	drop_weapon()
 	drop_shells()
-	if can_scream: scream()
+	if can_scream: scream(SCREAM_AUDIO)
 	died.emit()
 	actor.queue_free.call_deferred()
 
 
-func scream() -> void:
+func scream(stream: AudioStream, volume := 2.0) -> void:
 	var audio := AudioStreamPlayer3D.new()
-	audio.finished.connect(audio.queue_free)
-	audio.volume_db = 2.0
-	audio.stream = SCREAM_AUDIO
+	audio.stream = stream
+	audio.volume_db = volume
 	get_tree().root.add_child(audio)
 	audio.global_position = self.global_position
 	audio.play()
-	await get_tree().create_timer(3.0).timeout
-	audio.queue_free()
+
+	var timeout := Timer.new()
+	timeout.timeout.connect(audio.queue_free)
+	timeout.wait_time = 3.0
+	timeout.autostart = true
+	audio.add_child(timeout)
 
 
 

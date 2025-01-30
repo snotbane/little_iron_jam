@@ -14,4 +14,6 @@ process_callback = 0
 wait_time = 0.25
 autostart = true
 
+[connection signal="died" from="pawn/ammo" to="." method="queue_free"]
+
 [editable path="pawn"]

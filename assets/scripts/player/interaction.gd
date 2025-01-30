@@ -6,7 +6,7 @@ extends Node
 
 var pickup_stack : Array[Pickup]
 var focused_pickup : Pickup :
-	get: return pickup_stack.back()
+	get: return pickup_stack.back() if pickup_stack else null
 
 
 func _ready() -> void:

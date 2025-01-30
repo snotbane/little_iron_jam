@@ -28,6 +28,10 @@ const menu_scene_path := \"res://assets/scenes/main_menu.tscn\"
 
 @export var instant_new_game := false
 
+func set_use_resume_button(value: bool) -> void:
+		$v_box_container/resume.visible = value
+		$v_box_container/play_game.visible = not value
+
 func _ready() -> void:
 	if OS.has_feature(\"web\"):
 		$v_box_container/quit.visible = false
@@ -52,6 +56,11 @@ func play_main_menu() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file(menu_scene_path)
 	
+
+func resume() -> void:
+	get_tree().paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if get_tree().paused else Autoload.hidden_mouse_mode
+	self.visible = get_tree().paused
 
 
 func access_tab(idx: int) -> void:
@@ -91,6 +100,11 @@ alignment = 1
 [node name="play_game" type="Button" parent="v_box_container"]
 layout_mode = 2
 text = "New   Game"
+
+[node name="resume" type="Button" parent="v_box_container"]
+visible = false
+layout_mode = 2
+text = "Resume"
 
 [node name="how_to_play" type="Button" parent="v_box_container"]
 layout_mode = 2
@@ -181,10 +195,10 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 bbcode_enabled = true
 text = "[img]res://assets/user_interface/credits_nulture_icon.png[/img]     [font_size=36][font=res://assets/fonts/Arbutus-Regular.ttf][color=#9a3f9f][url=https://nulture.carrd.co][hint=https://nulture.carrd.co]NULTURE[/hint][/url][/color][/font][/font_size]
-					Codesmithing, Foley, Game Design
+					Codesmithing  •  Foley  •  Game Design
 
 [img]res://assets/user_interface/credits_natesolio_icon.png[/img]     [font_size=36][font=res://assets/fonts/Arbutus-Regular.ttf]NATESOLIO[/font][/font_size]
-					Art, Animation, Music, Game Design
+					Art  •  Animation  •  Music  •  Game Design
 
 
 This project was made from scratch for the [url=https://itch.io/jam/pirate][hint=https://itch.io/jam/pirate]Pirate Software Game Jam 16[/hint][/url], starting on 2025 January 17, and ending on 2025 January 31. View the [url=https://github.com/nulture/full_metal_jack][hint=https://github.com/nulture/full_metal_jack]source code on GitHub[/hint][/url]."
@@ -196,6 +210,7 @@ max_polyphony = 3
 bus = &"Foley"
 
 [connection signal="pressed" from="v_box_container/play_game" to="." method="play_game"]
+[connection signal="pressed" from="v_box_container/resume" to="." method="resume"]
 [connection signal="pressed" from="v_box_container/how_to_play" to="." method="access_tab" binds= [1]]
 [connection signal="pressed" from="v_box_container/credits" to="." method="access_tab" binds= [2]]
 [connection signal="pressed" from="v_box_container/quit" to="." method="quit"]

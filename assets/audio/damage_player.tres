@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://dyovf7k1nnpmg"]
+
+[ext_resource type="AudioStream" uid="uid://og84et7nj843" path="res://assets/audio/damage_player_00.ogg" id="1_qoead"]
+[ext_resource type="AudioStream" uid="uid://c0jkwskm4sogv" path="res://assets/audio/damage_player_01.ogg" id="2_qfxr1"]
+
+[resource]
+streams_count = 2
+stream_0/stream = ExtResource("1_qoead")
+stream_1/stream = ExtResource("2_qfxr1")

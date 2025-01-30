@@ -8,6 +8,7 @@
 script/source = "extends Node3D
 
 func _ready() -> void:
+	if OS.is_debug_build(): return
 	get_tree().call_group(\"destroy_on_reset\", \"queue_free\")
 "
 

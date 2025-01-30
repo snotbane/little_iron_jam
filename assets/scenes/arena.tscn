@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c1aiimxh63ws2"]
+[gd_scene load_steps=34 format=3 uid="uid://c1aiimxh63ws2"]
 
 [ext_resource type="Script" path="res://assets/scripts/waves/wave_controller.gd" id="1_8vdcl"]
 [ext_resource type="PackedScene" uid="uid://dxn1ecuhl0csi" path="res://assets/prefabs/fmj_level_mesh.tscn" id="1_mdv7l"]
@@ -81,6 +81,21 @@ font_size = 36
 font_color = Color(1, 0.16, 0.258, 1)
 outline_size = 18
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n84jw"]
+font = ExtResource("4_2y70v")
+font_size = 24
+font_color = Color(1, 0.16, 0.258, 1)
+outline_size = 18
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_c53jc"]
+script/source = "extends Label
+
+
+func set_wave_index(idx: int) -> void:
+	self.text = \"Wave   %s\" % str(idx + 1)
+"
 
 [sub_resource type="Animation" id="Animation_0jbu8"]
 resource_name = "RESET"
@@ -288,8 +303,6 @@ tonemap_mode = 2
 [sub_resource type="GDScript" id="GDScript_hu4e8"]
 script/source = "extends MarginContainer
 
-@export var pause_node : Node
-
 var is_paused : bool :
 	get: return get_tree().paused
 	set(value):
@@ -438,11 +451,23 @@ anchor_right = 1.0
 grow_horizontal = 0
 
 [node name="wave_timer_label" type="Label" parent="wave_spawner/canvas_layer/ui/wave_clock/wave_timer"]
-layout_mode = 1
-offset_right = 98.0
+layout_mode = 2
+offset_right = 134.0
 offset_bottom = 47.0
 text = "00:00.0"
 label_settings = SubResource("LabelSettings_5t3y8")
+
+[node name="wave_index_label" type="Label" parent="wave_spawner/canvas_layer/ui/wave_clock/wave_timer"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 134.0
+grow_vertical = 0
+text = "Wave   Fart"
+label_settings = SubResource("LabelSettings_n84jw")
+script = SubResource("GDScript_c53jc")
 
 [node name="animation_player" type="AnimationPlayer" parent="wave_spawner/canvas_layer/ui"]
 libraries = {
@@ -544,7 +569,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.220747, 0.399535, 3.57628e-07, -0.875287, 0.483604, 0.456462, -0.430283, -0.778781, 0, 0, 0)
+transform = Transform3D(0.889744, 0.220747, 0.399535, 4.24683e-07, -0.875287, 0.483604, 0.456462, -0.430283, -0.778781, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0.948, 1, 0.87, 1)
 shadow_enabled = true
@@ -602,7 +627,7 @@ wave_values = [{
 current_hour = 11
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.566971, -0.00312386, -0.823731, 0.0302847, -0.999238, 0.0246343, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
+transform = Transform3D(0.566971, -0.00312386, -0.823731, 0.0302847, -0.999238, 0.0246342, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(5.2267e-08, 0.0158411, 0.0197509, 1)
 light_energy = 0.0
@@ -684,13 +709,15 @@ visible = false
 layout_mode = 2
 instant_new_game = true
 
-[node name="quit" parent="canvas_layer/margin_container/h_box_container/v_box_container" index="3"]
+[node name="quit" parent="canvas_layer/margin_container/h_box_container/v_box_container" index="4"]
 visible = false
 
-[node name="main_menu" parent="canvas_layer/margin_container/h_box_container/v_box_container" index="4"]
+[node name="main_menu" parent="canvas_layer/margin_container/h_box_container/v_box_container" index="5"]
 visible = true
 
-[connection signal="wave_started" from="." to="wave_spawner/canvas_layer/ui/wave_clock/name_label_stuff/wave_name_label" method="set_current_hour"]
+[connection signal="any_wave_started" from="." to="canvas_layer/margin_container/h_box_container" method="set_use_resume_button" binds= [true]]
+[connection signal="stopped_everything" from="." to="canvas_layer/margin_container/h_box_container" method="set_use_resume_button" binds= [false]]
+[connection signal="wave_started" from="." to="wave_spawner/canvas_layer/ui/wave_clock/wave_timer/wave_index_label" method="set_wave_index"]
 [connection signal="bell_rang" from="bell" to="." method="proceed_to_next_wave"]
 
 [editable path="nav_region/fmj_level_mesh"]

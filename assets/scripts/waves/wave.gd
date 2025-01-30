@@ -42,3 +42,6 @@ static func new_from_wave_index(index : int) -> Wave:
 	print("Wave difficulty: ", result.difficulty)
 	print("Wave scenes: ", result.scenes)
 	return result
+
+static func wave_stops_time(idx: int, offset := 0) -> bool:
+	return idx - offset == Hour.MIDNIGHT or idx - offset == Hour.HIGH_NOON

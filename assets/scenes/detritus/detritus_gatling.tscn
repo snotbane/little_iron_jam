@@ -1,5 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyt6oitg7ejkk"]
+[gd_scene load_steps=4 format=3 uid="uid://dyt6oitg7ejkk"]
 
 [ext_resource type="PackedScene" uid="uid://bj01gxryr1x3x" path="res://assets/scenes/detritus/detritus_weapon.tscn" id="1_jww3u"]
+[ext_resource type="PackedScene" uid="uid://dbk7uke1u4jo3" path="res://assets/prefabs/gattler.tscn" id="2_twrs3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2mpbf"]
+size = Vector3(0.776367, 0.807861, 2.70251)
 
 [node name="detritus" instance=ExtResource("1_jww3u")]
+
+[node name="shape" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0701904, 0.0548706)
+shape = SubResource("BoxShape3D_2mpbf")
+
+[node name="gattler" parent="." index="3" instance=ExtResource("2_twrs3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.197215, 1.20302)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://0f4vk8qx8f57"]
+[gd_scene load_steps=10 format=3 uid="uid://0f4vk8qx8f57"]
 
 [ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_pywu8"]
 [ext_resource type="Script" path="res://assets/scripts/weapons/weapon_gatling.gd" id="2_1kktl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://kn1x77fba10f" path="res://assets/models/gattler/gattler_material.tres" id="5_n5pqe"]
 [ext_resource type="Material" uid="uid://dl02l1cjw2rrw" path="res://assets/models/gattler/gattler_damage_material.tres" id="6_u6jx5"]
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="6_x38i6"]
+[ext_resource type="Script" path="res://assets/scripts/other/casing_spawner.gd" id="9_li8rh"]
 
 [node name="weapon_gatling" node_paths=PackedStringArray("rotator_main", "rotator_sub", "anim_player", "mesh", "bullet_spawn_location") instance=ExtResource("1_pywu8")]
 script = ExtResource("2_1kktl")
@@ -43,6 +44,7 @@ bones/4/scale = Vector3(1.00826, 1, 1.00826)
 bones/5/rotation = Quaternion(0.0824806, 4.39934e-08, 1.68171e-07, 0.996593)
 bones/6/position = Vector3(0, 0, 0)
 bones/6/rotation = Quaternion(0, 4.16334e-14, 0, 1)
+bones/6/scale = Vector3(1, 1, 1)
 
 [node name="barrel" type="BoneAttachment3D" parent="gattler/Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 3.2148e-07, 2.05099e-06, -1.96478e-06, -0.17251, 0.985008, 6.70476e-07, -0.985008, -0.17251, 1.39107e-08, 2.93671e-14, -0.0441064)
@@ -52,6 +54,10 @@ bone_idx = 1
 [node name="muzzle_flash" parent="gattler/Armature/Skeleton3D/barrel" index="0" instance=ExtResource("6_x38i6")]
 transform = Transform3D(1.44012, -8.20509e-07, 9.63003e-08, 4.36072e-07, 2.74335, -0.204254, -3.60461e-08, 0.406963, 1.37689, 0.00152358, 2.4972, 0.471372)
 visible = false
+
+[node name="casing_spawner" type="Node3D" parent="gattler/Armature/Skeleton3D/barrel" index="1"]
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 2.84404e-07, 1.13585, 0.281099)
+script = ExtResource("9_li8rh")
 
 [node name="rotator1" type="BoneAttachment3D" parent="gattler/Armature/Skeleton3D" index="2"]
 transform = Transform3D(1, 5.06589e-10, 1.90995e-06, -1.90988e-06, -0.00822875, 0.999966, 1.62231e-08, -0.999966, -0.00822875, 3.07234e-07, -0.157401, -0.942841)
@@ -85,5 +91,7 @@ external_skeleton = NodePath("../..")
 
 [node name="bullet_spawn" type="Node3D" parent="gattler" index="1"]
 transform = Transform3D(1.02787, 0, 0, 0, 0.993483, 0, 0, 0, 1.02787, 0, 0, -2.5)
+
+[connection signal="fired" from="." to="gattler/Armature/Skeleton3D/barrel/casing_spawner" method="spawn"]
 
 [editable path="gattler"]

@@ -92,9 +92,18 @@ func die() -> void:
 		# drop_weapon()
 	drop_weapon()
 	drop_shells()
+	create_poof()
 	if can_scream: scream(SCREAM_AUDIO)
 	died.emit()
 	actor.queue_free.call_deferred()
+
+
+func create_poof() -> void:
+	var particles := preload("res://assets/prefabs/poof_ring_destroy.tscn").instantiate()
+	get_tree().root.add_child(particles)
+	particles.global_position = self.global_position
+	particles.emitting = true
+	particles.finished.connect(particles.queue_free)
 
 
 func scream(stream: AudioStream, volume := 2.0) -> void:

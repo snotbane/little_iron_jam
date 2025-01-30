@@ -6,6 +6,8 @@ static var inst : Node
 signal speed_changed(value: float)
 signal on_dodge
 
+@export var particles : GPUParticles3D
+
 @export_category("Walk")
 
 @export var walk_speed : float = 5.0
@@ -68,6 +70,8 @@ func _physics_process(delta: float) -> void:
 
 	pawn.velocity -= pawn.velocity * damping * delta
 	speed_changed.emit(pawn.velocity.length_squared())
+
+	particles.emitting = pawn.velocity.length_squared() > 0.5
 
 	pawn.move_and_slide()
 

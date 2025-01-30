@@ -23,13 +23,15 @@ func _ready() -> void:
 	await super._ready()
 
 	state = State.CHASING
-	self.target_reached.connect(attack)
 
 
 func _process(delta: float) -> void:
 	match state:
 		State.CHASING:
 			process_rotate_to_target_forwards(delta)
+			if self.is_target_reached() and get_is_facing_kill_target():
+				attack()
+
 
 
 func _physics_process(delta: float) -> void:

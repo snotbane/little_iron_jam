@@ -36,17 +36,17 @@ text = "30"
 [node name="buck" parent="pawn" index="2" instance=ExtResource("2_kvpmg")]
 
 [node name="Skeleton3D" parent="pawn/buck/Armature" index="0"]
-bones/1/position = Vector3(0.0223313, 0.412667, 1.77977)
-bones/1/rotation = Quaternion(-0.681136, 0.0188951, -0.0193407, 0.731658)
+bones/1/position = Vector3(0.014449, 0.41299, 1.77977)
+bones/1/rotation = Quaternion(-0.684325, 0.0122268, -0.0125152, 0.728967)
 bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
 bones/3/rotation = Quaternion(-2.06384e-08, 0.952897, 0.303295, 7.19417e-08)
-bones/4/position = Vector3(-0.893061, 2.12373, 0.14231)
-bones/4/rotation = Quaternion(0.00788471, -0.00159673, 0.00177626, 0.999966)
+bones/4/position = Vector3(-0.893442, 2.05236, 0.152501)
+bones/4/rotation = Quaternion(-0.139157, -0.000542974, -0.00653024, 0.990249)
 bones/5/position = Vector3(0.884316, 1.85048, 1.8528e-09)
 bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
 
 [node name="body" type="BoneAttachment3D" parent="pawn/buck/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.998538, 0.0441272, 0.0312249, 0.0540417, 0.800958, 0.596277, 0.00130225, 0.597093, -0.802171, 0.0270711, 0.544717, -0.0659864)
+transform = Transform3D(-0.999388, 0.0286443, 0.0200903, 0.0349804, 0.806599, 0.590063, 0.000697092, 0.590404, -0.807107, 0.0172471, 0.529729, -0.067022)
 bone_name = "body"
 bone_idx = 2
 
@@ -57,6 +57,9 @@ ammo = NodePath("../../../../../ammo")
 
 [node name="node_3d" parent="pawn/buck/Armature/Skeleton3D/body/weapon_config_buck" index="1"]
 transform = Transform3D(1, 0.000136316, 0.000613763, -0.000539042, 0.688354, 0.725374, -0.000323606, -0.725374, 0.688354, -0.395306, 0.484465, 0.13757)
+
+[node name="poof_ring" parent="pawn/buck/Armature/Skeleton3D" index="2"]
+emitting = false
 
 [node name="animation_tree" parent="pawn/buck" index="3"]
 root_motion_track = NodePath("Armature/Skeleton3D:root")

@@ -90,7 +90,7 @@ func physics_process_walk_to_target(delta: float) -> void:
 func get_is_facing_kill_target(angle_margin := 2.0) -> bool:
 	if not kill_target: return false
 	var delta := (kill_target.global_position - pawn.global_position).normalized()
-	var dot_x := pawn.global_basis.x.dot(delta)
+	var dot_x := absf(pawn.global_basis.x.dot(delta))
 	var dot_z := -pawn.global_basis.z.dot(delta)
 	return rad_to_deg(sin(dot_x)) < angle_margin and dot_z > 0.0
 

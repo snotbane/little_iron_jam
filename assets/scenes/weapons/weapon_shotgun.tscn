@@ -11,7 +11,7 @@
 [node name="weapon_shotgun" node_paths=PackedStringArray("anim_player", "mesh", "bullet_spawn_location") instance=ExtResource("1_iibum")]
 anim_player = NodePath("shotgun/AnimationPlayer")
 mesh = NodePath("shotgun/Armature/Skeleton3D/shotgun")
-max_health = 30
+max_health = 40
 bullet_scene = ExtResource("2_u7q83")
 bullet_spawn_location = NodePath("shotgun/bullet_spawn")
 projectile_count = 5

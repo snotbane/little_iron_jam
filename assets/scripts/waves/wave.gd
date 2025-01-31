@@ -39,7 +39,7 @@ static func new_from_wave_index(index : int) -> Wave:
 		result.scenes["res://assets/scenes/pickups/shell.tscn"] = 3
 	else:
 		result = SETTINGS.generate_wave(index)
-	if hour > 0 and hour % UPGRADE_FREQUENCY == 0:
+	if index > 0 and hour % UPGRADE_FREQUENCY == 0:
 		result.scenes["res://assets/scenes/detritus/upgrade_crate.tscn"] = 1
 
 

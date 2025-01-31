@@ -264,9 +264,9 @@ layout_mode = 2
 bbcode_enabled = true
 text = "		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]THE   MAKERS[/font][/font_size]
 
-[img]res://assets/user_interface/credits_nulture_icon.png[/img]     [font_size=36][font=res://assets/fonts/Arbutus-Regular.ttf][color=#9a3f9f][url=https://nulture.carrd.co][hint=https://nulture.carrd.co]NULTURE[/hint][/url][/color][/font][/font_size]
+[img]res://assets/user_interface/credits_nulture_icon.png[/img]     [font_size=36][font=res://assets/fonts/Arbutus-Regular.ttf][color=#f02020][url=https://nulture.carrd.co][hint=https://nulture.carrd.co]NULTURE[/hint][/url][/color][/font][/font_size]
 					Codesmithing  •  Foley  •  Game Design
-[img]res://assets/user_interface/credits_natesolio_icon.png[/img]     [font_size=36][font=res://assets/fonts/Arbutus-Regular.ttf]NATESOLIO[/font][/font_size]
+[img]res://assets/user_interface/credits_natesolio_icon.png[/img]     [font_size=36][font=res://assets/fonts/Arbutus-Regular.ttf][color=#f02020][url=https://natesolio.itch.io][hint=https://natesolio.itch.io]NATESOLIO[/hint][/url][/color][/font][/font_size]
 					Modeling  •  Animation  •  Music  •  Game Design
 
 		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]INFORMATION[/font][/font_size]

@@ -34,22 +34,22 @@ shape = SubResource("BoxShape3D_qrv6e")
 
 [node name="ammo_count_label" parent="pawn/ammo" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.81014, 0)
-text = "30"
+text = "45"
 
 [node name="buck" parent="pawn" index="2" instance=ExtResource("2_kvpmg")]
 
 [node name="Skeleton3D" parent="pawn/buck/Armature" index="0"]
-bones/1/position = Vector3(0.0135258, 0.410562, 1.77977)
-bones/1/rotation = Quaternion(-0.684331, 0.0116469, -0.0117731, 0.728984)
+bones/1/position = Vector3(0.00973035, 0.413059, 1.77977)
+bones/1/rotation = Quaternion(-0.686199, 0.00823389, -0.00842809, 0.727319)
 bones/2/rotation = Quaternion(-5.96783e-08, 0.480469, 0.877012, -3.62744e-08)
 bones/3/rotation = Quaternion(-2.06384e-08, 0.952897, 0.303295, 7.19417e-08)
-bones/4/position = Vector3(-0.889872, 2.19141, 0.0835389)
-bones/4/rotation = Quaternion(0.18205, 0.000264177, 0.011574, 0.983221)
+bones/4/position = Vector3(-0.892929, 1.94316, 0.148656)
+bones/4/rotation = Quaternion(-0.143727, -0.000111342, -0.00674646, 0.989594)
 bones/5/position = Vector3(0.884316, 1.85048, 1.8528e-09)
 bones/5/rotation = Quaternion(-0.0239374, 3.71995e-09, -8.90716e-11, 0.999713)
 
 [node name="body" type="BoneAttachment3D" parent="pawn/buck/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.999451, 0.0272314, 0.018846, 0.0331054, 0.806642, 0.590113, 0.000867589, 0.590413, -0.807101, 0.0157909, 0.527338, -0.0670204)
+transform = Transform3D(-0.999722, 0.0193252, 0.0134823, 0.0235599, 0.809808, 0.586221, 0.000410754, 0.586376, -0.810039, 0.0115062, 0.52061, -0.0675812)
 bone_name = "body"
 bone_idx = 2
 

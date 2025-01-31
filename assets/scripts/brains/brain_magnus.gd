@@ -62,6 +62,9 @@ func _physics_process(delta: float) -> void:
 		State.CHASING:
 			physics_process_walk_forward(delta)
 		State.ATTACKING:
+			if not kill_target:
+				weapon_config.is_shooting = false
+				state = State.IDLING
 			if can_see_kill_target:
 				physics_process_walk_sideways(delta, turn_switch)
 			else:

@@ -26,11 +26,29 @@ font_size = 60
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_ggdod"]
-font = ExtResource("3_fc223")
-font_size = 48
-outline_size = 20
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="GDScript" id="GDScript_d74ie"]
+script/source = "extends Control
+
+@export var dodge_prompt : Control
+@export var swap_prompt : Control
+@export var shoot_prompt : Control
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"dodge\"):
+		if dodge_prompt and dodge_prompt.visible:
+			dodge_prompt.queue_free()
+			dodge_prompt = null
+	if event.is_action_pressed(\"shoot\") or event.is_action_pressed(\"shoot_enforce_gamepad\"):
+		if shoot_prompt and shoot_prompt.visible:
+			shoot_prompt.queue_free()
+			shoot_prompt = null
+
+
+func _on_vacuum_collected_weapon() -> void:
+	if swap_prompt:
+		swap_prompt.queue_free()	
+		swap_prompt = null
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_qx8tg"]
 font = ExtResource("3_fc223")
@@ -249,32 +267,66 @@ script = ExtResource("2_lbq4v")
 scale_up_per_bullet = 0.04
 scale_down_alpha = 2.0
 
-[node name="control" type="Control" parent="."]
+[node name="tutorial_prompts" type="HBoxContainer" parent="." node_paths=PackedStringArray("dodge_prompt", "swap_prompt", "shoot_prompt")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_d74ie")
+dodge_prompt = NodePath("v_box_container/dodge_prompt")
+swap_prompt = NodePath("v_box_container/swap_prompt")
+shoot_prompt = NodePath("v_box_container/shoot_prompt")
 
-[node name="info_label" type="Label" parent="control"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 80.0
-offset_top = -44.0
-offset_right = 120.0
-offset_bottom = 19.0
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_ggdod")
-vertical_alignment = 1
+[node name="control" type="Control" parent="tutorial_prompts"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="control2" type="Control" parent="tutorial_prompts"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="v_box_container" type="VBoxContainer" parent="tutorial_prompts"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="dodge_prompt" type="RichTextLabel" parent="tutorial_prompts/v_box_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("5_ibrwm")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "SPACE         ( Keyboard )
+A or LB         ( Gamepad )"
+fit_content = true
+
+[node name="swap_prompt" type="RichTextLabel" parent="tutorial_prompts/v_box_container"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("5_ibrwm")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "E              (Keyboard)
+B              (Gamepad)"
+fit_content = true
+
+[node name="shoot_prompt" type="RichTextLabel" parent="tutorial_prompts/v_box_container"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("5_ibrwm")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Mouse1       ( Keyboard )
+X or RT         ( Gamepad )"
+fit_content = true
 
 [node name="game_over" type="Control" parent="."]
 visible = false

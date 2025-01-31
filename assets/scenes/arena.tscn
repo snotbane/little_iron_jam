@@ -20,7 +20,7 @@ scenes = {
 "res://assets/scenes/enemies/stinker.tscn": 1
 }
 crates = 0
-duration = 30.0
+duration = 25.0
 difficulty = 0.0
 
 [sub_resource type="Resource" id="Resource_m86u1"]
@@ -29,7 +29,7 @@ scenes = {
 "res://assets/scenes/enemies/stinker.tscn": 3
 }
 crates = 0
-duration = 20.0
+duration = 25.0
 difficulty = 0.0
 
 [sub_resource type="Resource" id="Resource_5b0ha"]
@@ -39,7 +39,7 @@ scenes = {
 "res://assets/scenes/enemies/stinker.tscn": 2
 }
 crates = 0
-duration = 20.0
+duration = 25.0
 difficulty = 0.0
 
 [sub_resource type="Resource" id="Resource_8lwtp"]
@@ -567,7 +567,7 @@ wave_values = [{
 }]
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.116262, 0.441406, -1.71363e-07, -0.967018, 0.254703, 0.456461, -0.22662, -0.8604, 0, 0, 0)
+transform = Transform3D(0.889744, 0.116262, 0.441406, -9.31323e-08, -0.967018, 0.254703, 0.456461, -0.22662, -0.8604, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(1, 0.25, 0, 1)
 light_energy = 3.25
@@ -625,7 +625,7 @@ wave_values = [{
 }]
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.566973, -0.405774, 0.71686, 0.0302858, 0.879935, 0.474127, -0.823179, -0.247107, 0.511189, 0, 0, 0)
+transform = Transform3D(0.566973, -0.405774, 0.716859, 0.0302858, 0.879935, 0.474127, -0.823179, -0.247107, 0.511188, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0, 0.0327231, 0.0952599, 1)
 light_energy = 0.0

@@ -46,7 +46,7 @@ script = ExtResource("1_5b8u2")
 scene_path = "res://assets/scenes/enemies/magnus.tscn"
 difficulty_cost = 15.0
 difficulty_time = 16.0
-appearance_weight = 1.0
+appearance_weight = 0.666
 appearance_minimum_wave = 33
 
 [sub_resource type="Curve" id="Curve_r0mv2"]

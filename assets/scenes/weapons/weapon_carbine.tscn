@@ -14,7 +14,7 @@
 anim_player = NodePath("rifle/AnimationPlayer")
 mesh = NodePath("rifle/Armature/Skeleton3D/Mesh")
 fire_anim_name = &"fire+reload"
-max_health = 30
+max_health = 40
 bullet_scene = ExtResource("2_4pk8x")
 bullet_spawn_location = NodePath("rifle/bullet_spawn")
 bullet_cost = 5

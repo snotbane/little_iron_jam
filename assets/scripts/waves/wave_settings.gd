@@ -9,7 +9,7 @@ static var RANDOM := RandomNumberGenerator.new()
 @export var overall_difficulty_levels : float
 
 @export var hour_difficulty_curve : Curve
-@export var wave_duration_interval : float = 20.0
+@export var wave_duration_interval : float = 25.0
 
 var object_weights : Array
 
@@ -36,6 +36,8 @@ func generate_wave(index: int) -> Wave:
 			result.scenes[chosen_object.scene_path] = 1
 
 	# result.duration = ceilf(result.duration / wave_duration_interval) * wave_duration_interval
-	result.duration = wave_duration_interval
+
+	## Hard coding this in because I don't know????
+	result.duration = 25.0 if index % Wave.HOURS_IN_DAY != Wave.Hour.HIGH_NOON else 0.0
 	return result
 

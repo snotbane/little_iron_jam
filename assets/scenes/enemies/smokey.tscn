@@ -55,27 +55,28 @@ graph_offset = Vector2(-75, -53)
 shape = SubResource("SphereShape3D_agk6h")
 
 [node name="ammo" parent="pawn" index="1"]
-shell_loss_amount = 10
+shell_loss_amount = 14
 weapon_drop_on_death = ExtResource("2_nhst2")
 health = 8
 
 [node name="ammo_count_label" parent="pawn/ammo" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+text = "8"
 
 [node name="smokey" parent="pawn" index="2" instance=ExtResource("2_5giu5")]
 
 [node name="Skeleton3D" parent="pawn/smokey/Armature" index="0"]
-bones/1/position = Vector3(-0.00234139, 0.742113, 0.0844493)
-bones/1/rotation = Quaternion(-0.00156431, 0.994825, 0.101593, -0.000204177)
+bones/1/position = Vector3(-0.022652, 0.741772, 0.0414832)
+bones/1/rotation = Quaternion(-0.0151359, 0.991962, 0.12561, -0.00197287)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/position = Vector3(2.79184e-14, 3.50211e-07, -2.57698e-08)
-bones/2/rotation = Quaternion(-0.669395, -1.65028e-07, -2.15878e-07, 0.742907)
+bones/2/rotation = Quaternion(-0.63868, -1.74198e-07, -2.0845e-07, 0.769473)
 
 [node name="mesh" parent="pawn/smokey/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_hwle1")
 
 [node name="bone_attachment_3d" type="BoneAttachment3D" parent="pawn/smokey/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999995, 0.00307102, 0.000723704, -0.00315392, 0.979353, 0.202133, -8.80062e-05, -0.202134, 0.979358, 0.00234143, 0.742113, -0.0844493)
+transform = Transform3D(0.999534, 0.0295329, 0.00771607, -0.0305241, 0.967986, 0.24914, -0.000111211, -0.24926, 0.968437, 0.022652, 0.741772, -0.0414832)
 bone_name = "body"
 bone_idx = 1
 

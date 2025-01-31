@@ -3,6 +3,10 @@ class_name Vacuum extends Area3D
 
 signal on_sucked(value: bool)
 signal collected
+signal collected_weapon
+
+signal on_overlap_weapon_entered
+signal on_overlap_weapon_exited
 
 @export var crosshair : Node
 var weapon_config : WeaponConfig :
@@ -71,10 +75,14 @@ func _physics_process(delta: float) -> void:
 
 func _body_entered(body: Node3D) -> void:
 	prospects.push_back(body)
+	if body is PickupWeapon:
+		on_overlap_weapon_entered.emit()
 
 
 func _body_exited(body: Node3D) -> void:
 	prospects.erase(body)
+	if body is PickupWeapon:
+		on_overlap_weapon_exited.emit()
 
 
 func collect(body: RigidBody3D) -> void:

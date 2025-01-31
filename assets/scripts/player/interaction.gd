@@ -1,6 +1,8 @@
 
 extends Node
 
+signal on_collected
+
 @onready var ammo : Ammo = self.get_parent()
 
 
@@ -34,3 +36,4 @@ func try_collect() -> void:
 	focused_pickup._collect(ammo)
 	focused_pickup.queue_free()
 	pickup_stack.pop_back()
+	on_collected.emit()

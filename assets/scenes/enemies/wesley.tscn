@@ -104,7 +104,7 @@ damage = 10
 shape = SubResource("BoxShape3D_p0n00")
 
 [node name="ammo" parent="pawn" index="1"]
-shell_loss_amount = 50
+shell_loss_amount = 20
 weapon_drop_on_death = ExtResource("2_citca")
 health = 40
 
@@ -143,12 +143,12 @@ bones/13/scale = Vector3(1, 1, 1)
 surface_material_override/0 = ExtResource("3_r16x8")
 
 [node name="aim_bone" type="BoneAttachment3D" parent="pawn/wesley/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 3.10978e-07, -4.3892e-07, -2.09409e-08, 0.837844, 0.545909, 5.37512e-07, -0.545909, 0.837845, -1.19445e-08, 1.26715, 0.29239)
+transform = Transform3D(1, 3.10977e-07, -4.38919e-07, -2.09409e-08, 0.837844, 0.545909, 5.37511e-07, -0.545909, 0.837845, -1.1945e-08, 1.26715, 0.29239)
 bone_name = "chest"
 bone_idx = 2
 
 [node name="laser_bone" type="BoneAttachment3D" parent="pawn/wesley/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 6.10856e-07, -9.57797e-08, 2.73339e-07, -0.297786, 0.954633, 5.54621e-07, -0.954633, -0.297786, -0.225024, 1.20762, 0.23606)
+transform = Transform3D(1, 6.10855e-07, -9.57799e-08, 2.73339e-07, -0.297786, 0.954633, 5.5462e-07, -0.954633, -0.297786, -0.225024, 1.20762, 0.23606)
 bone_name = "canister"
 bone_idx = 4
 
@@ -160,7 +160,7 @@ mesh = SubResource("QuadMesh_bdlb5")
 surface_material_override/0 = SubResource("StandardMaterial3D_lbsu1")
 
 [node name="weapon_bone" type="BoneAttachment3D" parent="pawn/wesley/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 8.43503e-07, -4.25799e-07, 3.60832e-07, 0.0755765, 0.99714, 8.73271e-07, -0.99714, 0.0755766, 0.222652, 1.24623, 0.00828436)
+transform = Transform3D(1, 8.43502e-07, -4.25798e-07, 3.60832e-07, 0.0755758, 0.99714, 8.73269e-07, -0.99714, 0.0755758, 0.222651, 1.24622, 0.00828469)
 bone_name = "rifle"
 bone_idx = 5
 
@@ -179,6 +179,7 @@ stream = ExtResource("5_af5m6")
 
 [node name="poof_ring" parent="pawn/wesley" index="4" instance=ExtResource("7_k11aw")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+emitting = false
 amount = 15
 lifetime = 1.0
 

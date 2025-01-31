@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bev2ptnq6l83r"]
+[gd_scene load_steps=12 format=3 uid="uid://bev2ptnq6l83r"]
 
 [ext_resource type="FontFile" uid="uid://32ok5fg5bub" path="res://assets/fonts/Danfo-Regular.ttf" id="1_5cce8"]
 [ext_resource type="Texture2D" uid="uid://c14ly2r5osdyd" path="res://assets/user_interface/cover_menu.tres" id="1_y6007"]
@@ -18,6 +18,13 @@ MarginContainer/constants/margin_right = 40
 MarginContainer/constants/margin_top = 40
 RichTextLabel/constants/outline_size = 12
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_4wu38")
+
+[sub_resource type="GDScript" id="GDScript_qu5yx"]
+script/source = "extends Control
+
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+"
 
 [sub_resource type="Animation" id="Animation_u7gws"]
 length = 0.001
@@ -120,6 +127,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_xxpx4")
+script = SubResource("GDScript_qu5yx")
 
 [node name="texture_rect" type="TextureRect" parent="."]
 texture_filter = 1

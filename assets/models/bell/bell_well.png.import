@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvgfb2yov6ver"
 path.s3tc="res://.godot/imported/bell_well.png-349320159128fe293c7f3bdc1fa3a561.s3tc.ctex"
+path.etc2="res://.godot/imported/bell_well.png-349320159128fe293c7f3bdc1fa3a561.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/bell/bell_well.png"
-dest_files=["res://.godot/imported/bell_well.png-349320159128fe293c7f3bdc1fa3a561.s3tc.ctex"]
+dest_files=["res://.godot/imported/bell_well.png-349320159128fe293c7f3bdc1fa3a561.s3tc.ctex", "res://.godot/imported/bell_well.png-349320159128fe293c7f3bdc1fa3a561.etc2.ctex"]
 
 [params]
 

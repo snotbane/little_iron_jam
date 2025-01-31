@@ -94,7 +94,7 @@ script/source = "extends Label
 
 
 func set_wave_index(idx: int) -> void:
-	self.text = \"Wave   %s\" % str(idx + 1)
+	self.text = \"Round   %s\" % str(idx + 1)
 "
 
 [sub_resource type="Animation" id="Animation_0jbu8"]
@@ -296,7 +296,7 @@ sky_material = SubResource("ProceduralSkyMaterial_67aro")
 
 [sub_resource type="Environment" id="Environment_od2qt"]
 background_mode = 2
-background_energy_multiplier = 0.8
+background_energy_multiplier = 0.75
 sky = SubResource("Sky_cdym1")
 tonemap_mode = 2
 
@@ -354,8 +354,10 @@ grow_vertical = 2
 [node name="wave_clock" type="Control" parent="wave_spawner/canvas_layer/ui"]
 layout_mode = 1
 anchors_preset = 0
-offset_right = 106.0
-offset_bottom = 106.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 138.0
+offset_bottom = 138.0
 pivot_offset = Vector2(53, 53)
 
 [node name="name_label_stuff" type="Control" parent="wave_spawner/canvas_layer/ui/wave_clock"]
@@ -441,7 +443,7 @@ text = "Sunset"
 label_settings = SubResource("LabelSettings_kv482")
 horizontal_alignment = 1
 script = ExtResource("4_eftfn")
-wave_values = ["Sunset", "Moonrise", "Starlight", "Dead   of   Night", "Wee   Hours", "The   Darkest", "Crack   of   Dawn", "Morning   Glory", "Tea   Time", "High   Noon", "The   Finest", "Quittin'   Time"]
+wave_values = ["Sunset", "Moonrise", "Evening   Paces", "Dead   of   Night", "Wee   Hours", "The   Darkest", "Crack   of   Dawn", "Morning   Glory", "Tea   Time", "High   Noon", "The   Finest", "Quittin'   Time"]
 
 [node name="wave_timer" type="Control" parent="wave_spawner/canvas_layer/ui/wave_clock"]
 layout_mode = 1
@@ -465,7 +467,6 @@ anchor_bottom = 1.0
 offset_top = -32.0
 offset_right = 134.0
 grow_vertical = 0
-text = "Wave   Fart"
 label_settings = SubResource("LabelSettings_n84jw")
 script = SubResource("GDScript_c53jc")
 
@@ -566,12 +567,12 @@ wave_values = [{
 }, {
 "background_energy_multiplier": 0.8
 }]
-current_hour = 11
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.220747, 0.399535, 4.24683e-07, -0.875286, 0.483604, 0.456462, -0.430283, -0.778781, 0, 0, 0)
+transform = Transform3D(0.889744, 0.116262, 0.441406, -1.56462e-07, -0.967018, 0.254703, 0.456461, -0.22662, -0.8604, 0, 0, 0)
 rotation_edit_mode = 1
-light_color = Color(0.948, 1, 0.87, 1)
+light_color = Color(1, 0.25, 0, 1)
+light_energy = 3.25
 shadow_enabled = true
 script = ExtResource("3_j0by0")
 alpha_time = 5.0
@@ -624,12 +625,11 @@ wave_values = [{
 "energy": 1.0,
 "quat": Quaternion(0.941251, 0.0586313, 0.227356, -0.242732)
 }]
-current_hour = 11
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.566971, -0.00312385, -0.823731, 0.0302847, -0.999238, 0.0246342, -0.823181, -0.0389134, -0.566444, 0, 0, 0)
+transform = Transform3D(0.566973, -0.405774, 0.71686, 0.0302859, 0.879935, 0.474127, -0.823179, -0.247107, 0.511188, 0, 0, 0)
 rotation_edit_mode = 1
-light_color = Color(5.2267e-08, 0.0158411, 0.0197509, 1)
+light_color = Color(0, 0.0327231, 0.0952599, 1)
 light_energy = 0.0
 shadow_enabled = true
 script = ExtResource("3_j0by0")
@@ -683,7 +683,6 @@ wave_values = [{
 "energy": 0.0,
 "quat": Quaternion(0.884965, 0.00767286, -0.465248, -0.017952)
 }]
-current_hour = 7
 
 [node name="bell" parent="." instance=ExtResource("11_wuec8")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)

@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=4 uid="uid://brjyyjfucqicg"]
 
-[sub_resource type="Curve" id="Curve_ea8ix"]
-_data = [Vector2(0.131532, 0.00910437), 0.0, 0.0, 0, 0, Vector2(0.169369, 1), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_b4qcr"]
+_data = [Vector2(0.0666667, 0.000846863), 0.0, 0.0177635, 0, 0, Vector2(0.176577, 1), -1.53863e-06, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_lt63n"]
-curve = SubResource("Curve_ea8ix")
+curve = SubResource("Curve_b4qcr")
 
 [sub_resource type="Curve" id="Curve_4frdo"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -19,15 +19,14 @@ lifetime_randomness = 0.25
 emission_shape_scale = Vector3(1, 0, 1)
 spread = 180.0
 flatness = 1.0
-initial_velocity_min = 20.0
-initial_velocity_max = 20.0
+initial_velocity_min = 12.0
+initial_velocity_max = 12.0
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 gravity = Vector3(0, 4, 0)
-damping_min = 38.0
-damping_max = 42.0
-scale_min = 0.5
-scale_max = 4.5
+damping_min = 32.0
+damping_max = 36.0
+scale_max = 2.0
 scale_curve = SubResource("CurveTexture_lt63n")
 scale_over_velocity_min = 0.5
 scale_over_velocity_max = 3.0
@@ -54,13 +53,11 @@ _surfaces = [{
 }]
 
 [node name="poof_ring" type="GPUParticles3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 amount = 80
 lifetime = 2.0
 fixed_fps = 0
 visibility_aabb = AABB(-2, -1, -2, 4, 2, 4)
-local_coords = true
 draw_order = 3
-transform_align = 2
+transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_jfrkd")
 draw_pass_1 = SubResource("ArrayMesh_2v2hr")

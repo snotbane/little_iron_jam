@@ -176,7 +176,7 @@ E | RB or B  .   .   .   .   .   Swap Weapon on Ground
 
 		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]HOW   TO   PLAY[/font][/font_size]
 
-EVERYTHING IS BULLETS. You are about to face (or are currently facing) many waves of foes. Starting out, you will have no weapons -- only yourself. Every move you make, every shot you take, consumes BULLETS. If you run out, you'll be destroyed. Aim well, aim wisely, and go forth into the sunset!
+EVERYTHING IS BULLETS. You are about to face (or are currently facing) many waves of foes. Starting out, you will have no weapons—only yourself—to shoot. Every move you make, every shot you take, consumes BULLETS. If you run out, you'll be destroyed. Aim well, aim wisely, and go forth into the sunset!
 
 [font_size=16][color=#808080][i]...The final boss appears on the 3rd High Noon.[/i][/color][/font_size]
 
@@ -193,9 +193,11 @@ EVERYTHING IS BULLETS. You are about to face (or are currently facing) many wave
 
 		[font_size=36][font=res://assets/fonts/Danfo-Regular.ttf]TIPS[/font][/font_size]
 
+•   Upgrades come around once every three waves. Make sure to look for them!
 •   Use your dodge! It deals twice the amount of damage that it costs.
 •   Striking the bell before time runs out will give you extra time in future waves!
-•   Enemies can damage each other. Use this to your advantage!"
+•   Enemies can damage each other. Use this to your advantage!
+•   Weapons can break, but they are repaired when you vacuum them up."
 
 [node name="tab_container" type="TabContainer" parent="windows/how_to_play/panel_container/margin_container"]
 visible = false

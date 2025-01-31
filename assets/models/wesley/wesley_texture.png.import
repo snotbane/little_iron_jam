@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dahrngnytbl52"
 path.s3tc="res://.godot/imported/wesley_texture.png-ab4c7a8b1f1067bf0aa20744dda722df.s3tc.ctex"
+path.etc2="res://.godot/imported/wesley_texture.png-ab4c7a8b1f1067bf0aa20744dda722df.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/wesley/wesley_texture.png"
-dest_files=["res://.godot/imported/wesley_texture.png-ab4c7a8b1f1067bf0aa20744dda722df.s3tc.ctex"]
+dest_files=["res://.godot/imported/wesley_texture.png-ab4c7a8b1f1067bf0aa20744dda722df.s3tc.ctex", "res://.godot/imported/wesley_texture.png-ab4c7a8b1f1067bf0aa20744dda722df.etc2.ctex"]
 
 [params]
 

@@ -64,9 +64,12 @@ var total_resources_to_load := 0
 
 func _ready() -> void:
 	AudioServer.set_bus_mute(0, true)
-	await get_tree().create_timer(3.0).timeout
-	get_tree().change_scene_to_file(\"res://assets/scenes/main_menu.tscn\")
+	await get_tree().create_timer(1.5).timeout
+	get_tree().paused = false
+	$world.queue_free()
+	await get_tree().create_timer(0.1).timeout
 	AudioServer.set_bus_mute.call_deferred(0, false)
+	get_tree().change_scene_to_file(\"res://assets/scenes/main_menu.tscn\")
 "
 
 [node name="bootstrap" type="Node3D"]
@@ -147,17 +150,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 [node name="player" parent="world" instance=ExtResource("10_clnbb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70992, -0.1, 4.34625)
 
-[node name="Skeleton3D" parent="world/player/pawn/mesh_scene/Armature" index="0"]
-bones/8/position = Vector3(4.82685e-09, 1.21072e-07, 0)
-
-[node name="camera_3d" parent="world/player/camera_hook" index="1"]
-current = false
-
-[node name="canvas_layer" parent="world/player" index="2"]
-visible = false
-
 [node name="gpu_particles_3d" parent="world" instance=ExtResource("11_tfwve")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.888609, 5.53551, 4.80194)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.888609, 5.53551, 4.80194)
 
 [node name="weapon_pickup" parent="world" instance=ExtResource("14_85rdj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32931, 6.94159, 4.99944)
@@ -302,27 +296,16 @@ emitting = false
 
 [node name="poof_ring3" parent="world" instance=ExtResource("13_j42pn")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.62374, 5.5359, 0.929665)
+emitting = true
 one_shot = false
 
 [node name="gpu_particles_3d4" parent="world" instance=ExtResource("11_tfwve")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.401889, 4.34861, 3.30779)
 
 [connection signal="timeout" from="canvas_layer/control/timer" to="." method="check_load"]
-[connection signal="died" from="world/player/pawn/ammo" to="world/player/canvas_layer/ui/animation_player" method="play" binds= [&"game_over"]]
-[connection signal="received_upgrade_bullet_speed" from="world/player/pawn/ammo" to="world/player/canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [1]]
-[connection signal="received_upgrade_dodge" from="world/player/pawn/ammo" to="world/player/canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [0]]
-[connection signal="received_upgrade_vacuum" from="world/player/pawn/ammo" to="world/player/canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [2]]
 [connection signal="ready" from="world/weapon_gatling2" to="world/weapon_gatling2" method="set" binds= [&"health", 1]]
 [connection signal="ready" from="world/weapon_pistol2" to="world/weapon_pistol2" method="set" binds= [&"health", 1]]
 [connection signal="ready" from="world/poof_ring2" to="world/poof_ring2" method="restart"]
 [connection signal="ready" from="world/poof_ring3" to="world/poof_ring3" method="restart"]
 
 [editable path="world/hitspark"]
-[editable path="world/player"]
-[editable path="world/player/pawn"]
-[editable path="world/player/pawn/ammo"]
-[editable path="world/player/pawn/mesh_scene"]
-[editable path="world/player/canvas_layer/ui"]
-[editable path="world/player/canvas_layer/ui/upgrades/upgrade_list/boost"]
-[editable path="world/player/canvas_layer/ui/upgrades/upgrade_list/bullet_speed"]
-[editable path="world/player/canvas_layer/ui/upgrades/upgrade_list/vacuum"]

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://keti5vk2s8uq"
 path.s3tc="res://.godot/imported/gattler_texture.png-9441cbfae6f20ad6e435d99cf83a9d7a.s3tc.ctex"
+path.etc2="res://.godot/imported/gattler_texture.png-9441cbfae6f20ad6e435d99cf83a9d7a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/gattler/gattler_texture.png"
-dest_files=["res://.godot/imported/gattler_texture.png-9441cbfae6f20ad6e435d99cf83a9d7a.s3tc.ctex"]
+dest_files=["res://.godot/imported/gattler_texture.png-9441cbfae6f20ad6e435d99cf83a9d7a.s3tc.ctex", "res://.godot/imported/gattler_texture.png-9441cbfae6f20ad6e435d99cf83a9d7a.etc2.ctex"]
 
 [params]
 

@@ -55,6 +55,7 @@ func _ready() -> void:
 	inst = self
 	if is_game_over: return
 	timer.timeout.connect(proceed_to_next_wave)
+	await get_tree().create_timer(3.0).timeout
 	proceed_to_next_wave()
 
 
@@ -83,10 +84,10 @@ func stop_everything() -> void:
 func start_wave(wave: Wave) -> void:
 	current_wave = wave
 
-	if wave_index == Wave.Events.WESLEY:
-		music_clip = &"silence"
-	else:
-		match wave_hour:
+	match wave_index:
+		Wave.Events.WESLEY:	music_clip = &"silence"
+		0:	pass
+		_:	match wave_hour:
 			Wave.Hour.HIGH_NOON: music_clip = &"high_noon"
 			Wave.Hour.MIDNIGHT: music_clip = &"dead_of_night"
 			_: music_clip = &"victory" if Wave.wave_uses_victory_music(wave_index) else &"standard"
@@ -122,9 +123,12 @@ func actually_start_wave() -> void:
 			await get_tree().create_timer(0.25).timeout
 	check_enemy_group.call_deferred()
 
-	if wave_index == Wave.Events.WESLEY:
-		await get_tree().create_timer(3.0).timeout
-		music_clip = &"wesley"
+	match wave_index:
+		Wave.Events.WESLEY:
+			await get_tree().create_timer(3.0).timeout
+			music_clip = &"wesley"
+		0:
+			music_clip = &"standard"
 
 
 func end_wave() -> void:

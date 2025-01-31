@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2dap1m0grdgd"
 path.s3tc="res://.godot/imported/buck_texture.png-a55f6e949a4552b3ac49c2d7f2495133.s3tc.ctex"
+path.etc2="res://.godot/imported/buck_texture.png-a55f6e949a4552b3ac49c2d7f2495133.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/buck/buck_texture.png"
-dest_files=["res://.godot/imported/buck_texture.png-a55f6e949a4552b3ac49c2d7f2495133.s3tc.ctex"]
+dest_files=["res://.godot/imported/buck_texture.png-a55f6e949a4552b3ac49c2d7f2495133.s3tc.ctex", "res://.godot/imported/buck_texture.png-a55f6e949a4552b3ac49c2d7f2495133.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://hpwwl8o3t2l6"
 path.s3tc="res://.godot/imported/cave floor 6.jpg-d092bf8449433c9d2d9c684f897f66e3.s3tc.ctex"
+path.etc2="res://.godot/imported/cave floor 6.jpg-d092bf8449433c9d2d9c684f897f66e3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/level_meshes/cave floor 6.jpg"
-dest_files=["res://.godot/imported/cave floor 6.jpg-d092bf8449433c9d2d9c684f897f66e3.s3tc.ctex"]
+dest_files=["res://.godot/imported/cave floor 6.jpg-d092bf8449433c9d2d9c684f897f66e3.s3tc.ctex", "res://.godot/imported/cave floor 6.jpg-d092bf8449433c9d2d9c684f897f66e3.etc2.ctex"]
 
 [params]
 

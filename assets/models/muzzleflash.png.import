@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://onrmhavxbxef"
 path.s3tc="res://.godot/imported/muzzleflash.png-48043f221b627b1005c0a6a51f9d9632.s3tc.ctex"
+path.etc2="res://.godot/imported/muzzleflash.png-48043f221b627b1005c0a6a51f9d9632.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/muzzleflash.png"
-dest_files=["res://.godot/imported/muzzleflash.png-48043f221b627b1005c0a6a51f9d9632.s3tc.ctex"]
+dest_files=["res://.godot/imported/muzzleflash.png-48043f221b627b1005c0a6a51f9d9632.s3tc.ctex", "res://.godot/imported/muzzleflash.png-48043f221b627b1005c0a6a51f9d9632.etc2.ctex"]
 
 [params]
 

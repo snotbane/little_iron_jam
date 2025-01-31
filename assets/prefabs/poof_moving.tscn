@@ -20,8 +20,8 @@ initial_velocity_max = 6.0
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 gravity = Vector3(0, 2, 0)
-damping_min = 7.0
-damping_max = 11.0
+damping_min = 11.0
+damping_max = 15.0
 scale_min = 0.75
 scale_max = 2.25
 scale_over_velocity_min = 0.5
@@ -49,11 +49,11 @@ _surfaces = [{
 }]
 
 [node name="gpu_particles_3d" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 amount = 4
 lifetime = 0.5
 randomness = 0.25
 fixed_fps = 0
-draw_order = 3
-transform_align = 2
+transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_tysyx")
 draw_pass_1 = SubResource("ArrayMesh_p7dmn")

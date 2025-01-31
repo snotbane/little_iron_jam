@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b56c6og6oafuc"
 path.s3tc="res://.godot/imported/pistol texture.png-4cde7d15732ca85723fbea5c4c4f4d2f.s3tc.ctex"
+path.etc2="res://.godot/imported/pistol texture.png-4cde7d15732ca85723fbea5c4c4f4d2f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/pistol/pistol texture.png"
-dest_files=["res://.godot/imported/pistol texture.png-4cde7d15732ca85723fbea5c4c4f4d2f.s3tc.ctex"]
+dest_files=["res://.godot/imported/pistol texture.png-4cde7d15732ca85723fbea5c4c4f4d2f.s3tc.ctex", "res://.godot/imported/pistol texture.png-4cde7d15732ca85723fbea5c4c4f4d2f.etc2.ctex"]
 
 [params]
 

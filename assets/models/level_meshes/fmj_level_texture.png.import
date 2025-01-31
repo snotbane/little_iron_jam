@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ec3eg7v6x33p"
 path.s3tc="res://.godot/imported/fmj_level_texture.png-6a27331cc2d5f374d235d55941f8353f.s3tc.ctex"
+path.etc2="res://.godot/imported/fmj_level_texture.png-6a27331cc2d5f374d235d55941f8353f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/level_meshes/fmj_level_texture.png"
-dest_files=["res://.godot/imported/fmj_level_texture.png-6a27331cc2d5f374d235d55941f8353f.s3tc.ctex"]
+dest_files=["res://.godot/imported/fmj_level_texture.png-6a27331cc2d5f374d235d55941f8353f.s3tc.ctex", "res://.godot/imported/fmj_level_texture.png-6a27331cc2d5f374d235d55941f8353f.etc2.ctex"]
 
 [params]
 

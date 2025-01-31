@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://becpsh0bwexhi"]
+[gd_scene load_steps=33 format=3 uid="uid://becpsh0bwexhi"]
 
 [ext_resource type="Script" path="res://assets/scripts/player/player.gd" id="1_b2uww"]
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
@@ -14,6 +14,9 @@
 [ext_resource type="Material" uid="uid://c713old11x4xp" path="res://assets/models/jack/jack_material.tres" id="5_qnspn"]
 [ext_resource type="PackedScene" uid="uid://bikrt5av7f0d3" path="res://assets/scenes/player/player_ui.tscn" id="10_50bck"]
 [ext_resource type="PackedScene" uid="uid://dok6qd3hy7tp1" path="res://assets/prefabs/poof_moving.tscn" id="12_bepjl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kmeth"]
+radius = 0.875
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nd0xb"]
 height = 1.0
@@ -112,7 +115,8 @@ axis_lock_angular_z = true
 damage = 2
 
 [node name="shape" parent="pawn" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.874866, 0)
+shape = SubResource("SphereShape3D_kmeth")
 
 [node name="ammo" parent="pawn" index="1"]
 collision_mask = 12
@@ -212,14 +216,14 @@ suck_angle = 50.0
 [node name="player_input" type="Node" parent="pawn" node_paths=PackedStringArray("particles")]
 script = ExtResource("2_52ijy")
 particles = NodePath("../moving_particles")
-walk_speed = 75.0
+walk_speed = 37.5
 walk_damping = 10.0
 turn_speed = 20.0
-dodge_impulse = 20.0
-dodge_damping = 4.0
+dodge_impulse = 10.0
+dodge_damping = 2.0
 dodge_delay = 0.25
 dodge_ammo_cost = 1
-dodge_upgrade_impulse = 3.0
+dodge_upgrade_impulse = 2.0
 dodge_upgrade_damping = 0.0
 
 [node name="omni_light_3d" type="OmniLight3D" parent="pawn"]

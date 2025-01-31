@@ -354,10 +354,8 @@ grow_vertical = 2
 [node name="wave_clock" type="Control" parent="wave_spawner/canvas_layer/ui"]
 layout_mode = 1
 anchors_preset = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 138.0
-offset_bottom = 138.0
+offset_right = 106.0
+offset_bottom = 106.0
 pivot_offset = Vector2(53, 53)
 
 [node name="name_label_stuff" type="Control" parent="wave_spawner/canvas_layer/ui/wave_clock"]
@@ -569,7 +567,7 @@ wave_values = [{
 }]
 
 [node name="sun" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.889744, 0.116262, 0.441406, -1.56462e-07, -0.967018, 0.254703, 0.456461, -0.22662, -0.8604, 0, 0, 0)
+transform = Transform3D(0.889744, 0.116262, 0.441406, -1.71363e-07, -0.967018, 0.254703, 0.456461, -0.22662, -0.8604, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(1, 0.25, 0, 1)
 light_energy = 3.25
@@ -627,7 +625,7 @@ wave_values = [{
 }]
 
 [node name="moon" type="DirectionalLight3D" parent="." groups=["wave_timed"]]
-transform = Transform3D(0.566973, -0.405774, 0.71686, 0.0302859, 0.879935, 0.474127, -0.823179, -0.247107, 0.511188, 0, 0, 0)
+transform = Transform3D(0.566973, -0.405774, 0.71686, 0.0302858, 0.879935, 0.474127, -0.823179, -0.247107, 0.511189, 0, 0, 0)
 rotation_edit_mode = 1
 light_color = Color(0, 0.0327231, 0.0952599, 1)
 light_energy = 0.0

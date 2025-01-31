@@ -110,25 +110,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51116, 0)
 [node name="magnus" parent="pawn" index="2" instance=ExtResource("2_yqnmd")]
 
 [node name="Skeleton3D" parent="pawn/magnus/Armature" index="0"]
-bones/1/position = Vector3(-3.75948e-06, 1.49306, 2.86635e-06)
-bones/1/rotation = Quaternion(0.77824, -7.8352e-05, -6.16628e-05, 0.627967)
+bones/1/position = Vector3(-2.34589e-06, 1.50437, 1.79303e-06)
+bones/1/rotation = Quaternion(0.777552, -4.78321e-05, -3.77827e-05, 0.628819)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-0.490159, -0.488028, 0.603859, 0.39614)
+bones/2/rotation = Quaternion(-0.340231, -0.565234, 0.699389, 0.27497)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.396138, -0.603858, -0.488028, 0.490161)
-bones/4/rotation = Quaternion(0.304651, 6.49807e-07, -5.67704e-07, 0.952464)
-bones/5/rotation = Quaternion(0.618841, 0.472214, 0.380288, -0.49943)
+bones/3/rotation = Quaternion(0.274969, -0.699389, -0.565234, 0.340233)
+bones/4/rotation = Quaternion(0.304651, 6.49806e-07, -5.67705e-07, 0.952464)
+bones/5/rotation = Quaternion(0.613289, 0.478999, 0.386373, -0.495129)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(0.571341, -0.525724, 0.463766, 0.426737)
-bones/7/rotation = Quaternion(-0.61884, 0.472215, 0.38029, 0.499429)
-bones/8/rotation = Quaternion(0.571341, 0.525724, -0.463766, 0.426737)
+bones/6/rotation = Quaternion(0.661727, -0.608893, 0.321911, 0.296208)
+bones/7/rotation = Quaternion(-0.613298, 0.478988, 0.386364, 0.495136)
+bones/8/rotation = Quaternion(0.661727, 0.608893, -0.321911, 0.296208)
 bones/8/scale = Vector3(1, 1, 1)
 
 [node name="Mesh" parent="pawn/magnus/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_020vm")
 
 [node name="body" type="BoneAttachment3D" parent="pawn/magnus/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-1, 4.48896e-05, 0.0001943, -0.000199398, -0.211316, -0.977418, -2.81727e-06, -0.977418, 0.211316, 3.75948e-06, 1.49306, -2.86635e-06)
+transform = Transform3D(-1, 2.72476e-05, 0.00011883, -0.000121901, -0.209174, -0.977879, -1.78872e-06, -0.977879, 0.209174, 2.34589e-06, 1.50437, -1.79303e-06)
 bone_name = "body"
 bone_idx = 1
 
@@ -150,7 +150,7 @@ parameters/all/movement/walk/blend_position = Vector2(-0.000530481, -0.00803208)
 
 [node name="audio_stream_player_3d" type="AudioStreamPlayer3D" parent="pawn/magnus" index="3"]
 stream = ExtResource("4_o1vk5")
-volume_db = 4.0
+volume_db = 12.0
 
 [node name="poof_ring" parent="pawn/magnus" index="4" instance=ExtResource("8_8p531")]
 

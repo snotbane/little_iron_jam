@@ -4,6 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://c0jkwskm4sogv" path="res://assets/audio/damage_player_01.ogg" id="2_qfxr1"]
 
 [resource]
+playback_mode = 1
+random_pitch = 1.02
 streams_count = 2
 stream_0/stream = ExtResource("1_qoead")
 stream_1/stream = ExtResource("2_qfxr1")

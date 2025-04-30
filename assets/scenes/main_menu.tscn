@@ -113,9 +113,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8eoh6"]
 _data = {
-"RESET": SubResource("Animation_u7gws"),
-"fade_in": SubResource("Animation_cnlul"),
-"fade_out": SubResource("Animation_td4ic")
+&"RESET": SubResource("Animation_u7gws"),
+&"fade_in": SubResource("Animation_cnlul"),
+&"fade_out": SubResource("Animation_td4ic")
 }
 
 [node name="main_menu" type="Control"]
@@ -148,7 +148,7 @@ bus = &"Music"
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_8eoh6")
+&"": SubResource("AnimationLibrary_8eoh6")
 }
 
 [node name="main" type="MarginContainer" parent="."]
@@ -172,6 +172,15 @@ fit_content = true
 
 [node name="h_box_container" parent="main/v_box_container" instance=ExtResource("5_4k6d2")]
 layout_mode = 2
+
+[node name="windows" parent="main/v_box_container/h_box_container" index="1"]
+current_tab = 0
+
+[node name="control" parent="main/v_box_container/h_box_container/windows" index="1"]
+visible = true
+
+[node name="credits" parent="main/v_box_container/h_box_container/windows" index="3"]
+visible = false
 
 [connection signal="ready" from="animation_player" to="animation_player" method="play" binds= [&"fade_in"]]
 [connection signal="pressed" from="main/v_box_container/h_box_container/v_box_container/play_game" to="animation_player" method="play" binds= [&"fade_out"]]

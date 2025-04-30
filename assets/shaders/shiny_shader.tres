@@ -79,11 +79,11 @@ code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform sampler2D Albedo : source_color;
-uniform float Metallic = 1;
+uniform float Metallic = 1.0;
 uniform float Roughness = 0.5;
-uniform float Shine_Speed = 1;
+uniform float Shine_Speed = 1.0;
 uniform sampler2D ShineTexture : source_color, filter_nearest;
-uniform float Shine_Frequency = 10;
+uniform float Shine_Frequency = 10.0;
 uniform vec4 ShineColor : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
 
 

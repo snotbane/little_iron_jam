@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="WaveSettings" load_steps=10 format=3 uid="uid://bpvtrpkd8u74d"]
 
-[ext_resource type="Script" path="res://assets/scripts/waves/enemy_wave_settings.gd" id="1_5b8u2"]
-[ext_resource type="Script" path="res://assets/scripts/waves/wave_settings.gd" id="1_f2uto"]
+[ext_resource type="Script" uid="uid://bj05yan8p8gfn" path="res://assets/scripts/waves/enemy_wave_settings.gd" id="1_5b8u2"]
+[ext_resource type="Script" uid="uid://cfmiu563rbxgh" path="res://assets/scripts/waves/wave_settings.gd" id="1_f2uto"]
 
 [sub_resource type="Curve" id="Curve_2jpjp"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 bake_resolution = 12
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.083, 1), 0.0, 0.0, 1, 1, Vector2(0.166, 1), 0.0, -1.81625, 1, 1, Vector2(0.249, 0.849251), -1.81625, 0.886074, 1, 1, Vector2(0.332, 0.922795), 0.886074, 0.930176, 1, 1, Vector2(0.415, 1), 0.930176, 0.372874, 1, 1, Vector2(0.498, 1.03095), 0.372874, -0.372874, 1, 1, Vector2(0.581, 1), -0.372874, 0.633482, 1, 1, Vector2(0.664, 1.05258), 0.633482, 1.72002, 1, 1, Vector2(0.747, 1.19534), 1.72002, -4.11764, 1, 1, Vector2(0.83, 0.853577), -4.11764, 0.938196, 1, 1, Vector2(0.913, 0.931448), 0.938196, 0.825932, 1, 1, Vector2(0.996, 1), 0.825932, 0.0, 1, 0]
 point_count = 13
@@ -50,7 +50,7 @@ appearance_weight = 0.666
 appearance_minimum_wave = 33
 
 [sub_resource type="Curve" id="Curve_r0mv2"]
-max_value = 100.0
+_limits = [0.0, 100.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 294.448, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
 point_count = 2
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ciy73altvwc82"]
 
 [ext_resource type="PackedScene" uid="uid://d07hpd5wlopok" path="res://assets/scenes/weapon_config/weapon_config.tscn" id="1_d4ytu"]
-[ext_resource type="Script" path="res://assets/scripts/weapons/weapon_config_cyclic.gd" id="2_akv0p"]
+[ext_resource type="Script" uid="uid://cbej1bcxyh8tg" path="res://assets/scripts/weapons/weapon_config_cyclic.gd" id="2_akv0p"]
 [ext_resource type="PackedScene" uid="uid://d2xqcvhlhks64" path="res://assets/scenes/weapons/weapon_carbine.tscn" id="2_j180g"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_bx6c8"]

@@ -1,13 +1,13 @@
 [gd_scene load_steps=33 format=3 uid="uid://becpsh0bwexhi"]
 
-[ext_resource type="Script" path="res://assets/scripts/player/player.gd" id="1_b2uww"]
+[ext_resource type="Script" uid="uid://bpxc6u0rytjdp" path="res://assets/scripts/player/player.gd" id="1_b2uww"]
 [ext_resource type="PackedScene" uid="uid://b7fjixq684skw" path="res://assets/scenes/pawn.tscn" id="1_w8p5k"]
-[ext_resource type="Script" path="res://assets/scripts/player/player_movement.gd" id="2_52ijy"]
+[ext_resource type="Script" uid="uid://bj0qlcqw5h8x0" path="res://assets/scripts/player/player_movement.gd" id="2_52ijy"]
 [ext_resource type="PackedScene" uid="uid://38l7tovwc1uw" path="res://assets/scenes/player/crosshair.tscn" id="2_bufda"]
-[ext_resource type="Script" path="res://assets/scripts/player/interaction.gd" id="3_235ft"]
+[ext_resource type="Script" uid="uid://ixywb7f8q2f5" path="res://assets/scripts/player/interaction.gd" id="3_235ft"]
 [ext_resource type="PackedScene" uid="uid://csrge5d3x14ri" path="res://assets/models/jack/jack.glb" id="3_txy8l"]
 [ext_resource type="AudioStream" uid="uid://dli31rec2pcv1" path="res://assets/audio/upgrade.ogg" id="4_6ppom"]
-[ext_resource type="Script" path="res://assets/scripts/jack_anim_tree.gd" id="4_ew1kc"]
+[ext_resource type="Script" uid="uid://hkgnrh7xsee0" path="res://assets/scripts/jack_anim_tree.gd" id="4_ew1kc"]
 [ext_resource type="PackedScene" uid="uid://c48e78yo3bqt7" path="res://assets/scenes/player/vacuum.tscn" id="4_yu1wx"]
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="5_7f5fl"]
 [ext_resource type="AudioStream" uid="uid://cepjnnytjndrn" path="res://assets/audio/player_dodge.ogg" id="5_i1xyr"]
@@ -151,8 +151,7 @@ bones/5/rotation = Quaternion(0.20185, 0.0836079, -0.373439, 0.90156)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(-3.09086e-08, -0.707107, 0.707107, -5.33851e-08)
 bones/7/rotation = Quaternion(-3.09086e-08, -0.707107, 0.707107, -5.33851e-08)
-bones/8/rotation = Quaternion(0.707107, 0.000474727, 0.000474727, 0.707107)
-bones/8/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.707107, 0.000472788, 0.000472788, 0.707107)
 bones/9/rotation = Quaternion(-0.206189, 0.0900564, -0.369741, 0.901481)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(0.201848, 0.0836077, -0.373438, 0.90156)
@@ -170,7 +169,7 @@ bone_idx = 1
 
 [node name="head_controller" type="BoneAttachment3D" parent="pawn/mesh_scene/Armature/Skeleton3D/chassis"]
 physics_interpolation_mode = 1
-transform = Transform3D(0.999999, 2.66454e-15, 0.00134273, 0.00134273, 0, -0.999999, 3.63798e-12, 1, 0, 0, 0, 0)
+transform = Transform3D(0.999999, 3.90799e-14, 0.00133725, 0.00133725, -5.84529e-11, -0.999999, 3.90798e-14, 1, -5.84529e-11, 0, 0, 0)
 bone_name = "head"
 bone_idx = 8
 override_pose = true

@@ -72,6 +72,9 @@ func access_tab(idx: int) -> void:
 	
 	
 func quit() -> void:
+	$buttons_sounds.stream = preload(\"res://assets/audio/scream_rare.tres\")
+	$buttons_sounds.play()
+	await get_tree().create_timer(0.5).timeout
 	get_tree().quit()
 
 

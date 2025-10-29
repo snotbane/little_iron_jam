@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cgmfug0eq3en1" path="res://assets/scenes/enemies/enemy.tscn" id="1_xt3o3"]
 [ext_resource type="PackedScene" uid="uid://dbfv22ve5fi4y" path="res://assets/models/smokey/smokey.glb" id="2_5giu5"]
-[ext_resource type="Script" path="res://assets/scripts/brains/brain_smoky.gd" id="2_dkyrx"]
+[ext_resource type="Script" uid="uid://dt7kvif22xx5w" path="res://assets/scripts/brains/brain_smoky.gd" id="2_dkyrx"]
 [ext_resource type="PackedScene" uid="uid://15e61md7nldj" path="res://assets/scenes/pickups/pickup_pistol.tscn" id="2_nhst2"]
 [ext_resource type="Material" uid="uid://v6d22ec1iors" path="res://assets/models/smokey/smokey_material.tres" id="3_hwle1"]
 [ext_resource type="PackedScene" uid="uid://cysuu86r47xum" path="res://assets/scenes/weapon_config/weapon_config_smokey.tscn" id="4_303mx"]
@@ -47,7 +47,7 @@ states/idle/position = Vector2(392.333, 99)
 states/rollin/node = SubResource("AnimationNodeAnimation_qxyw7")
 states/rollin/position = Vector2(575.667, 100.037)
 transitions = ["idle", "rollin", SubResource("AnimationNodeStateMachineTransition_kt3v4"), "rollin", "idle", SubResource("AnimationNodeStateMachineTransition_bsd48"), "Start", "dropin", SubResource("AnimationNodeStateMachineTransition_0ikon"), "dropin", "idle", SubResource("AnimationNodeStateMachineTransition_qhqm6")]
-graph_offset = Vector2(-75, -53)
+graph_offset = Vector2(-375.517, -156.275)
 
 [node name="smokey" instance=ExtResource("1_xt3o3")]
 
@@ -66,17 +66,17 @@ text = "8"
 [node name="smokey" parent="pawn" index="2" instance=ExtResource("2_5giu5")]
 
 [node name="Skeleton3D" parent="pawn/smokey/Armature" index="0"]
-bones/1/position = Vector3(-0.022652, 0.741772, 0.0414832)
-bones/1/rotation = Quaternion(-0.0151359, 0.991962, 0.12561, -0.00197287)
+bones/1/position = Vector3(0.0102896, 0.742037, 0.0776129)
+bones/1/rotation = Quaternion(0.00687454, 0.994404, 0.105416, 0.000895608)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/position = Vector3(2.79184e-14, 3.50211e-07, -2.57698e-08)
-bones/2/rotation = Quaternion(-0.63868, -1.74198e-07, -2.0845e-07, 0.769473)
+bones/2/rotation = Quaternion(-0.665212, -1.66295e-07, -2.14877e-07, 0.746655)
 
 [node name="mesh" parent="pawn/smokey/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_hwle1")
 
 [node name="bone_attachment_3d" type="BoneAttachment3D" parent="pawn/smokey/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.999534, 0.0295329, 0.00771607, -0.0305241, 0.967986, 0.24914, -0.000111211, -0.24926, 0.968437, 0.022652, 0.741772, -0.0414832)
+transform = Transform3D(0.999904, -0.0134832, -0.00323095, 0.013861, 0.97768, 0.209641, 0.000332203, -0.209665, 0.977773, -0.0102896, 0.742037, -0.0776129)
 bone_name = "body"
 bone_idx = 1
 

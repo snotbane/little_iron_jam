@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2xxb4sye565j" path="res://assets/models/rifle/rifle.glb" id="4_12b6f"]
 [ext_resource type="AudioStream" uid="uid://dxc0y6nso8o2u" path="res://assets/audio/weapons/railgun_fire.tres" id="4_47p0j"]
 [ext_resource type="Material" uid="uid://cl5whrdvbjlel" path="res://assets/models/pistol/pistol_material.tres" id="5_as2pa"]
-[ext_resource type="Script" path="res://assets/scripts/other/casing_spawner.gd" id="6_fdxfa"]
+[ext_resource type="Script" uid="uid://1wg4hnno2e8s" path="res://assets/scripts/other/casing_spawner.gd" id="6_fdxfa"]
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="8_6k0hx"]
 [ext_resource type="AudioStream" uid="uid://trxflnqnxyay" path="res://assets/audio/weapons/garand_ping.tres" id="8_j3vl8"]
 
@@ -33,7 +33,7 @@ bones/3/position = Vector3(-2.84716e-14, 0.498244, 0.0883931)
 surface_material_override/0 = ExtResource("5_as2pa")
 
 [node name="barrel" type="BoneAttachment3D" parent="rifle/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 3.2584e-07, 0, 0, 0, 1, 3.2584e-07, -1, 0, 5.02172e-07, 0, -1.54116)
+transform = Transform3D(1, 3.25841e-07, 0, 0, 0, 1, 3.25841e-07, -1, 0, 5.02174e-07, 0, -1.54116)
 bone_name = "barrel"
 bone_idx = 2
 

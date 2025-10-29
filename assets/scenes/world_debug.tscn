@@ -13,10 +13,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.5)
 health = 99999
 
 [node name="Skeleton3D" parent="player/pawn/mesh_scene/Armature" index="0"]
-bones/3/scale = Vector3(1, 1, 1)
-bones/5/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(8.88178e-14, -3.55765e-07, 0)
-bones/10/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.707107, 0.000474727, 0.000474727, 0.707107)
 
 [node name="arena" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31)
@@ -31,11 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.31207, 1.9, -24.3363)
 
 [node name="buck" parent="." index="5" instance=ExtResource("3_c1xbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.915, -0.1, -25.9275)
-
-[connection signal="died" from="player/pawn/ammo" to="player/canvas_layer/ui/animation_player" method="play" binds= [&"game_over"]]
-[connection signal="received_upgrade_bullet_speed" from="player/pawn/ammo" to="player/canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [1]]
-[connection signal="received_upgrade_dodge" from="player/pawn/ammo" to="player/canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [0]]
-[connection signal="received_upgrade_vacuum" from="player/pawn/ammo" to="player/canvas_layer/ui/upgrades/upgrade_list" method="add_upgrade" binds= [2]]
 
 [editable path="player"]
 [editable path="player/pawn"]

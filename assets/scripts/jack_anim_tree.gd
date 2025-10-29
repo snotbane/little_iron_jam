@@ -6,7 +6,6 @@ extends AnimationTree
 var dodge_blip : bool
 var recoil_blip : bool
 
-
 func set_aim_vector(value: Vector3) -> void:
 	if value:
 		head_bone.look_at(head_bone.global_position + value)

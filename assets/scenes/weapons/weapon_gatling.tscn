@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://0f4vk8qx8f57"]
 
 [ext_resource type="PackedScene" uid="uid://bcnsi6psxsn24" path="res://assets/scenes/weapons/weapon.tscn" id="1_pywu8"]
-[ext_resource type="Script" path="res://assets/scripts/weapons/weapon_gatling.gd" id="2_1kktl"]
+[ext_resource type="Script" uid="uid://dl0b5yt51f28r" path="res://assets/scripts/weapons/weapon_gatling.gd" id="2_1kktl"]
 [ext_resource type="PackedScene" uid="uid://c7uios12yce4b" path="res://assets/scenes/bullets/bullet_pistol.tscn" id="2_kcujr"]
 [ext_resource type="PackedScene" uid="uid://dyt6oitg7ejkk" path="res://assets/scenes/detritus/detritus_gatling.tscn" id="4_j7h8v"]
 [ext_resource type="PackedScene" uid="uid://dbk7uke1u4jo3" path="res://assets/prefabs/gattler.tscn" id="5_lkg1b"]
 [ext_resource type="Material" uid="uid://kn1x77fba10f" path="res://assets/models/gattler/gattler_material.tres" id="5_n5pqe"]
 [ext_resource type="Material" uid="uid://dl02l1cjw2rrw" path="res://assets/models/gattler/gattler_damage_material.tres" id="6_u6jx5"]
 [ext_resource type="PackedScene" uid="uid://dh3ggxdithhhr" path="res://assets/prefabs/muzzle_flash.tscn" id="6_x38i6"]
-[ext_resource type="Script" path="res://assets/scripts/other/casing_spawner.gd" id="9_li8rh"]
+[ext_resource type="Script" uid="uid://1wg4hnno2e8s" path="res://assets/scripts/other/casing_spawner.gd" id="9_li8rh"]
 
 [node name="weapon_gatling" node_paths=PackedStringArray("rotator_main", "rotator_sub", "anim_player", "mesh", "bullet_spawn_location") instance=ExtResource("1_pywu8")]
 script = ExtResource("2_1kktl")
@@ -34,20 +34,16 @@ damage_material = ExtResource("6_u6jx5")
 [node name="gattler" parent="." index="2" instance=ExtResource("5_lkg1b")]
 
 [node name="Skeleton3D" parent="gattler/Armature" index="0"]
-bones/1/position = Vector3(3.26495e-09, 2.93671e-14, 0.0441064)
-bones/1/rotation = Quaternion(-7.39503e-07, 0.64323, 0.765673, -6.61795e-07)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(0.0824806, -5.70004e-08, 3.2329e-07, 0.996593)
 bones/3/position = Vector3(0, 0, 0)
-bones/3/rotation = Quaternion(2.45656e-29, 1.38292e-14, 0, 1)
-bones/4/scale = Vector3(1.00826, 1, 1.00826)
+bones/3/rotation = Quaternion(0, -1.34599e-19, 0, 1)
 bones/5/rotation = Quaternion(0.0824806, 4.39934e-08, 1.68171e-07, 0.996593)
 bones/6/position = Vector3(0, 0, 0)
-bones/6/rotation = Quaternion(0, 4.16334e-14, 0, 1)
-bones/6/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0, -4.12712e-14, 0, 1)
 
 [node name="barrel" type="BoneAttachment3D" parent="gattler/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 3.2148e-07, 2.05099e-06, -1.96478e-06, -0.17251, 0.985008, 6.70476e-07, -0.985008, -0.17251, 1.39107e-08, 2.93671e-14, -0.0441064)
+transform = Transform3D(1, 3.21409e-07, 2.04834e-06, -1.96763e-06, -0.164399, 0.986394, 6.5378e-07, -0.986394, -0.164399, 0, 0, 0)
 bone_name = "gun"
 bone_idx = 1
 
@@ -60,7 +56,7 @@ transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, -1, -8.742
 script = ExtResource("9_li8rh")
 
 [node name="rotator1" type="BoneAttachment3D" parent="gattler/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 5.06589e-10, 1.90995e-06, -1.90988e-06, -0.00822875, 0.999966, 1.62231e-08, -0.999966, -0.00822875, 3.07234e-07, -0.157401, -0.942841)
+transform = Transform3D(1, 1.42109e-12, 1.90735e-06, -1.90735e-06, 2.68221e-07, 1, 1.00364e-12, -1, 2.68221e-07, 2.93258e-07, -0.15, -0.9)
 rotation_order = 0
 bone_name = "rotator"
 bone_idx = 2
@@ -75,7 +71,7 @@ use_external_skeleton = true
 external_skeleton = NodePath("../..")
 
 [node name="rotator2" type="BoneAttachment3D" parent="gattler/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 3.26347e-07, 2.08566e-06, -2.0829e-06, -0.00822875, 0.999966, 3.43499e-07, -0.999966, -0.00822875, 2.09216e-07, -0.154929, -0.642505)
+transform = Transform3D(1, 3.25842e-07, 2.08306e-06, -2.08306e-06, 2.5332e-07, 1, 3.25842e-07, -1, 2.68221e-07, 1.95392e-07, -0.15, -0.599653)
 rotation_order = 0
 bone_name = "rotator2parent"
 bone_idx = 5

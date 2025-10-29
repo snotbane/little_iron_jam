@@ -292,7 +292,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.09504, -0.0999985, 11.1206)
 
 [node name="poof_ring2" parent="world" instance=ExtResource("12_o7igq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.09504, 13.822, 11.1206)
-emitting = false
 
 [node name="poof_ring3" parent="world" instance=ExtResource("13_j42pn")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.62374, 5.5359, 0.929665)

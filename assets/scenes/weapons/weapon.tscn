@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcnsi6psxsn24"]
 
-[ext_resource type="Script" path="res://assets/scripts/weapons/weapon.gd" id="1_wf6tp"]
+[ext_resource type="Script" uid="uid://cw0ws5pexdphq" path="res://assets/scripts/weapons/weapon.gd" id="1_wf6tp"]
 [ext_resource type="PackedScene" uid="uid://crp3pw7i4x8ou" path="res://assets/scenes/bullets/bullet.tscn" id="2_gx2st"]
 [ext_resource type="Material" uid="uid://cl5whrdvbjlel" path="res://assets/models/pistol/pistol_material.tres" id="3_fj1f2"]
 [ext_resource type="Material" uid="uid://7gyev2nksefd" path="res://assets/models/pistol/pistol_damage_material.tres" id="4_o16cb"]

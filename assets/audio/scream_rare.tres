@@ -1,0 +1,15 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://cd6i6lgfvju32"]
+
+[ext_resource type="AudioStream" uid="uid://cu067mw0holm" path="res://assets/audio/scream_wilhelm.ogg" id="2_0o1h3"]
+[ext_resource type="AudioStream" uid="uid://brkg235xgabe4" path="res://assets/audio/scream_wazowski.ogg" id="3_fldt2"]
+[ext_resource type="AudioStream" uid="uid://ck3drdcw5l46h" path="res://assets/audio/scream_yoda.ogg" id="4_j33pu"]
+
+[resource]
+playback_mode = 1
+streams_count = 3
+stream_0/stream = ExtResource("2_0o1h3")
+stream_0/weight = 0.5
+stream_1/stream = ExtResource("3_fldt2")
+stream_1/weight = 0.5
+stream_2/stream = ExtResource("4_j33pu")
+stream_2/weight = 0.5
